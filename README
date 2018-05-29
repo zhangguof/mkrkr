@@ -1,0 +1,11 @@
+* moblie krkrz
+krkrz 移植
+* build
+** build onig
+cd src/external/oniguruma
+mkdir build
+cmake ../
+cp libonig.a ../../../../libs/
+
+** build krkr
+scons
