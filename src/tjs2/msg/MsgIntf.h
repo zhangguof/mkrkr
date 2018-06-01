@@ -20,7 +20,7 @@
 	#define TVP_MSG_DECL_NULL(name) extern tTJSMessageHolder name;
 #endif
 
-// #include "MsgImpl.h"
+#include "MsgImpl.h"
 
 #define WIDEN2(x) L ## x
 #define WIDEN(x) WIDEN2(x)
