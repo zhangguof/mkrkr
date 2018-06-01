@@ -512,12 +512,12 @@ void TVPInitScriptEngine()
 	// REGISTER_OBJECT(Timer, TVPCreateNativeClass_Timer());
 	// REGISTER_OBJECT(AsyncTrigger, TVPCreateNativeClass_AsyncTrigger());
 	// REGISTER_OBJECT(System, TVPCreateNativeClass_System());
-	// REGISTER_OBJECT(Storages, TVPCreateNativeClass_Storages());
+	REGISTER_OBJECT(Storages, TVPCreateNativeClass_Storages());
 	// REGISTER_OBJECT(Plugins, TVPCreateNativeClass_Plugins());
 	// REGISTER_OBJECT(VideoOverlay, TVPCreateNativeClass_VideoOverlay());
 	// REGISTER_OBJECT(Clipboard, TVPCreateNativeClass_Clipboard());
-	// REGISTER_OBJECT(Scripts, TVPCreateNativeClass_Scripts()); // declared in this file
-	// REGISTER_OBJECT(Rect, TVPCreateNativeClass_Rect());
+	REGISTER_OBJECT(Scripts, TVPCreateNativeClass_Scripts()); // declared in this file
+	REGISTER_OBJECT(Rect, TVPCreateNativeClass_Rect());
 	// REGISTER_OBJECT(Bitmap, TVPCreateNativeClass_Bitmap());
 	// REGISTER_OBJECT(ImageFunction, TVPCreateNativeClass_ImageFunction());
 	// REGISTER_OBJECT(BitmapLayerTreeOwner, TVPCreateNativeClass_BitmapLayerTreeOwner());
