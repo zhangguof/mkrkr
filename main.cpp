@@ -10,6 +10,7 @@
 // #include "ScriptMgnIntf.h"
 #include "Application.h"
 #include "DebugIntf.h"
+#include "StorageIntf.h"
 // #include "XP3Archive.h"
 
 #include <locale.h> 
@@ -18,7 +19,7 @@
 
 const char* script_str= "Debug.message(\"in startup.tjs test!\");";
 
-tTJS *TVPScriptEngine = NULL;
+extern tTJS *TVPScriptEngine;
 static bool TVPScriptEngineInit = false;
 extern void TVPLoadMessage();
 
@@ -80,7 +81,7 @@ void regist_objects()
 }
 
 
-void TVPInitScriptEngine()
+void TVPInitScriptEngine1()
 {
 	if(TVPScriptEngineInit) return;
 	TVPScriptEngineInit = true;
@@ -96,15 +97,24 @@ void TVPInitScriptEngine()
 	
 }
 
+extern void TVPSetCurrentDirectory(const ttstr & _name);
+
 int main()
 {
 	setlocale(LC_ALL, "");
+	TVPSetCurrentDirectory(ExePath());
+	// char buf[1024];
+	// tTJSBinaryStream *st = TVPCreateStream(ttstr("README"),TJS_BS_READ);
+	// st->Read(buf,st->GetSize());
+	// buf[st->GetSize()] = '\0';
+	// ttstr code(buf);
+	// wprintf(TJS_W("size:%d,%ls\n"),st->GetSize(),code.c_str());
 
 	try
 	{
 		wprintf(L"start!!\n");
 
-		TVPInitScriptEngine();
+		TVPInitScriptEngine1();
 		TVPScriptEngine->ExecScript(ttstr(script_str));
 	}
 	catch(eTJSError &e)

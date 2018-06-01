@@ -26,6 +26,8 @@ frameworks = ['CoreAudio','OpenGL',
 
 cpp_path = ['./','src',
 			'src/objects','src/utils',
+			'src/base','src/visual',
+			'src/extension',
 ]
 
 refuse_files = set(['utils/TimerImpl.cpp',
@@ -61,6 +63,8 @@ include_path = list(cpp_path)
 include_path.extend([
 	'src/tjs2',
 	'src/tjs2/base','src/tjs2/msg','src/tjs2/utils',
+	'../boost_1_67_0/',
+	'src/ext_libs_src/',
 	# "./include",
 	# './tools/freetype-2.7/include','./external/jxrlib/common/include',
 	# './tools/libjpeg-turbo-1.5.3',
@@ -128,7 +132,9 @@ def build_static_lib():
 def build_main_in_darwin():
 	link_flags = " ".join(["-framework %s"%s for s in frameworks])
 	cc_flags = " -std=c++0x -g -DTVP_LOG_TO_COMMANDLINE_CONSOLE -DTVP_NO_CHECK_WIDE_CHAR_SIZE"
-	libs = ['tjs2','onig']
+	libs = ['tjs2','onig','z',
+	'boost_filesystem','boost_system',
+	]
 	lib_path = ['./libs',]
 	env.Program(target=target, source=cpp_src,
 		CC='c++', 

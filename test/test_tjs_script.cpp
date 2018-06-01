@@ -10,6 +10,16 @@
 #include "tjsError.h"
 
 #include <locale.h>
+#include <boost/filesystem.hpp>
+
+ttstr ExePath() {
+	auto cur_path = boost::filesystem::current_path();
+	ttstr p(cur_path.c_str());
+	if(p.GetLastChar()!=TJS_W('/'))
+		p = p + TJS_W('/');
+
+	return p;
+}
 
 const char* script_str= "Debug.message(\"in startup.tjs test!\");";
 
@@ -36,6 +46,7 @@ int main()
 	// TVPInitScriptEngine();
 	// TVPScriptEngine->ExecScript(ttstr(script_str));
 	setlocale(LC_ALL, "");
+	wprintf(L"exePath:%ls\n",ExePath().c_str());
 
 	try
 	{

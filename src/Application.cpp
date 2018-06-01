@@ -1,18 +1,19 @@
 #include "Application.h"
 #include "tjsCommHead.h"
 #include <iostream>
-// #include <boost/filesystem.hpp>
+#include <boost/filesystem.hpp>
 // #include "GLDevice.hpp"
 #include "DebugIntf.h"
 // #include "WindowImpl.h"
 
+//absolute path,"/" at last.
 ttstr ExePath() {
-	// auto cur_path = boost::filesystem::current_path();
-	// ttstr p(cur_path.c_str());
-	// if(p.GetLastChar()!=TJS_W('/'))
-	// 	p = p + TJS_W('/');
+	auto cur_path = boost::filesystem::current_path();
+	ttstr p(cur_path.c_str());
+	if(p.GetLastChar()!=TJS_W('/'))
+		p = p + TJS_W('/');
 
-	return ttstr("/");
+	return p;
 }
 
 tTVPApplication* Application;

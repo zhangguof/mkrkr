@@ -7,5 +7,25 @@ mkdir build
 cmake ../
 cp libonig.a ../../../../libs/
 
+**build boost
+cd boost_1_67_0
+./bootstrap.sh --with-libraries=filesystem,locale,system
+./b2 toolset=clang
+
+
+then copy boost_1_67_0/stage/lib/*.a to mkrkr/libs/
+
+** build zlib
+cd ext_libs_src
+wget http://www.zlib.net/zlib-1.2.11.tar.gz
+tar xvzf zlib-1.2.11.tar.gz
+mv zlib-1.2.11 zlib
+cd zlib
+exprot CC=cc
+exprot CXX=c++
+./configure
+make
+cp libz.a ../../../libs/
+
 ** build krkr
 scons
