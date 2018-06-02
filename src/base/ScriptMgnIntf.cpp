@@ -17,8 +17,8 @@
 #include "ScriptMgnIntf.h"
 #include "StorageIntf.h"
 #include "DebugIntf.h"
-// #include "WindowIntf.h"
-// #include "LayerIntf.h"
+#include "WindowIntf.h"
+#include "LayerIntf.h"
 //#include "CDDAIntf.h"
 //#include "MIDIIntf.h"
 // #include "WaveIntf.h"
@@ -37,11 +37,11 @@
 #include "tjsRandomGenerator.h"
 #include "SysInitIntf.h"
 // #include "PhaseVocoderFilter.h"
-// #include "BasicDrawDevice.h"
+#include "BasicDrawDevice.h"
 #include "BinaryStream.h"
 // #include "SysInitImpl.h"
 // #include "SystemControl.h"
-// #include "Application.h"
+#include "Application.h"
 
 #include "RectItf.h"
 // #include "ImageFunction.h"
@@ -49,7 +49,7 @@
 #include "tjsScriptBlock.h"
 // #include "ApplicationSpecialPath.h"
 // #include "SystemImpl.h"
-// #include "BitmapLayerTreeOwner.h"
+#include "BitmapLayerTreeOwner.h"
 #include "Extension.h"
 
 #include "MsgImpl.h"
@@ -508,7 +508,7 @@ void TVPInitScriptEngine()
 	/* classes */
 	REGISTER_OBJECT(Debug, TVPCreateNativeClass_Debug());
 	// REGISTER_OBJECT(Font, TVPCreateNativeClass_Font());//TODO
-	// REGISTER_OBJECT(Layer, TVPCreateNativeClass_Layer());
+	REGISTER_OBJECT(Layer, TVPCreateNativeClass_Layer());
 	// REGISTER_OBJECT(Timer, TVPCreateNativeClass_Timer());
 	// REGISTER_OBJECT(AsyncTrigger, TVPCreateNativeClass_AsyncTrigger());
 	// REGISTER_OBJECT(System, TVPCreateNativeClass_System());
@@ -518,7 +518,7 @@ void TVPInitScriptEngine()
 	// REGISTER_OBJECT(Clipboard, TVPCreateNativeClass_Clipboard());
 	REGISTER_OBJECT(Scripts, TVPCreateNativeClass_Scripts()); // declared in this file
 	REGISTER_OBJECT(Rect, TVPCreateNativeClass_Rect());
-	// REGISTER_OBJECT(Bitmap, TVPCreateNativeClass_Bitmap());
+	// REGISTER_OBJECT(Bitsmap, TVPCreateNativeClass_Bitmap());
 	// REGISTER_OBJECT(ImageFunction, TVPCreateNativeClass_ImageFunction());
 	// REGISTER_OBJECT(BitmapLayerTreeOwner, TVPCreateNativeClass_BitmapLayerTreeOwner());
 
@@ -531,14 +531,14 @@ void TVPInitScriptEngine()
 	// waveclass->PropSet(TJS_MEMBERENSURE|TJS_IGNOREPROP|TJS_STATICMEMBER,
 	// 	TJS_W("PhaseVocoder"), NULL, &val, waveclass);
 
-	 // Window and its drawdevices 
-	// iTJSDispatch2 * windowclass = NULL;
-	// REGISTER_OBJECT(Window, (windowclass = TVPCreateNativeClass_Window()));
-	// dsp = new tTJSNC_BasicDrawDevice();
-	// val = tTJSVariant(dsp);
-	// dsp->Release();
-	// windowclass->PropSet(TJS_MEMBERENSURE|TJS_IGNOREPROP|TJS_STATICMEMBER,
-	// 	TJS_W("BasicDrawDevice"), NULL, &val, windowclass);
+	// Window and its drawdevices 
+	iTJSDispatch2 * windowclass = NULL;
+	REGISTER_OBJECT(Window, (windowclass = TVPCreateNativeClass_Window()));
+	dsp = new tTJSNC_BasicDrawDevice();
+	val = tTJSVariant(dsp);
+	dsp->Release();
+	windowclass->PropSet(TJS_MEMBERENSURE|TJS_IGNOREPROP|TJS_STATICMEMBER,
+		TJS_W("BasicDrawDevice"), NULL, &val, windowclass);
 
 	// Add Extension Classes
 	TVPCauseAtInstallExtensionClass( global );

@@ -199,6 +199,19 @@ typedef struct tagBITMAPINFO {
 #define S_FALSE ((HRESULT)1L)
 
 
+typedef struct tagSIZE
+{
+	LONG cx;
+	LONG cy;
+} SIZE,*PSIZE, *LPSIZE;
+typedef SIZE SIZEL;
+typedef SIZE *PSIZE, *LPSIZE;
+
+typedef struct tagPOINT
+{
+	LONG x;
+	LONG y;
+} POINT;
 
 
 #endif

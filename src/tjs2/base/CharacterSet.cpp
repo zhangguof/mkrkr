@@ -44,7 +44,7 @@ static tjs_int inline TVPWideCharToUtf8(tjs_char in, char * out)
 		}
 		return 3;
 	}
-#if 1
+#ifdef _WIN32
 	else
 	{
 		TVPThrowExceptionMessage(TJS_W("UTF-16では発生し得ないUTF-8への変換"));

@@ -158,8 +158,8 @@ void TVPSystemInit(void)
 	sel_project_dir();
 	TVPInitScriptEngine();
 //TODO
-	// TVPInitTVPGL();
-	// TVPGL_C_Init();
+	TVPInitTVPGL();
+	TVPGL_C_Init();
 
 	// TVPAfterSystemInit();
 }

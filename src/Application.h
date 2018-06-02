@@ -3,12 +3,14 @@
 #include <string>
 #include "tjs.h"
 
+class SDLWindow;
+
 ttstr ExePath();
 
 
 class tTVPApplication{
 	std::wstring title_;
-	std::vector<class TTVPWindowForm*> windows_list_;
+	std::vector<class SDLWindow*> windows_list_;
 	bool tarminate_;
 public:
 	
@@ -20,10 +22,10 @@ public:
 	std::wstring GetTitle() const { return title_; }
 	void SetTitle( const std::wstring& caption );
 
-	// void AddWindow( class TTVPWindowForm* win ) {
-	// 	windows_list_.push_back( win );
-	// }
-	// void RemoveWindow( class TTVPWindowForm* win );
+	void AddWindow(SDLWindow* win ) {
+		windows_list_.push_back( win );
+	}
+	void RemoveWindow(SDLWindow* win );
 	void Run();
 
 };

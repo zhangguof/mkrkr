@@ -27,5 +27,20 @@ exprot CXX=c++
 make
 cp libz.a ../../../libs/
 
+** build freetype
+cd ext_libs_src
+wget https://sourceforge.net/projects/freetype/files/freetype2/2.9/freetype-2.9.tar.bz2/download
+./configure CC=cc CXX=c++
+make
+cp objs/.libs/libfreetype.a ../../../libs/
+
+** build libpng
+cd ext_libs_src
+wget https://download.sourceforge.net/libpng/libpng-1.6.34.tar.gz
+....
+like before
+
+
+
 ** build krkr
 scons
