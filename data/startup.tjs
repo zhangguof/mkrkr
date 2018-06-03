@@ -1,10 +1,13 @@
 /*
 image0.png ～ image9.png を10回非同期で読み込む
 */
-// System.setArgument("-contfreq", 60);
+
+var dm = Debug.message;
+
+System.setArgument("-contfreq", 60);
 // System.graphicCacheLimit = 0;
 // キャッシュが有効だと無意味なので画像キャッシュ切る
-var dm = Debug.message;
+
 // class Bitmap2Layer extends Bitmap {
 // 	var target;
 // 	var tag;
@@ -22,25 +25,44 @@ var dm = Debug.message;
 // 	}
 // };
 
+var last_tick = 0;
+
 class MainWindow extends Window {
 	var base;
 	var layer;
 	var layermove;
 	var addval;
 	var bmps;
+	var fps_lay;
 
 	function MainWindow( width, height ) {
 		super.Window();
 		setSize( width, height );
 		setInnerSize( width, height );
 
+
+
 		base = new Layer(this, null);
 		base.setSize(width,height);
 		base.setSizeToImageSize();
 		base.name = "base";
-		base.colorRect(0,0,width,height,0x0,0xff);
+		base.colorRect(0,0,width,height,0x0,128);
 		base.visible = true;
 		add( base );
+
+		fps_lay = new Layer(this,base);
+		fps_lay.setSize(150,50);
+		fps_lay.setSizeToImageSize();
+		fps_lay.setPos(width - fps_lay.width,0);
+		fps_lay.name="fps";
+		// fps_lay.colorRect(0,0,100,100,0x0000ff,0xff);
+		fps_lay.visible = true;
+		add(fps_lay);
+
+		var base_font = new Font(fps_lay);
+		base_font.face = "font/NotoSansCJKsc-Black.otf";
+		base_font.faceIsFileName = true;
+		base_font.height = 30;
 
 
 		layer = new Layer(this,base);
@@ -53,8 +75,8 @@ class MainWindow extends Window {
 
 
 		layermove = new Layer(this,base);
-		layermove.setSize(400,100);
-		layermove.setPos(0,height-100);
+		layermove.setSize(400,300);
+		layermove.setPos(0,height-300);
 		layermove.setSizeToImageSize();
 		layermove.colorRect(0,0,400,100,0x0,0);
 
@@ -71,6 +93,8 @@ class MainWindow extends Window {
 		layermove.visible = true;
 		add( layermove );
 
+		
+
 		// bmps = new Array();
 		// for( var j = 0; j < 10; j++ ) {
 		// for( var i = 0; i < 4; i++ ) {
@@ -82,25 +106,36 @@ class MainWindow extends Window {
 		// }
 		// add( bmps );
 
-		// addval = 1;
-		//System.addContinuousHandler(onMoveImage);
+		addval = 1;
+		System.addContinuousHandler(onMoveImage);
 	}
 	function finalize() {
-		//System.removeContinuousHandler(onMoveImage);
+		System.removeContinuousHandler(onMoveImage);
 		super.finalize();
 	}
-	// function onMoveImage() {
-	// 	layermove.left += addval;
-	// 	if( addval > 0 ) {
-	// 		if( layermove.left >= (this.width-layermove.width) ) {
-	// 			addval = -1;
-	// 		}
-	// 	} else {
-	// 		if( layermove.left <= 0 ) {
-	// 			addval = 1;
-	// 		}
-	// 	}
-	// }
+	function onMoveImage() {
+		layermove.left += addval;
+		if( addval > 0 ) {
+			if( layermove.left >= (this.width-layermove.width) ) {
+				addval = -1;
+			}
+		} else {
+			if( layermove.left <= 0 ) {
+				addval = 1;
+			}
+		}
+		// var cur_tick = System.getTickCount();
+		
+		// dm(base);
+		// base.colorRect(0,0,width,height,0x0000ff,0xff);
+		// fps_lay.colorRect(0,0,)
+
+		// fps_lay.fillRect(0,0,fps_lay.width,fps_lay.height,
+		// 0x00000000);
+		// fps_lay.drawText(0,0,"fps:"+int(1000/(cur_tick - last_tick)),0xfffffff);
+		// last_tick = cur_tick;
+
+	}
 };
 
 var win = new MainWindow(640,480);
