@@ -9637,7 +9637,7 @@ tjs_error TJS_INTF_METHOD tTJSNI_Font::Construct(tjs_int numparams,
 	{
 		Layer = NULL;
 		//TODO
-		//Font = TVPFontSystem->GetDefaultFont();
+		Font = TVPFontSystem->GetDefaultFont();
 		
 	}
 

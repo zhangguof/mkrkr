@@ -6,6 +6,7 @@
 #include "StringUtil.h"
 #include "MsgIntf.h"
 #include <vector>
+#include "FreeType.h"
 
 extern void TVPGetAllFontList( std::vector<std::wstring>& list );
 extern const tjs_char *TVPGetDefaultFontName();
@@ -44,7 +45,7 @@ void FontSystem::ConstructDefaultFont() {
 	if( !DefaultLOGFONTCreated ) {
 		DefaultLOGFONTCreated = true;
 		DefaultFont.Height = -12;
-		DefaultFont.Flags = 0;
+		DefaultFont.Flags = TVP_TF_FONTFILE;
 		DefaultFont.Angle = 0;
 		DefaultFont.Face = ttstr(TVPGetDefaultFontName());
 	}

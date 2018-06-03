@@ -4,7 +4,7 @@ image0.png ～ image9.png を10回非同期で読み込む
 // System.setArgument("-contfreq", 60);
 // System.graphicCacheLimit = 0;
 // キャッシュが有効だと無意味なので画像キャッシュ切る
-
+var dm = Debug.message;
 // class Bitmap2Layer extends Bitmap {
 // 	var target;
 // 	var tag;
@@ -38,7 +38,7 @@ class MainWindow extends Window {
 		base.setSize(width,height);
 		base.setSizeToImageSize();
 		base.name = "base";
-		// base.colorRect(0,0,width,height,0x000000,0);
+		base.colorRect(0,0,width,height,0x0,0xff);
 		base.visible = true;
 		add( base );
 
@@ -50,14 +50,26 @@ class MainWindow extends Window {
 		layer.visible = true;
 		add( layer );
 
-		// layermove = new Layer(this,base);
-		// layermove.setSize(100,100);
-		// layermove.setPos(0,height-100);
-		// layermove.setSizeToImageSize();
-		// layermove.colorRect(0,0,100,100,0xff0000,128);
-		// layermove.drawText( 0, 40, "テスト文字列描画", 0xffffff );
-		// layermove.visible = true;
-		// add( layermove );
+
+
+		layermove = new Layer(this,base);
+		layermove.setSize(400,100);
+		layermove.setPos(0,height-100);
+		layermove.setSizeToImageSize();
+		layermove.colorRect(0,0,400,100,0x0,0);
+
+		var font = new Font(layermove);
+		font.face = "font/NotoSansCJKsc-Black.otf";
+		font.faceIsFileName = true;
+		
+		dm("font hegiht",font.height);
+
+		layermove.drawText( 0, 30, "テスト文字列描画"+" size:"+font.height, 0xfffffff );
+		
+		font.height = 30;
+		layermove.drawText( 0, 60, "测试文字abcd"+" size:"+font.height, 0x0000ff);
+		layermove.visible = true;
+		add( layermove );
 
 		// bmps = new Array();
 		// for( var j = 0; j < 10; j++ ) {
@@ -96,7 +108,7 @@ win.visible = true;
 // Debug.message(MainWindow.BasicDrawDevice.recreate);
 
 
-// var dm = Debug.message;
+
 // dm("test in startup.tjs");
 // Scripts.execStorage("test.tjs");
 

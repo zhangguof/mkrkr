@@ -25,7 +25,7 @@
 // #include "TimerIntf.h"
 #include "EventIntf.h"
 #include "SystemIntf.h"
-// #include "PluginIntf.h"
+#include "PluginIntf.h"
 //#include "MenuItemIntf.h"
 // #include "ClipboardIntf.h"
 #include "MsgIntf.h"
@@ -507,13 +507,13 @@ void TVPInitScriptEngine()
 
 	/* classes */
 	REGISTER_OBJECT(Debug, TVPCreateNativeClass_Debug());
-	// REGISTER_OBJECT(Font, TVPCreateNativeClass_Font());//TODO
+	REGISTER_OBJECT(Font, TVPCreateNativeClass_Font());//TODO
 	REGISTER_OBJECT(Layer, TVPCreateNativeClass_Layer());
 	// REGISTER_OBJECT(Timer, TVPCreateNativeClass_Timer());
 	// REGISTER_OBJECT(AsyncTrigger, TVPCreateNativeClass_AsyncTrigger());
 	// REGISTER_OBJECT(System, TVPCreateNativeClass_System());
 	REGISTER_OBJECT(Storages, TVPCreateNativeClass_Storages());
-	// REGISTER_OBJECT(Plugins, TVPCreateNativeClass_Plugins());
+	REGISTER_OBJECT(Plugins, TVPCreateNativeClass_Plugins());
 	// REGISTER_OBJECT(VideoOverlay, TVPCreateNativeClass_VideoOverlay());
 	// REGISTER_OBJECT(Clipboard, TVPCreateNativeClass_Clipboard());
 	REGISTER_OBJECT(Scripts, TVPCreateNativeClass_Scripts()); // declared in this file

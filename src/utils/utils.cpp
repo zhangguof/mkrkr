@@ -63,15 +63,15 @@ void TVPBeginThreadTask(tjs_int taskNum)
 	// printf("start thread task!\n");
 	// assert(false);//TODO
 }
-void TVPGetFontRasterizer()
-{
-	assert(false);//TODO
-}
+// void TVPGetFontRasterizer()
+// {
+// 	assert(false);//TODO
+// }
 
-void TVPSetFontRasterizer( tjs_int index )
-{
-	assert(false);//TODO
-}
+// void TVPSetFontRasterizer( tjs_int index )
+// {
+// 	assert(false);//TODO
+// }
 
 void TVPMainWindowClosed()
 {
@@ -82,7 +82,7 @@ void TVPMainWindowClosed()
 }
 
 const tjs_char *TVPGetDefaultFontName() {
-	return TJS_W("test");
+	return TJS_W("font/NotoSansCJKsc-Black.otf");
 }
 
 ttstr TVPGetVersionString()

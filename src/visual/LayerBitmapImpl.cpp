@@ -74,35 +74,35 @@ void TVPInializeFontRasterizers() {
 		TVPFontRasterizersInit = true;
 	}
 }
-// void TVPUninitializeFontRasterizers() {
-// 	for( tjs_int i = 0; i < FONT_RASTER_EOT; i++ ) {
-// 		if( TVPFontRasterizers[i] ) {
-// 			TVPFontRasterizers[i]->Release();
-// 			TVPFontRasterizers[i] = NULL;
-// 		}
-// 	}
-// 	if( TVPFontSystem ) {
-// 		delete TVPFontSystem;
-// 		TVPFontSystem = NULL;
-// 	}
-// }
+void TVPUninitializeFontRasterizers() {
+	for( tjs_int i = 0; i < FONT_RASTER_EOT; i++ ) {
+		if( TVPFontRasterizers[i] ) {
+			TVPFontRasterizers[i]->Release();
+			TVPFontRasterizers[i] = NULL;
+		}
+	}
+	if( TVPFontSystem ) {
+		delete TVPFontSystem;
+		TVPFontSystem = NULL;
+	}
+}
 // static tTVPAtExit
 // 	TVPUninitializeFontRaster(TVP_ATEXIT_PRI_RELEASE, TVPUninitializeFontRasterizers);
 
-// void TVPSetFontRasterizer( tjs_int index ) {
-// 	if( TVPCurrentFontRasterizers != index && index >= 0 && index < FONT_RASTER_EOT ) {
-// 		TVPCurrentFontRasterizers = index;
-// 		TVPClearFontCache(); // ラスタライザが切り替わる時、キャッシュはクリアしてしまう
-// 		TVPGlobalFontStateMagic++; // ApplyFont が走るようにする
-// 	}
-// }
-// tjs_int TVPGetFontRasterizer() {
-// 	return TVPCurrentFontRasterizers;
-// }
+void TVPSetFontRasterizer( tjs_int index ) {
+	if( TVPCurrentFontRasterizers != index && index >= 0 && index < FONT_RASTER_EOT ) {
+		TVPCurrentFontRasterizers = index;
+		TVPClearFontCache(); // ラスタライザが切り替わる時、キャッシュはクリアしてしまう
+		TVPGlobalFontStateMagic++; // ApplyFont が走るようにする
+	}
+}
+tjs_int TVPGetFontRasterizer() {
+	return TVPCurrentFontRasterizers;
+}
 FontRasterizer* GetCurrentRasterizer() {
 	//TODO
-	return NULL;
-//	return TVPFontRasterizers[TVPCurrentFontRasterizers];
+	// return NULL;
+	return TVPFontRasterizers[TVPCurrentFontRasterizers];
 }
 
 //---------------------------------------------------------------------------
@@ -504,7 +504,7 @@ void tTVPBitmap::SetPaletteCount( tjs_uint count ) {
 //---------------------------------------------------------------------------
 tTVPNativeBaseBitmap::tTVPNativeBaseBitmap(tjs_uint w, tjs_uint h, tjs_uint bpp)
 {
-	//TODO
+	
 	TVPInializeFontRasterizers(); 
 	// TVPFontRasterizer->AddRef();
 
@@ -520,8 +520,8 @@ tTVPNativeBaseBitmap::tTVPNativeBaseBitmap(tjs_uint w, tjs_uint h, tjs_uint bpp)
 //---------------------------------------------------------------------------
 tTVPNativeBaseBitmap::tTVPNativeBaseBitmap(const tTVPNativeBaseBitmap & r)
 {
-	//TODO
-	//TVPInializeFontRasterizers();
+	
+	TVPInializeFontRasterizers();
 	// TVPFontRasterizer->AddRef(); TODO
 
 	Bitmap = r.Bitmap;
