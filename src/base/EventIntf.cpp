@@ -19,7 +19,7 @@
 #include "ScriptMgnIntf.h"
 // #include "TickCount.h"
 #include "utils.h"
-
+#include "DebugIntf.h"
 
 
 

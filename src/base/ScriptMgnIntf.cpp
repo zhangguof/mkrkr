@@ -511,7 +511,7 @@ void TVPInitScriptEngine()
 	REGISTER_OBJECT(Layer, TVPCreateNativeClass_Layer());
 	// REGISTER_OBJECT(Timer, TVPCreateNativeClass_Timer());
 	// REGISTER_OBJECT(AsyncTrigger, TVPCreateNativeClass_AsyncTrigger());
-	// REGISTER_OBJECT(System, TVPCreateNativeClass_System());
+	REGISTER_OBJECT(System, TVPCreateNativeClass_System());
 	REGISTER_OBJECT(Storages, TVPCreateNativeClass_Storages());
 	REGISTER_OBJECT(Plugins, TVPCreateNativeClass_Plugins());
 	// REGISTER_OBJECT(VideoOverlay, TVPCreateNativeClass_VideoOverlay());

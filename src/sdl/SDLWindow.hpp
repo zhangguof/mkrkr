@@ -110,7 +110,7 @@ public:
 
 //-- properties
 	bool GetVisible() const{
-		assert(false);//TODO
+		// assert(false);//TODO
 		return true;
 	}
 	void SetVisible(bool s){
