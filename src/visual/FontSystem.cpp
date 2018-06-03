@@ -9,14 +9,14 @@
 #include "FreeType.h"
 
 extern void TVPGetAllFontList( std::vector<std::wstring>& list );
-extern const tjs_char *TVPGetDefaultFontName();
+extern ttstr TVPGetDefaultFontName();
 
 void FontSystem::InitFontNames() {
 	// enumlate all fonts
 	if(FontNamesInit) return;
 
 	std::vector<std::wstring> list;
-	// TVPGetAllFontList( list );
+	TVPGetAllFontList( list );
 	size_t count = list.size();
 	for( size_t i = 0; i < count; i++ ) {
 		AddFont( list[i] );
@@ -47,7 +47,7 @@ void FontSystem::ConstructDefaultFont() {
 		DefaultFont.Height = -12;
 		DefaultFont.Flags = TVP_TF_FONTFILE;
 		DefaultFont.Angle = 0;
-		DefaultFont.Face = ttstr(TVPGetDefaultFontName());
+		DefaultFont.Face = TVPGetDefaultFontName();
 	}
 }
 
@@ -91,8 +91,8 @@ std::wstring FontSystem::GetBeingFont(std::wstring fonts) {
 	}
 
 	if(vfont) {
-		return std::wstring(TJS_W("@")) + std::wstring(TVPGetDefaultFontName());
+		return std::wstring(TJS_W("@")) + std::wstring(TVPGetDefaultFontName().c_str());
 	} else {
-		return std::wstring(TVPGetDefaultFontName());
+		return std::wstring(TVPGetDefaultFontName().c_str());
 	}
 }

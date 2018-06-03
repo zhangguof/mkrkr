@@ -105,8 +105,8 @@ bool TJS_INTF_METHOD tTVPFileMedia::CheckExistentStorage(const ttstr &name)
 
 	ttstr _name(name);
 	GetLocalName(_name);
-
 	return TVPCheckExistentLocalFile(_name);
+	
 }
 //---------------------------------------------------------------------------
 tTJSBinaryStream * TJS_INTF_METHOD tTVPFileMedia::Open(const ttstr & name, tjs_uint32 flags)
@@ -231,13 +231,15 @@ void TJS_INTF_METHOD tTVPFileMedia::GetLocallyAccessibleName(ttstr &name)
             pp++;
         }
     }
+   	// wprintf(TJS_W("local name:%ls-->%ls\n"),
+	// name.c_str(),newname.c_str());
 	name = newname;
+
 }
 //---------------------------------------------------------------------------
 void TJS_INTF_METHOD tTVPFileMedia::GetLocalName(ttstr &name)
 {
 	ttstr tmp = name;
-	// wprintf(L"=====%s\n",name.c_str());
 	GetLocallyAccessibleName(tmp);
 	if(tmp.IsEmpty()) TVPThrowExceptionMessage(TVPCannotGetLocalName, name);
 	name = tmp;

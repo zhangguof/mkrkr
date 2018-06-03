@@ -29,11 +29,12 @@ var last_tick = 0;
 
 class MainWindow extends Window {
 	var base;
-	var layer;
+	var block_layer;
 	var layermove;
 	var addval;
 	var bmps;
 	var fps_lay;
+	var img_layer;
 
 	function MainWindow( width, height ) {
 		super.Window();
@@ -46,9 +47,18 @@ class MainWindow extends Window {
 		base.setSize(width,height);
 		base.setSizeToImageSize();
 		base.name = "base";
-		base.colorRect(0,0,width,height,0x0,128);
+		base.colorRect(0,0,width,height,0x0,0);
 		base.visible = true;
 		add( base );
+
+		img_layer = new Layer(this,base);
+		img_layer.setSize(300,300);
+		img_layer.setSizeToImageSize();
+		img_layer.setPos(100,50);
+		img_layer.name = "img";
+		img_layer.colorRect(0,0,400,400,0x0000ff,0xff);
+		img_layer.visible = true;
+		add(img_layer);
 
 		fps_lay = new Layer(this,base);
 		fps_lay.setSize(150,50);
@@ -58,40 +68,46 @@ class MainWindow extends Window {
 		// fps_lay.colorRect(0,0,100,100,0x0000ff,0xff);
 		fps_lay.visible = true;
 		add(fps_lay);
+		var font2 = new Font(fps_lay);
+		font2.height = 30;
 
-		var base_font = new Font(fps_lay);
-		base_font.face = "font/NotoSansCJKsc-Black.otf";
-		base_font.faceIsFileName = true;
-		base_font.height = 30;
+		// var base_font = new Font(fps_lay);
+		// base_font.face = "font/NotoSansCJKsc-Black.otf";
+		// base_font.faceIsFileName = true;
+		// base_font.height = 30;
 
 
-		layer = new Layer(this,base);
-		layer.setSize(200,200);
-		layer.setSizeToImageSize();
-		layer.colorRect(0,0,100,100,0x00ff00,0xff);
-		layer.visible = true;
-		add( layer );
+		block_layer = new Layer(this,base);
+		block_layer.setSize(50,50);
+		block_layer.setSizeToImageSize();
+		block_layer.colorRect(0,0,block_layer.width,block_layer.height,0x00ff00,0xff);
+		block_layer.visible = true;
+		add( block_layer );
 
 
 
 		layermove = new Layer(this,base);
-		layermove.setSize(400,300);
-		layermove.setPos(0,height-300);
+		layermove.setSize(400,60);
+		layermove.setPos(0,height- layermove.height);
 		layermove.setSizeToImageSize();
-		layermove.colorRect(0,0,400,100,0x0,0);
+		layermove.colorRect(0,0,layermove.width,
+							layermove.height,0xff0000,128);
+
+
 
 		var font = new Font(layermove);
-		font.face = "font/NotoSansCJKsc-Black.otf";
+		// font.face = "font/NotoSansCJKsc-Black.otf";
 		font.faceIsFileName = true;
 		
-		dm("font hegiht",font.height);
+		// dm("font hegiht",font.height);
 
-		layermove.drawText( 0, 30, "テスト文字列描画"+" size:"+font.height, 0xfffffff );
+		layermove.drawText( 0, 0, "テスト文字列描画"+" size:"+font.height, 0xfffffff );
 		
 		font.height = 30;
-		layermove.drawText( 0, 60, "测试文字abcd"+" size:"+font.height, 0x0000ff);
+		layermove.drawText( 0, 20, "测试文字abcd"+" size:"+font.height, 0x0000ff);
 		layermove.visible = true;
 		add( layermove );
+		dm("font:",layermove.font.face);
 
 		
 

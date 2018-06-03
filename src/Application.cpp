@@ -5,6 +5,7 @@
 #include "GLDevice.hpp"
 #include "DebugIntf.h"
 #include "WindowImpl.h"
+#include "FontSystem.h"
 
 //absolute path,"/" at last.
 ttstr ExePath() {
@@ -22,6 +23,9 @@ tTVPApplication::tTVPApplication(){
 	tarminate_ = false;
 }
 tTVPApplication::~tTVPApplication(){}
+
+
+
 bool StartApplication( int argc, tjs_char* argv[] )
 {
 	wprintf(L"StartApplication!\n");
@@ -112,9 +116,20 @@ static void render_update(unsigned int interval)
 
 
 }
+
+// extern void TVPInializeFontRasterizers();
+// extern FontSystem* TVPFontSystem;
+
+// void pre_run()
+// {
+// 	TVPInializeFontRasterizers();
+// 	TVPFontSystem->AddFont(TJS_W("font/NotoSansCJKsc-Black.otf"));
+// }
+
 void tTVPApplication::Run()
 {
 	// while(sdl_loop());
+	// pre_run();
 	init_fps();
 	regist_update(render_update);
 	// if(TVPMainWindow)

@@ -81,8 +81,13 @@ void TVPMainWindowClosed()
 	//TODO
 }
 
-const tjs_char *TVPGetDefaultFontName() {
-	return TJS_W("font/NotoSansCJKsc-Black.otf");
+extern ttstr ExePath();
+
+ttstr TVPGetDefaultFontName() {
+	ttstr name(TJS_W("font/NotoSansCJKsc-Thin.otf"));
+	name = ttstr(TJS_W("file://./")) + ExePath() + name;
+	// wprintf(TJS_W("%ls\n"),name.c_str());
+	return name;
 }
 
 ttstr TVPGetVersionString()
@@ -164,4 +169,9 @@ ttstr TVPGetAboutString(void)
 		TJSVersionMajor, TJSVersionMinor, TJSVersionRelease);
 
 	return TVPFormatMessage(TVPReadAboutStringFromResource().c_str(), verstr, tjsverstr);
+}
+
+void TVPGetAllFontList( std::vector<std::wstring>& list )
+{
+	list.push_back(TJS_W("font/NotoSansCJKsc-Black.otf"));
 }
