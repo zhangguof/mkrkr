@@ -114,7 +114,7 @@ public:
 		return true;
 	}
 	void SetVisible(bool s){
-		TVPAddLog(TJS_W("set visible in tTVPWindow"));
+		TVPAddLog(TJS_W("set visible in SDLWindow"));
 		// assert(false);//TODO
 	}
 	void Show() { SetVisible( true ); BringToFront(); }

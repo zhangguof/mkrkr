@@ -38,17 +38,17 @@ class MainWindow extends Window {
 		base.setSize(width,height);
 		base.setSizeToImageSize();
 		base.name = "base";
-		base.colorRect(0,0,100,100,0x00ff00,128);
+		// base.colorRect(0,0,width,height,0x000000,0);
 		base.visible = true;
 		add( base );
 
 
-		// layer = new Layer(this,base);
-		// layer.setSize(100,100);
-		// layer.setSizeToImageSize();
-		// layer.colorRect(0,0,100,100,0x00ff00,128);
-		// layer.visible = true;
-		// add( layer );
+		layer = new Layer(this,base);
+		layer.setSize(200,200);
+		layer.setSizeToImageSize();
+		layer.colorRect(0,0,100,100,0x00ff00,0xff);
+		layer.visible = true;
+		add( layer );
 
 		// layermove = new Layer(this,base);
 		// layermove.setSize(100,100);

@@ -1059,7 +1059,7 @@ void tTVPLayerManager::AddUpdateRegion(const tTVPRect &rect)
 void TJS_INTF_METHOD tTVPLayerManager::UpdateToDrawDevice()
 {
 	// drawdevice -> layer
-	TVPAddLog(TJS_W("tTVPLayerManager::UpdateToDrawDevice!!"));
+	// TVPAddLog(TJS_W("tTVPLayerManager::UpdateToDrawDevice!!"));
 	if(!Primary) return;
 	Primary->CompleteForWindow(this);
 }

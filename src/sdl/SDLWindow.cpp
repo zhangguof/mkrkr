@@ -169,6 +169,9 @@ void SDLWindow::UpdateWindow(tTVPUpdateType type )
 void SDLWindow::SetVisibleFromScript(bool b)
 {
 	TVPAddLog(TJS_W("set visible from sciprt!"));
+	bool ismain = false;
+	if( TJSNativeInstance ) ismain = TJSNativeInstance->IsMainWindow();
+	if( TJSNativeInstance ) TJSNativeInstance->GetDrawDevice()->SetTargetWindow( GetHandle(), ismain);
 	SetVisible( b );
 }
 

@@ -4,7 +4,7 @@
 #include <boost/filesystem.hpp>
 #include "GLDevice.hpp"
 #include "DebugIntf.h"
-// #include "WindowImpl.h"
+#include "WindowImpl.h"
 
 //absolute path,"/" at last.
 ttstr ExePath() {
@@ -52,10 +52,11 @@ void tTVPApplication::SetTitle( const std::wstring& caption ) {
 // 		windows_list_.erase( it, windows_list_.end() );
 // 	}
 // }
-// extern tTJSNI_Window * TVPMainWindow;
+extern tTJSNI_Window * TVPMainWindow;
 static void render_update(unsigned int interval)
 {
 	// TVPAddLog(TJS_W("render_update!!!"));
+	TVPMainWindow->UpdateContent();
 
 }
 void tTVPApplication::Run()

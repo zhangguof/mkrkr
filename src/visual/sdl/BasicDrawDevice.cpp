@@ -328,7 +328,7 @@ bool TJS_INTF_METHOD tTVPBasicDrawDevice::WaitForVBlank( tjs_int* in_vblank, tjs
 void TJS_INTF_METHOD tTVPBasicDrawDevice::StartBitmapCompletion(iTVPLayerManager * manager)
 {
 	// assert(false);//todo
-	TVPAddLog(TJS_W("==tTVPBasicDrawDevice::StartBitmapCompletion!!"));
+	// TVPAddLog(TJS_W("==tTVPBasicDrawDevice::StartBitmapCompletion!!"));
 	EnsureDevice();
 
 	if( Texture && TargetWindow ) {
