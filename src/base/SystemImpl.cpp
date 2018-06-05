@@ -543,7 +543,8 @@ ttstr TVPGetSavedGamesPath()
 //---------------------------------------------------------------------------
 bool TVPCreateAppLock(const ttstr &lockname)
 {
-	assert(false);//TODO
+	return true;
+	// assert(false);//TODO
 	// lock application using mutex
 	// CreateMutex(NULL, TRUE, lockname.c_str());
 

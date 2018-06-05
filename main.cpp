@@ -44,6 +44,7 @@ void xp3_filter(tTVPXP3ExtractionFilterInfo* info)
 	}
 }
 
+extern void TVPInitImportFuncs();
 
 int main()
 {
@@ -56,7 +57,7 @@ int main()
 	// ttstr code(buf);
 	// wprintf(TJS_W("size:%d,%ls\n"),st->GetSize(),code.c_str());
 	Application = new tTVPApplication;
-	// TVPInitImportFuncs();
+	TVPInitImportFuncs();
 	TVPLoadMessage();
 
 	// TVPSetXP3ArchiveExtractionFilter(xp3_filter);

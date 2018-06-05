@@ -22,7 +22,7 @@
 //#include "CDDAIntf.h"
 //#include "MIDIIntf.h"
 // #include "WaveIntf.h"
-// #include "TimerIntf.h"
+#include "TimerIntf.h"
 #include "EventIntf.h"
 #include "SystemIntf.h"
 #include "PluginIntf.h"
@@ -509,8 +509,8 @@ void TVPInitScriptEngine()
 	REGISTER_OBJECT(Debug, TVPCreateNativeClass_Debug());
 	REGISTER_OBJECT(Font, TVPCreateNativeClass_Font());//TODO
 	REGISTER_OBJECT(Layer, TVPCreateNativeClass_Layer());
-	// REGISTER_OBJECT(Timer, TVPCreateNativeClass_Timer());
-	// REGISTER_OBJECT(AsyncTrigger, TVPCreateNativeClass_AsyncTrigger());
+	REGISTER_OBJECT(Timer, TVPCreateNativeClass_Timer());
+	REGISTER_OBJECT(AsyncTrigger, TVPCreateNativeClass_AsyncTrigger());
 	REGISTER_OBJECT(System, TVPCreateNativeClass_System());
 	REGISTER_OBJECT(Storages, TVPCreateNativeClass_Storages());
 	REGISTER_OBJECT(Plugins, TVPCreateNativeClass_Plugins());
@@ -518,9 +518,9 @@ void TVPInitScriptEngine()
 	// REGISTER_OBJECT(Clipboard, TVPCreateNativeClass_Clipboard());
 	REGISTER_OBJECT(Scripts, TVPCreateNativeClass_Scripts()); // declared in this file
 	REGISTER_OBJECT(Rect, TVPCreateNativeClass_Rect());
-	// REGISTER_OBJECT(Bitsmap, TVPCreateNativeClass_Bitmap());
+	REGISTER_OBJECT(Bitmap, TVPCreateNativeClass_Bitmap());
 	// REGISTER_OBJECT(ImageFunction, TVPCreateNativeClass_ImageFunction());
-	// REGISTER_OBJECT(BitmapLayerTreeOwner, TVPCreateNativeClass_BitmapLayerTreeOwner());
+	REGISTER_OBJECT(BitmapLayerTreeOwner, TVPCreateNativeClass_BitmapLayerTreeOwner());
 
 	/* WaveSoundBuffer and its filters */
 	// iTJSDispatch2 * waveclass = NULL;

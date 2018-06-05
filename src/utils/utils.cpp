@@ -55,7 +55,7 @@ void TVPExecThreadTask(TVP_THREAD_TASK_FUNC func, TVP_THREAD_PARAM param)
 }
 void TVPStartTickCount()
 {
-	assert(false);//TODO
+	//assert(false);//TODO
 
 }
 void TVPBeginThreadTask(tjs_int taskNum)

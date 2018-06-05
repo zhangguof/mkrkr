@@ -28,6 +28,8 @@ public:
 	void RemoveWindow(SDLWindow* win );
 	void Run();
 
+	// void LoadImageRequest( class iTJSDispatch2 *owner, class tTJSNI_Bitmap* bmp, const ttstr &name );
+
 };
 extern tTVPApplication* Application;
 

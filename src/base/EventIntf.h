@@ -20,11 +20,12 @@
 //---------------------------------------------------------------------------
 // Event dispatching
 //---------------------------------------------------------------------------
-extern void TVPDeliverAllEvents(); // called from (indirectly) the OS
+//in main thread!
+extern void TVPDeliverAllEvents(); // called from (indirectly) the OS 
 
 extern bool TVPEventDisabled;  // do not write to this variable directly
 
-extern void TVPInvokeEvents();
+extern void TVPInvokeEvents(); //Application->PostMessageToMainWindow( TVP_EV_DELIVER_EVENTS_DUMMY, 0, 0 );
 	// implement this in each platform,
 	// to ensure calling "TVPDeliverAllEvents" when the Application is
 	// ready to deliver the events.
