@@ -2,7 +2,15 @@
 #include "GLDevice.hpp"
 #include "imgbuf.h"
 #include "gltexture.hpp"
+#include "safeQueue.hpp"
+#include "stdio.h"
 
+#include <thread>
+#include <chrono>
+
+#include "ffStream.hpp"
+
+// extern int init_ffmpeg();
 
 extern int load_bmp(GLTexture* tex,char* filename);
 extern unsigned char* fill_color(unsigned int col,int w, int h);
@@ -38,8 +46,91 @@ void render(unsigned int interval)
 
 	//SDL_Delay(1000);
 }
+extern int play_wav();
+extern "C"
+{
+
+extern int init_ffmpeg();
+extern int open_audio_stream(std::string fname, 
+uint8_t** stream, int &len, 
+int &freq, int &chs, AVSampleFormat& format);
+	
+}
+
+
+// int count = 0;
+// bool quit = false;
+// SafeQueue<int> q;
+// void push_thread()
+// {
+// 	while(count<10)
+// 	{
+// 		q.push(count);
+// 		printf("push %d\n",count);
+// 		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+// 		count++;
+// 	}
+// 	quit = true;
+// 	printf("quit!!\n");
+// }
+
+// void pop_thread()
+// {
+// 	int val;
+// 	while(!quit)
+// 	{
+// 		//while(!q.empty())
+// 		{
+// 			// auto p = q.wait_and_pop();
+// 			// printf("pop %d\n",*p);
+// 			if(q.try_pop(val))
+// 			{
+// 				printf("pop %d\n",val);
+// 			}
+// 		}
+// 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+// 	}
+// }
+
+// void test_queue()
+// {
+// 	// int val = 1;
+// 	// SafeQueue<int> q;
+// 	std::thread t1(push_thread);
+//     std::thread t2(pop_thread);
+//     t1.join();
+//     t2.join();
+// 	// for(int i=0;i<3;++i)
+// 	// {
+// 	// 	q.push(i);
+// 	// }
+// 	// while(!q.empty())
+// 	// {
+// 	// 	printf("%d\n",*(q.wait_and_pop()));
+// 	// }
+// }
 
 int main(int argc, char* args[])
+{
+	// test_queue();
+	// unsigned int n = std::thread::hardware_concurrency();
+	// printf("(%d)\n", n);
+	init_ffmpeg();
+	uint8_t *buf = NULL;
+	// int len = 0;
+	// int freq;
+	// int chs;
+	// AVSampleFormat format;
+
+	if(play_wav()<0)
+	{
+		printf("%s\n", "error!!!");
+	}
+
+	return 0;
+}
+
+int main1(int argc, char* args[])
 {
 
 	
