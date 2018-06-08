@@ -1,9 +1,8 @@
 
 #include "GLDevice.hpp"
 #include "shaders.hpp"
-//The window we'll be rendering to
-SDL_Window* gWindow = NULL;
 
+extern SDL_Window* gWindow;
 extern const char* simple_vs_shader;
 extern const char* simple_fs_shader;
 
@@ -234,8 +233,9 @@ void Device::after_draw()
 	{
 		cur_texture->unbind();
 	}
-    //Update screen
-    SDL_GL_SwapWindow( gWindow );
+    // Update screen
+    if(gWindow)
+    	SDL_GL_SwapWindow( gWindow );
 }
 
 void Device::render(unsigned int interval)
@@ -258,181 +258,4 @@ void Device::release()
 {
     // glBindTexture(GL_TEXTURE_2D, 0);
 }
-
-
-
-
-// static void error_callback(int error, const char* description)
-// {
-//     fputs(description, stderr);
-// }
-
-// static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-// {
-//     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-//         glfwSetWindowShouldClose(window, GL_TRUE);
-// }
-
-CBMgr* cb_mgr;
-// GLFWwindow* glfw_window;
-
-//OpenGL context
-SDL_GLContext gContext;
-
-static bool InitSdl = false;
-
-int init_gl_context(SDL_Window* win)
-{
-    SDL_GL_SetAttribute( SDL_GL_CONTEXT_MAJOR_VERSION, 3 );
-    SDL_GL_SetAttribute( SDL_GL_CONTEXT_MINOR_VERSION, 3 );
-    SDL_GL_SetAttribute( SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE );
-
-
-    if(!gWindow)
-    {
-    	gWindow = win;
-    }
-    //Create context
-    gContext = SDL_GL_CreateContext( win );
-    if( gContext == NULL )
-    {
-        printf( "OpenGL context could not be created! SDL Error: %s\n", SDL_GetError() );
-        return -1;
-    }
-
-    glewExperimental = GL_TRUE;
-    glewInit();
-
-    const char *version = (const char *)glGetString(GL_VERSION);
-    const char *vendor = (const char *)glGetString(GL_VENDOR);
-    printf("OpenGL version:%s\nOpengl Vendor:%s\n",version,vendor);
-    
-    return 1;
-}
-
-int init_sdl()
-{
-	if(InitSdl) return 0;
-
-    if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO) < 0)
-    {
-        printf("sdl init error:%s\n",SDL_GetError());
-        return -1;
-    }
-        //Use OpenGL 3.3 core
-    // SDL_GL_SetAttribute( SDL_GL_CONTEXT_MAJOR_VERSION, 3 );
-    // SDL_GL_SetAttribute( SDL_GL_CONTEXT_MINOR_VERSION, 3 );
-    // SDL_GL_SetAttribute( SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE );
-
-
-    // SDL_Window* win = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
-    //         w, h, SDL_WINDOW_SHOWN );
-    // if(win == NULL)
-    // {
-    //     printf("win create error:%s\n",SDL_GetError());
-    //     return -1;
-    // }
-
-     //Create context
-    // gContext = SDL_GL_CreateContext( win );
-    // if( gContext == NULL )
-    // {
-    //     printf( "OpenGL context could not be created! SDL Error: %s\n", SDL_GetError() );
-    //     return -1;
-    // }
-
-    // glewExperimental = GL_TRUE;
-    // glewInit();
-
-    // const char *version = (const char *)glGetString(GL_VERSION);
-    // const char *vendor = (const char *)glGetString(GL_VENDOR);
-    // printf("OpenGL version:%s\nOpengl Vendor:%s\n",version,vendor);
-    // cb_mgr = new CBMgr;
-
-    // SDL_Surface* screen_surface = SDL_GetWindowSurface(win);
-    // *pwin = win;
-    // gWindow = win;
-    // *psurface = screen_surface;
-    InitSdl = true;
-    return 0;
-}
-
-
-void sdl_loop()
-{
-    unsigned int last_time = 0;
-    unsigned int now;
-    unsigned int interval;
-    bool quit = false;
-    SDL_Event e;
-
-    while( !quit )
-    {
-        now = time_now();
-        //Handle events on queue
-        while( SDL_PollEvent( &e ) != 0 )
-        {
-            //User requests quit
-            if( e.type == SDL_QUIT )
-            {
-                quit = true;
-            }
-            //Handle keypress with current mouse position
-            else if( e.type == SDL_MOUSEBUTTONUP )
-            {
-                int x = 0, y = 0;
-                SDL_GetMouseState( &x, &y );
-                if(e.button.button == SDL_BUTTON_LEFT)
-                {
-                    printf("mouse click Left:x:%d,y:%d\n", x,y);
-                }
-                else if(e.button.button == SDL_BUTTON_RIGHT)
-                {
-                    printf("mouse click Right:x:%d,y:%d\n", x,y);
-                }
-                
-                // handleKeys( e.text.text[ 0 ], x, y );
-            }
-        }
-        interval = now - last_time;
-
-        //Render quad
-        //render();
-        if(cb_mgr)
-        	cb_mgr->update(interval);
-        
-        // //Update screen
-        // SDL_GL_SwapWindow( gWindow );
-        last_time = now;
-    }
-
-}
-
-void regist_update(UpdateFunc f)
-{
-	if(!cb_mgr)
-	{
-		cb_mgr = new CBMgr;
-	}
-    cb_mgr->add_callback(f);
-}
-
-void regist_objupdate(UpdateObj* p)
-{
-	if(!cb_mgr)
-	{
-		cb_mgr = new CBMgr;
-	}
-    cb_mgr->add_callback2(p);
-}
-
-inline unsigned int time_now()
-{
-    return SDL_GetTicks();
-}
-
-Device* create_gl_device(int w, int h){
-	return new Device(w,h);
-}
-
 

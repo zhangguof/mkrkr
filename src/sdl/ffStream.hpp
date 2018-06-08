@@ -20,6 +20,7 @@ extern "C" {
 #define LOGI printf
 
 const int DEFAUTL_CHANNELS = 2;
+const int DEFAUTL_FREQ = 44100;
 
 // extern int audio_swr_resampling_audio(SwrContext *swr_ctx,
 // TargetAudioParams *targetAudioParams,
@@ -58,6 +59,7 @@ private:
 	int audioStream;
 	TargetAudioParams target_params;
 	SafeQueue<AVPacket> packet_q;
+	bool has_open;
 
 public:
 	int freq;
@@ -73,6 +75,8 @@ public:
 		memset(&target_params,0,sizeof(target_params));
 		freq = -1;
 		channels = 0;
+		has_open = false;
+		open_audio_stream();
 	}
 	int open_audio_stream();
 	void read_all_packet();

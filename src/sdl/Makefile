@@ -26,7 +26,7 @@ LFALG = -arch x86_64 \
 all: test
 
 test: test.o GLDevice.o load_bmp.o gltexture.o sdlAudio.o \
-ffmpegDecode.o
+ffmpegDecode.o sdlinit.o
 	$(LD) -o $@ $^ $(LFALG)
 
 

@@ -102,6 +102,10 @@ void audio_swr_resampling_audio_destory(SwrContext **swr_ctx){
 //class ffStream
 int ffStream::open_audio_stream()
 {
+	if(has_open)
+	{
+		return 0;
+	}
 	pFormatCtx = avformat_alloc_context();
 	if(avformat_open_input(&pFormatCtx,fname.c_str(),NULL,NULL)!=0)
 	{  
@@ -145,7 +149,8 @@ int ffStream::open_audio_stream()
 		//resample.
 	
 	target_params = {
-		aCodecCtx->sample_rate,
+		//aCodecCtx->sample_rate,
+		DEFAUTL_FREQ,
 		DEFAUTL_CHANNELS,
 		// aCodecCtx->channels,
 		//aCodecCtx->channel_layout,
@@ -154,7 +159,10 @@ int ffStream::open_audio_stream()
 	};
 	audio_swr_resampling_audio_init(&swr,
 	&target_params,aCodecCtx);
+
 	read_all_packet();
+	has_open = true;
+
 	return 0;
 }
 void ffStream::read_all_packet()
@@ -244,10 +252,7 @@ int ffStream::audio_decode_frame(uint8_t *audio_buf,int buf_size)
     	av_free_packet(&pkt);
     }
 
-    // if(quit)
-    // {
-    //   return -1;
-    // }
+
     if(packet_q.empty())
     {
     	audio_swr_resampling_audio_destory(&swr);

@@ -8,10 +8,11 @@
 #include <memory>
 
 #define AVCODEC_MAX_AUDIO_FRAME_SIZE (4096*2)
+#define MAX_AUDIO_FRAME_SIZE 192000
 
-uint8_t *check_data = NULL;
-extern void check_buf(uint8_t* v,uint8_t* buf, int len,int idx,int pos);
-uint8_t test_data[4096*4027];
+// uint8_t *check_data = NULL;
+// extern void check_buf(uint8_t* v,uint8_t* buf, int len,int idx,int pos);
+// uint8_t test_data[4096*4027];
 
 class DataBuffer
 {
@@ -44,14 +45,6 @@ public:
 		memcpy(get_tail(),data,size);
 		len += size;
 	}
-	// int read(uint8_t* data)
-	// {
-	// 	if(len==0)
-	// 		return 0;
-	// 	memcpy(data,get_data(),len);
-	// 	rpos = len;
-	// 	return len;
-	// }
 	int read(uint8_t** data,int n)
 	{
 		if(rpos == len)
@@ -67,51 +60,61 @@ public:
 		rpos += read_len;
 		return read_len;
 	}
+
+	//read all;
+	int read(uint8_t** data)
+	{
+		int read_len = len - rpos;
+		*data = get_data() + rpos;
+		rpos = len;
+		return len;
+	}
 	void seek(int pos)
 	{
 		if(pos>=len)
-		{
 			rpos = len;
-		}
 		else
-		{
 			rpos = pos;
-		}
 	}
-	//read all;
-	// int read(uint8_t** data)
-	// {
-	// 	int read_len = len - rpos;
-	// 	*data = get_data() + rpos;
-	// 	rpos = len;
-	// 	return len;
-	// }
 
 };
 class audioDevice;
 typedef std::shared_ptr<audioDevice> tDevPtr;
 
+typedef std::shared_ptr<ffStream> tffStreamPtr;
+
 class pcmBuffer:
 public std::enable_shared_from_this<pcmBuffer>
 {
 public:
-	uint8_t* data;
+	// uint8_t* data;
 	DataBuffer db;
 	uint32_t len;
 	int pos;
 	bool is_enable;
 	bool is_loop;
 	tDevPtr pDev;
+	// tffStreamPtr p_ffs;
 
-	pcmBuffer():data(NULL),len(0),
-	pos(0),is_enable(false),is_loop(false),
-	pDev(nullptr){}
+	pcmBuffer(){
+		_init();
+	}
 	
-	pcmBuffer(uint8_t* _buf,uint32_t _len):data(_buf),len(_len),
-	pos(0),is_enable(false),is_loop(false),
-	pDev(nullptr)
+	pcmBuffer(uint8_t* _buf,uint32_t _len)
 	{
+		_init();
 		db.push(_buf,_len);
+		len = _len;
+	}
+	void _init()
+	{
+		len = 0;
+		pos = 0;
+		is_enable = false;
+		is_loop = false;
+		pDev = nullptr;
+//		p_ffs = nullptr;
+
 	}
 	void read_from_ffstream(ffStream& fs);
 	void enable();
@@ -189,34 +192,11 @@ void pcmBuffer::set_dev(tDevPtr p_dev)
 }
 
 
-
-
-
-// void check_buf(uint8_t* v,uint8_t* buf, int len,int idx,int pos)
-// {
-// 	int cnt=0;
-// 	if(!check_data)
-// 		check_data = new uint8_t[4096*1024];
-// 	printf("check_buf:%d,%d,%d\n",len,idx,pos);
-// 	// memcpy(check_data+pos,buf,len);
-// 	for(int i=0;i<len;++i)
-// 	{
-// 		if(v[pos+i] != buf[i])
-// 		{
-// 			cnt++;
-// 		}
-// 	}
-// 	if(cnt>0)
-// 	{
-// 		printf("diff %d:cnt:%d\n",idx,cnt);
-// 	}
-// }
-
 void pcmBuffer::read_from_ffstream(ffStream& fs)
 {
 	
-	uint8_t buf[(AVCODEC_MAX_AUDIO_FRAME_SIZE * 3) / 2];
-	printf("start audio_decode_frame!!\n");
+	uint8_t buf[(MAX_AUDIO_FRAME_SIZE * 3) / 2];
+	// printf("start audio_decode_frame!!\n");
 	int len = fs.audio_decode_frame(buf,AVCODEC_MAX_AUDIO_FRAME_SIZE);
 	int count = 0;
 	int total_size = 0;
@@ -226,16 +206,13 @@ void pcmBuffer::read_from_ffstream(ffStream& fs)
 		count++;
 		
 		db.push(buf,len);
-		// check_buf(db.v.data(),buf,len,count-1,total_size);
-		// memcpy(check_data+total_size,buf,len);
 		total_size += len;
+
 		len = fs.audio_decode_frame(buf,AVCODEC_MAX_AUDIO_FRAME_SIZE);
 	}
-	//diff here??????
-	// printf("last check!!!======\n");
-	// check_buf(db.v.data(),check_data,total_size,0,0);
-	printf("databuffer pos:%d,size:%d,size2:%d,len:%d\n",
-	db.rpos,db.v.capacity(),db.v.size(),db.len);
+	this->len = total_size;
+	// printf("databuffer pos:%d,size:%d,size2:%d,len:%d\n",
+	// db.rpos,db.v.capacity(),db.v.size(),db.len);
 	printf("frame count:%d,size:%d\n",count,total_size);
 
 }
@@ -353,7 +330,7 @@ void audioDevice::init_spec(int freq,uint8_t channels)
 void SDLCALL
 audioDevice::audio_cb(void* userdata, uint8_t* stream,int len)
 {
-	printf("audio_cb:len:%d\n",len);
+	// printf("audio_cb:len:%d\n",len);
 	audioDevice* _this = static_cast<audioDevice*>(userdata);
 	SDL_memset(stream,0,len);
 
@@ -534,27 +511,36 @@ int play_wav()
 
     ffStream ffs("../../data/bgm/ＢＧＭ／通常１.ogg");
     ffStream ffs2("../../voice/a0001.ogg");
+    ffStream ffs3("../../data/井内啓二 - 英雄願望 〜アルゴイゥ卜~.mp3");
     // ffStream ffs("a1.wav");
-	ffs.open_audio_stream();
-	ffs2.open_audio_stream();
+	// ffs.open_audio_stream();
+	// ffs2.open_audio_stream();
 
 	auto pbuf = std::make_shared<pcmBuffer>();
 	auto pbuf2 = std::make_shared<pcmBuffer>();
+	auto pbuf3 = std::make_shared<pcmBuffer>();
+
 	// pcmBuffer pbuf;
 	pbuf->read_from_ffstream(ffs);
 	pbuf2->read_from_ffstream(ffs2);
+	pbuf3->read_from_ffstream(ffs3);
+	// pbuf3->read_from_ffstream(ffs3);
 
 	auto audio_dev = std::make_shared<audioDevice>();
 	// audio_dev->init_spec(ffs.freq, ffs.channels);
-	audio_dev->init_spec(44100,2);
+	audio_dev->init_spec(DEFAUTL_FREQ, DEFAUTL_CHANNELS);
 
-	pbuf2->enable();
-	pbuf2->set_loop(true);
+	// pbuf2->enable();
+	// pbuf2->set_loop(true);
 
-	pbuf->enable();
+	pbuf3->enable();
+
+	// pbuf->enable();
+
 
 	audio_dev->add_pcm(pbuf);
 	audio_dev->add_pcm(pbuf2);
+	audio_dev->add_pcm(pbuf3);
 
 	audio_dev->dump_info();
 
