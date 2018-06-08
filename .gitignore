@@ -3,3 +3,5 @@
 test/test
 *.bmp
 *.wav
+src/ext_libs_src
+voice
