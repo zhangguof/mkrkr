@@ -19,7 +19,7 @@
 #include "tvpgl.h"
 #include "argb.h"
 #include "tjsUtils.h"
-// #include "ThreadIntf.h"
+#include "ThreadIntf.h"
 #include "utils.h"
 #include "ResampleImage.h"
 

@@ -20,6 +20,8 @@ typedef unsigned short WORD;
 
 typedef int HRESULT;
 
+typedef	float D3DVALUE, *LPD3DVALUE; 
+
 #ifndef VOID
 #define VOID void
 typedef char CHAR;

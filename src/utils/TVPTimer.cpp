@@ -31,6 +31,8 @@ void TVPTimer::Destroy() {
 	}
 }
 void TVPTimer::WndProc() {
+	// printf("TVPTimer::WndProc tid:%lu\n",SDL_ThreadID());
+
 	if(tid != 0 && enabled_)
 	{
 		this->FireEvent();
@@ -69,7 +71,7 @@ void event_timer_cb(void* param)
 
 uint32_t TVPTimer::timer_cb(uint32_t interval, void* param)
 {
-	// TVPTimer* _this = static_cast<TVPTimer*>(param);
+	// printf("TVPTimer::timer_cb tid:%lu\n",SDL_ThreadID());
 	SDL_Event event;
 	TimerEvent te((void*)event_timer_cb, param);
 

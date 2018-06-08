@@ -1,6 +1,7 @@
 #include "utils.h"
 #include "tjs.h"
-#include <time.h>  
+#include <time.h>
+#include "SDL.h"
 
 FILE* wfopen(const wchar_t* filename, const wchar_t* mode)  
 {  
@@ -37,32 +38,32 @@ bool TVPGetCommandLine(const tjs_char * name, tTJSVariant *value)
 
 
 
-tjs_int TVPGetThreadNum(void)
-{
-	return 1;
-}
+// tjs_int TVPGetThreadNum(void)
+// {
+// 	return 1;
+// }
 
-void TVPEndThreadTask(void) 
-{
-	// printf("end thread task\n");
-	//assert(false);//TODO
-}
+// void TVPEndThreadTask(void) 
+// {
+// 	// printf("end thread task\n");
+// 	//assert(false);//TODO
+// }
 
-void TVPExecThreadTask(TVP_THREAD_TASK_FUNC func, TVP_THREAD_PARAM param)
-{
-	// assert(false);//TODO
-	func(param);
-}
+// void TVPExecThreadTask(TVP_THREAD_TASK_FUNC func, TVP_THREAD_PARAM param)
+// {
+// 	// assert(false);//TODO
+// 	func(param);
+// }
 void TVPStartTickCount()
 {
 	//assert(false);//TODO
 
 }
-void TVPBeginThreadTask(tjs_int taskNum)
-{
-	// printf("start thread task!\n");
-	// assert(false);//TODO
-}
+// void TVPBeginThreadTask(tjs_int taskNum)
+// {
+// 	// printf("start thread task!\n");
+// 	// assert(false);//TODO
+// }
 // void TVPGetFontRasterizer()
 // {
 // 	assert(false);//TODO
@@ -174,4 +175,9 @@ ttstr TVPGetAboutString(void)
 void TVPGetAllFontList( std::vector<std::wstring>& list )
 {
 	list.push_back(TJS_W("font/NotoSansCJKsc-Black.otf"));
+}
+
+void Sleep(uint32_t ms)
+{
+	SDL_Delay(ms);
 }

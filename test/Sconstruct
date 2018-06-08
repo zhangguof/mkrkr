@@ -1,0 +1,177 @@
+import os
+from itertools import chain
+
+arch_target = "x86"
+target = 'test'
+
+src_path  = "../src"
+
+# -framework CoreAudio \
+#         -framework OpenGL  \
+#         -framework AudioToolbox \
+#         -framework ForceFeedback -lobjc \
+#         -framework CoreVideo \
+#         -framework Cocoa -framework Carbon \
+#         -framework IOKit -framework Metal
+#using in mac
+frameworks = ['CoreAudio','OpenGL',
+			  'AudioToolbox','ForceFeedback','Carbon',
+			  'CoreFoundation','Cocoa','IOKit','CoreVideo',
+			  'Metal','AVFoundation','CoreMedia','Security',
+			  'VideoToolbox',
+			  ]
+
+
+
+#path
+
+cpp_path = ['./',
+			'../src',
+			'../src/objects',
+			'../src/utils',
+			'../src/base','../src/visual',
+			'../src/visual/sdl',
+			# '../src/sound',
+			'../src/environ',
+			'../src/extension',
+			'../src/sdl',
+]
+
+refuse_files = set([
+	# 'utils/TimerImpl.cpp',
+	# "utils/TickCount.cpp",
+	# # "visual/WindowIntf.cpp",
+	# "visual/VideoOvlIntf.cpp",
+	# "visual/GraphicsLoadThread.cpp",
+	# #"visual/LayerBitmapImpl.cpp",
+	# #"visual/LayerBitmapIntf.cpp",
+	# "visual/win32/WindowImpl.cpp",
+	# "visual/win32/TVPSysFont.cpp",
+	# "visual/win32/VideoOvlImpl.cpp","visual/win32/LayerImpl.cpp",
+	# "visual/win32/NativeFreeTypeFace.cpp","visual/win32/GraphicsLoaderImpl.cpp",
+	# "visual/win32/DrawDevice.cpp",
+	# "visual/LoadJXR.cpp",
+	# #"visual/LayerIntf.cpp",
+	# "visual/ImageFunction.cpp",
+	# # "visual/PrerenderedFont.cpp",
+	# #"visual/GraphicsLoaderIntf.cpp",
+	# #"visual/BitmapIntf.cpp",
+	# #"visual/TransIntf.cpp",
+	# # "visual/FontSystem.cpp",
+	# "visual/BitmapLayerTreeOwner.cpp",
+	# #"visual/LayerManager.cpp",
+	# # "visual/SaveTLG5.cpp","visual/SaveTLG6.cpp",
+	# # "visual/LoadPNG.cpp","visual/LoadJPEG.cpp",
+	# "utils/TimerIntf.cpp",
+	# "visual/SaveTLG6.cpp",
+	"../test.cpp",
+	"../un_pack_xp3.cpp",
+	"../src/sdl/test.cpp",
+	"test_tjs_script.cpp",
+	"test_timer.cpp",
+	])
+include_path = list(cpp_path)
+include_path.extend([
+	'../src/tjs2',
+	'../src/tjs2/base','../src/tjs2/msg','../src/tjs2/utils',
+	'../../boost_1_67_0/',
+	'../src/ext_libs_src/',
+	'../../sdl/SDL2-2.0.8/include',
+	'../../ffmpeg-4.0/',
+	'../src/ext_libs_src/freetype-2.9/include',
+	'../src/ext_libs_src/libpng-1.6.34',
+	"../src/plugins/KAGParser",
+
+	])
+
+#src files.
+
+def search_cpp_src(paths):
+	cpp_srcs = []
+	for root_path in paths:
+		for root,_,files in os.walk(root_path):
+			for fname in files:
+				if fname.endswith(".cpp") or fname.endswith(".c"):
+					fpath = os.path.join(root,fname)
+					base_path = os.path.relpath(fpath,".")
+					if base_path in refuse_files:
+						continue
+					cpp_srcs.append(fpath)
+			break
+	return cpp_srcs
+cpp_src = search_cpp_src(cpp_path)
+
+
+env = Environment(TARGET_ARCH=arch_target,CPPDEFINES=[])
+
+env.Append( CPPPATH=list(chain(include_path,cpp_path)) )
+
+platform = env['PLATFORM']
+print "build in platform:",platform
+
+
+
+# env.StaticLibrary(target='./bin/lua52',source=list(chain(lua_src,socket_src,mime_src)),
+# 	# LIBS=["WS2_32"],
+# 	# LIBPATH=[r"D:\Program Files (x86)\Windows Kits\8.0\Lib\win8\um\x86"]
+# 	)
+
+def build_static_lib():
+	cc_flags = "-std=c++0x -g"
+	ld_flags = ""
+	libs = ['onig',]
+	lib_path = ['libs/']
+	e = Environment(TARGET_ARCH=arch_target,CPPDEFINES=[])
+	tjs_cpp_path = ["tjs2","tjs2/base",'tjs2/utils','tjs2/msg']
+	tjs_cpp_path = [os.path.join(src_path,i) for i in tjs_cpp_path]
+
+	cpp_src_file = search_cpp_src(tjs_cpp_path)
+	print "src:",tjs_cpp_path,cpp_src_file
+	tjs_include = ['src/external/oniguruma/src',]
+	e.Append( CPPPATH=list(chain(tjs_include,tjs_cpp_path)) )
+	target = "tjs2"
+	e.StaticLibrary(target=target,source=cpp_src_file,
+	CC='c++',CXX='clang++',CCFLAGS=cc_flags,LINKFLAGS=ld_flags,
+	LIBS = libs, LIBPATH = lib_path,
+	)
+	e.Install('libs/', source = ['libtjs2.a',])
+
+def build_main_in_darwin():
+	link_flags = " ".join(["-framework %s"%s for s in frameworks])
+	cc_flags = " -std=c++0x -g -DTVP_LOG_TO_COMMANDLINE_CONSOLE -DTVP_NO_CHECK_WIDE_CHAR_SIZE"
+	libs = ['tjs2','onig','z',
+	'boost_filesystem','boost_system',
+	'SDL2','GLEW','soil',
+	'freetype','bz2','kagparser','png16','iconv',
+	'lzma',
+	'avformat','avcodec','avutil','swscale',
+	'swresample',
+	]
+	lib_path = ['../libs',]
+	env.Program(target=target, source=cpp_src,
+		CC='c++', 
+		CXX='clang++',
+		CCFLAGS=cc_flags, LINKFLAGS=link_flags,
+		LIBS = libs, LIBPATH = lib_path)
+
+
+def build_in_win32():
+	link_flags = "/NODEFAULTLIB:library"
+	cc_flags = "/MD"
+	libs = ['Opengl32','glew32d','glfw3', 'freetype27',]
+	lib_path = ['./lib/win32']
+	env.Program(target=target, source=cpp_src,CCFLAGS=cc_flags, LINKFLAGS=link_flags,
+		LIBS = libs, LIBPATH = lib_path)
+
+
+
+def build_main():
+	if platform == "darwin":
+		# build_static_lib()
+		build_main_in_darwin()
+	elif platform == "win32":
+		build_in_win32()
+	else:
+		print "platform:%s not config."%platform
+
+build_main()
