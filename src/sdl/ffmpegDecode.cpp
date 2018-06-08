@@ -138,14 +138,18 @@ int ffStream::open_audio_stream()
 	this->freq = aCodecCtx->sample_rate;
 
 	AVSampleFormat format = aCodecCtx->sample_fmt;
-	printf("open stream orig:\nchannels:%d\nfreq:%d\nformat:%s\n",
-		channels,freq,av_get_sample_fmt_name(format));
+	printf("open stream orig:\nchannels:%d\nfreq:%d\nformat:%s\nlayout:%d\n",
+		channels,freq,av_get_sample_fmt_name(format),
+		aCodecCtx->channel_layout
+		);
 		//resample.
 	
 	target_params = {
 		aCodecCtx->sample_rate,
-		aCodecCtx->channels,
-		aCodecCtx->channel_layout,
+		DEFAUTL_CHANNELS,
+		// aCodecCtx->channels,
+		//aCodecCtx->channel_layout,
+		(uint64_t)av_get_default_channel_layout(DEFAUTL_CHANNELS),
 		AV_SAMPLE_FMT_S16
 	};
 	audio_swr_resampling_audio_init(&swr,

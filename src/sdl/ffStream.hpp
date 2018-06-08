@@ -19,6 +19,8 @@ extern "C" {
 #define LOGE printf
 #define LOGI printf
 
+const int DEFAUTL_CHANNELS = 2;
+
 // extern int audio_swr_resampling_audio(SwrContext *swr_ctx,
 // TargetAudioParams *targetAudioParams,
 // AVFrame *audioFrame,
