@@ -5,9 +5,10 @@ OPENAL_ROOT = ../ext_libs_src/openal-soft-1.18.2
 ALUT_ROOT = ../ext_libs_src/freealut-1.1.0
 # LIBJPEG  = ../tools/libjpeg-turbo-1.5.3
 CC = c++
-CFLAG = -g -I${SDL_ROOT} -I./ -I${OPENAL_ROOT}/include \
+CFLAG=-g -I${SDL_ROOT} -I./ -I${OPENAL_ROOT}/include \
 -I${ALUT_ROOT}/include \
 -I${FFMPGE_ROOT} -std=c++11  -DBMP_SUPPORTED -DPPM_SUPPORTED
+
 # CFLAG2 = -g -I${SDL_ROOT} -I./ -I${LIBJPEG} -DBMP_SUPPORTED -DPPM_SUPPORTED
 LD = c++
 #frameworks = ['OpenGL','CoreFoundation','Cocoa','IOKit','CoreVideo']
@@ -36,7 +37,7 @@ ffmpegDecode.o sdlinit.o sdlEvent.o alDevice.o
 
 
 %.o: %.cpp
-	$(CC) -c -o $@ $^ $(CFLAG)
+	$(CC) -c -o $@ $< $(CFLAG)
 
 # $(LIBJPEG)/%.o: $(LIBJPEG)/%.c
 # 	cc -c -o $@ $^ $(CFLAG2)

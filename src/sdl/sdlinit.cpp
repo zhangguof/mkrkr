@@ -91,7 +91,7 @@ void sdl_loop()
                 
                 // handleKeys( e.text.text[ 0 ], x, y );
             }
-            else if( e.type = SDL_USEREVENT)
+            else if( e.type == SDL_USEREVENT)
             {
             	process_use_envet(e.user);
             }
