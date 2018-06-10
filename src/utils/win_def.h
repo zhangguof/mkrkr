@@ -215,5 +215,6 @@ typedef struct tagPOINT
 	LONG y;
 } POINT;
 
+#define ZeroMemory(a,b) memset((a),0,(b));
 
 #endif

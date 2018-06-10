@@ -96,7 +96,8 @@ iTJSDispatch2 * tTJSNI_Bitmap::Load(const ttstr &name, tjs_uint32 colorkey) {
 void tTJSNI_Bitmap::LoadAsync( const ttstr &name) {
 	if( Loading ) TVPThrowExceptionMessage(TVPCurrentlyAsyncLoadBitmap);
 	Loading = true;
-	//TODO
+	// TODO
+	assert(false);
 	// Application->LoadImageRequest( Owner, this, name );
 }
 //----------------------------------------------------------------------

@@ -17,7 +17,8 @@ src_path  = "src"
 frameworks = ['CoreAudio','OpenGL',
 			  'AudioToolbox','ForceFeedback','Carbon',
 			  'CoreFoundation','Cocoa','IOKit','CoreVideo',
-			  'Metal',
+			  'Metal','AVFoundation','CoreMedia','Security',
+			  'VideoToolbox',
 			  ]
 
 
@@ -26,40 +27,19 @@ frameworks = ['CoreAudio','OpenGL',
 
 cpp_path = ['./','src',
 			'src/objects','src/utils',
-			'src/base','src/visual','src/visual/sdl',
+			'src/base','src/visual',
+			'src/visual/sdl',
+			'src/sound',
 			'src/environ',
 			'src/extension',
-			'src/sdl'
+			'src/sdl',
 ]
 
-refuse_files = set(['utils/TimerImpl.cpp',
-	"utils/TickCount.cpp",
-	# "visual/WindowIntf.cpp",
-	"visual/VideoOvlIntf.cpp",
-	"visual/GraphicsLoadThread.cpp",
-	#"visual/LayerBitmapImpl.cpp",
-	#"visual/LayerBitmapIntf.cpp",
-	"visual/win32/WindowImpl.cpp",
-	"visual/win32/TVPSysFont.cpp",
-	"visual/win32/VideoOvlImpl.cpp","visual/win32/LayerImpl.cpp",
-	"visual/win32/NativeFreeTypeFace.cpp","visual/win32/GraphicsLoaderImpl.cpp",
-	"visual/win32/DrawDevice.cpp",
-	"visual/LoadJXR.cpp",
-	#"visual/LayerIntf.cpp",
-	"visual/ImageFunction.cpp",
-	# "visual/PrerenderedFont.cpp",
-	#"visual/GraphicsLoaderIntf.cpp",
-	#"visual/BitmapIntf.cpp",
-	#"visual/TransIntf.cpp",
-	# "visual/FontSystem.cpp",
-	"visual/BitmapLayerTreeOwner.cpp",
-	#"visual/LayerManager.cpp",
-	# "visual/SaveTLG5.cpp","visual/SaveTLG6.cpp",
-	# "visual/LoadPNG.cpp","visual/LoadJPEG.cpp",
-	"utils/TimerIntf.cpp",
-	"visual/SaveTLG6.cpp",
-	"test.cpp","un_pack_xp3.cpp",
-	"src/sdl/test.cpp"
+refuse_files = set([
+	"test.cpp",
+	"un_pack_xp3.cpp",
+	"src/sdl/test.cpp",
+	'src/sound/WaveImpl.cpp'
 	])
 include_path = list(cpp_path)
 include_path.extend([
@@ -68,6 +48,7 @@ include_path.extend([
 	'../boost_1_67_0/',
 	'src/ext_libs_src/',
 	'../sdl/SDL2-2.0.8/include',
+	'../ffmpeg-4.0/',
 	'src/ext_libs_src/freetype-2.9/include',
 	'src/ext_libs_src/libpng-1.6.34',
 	"src/plugins/KAGParser",
@@ -144,6 +125,9 @@ def build_main_in_darwin():
 	'boost_filesystem','boost_system',
 	'SDL2','GLEW','soil',
 	'freetype','bz2','kagparser','png16','iconv',
+	'lzma',
+	'avformat','avcodec','avutil','swscale',
+	'swresample',
 	]
 	lib_path = ['./libs',]
 	env.Program(target=target, source=cpp_src,

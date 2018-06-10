@@ -3,9 +3,9 @@
 #include <string>
 #include <cstdint>
 #include <vector>
-#include "ffStream.hpp"
 #include <algorithm>
 #include <memory>
+#include "sdlAudio.hpp"
 
 #define AVCODEC_MAX_AUDIO_FRAME_SIZE (4096*2)
 #define MAX_AUDIO_FRAME_SIZE 192000
@@ -14,154 +14,9 @@
 // extern void check_buf(uint8_t* v,uint8_t* buf, int len,int idx,int pos);
 // uint8_t test_data[4096*4027];
 
-class DataBuffer
-{
-public:
-	std::vector<uint8_t> v;
-	int len;
-	int rpos;
-	DataBuffer(){
-		v.resize(4096);
-		len = 0;
-		rpos = 0;
-	}
-	uint8_t* get_data()
-	{
-		return v.data();
-		// return &(*(v.begin()));
-	}
-	uint8_t* get_tail()
-	{
-		return v.data()+len;
-		// return &(*(v.begin()+len));
-	}
-	void push(uint8_t* data,int size)
-	{
-		//fix using size() better than capacity()!!!
-		if(len + size > v.size()) 
-		{
-			v.resize(len + size);
-		}
-		memcpy(get_tail(),data,size);
-		len += size;
-	}
-	int read(uint8_t** data,int n)
-	{
-		if(rpos == len)
-		{
-			return 0;
-		}
-		int read_len = n;
-		if( n > len - rpos)
-		{
-			read_len = len - rpos;
-		}
-		*data = get_data() + rpos;
-		rpos += read_len;
-		return read_len;
-	}
 
-	//read all;
-	int read(uint8_t** data)
-	{
-		int read_len = len - rpos;
-		*data = get_data() + rpos;
-		rpos = len;
-		return len;
-	}
-	void seek(int pos)
-	{
-		if(pos>=len)
-			rpos = len;
-		else
-			rpos = pos;
-	}
+// class audioDevice;
 
-};
-class audioDevice;
-typedef std::shared_ptr<audioDevice> tDevPtr;
-
-typedef std::shared_ptr<ffStream> tffStreamPtr;
-
-class pcmBuffer:
-public std::enable_shared_from_this<pcmBuffer>
-{
-public:
-	// uint8_t* data;
-	DataBuffer db;
-	uint32_t len;
-	int pos;
-	bool is_enable;
-	bool is_loop;
-	tDevPtr pDev;
-	// tffStreamPtr p_ffs;
-
-	pcmBuffer(){
-		_init();
-	}
-	
-	pcmBuffer(uint8_t* _buf,uint32_t _len)
-	{
-		_init();
-		db.push(_buf,_len);
-		len = _len;
-	}
-	void _init()
-	{
-		len = 0;
-		pos = 0;
-		is_enable = false;
-		is_loop = false;
-		pDev = nullptr;
-//		p_ffs = nullptr;
-
-	}
-	void read_from_ffstream(ffStream& fs);
-	void enable();
-	void disable();
-	void set_loop(bool s){is_loop = s;}
-	int get_data(uint8_t** _data, int _len);
-	void set_dev(tDevPtr p_dev);
-	void reset()
-	{
-		db.seek(0);
-	}
-};
-
-class audioDevice:
-public std::enable_shared_from_this<audioDevice>
-{
-public:
-	typedef std::shared_ptr<pcmBuffer> tPcmPtr;
-
-	SDL_AudioSpec want_spec;
-	SDL_AudioSpec get_spec;
-	bool is_playing;
-	int nplaying;
-	// uint8_t* data;
-	std::vector<tPcmPtr > pcms;
-	SDL_AudioDeviceID dev;
-	void init_spec(int freq,uint8_t channels);
-	static void SDLCALL
-	audio_cb(void* userdata, Uint8* stream,int len);
-	
-
-	audioDevice()
-	{
-		pcms.clear();
-		nplaying = 0;
-		is_playing = false;
-	}
-	void dump_info();
-	void play();
-	void on_enable(tPcmPtr pcm);
-	void on_disable(tPcmPtr pcm);
-	void disable_all();
-	void stop();
-	void add_pcm(tPcmPtr& pcm);
-	void rm_pcm(tPcmPtr& pcm);
-
-};
 
 
 //implent
@@ -218,8 +73,45 @@ void pcmBuffer::read_from_ffstream(ffStream& fs)
 }
 
 
+void pcmBuffer::play(bool _loop)
+{
+	if(pDev)
+	{
+		set_loop(_loop);
+		if(!is_enable)
+		{
+			enable();
+		}
+		pDev->play();
+	}
+}
+void pcmBuffer::stop()
+{
+	if(pDev)
+	{
+		if(is_enable)
+		{
+			disable();
+		}
+	}
+}
+int pcmBuffer::SetFormat(const AudioFormat* fm)
+{
+	format = *fm;
+	if(pDev)
+	{
+		int ret = pDev->init_spec(fm->nSamplesPerSec,fm->nChannels);
+		return ret;
+	}
+	return 0;
+}
+int pcmBuffer::GetFormat(AudioFormat* fm)
+{
+	*fm = format;
+	return 0;
+}
 
-
+//implent audioDevice
 void audioDevice::play()
 {
 	if(!is_playing)
@@ -272,10 +164,10 @@ void audioDevice::disable_all()
 void audioDevice::add_pcm(tPcmPtr& pcm)
 {
 	pcms.push_back(pcm);
+	pcm->set_dev(shared_from_this());
 	if(pcm->is_enable)
 	{
 		nplaying++;
-		pcm->set_dev(shared_from_this());
 	}
 }
 void audioDevice::rm_pcm(tPcmPtr& pcm)
@@ -294,8 +186,10 @@ void audioDevice::rm_pcm(tPcmPtr& pcm)
 }
 
 
-void audioDevice::init_spec(int freq,uint8_t channels)
+int audioDevice::init_spec(int freq,uint8_t channels)
 {
+	if(is_init_spec)
+		return 0;
 	SDL_zero(want_spec);
 	want_spec.freq = freq;
 	want_spec.format = AUDIO_S16SYS; //16bit system byte order	// want_spec.format = AUDIO_F32SYS;
@@ -311,6 +205,7 @@ void audioDevice::init_spec(int freq,uint8_t channels)
     if(SDL_OpenAudio(&want_spec, &get_spec) < 0)
     {  
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't open audio: %s\n", SDL_GetError());  
+        return -1;
     } 
     else
     {
@@ -325,6 +220,8 @@ void audioDevice::init_spec(int freq,uint8_t channels)
     	// SDL_PauseAudioDevice(dev, 1);
     	// SDL_PauseAudio(1);
     }
+    is_init_spec = true;
+    return 0;
 }
 
 void SDLCALL
@@ -366,6 +263,12 @@ audioDevice::audio_cb(void* userdata, uint8_t* stream,int len)
 		// break;
 	}
 
+}
+
+void audioDevice::create_pcm_buffer(tPcmPtr& pcm)
+{
+	auto _p = std::make_shared<pcmBuffer>();
+	pcm = _p;
 }
 
 void audioDevice::dump_info()
@@ -474,7 +377,15 @@ void waveInfo::dump_info()
     printf("size:%d\n",spec.size);
 }
 
+// tDevPtr g_audio_dev = nullptr;
+// tPcmPtr main_buffer = nullptr;
 
+tDevPtr create_sdl_auido_dev()
+{
+	tDevPtr dev = std::make_shared<audioDevice>();
+	// int ret = dev->init_spec(DEFAUTL_FREQ, DEFAUTL_CHANNELS);
+	return dev;
+}
 
 int play_wav()
 {
@@ -528,12 +439,15 @@ int play_wav()
 
 	auto audio_dev = std::make_shared<audioDevice>();
 	// audio_dev->init_spec(ffs.freq, ffs.channels);
+
+
 	audio_dev->init_spec(DEFAUTL_FREQ, DEFAUTL_CHANNELS);
+	// g_audio_dev  = audio_dev;
 
 	// pbuf2->enable();
 	// pbuf2->set_loop(true);
 
-	pbuf3->enable();
+	// pbuf3->enable();
 
 	// pbuf->enable();
 
@@ -542,9 +456,14 @@ int play_wav()
 	audio_dev->add_pcm(pbuf2);
 	audio_dev->add_pcm(pbuf3);
 
+	// main_buffer = pbuf;
+	// main_buffer->enable();
+
 	audio_dev->dump_info();
 
-	audio_dev->play();
+	// main_buffer->play(true);
+
+	// audio_dev->play();
 
 
 

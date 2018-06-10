@@ -9,6 +9,7 @@
 #include <chrono>
 
 #include "ffStream.hpp"
+#include "sdlAudio.hpp"
 
 // extern int init_ffmpeg();
 
@@ -109,23 +110,28 @@ int &freq, int &chs, AVSampleFormat& format);
 // 	// 	printf("%d\n",*(q.wait_and_pop()));
 // 	// }
 // }
-
+extern int init_al();
+extern void al_test_play();
 int main(int argc, char* args[])
 {
 	// test_queue();
 	// unsigned int n = std::thread::hardware_concurrency();
 	// printf("(%d)\n", n);
 	init_ffmpeg();
+	init_sdl();
 	uint8_t *buf = NULL;
 	// int len = 0;
 	// int freq;
 	// int chs;
 	// AVSampleFormat format;
+	init_al();
+	al_test_play();
+	// sdl_loop();
+	// if(play_wav()<0)
+	// {
+	// 	printf("%s\n", "error!!!");
+	// }
 
-	if(play_wav()<0)
-	{
-		printf("%s\n", "error!!!");
-	}
 
 	return 0;
 }

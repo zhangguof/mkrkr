@@ -29,6 +29,11 @@ tjs_uint64 TVPGetTickCount()
 	return (tjs_uint64)GetTickCount();
 }
 
+uint32_t timeGetTime()
+{
+	return GetTickCount();
+}
+
 
 // func not implement
 bool TVPGetCommandLine(const tjs_char * name, tTJSVariant *value)
