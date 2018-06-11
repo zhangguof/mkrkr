@@ -2,6 +2,7 @@
 #define _AL_DEVICE_H_
 #include "SDL.h"
 #include "ffStream.hpp"
+#include "sdlAudio.hpp"
 
 #include "AL/alc.h"
 #include "AL/al.h"
@@ -24,14 +25,19 @@ int name(ALenum param, type a, int idx=0) \
 	return CHECK_ERROR; \
 }
 
-#define AL_PROP(op,name,prop,type) \
+#define AL_PROP(name,prop,op,type) \
 int op##_##name(type a) \
 { \
 op(prop,a); \
 return CHECK_ERROR; \
 }
 
+#define AL_PROP2(name,prop,op1,type1,op2,type2) \
+AL_PROP(name,prop,op1,type1) \
+AL_PROP(name,prop,op2,type2)
 
+
+//objects define
 #define AL_DELC_OBJS(alname,name,type) \
 int name(ALenum param,type a, int idx=0) \
 { \
@@ -39,7 +45,7 @@ alname(_objs[idx],param,a); \
 return CHECK_ERROR; \
 }
 
-#define AL_PROP_OBJS(op,name,prop,type) \
+#define AL_PROP_OBJS(name,prop,op,type) \
 int op##_##name(type a,int idx=0) \
 { \
 op(prop,a,idx); \
@@ -47,8 +53,8 @@ return CHECK_ERROR; \
 }
 
 #define AL_PROP_OBJS2(name,prop,op1,type1,op2,type2) \
-AL_PROP_OBJS(op1,name,prop,type1) \
-AL_PROP_OBJS(op2,name,prop,type2)
+AL_PROP_OBJS(name,prop,op1,type1) \
+AL_PROP_OBJS(name,prop,op2,type2)
 
 #define AL_NEW_PROP(alname,t) \
 g_al_props[alname] = Prop(alname,t);
@@ -210,14 +216,17 @@ public:
 	AL_DELC(alGetListenerfv,getv,float*);
 
 //------------props----------------------------
-	AL_PROP(get,gain,AL_GAIN,float*);
-	AL_PROP(set,gain,AL_GAIN,float);
+	// AL_PROP(get,gain,AL_GAIN,float*);
+	// AL_PROP(set,gain,AL_GAIN,float);
+	AL_PROP2(gain,AL_GAIN,get,float*,set,float);
 
-	AL_PROP(getv,pos,AL_POSITION,float*);
-	AL_PROP(setv,pos,AL_POSITION,float*);
+	// AL_PROP(getv,pos,AL_POSITION,float*);
+	// AL_PROP(setv,pos,AL_POSITION,float*);
+	AL_PROP2(pos,AL_POSITION,getv,float*,setv,float*);
 
-	AL_PROP(getv,velocity,AL_VELOCITY,float*);
-	AL_PROP(setv,velocity,AL_VELOCITY,float*);
+	// AL_PROP(getv,velocity,AL_VELOCITY,float*);
+	// AL_PROP(setv,velocity,AL_VELOCITY,float*);
+	AL_PROP2(velocity,AL_VELOCITY,getv,float*,setv,float*);
 
 
 private:
@@ -309,9 +318,12 @@ public:
 	
 	AL_PROP_OBJS2(state,AL_SOURCE_STATE,get,int*,set,int)
 
-	AL_PROP_OBJS2(buffer_queued,AL_BUFFERS_QUEUED,get,int*,set,int)
+//read only
 
-	AL_PROP_OBJS2(buffer_processed,AL_BUFFERS_PROCESSED,get,int*,set,int)
+	AL_PROP_OBJS(buffer_queued, AL_BUFFERS_QUEUED,get,int*);
+	AL_PROP_OBJS(buffer_processed, AL_BUFFERS_PROCESSED, get, int*);
+
+
 
 	AL_PROP_OBJS2(sec_offset,AL_SEC_OFFSET,get,float*,set,float)
 	AL_PROP_OBJS2(sec_offset,AL_SEC_OFFSET,get,int*,set,int)
@@ -322,6 +334,11 @@ public:
 
 };
 
+// struct ALAudioFormat
+// {
+// 		ALenum format; 
+// 		ALsizei freq;
+// };
 
 class ALBuffers:public ALObjects
 {
@@ -351,12 +368,50 @@ public:
 //       ALsizei freq
 // );
 // format: format type from among the following: 
-// 		   AL_FORMAT_MONO8 AL_FORMAT_MONO16 AL_FORMAT_STEREO8 AL_FORMAT_STEREO16
+// 		   AL_FORMAT_MONO8 
+// 		   AL_FORMAT_MONO16
+// 		   AL_FORMAT_STEREO8
+// 		   AL_FORMAT_STEREO16
 // data: pointer to the audio data
 // size: the size of the audio data in bytes freq the frequency of the audio data
 	int buffer_data(ALenum format,
-		const ALvoid* data,ALsizei size, 
+		const ALvoid* data,
+		ALsizei size, 
 		ALsizei freq,int idx=0);
+
+	int buffer_data(AudioFormat* a_fromat,const ALvoid* data,ALsizei size, int idx=0)
+	{
+		ALenum format = AL_FORMAT_STEREO16;
+		int freq = a_fromat->nSamplesPerSec; //freq
+
+		if(a_fromat->format == AUDIO_S16SYS)
+		{
+			if(a_fromat->nChannels==1)
+			{
+				format = AL_FORMAT_MONO16;
+			}
+			else
+			{
+				format = AL_FORMAT_STEREO16;
+			}
+		}
+		else if(a_fromat->format == AUDIO_S8)
+		{
+			if(a_fromat->nChannels == 1)
+			{
+				format = AL_FORMAT_MONO8;
+			}
+			else
+			{
+				format = AL_FORMAT_STEREO8;
+			}
+		}
+		else{
+			printf("error:not support fomat!\n");
+			return -1;
+		}
+		return buffer_data(format,data,size,freq,idx);
+	}
 
 //-----------------get set op ---------------------
 //set prop
@@ -382,6 +437,190 @@ public:
 //no define??
 	// AL_PROP_OBJS(get,data,AL_DATA,int*);
 	// AL_PROP_OBJS(set,data,AL_DATA,int);
+};
+
+//wrap sources
+//one palyer<--> one souces
+class AudioPlayer: public BaseAudioPlayer,
+public std::enable_shared_from_this<AudioPlayer>
+{
+public:
+	// tPtrPcm pcm_buf;
+	std::shared_ptr<ALSources> p_src;
+	tPtrBaseDevice pdev;
+
+	AudioPlayer():BaseAudioPlayer(){
+		pdev = nullptr;
+		p_src = std::make_shared<ALSources>(1);
+	}
+	void play()
+	{
+		if(status == playing)
+			return;
+		if(is_enable && p_src)
+		{
+			//pdev->play();
+			status = playing;
+			p_src->play();
+		}
+	}
+	void pause()
+	{
+		if(status == paused)
+			return;
+		status = paused;
+		if(p_src)
+			p_src->pause();
+	}
+	void stop()
+	{
+		if(status == stoped)
+			return;
+		reset();
+		p_src->stop();
+	}
+	void enable()
+	{
+		if(is_enable) return;
+		is_enable = true;
+		if(pdev)
+		{
+			pdev->on_enable(shared_from_this());
+		}
+	}
+	void disable()
+	{
+		if(!is_enable) return;
+		is_enable = false;
+		if(pdev)
+		{
+			pdev->on_disable(shared_from_this());
+		}
+	}
+	void set_dev(tPtrBaseDevice& p)
+	{
+		pdev = p;
+	}
+	void reset()
+	{
+		//do reset here?
+	}
+};
+
+extern int init_al(ALCdevice** pdev);
+class ALAuidoDevice;
+typedef std::shared_ptr<ALAuidoDevice> tPtrAuDev;
+
+class ALAuidoDevice: public BaseAudioDevice,
+public std::enable_shared_from_this<ALAuidoDevice>
+{
+public:
+	
+	typedef void (BaseAudioPlayer::*PlayerOP)();
+public:
+	std::vector<tPtrBasePlayer> players;
+	ALCdevice* p_al_dev;
+
+	static tPtrAuDev p_inst;// = nullptr;
+
+	tPtrAuDev get_inst()
+	{
+		//c++0x
+		static ALAuidoDevice _inst; //= std::make_shared<ALAuidoDevice>();
+		if(p_inst == nullptr)
+		{
+			p_inst = std::shared_ptr<ALAuidoDevice>(&_inst);
+		}
+		return p_inst;
+	}
+	void foreach_objs(PlayerOP op)
+	{
+		for(auto& it:players)
+		{
+			if(it->is_enable)
+			{
+				((*it).*op)();
+			}
+		}
+	}
+	void play()
+	{
+		for(auto& it:players)
+		{
+			if(it->is_enable)
+			{
+				it->play();
+			}
+		}
+	}
+	void stop()
+	{
+		for(auto& it:players)
+		{
+			if(it->is_enable)
+			{
+				it->stop();
+			}
+		}
+	}
+	void pause()
+	{
+		for(auto& it:players)
+		{
+			if(it->is_enable)
+			{
+				it->pause();
+			}
+		}
+	}
+	void update()
+	{
+		for(auto& it: players)
+		{
+			if(it->is_enable)
+			{
+				it->update();
+			}
+		}
+	}
+	void enable_player(tPtrBasePlayer p)
+	{
+		p->enable();
+	}
+	void disable_player(tPtrBasePlayer p)
+	{
+		p->disable();
+	}
+
+	void on_enable(tPtrBasePlayer p)
+	{
+		;
+	}
+	void on_disable(tPtrBasePlayer p)
+	{
+
+	}
+
+	void add_player(tPtrBasePlayer& p)
+	{
+		players.push_back(p);
+	}
+	void rm_player(tPtrBasePlayer& p)
+	{
+		auto find_it = std::find(players.begin(),
+			players.end(),p);
+		if(find_it!=players.end())
+		{
+			players.erase(find_it);
+		}
+	}
+
+private:
+	ALAuidoDevice()
+	{
+		init_al(&p_al_dev);
+	}
+
 };
 
 

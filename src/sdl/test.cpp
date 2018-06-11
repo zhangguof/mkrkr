@@ -10,6 +10,7 @@
 
 #include "ffStream.hpp"
 #include "sdlAudio.hpp"
+#include "alDevice.hpp"
 
 // extern int init_ffmpeg();
 
@@ -110,7 +111,7 @@ int &freq, int &chs, AVSampleFormat& format);
 // 	// 	printf("%d\n",*(q.wait_and_pop()));
 // 	// }
 // }
-extern int init_al();
+extern int init_al(ALCdevice** pdev=nullptr);
 extern void al_test_play();
 int main(int argc, char* args[])
 {

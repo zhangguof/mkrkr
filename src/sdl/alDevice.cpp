@@ -166,9 +166,18 @@ ALsizei freq,int idx)
 	return CHECK_ERROR;
 }
 
-// ALCdevice* g_alc_device = nullptr;
-int init_al()
+//-------------ALAudioDevice---------------
+tPtrAuDev ALAuidoDevice::p_inst = nullptr;
+
+//---------init al------------------------
+
+ALCdevice* cur_alc_device = nullptr;
+static bool is_init_al = false;
+
+int init_al(ALCdevice** pdev=nullptr)
 {
+	if(is_init_al)
+		return 0;
 	regist_all_props();
 	// alGetError();
 
@@ -187,17 +196,16 @@ int init_al()
     if(!name || alcGetError(device) != AL_NO_ERROR)
         name = alcGetString(device, ALC_DEVICE_SPECIFIER);
     std::cout<< "Opened \""<<name<<"\"" <<std::endl;
-
+    cur_alc_device = device;
+    if(pdev)
+    	*pdev = device;
+    return 0;
 }
-
-#define NUM_BUFFERS 4
-#define BUFFER_TIME_MS 200
-
 
 
 // alutLoadWAVFile (ALbyte *fileName, ALenum *format, void **data, ALsizei *size, ALsizei *frequency);
 // void ALUT_APIENTRY alutUnloadWAV (ALenum format, ALvoid *data, ALsizei size, ALsizei frequency);
-
+#define NUM_BUFFERS (4)
 void al_test_play()
 {
 	alGetError(); // clear error code
@@ -211,7 +219,7 @@ void al_test_play()
     ALsizei freq;
 
 	// Load test.wav
-	const char* name= "a0001.wav";
+	const char* name= "a1.wav";
 	alutLoadWAVFile((ALbyte*)name,&format,&data,&size,&freq);
 	if ((error = alGetError()) != AL_NO_ERROR)
 	{
@@ -264,10 +272,8 @@ void al_test_play()
 	// alGetSourcef(source[0],AL_MIN_GAIN,&gin);
 	// printf("source min gain:%f\n", gin);
 
-	ALfloat pos[3]={0.0f,0.0f,0.0f};
-	// alGetSourcefv(source[0],AL_POSITION,pos);
-	// src.getv_pos(pos);
-	// printf("source pos:%f,%f,%f\n",pos[0],pos[1],pos[2]);
+	ALfloat pos[3]={0.0f,0.0f,1.0f};
+
 	src.dump_prop(AL_POSITION);
 
 
@@ -275,8 +281,14 @@ void al_test_play()
 	src.set_buffer(bufs[0]);
 
 	ALListener* listener = ALListener::GetInst();
+
+	listener->setv_pos(pos);
+
+	listener->getv_pos(pos);
+	printf("=====%.2f,%.2f,%.2f\n",pos[0],pos[1],pos[2]);
+	// src.dump_all_prop();
+
 	listener->dump_all_prop();
-	src.dump_all_prop();
 
 
 	// listener->getv_pos(pos);
@@ -284,6 +296,8 @@ void al_test_play()
 
     // alSourceQueueBuffers(source[0], 1, g_Buffers);
     // alSourcePlay(source[0]);
+
+
     src.play(0);
     // sdl_loop();
     SDL_Delay(2000);

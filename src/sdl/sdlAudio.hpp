@@ -11,7 +11,9 @@ class pcmBuffer;
 
 typedef std::shared_ptr<ffStream> tffStreamPtr;
 typedef std::shared_ptr<audioDevice> tDevPtr;
+typedef tDevPtr tPtrDev;
 typedef std::shared_ptr<pcmBuffer> tPcmPtr;
+typedef tPcmPtr tPtrPcm;
 
 struct AudioFormat
 {
@@ -26,6 +28,58 @@ struct AudioFormat
   uint32_t nAvgBytesPerSec; 
 
 };
+
+class BaseAudioPlayer
+{
+public:
+	bool is_enable;
+	bool is_loop;
+	enum PLAYSTATUTS
+	{
+		playing,
+		stoped,
+		paused
+	} status;
+
+	BaseAudioPlayer()
+	{
+		is_enable = false;
+		is_loop = false;
+		status = stoped;
+	}
+	void set_loop(bool s) {is_loop = s;}
+	virtual void play();
+	virtual void pause();
+	virtual void stop();
+	
+	virtual void enable();
+	virtual void disable();
+	virtual void update();
+};
+
+typedef std::shared_ptr<BaseAudioPlayer> tPtrBasePlayer;
+
+class BaseAudioDevice
+{
+public:
+
+	std::vector<tPtrBasePlayer> players;
+
+	virtual void play();
+	virtual void pause();
+	virtual void stop();
+
+	virtual void enable_player(tPtrBasePlayer p);
+	virtual void disable_player(tPtrBasePlayer p);
+
+	virtual void on_enable(tPtrBasePlayer p);
+	virtual void on_disable(tPtrBasePlayer p);
+
+	virtual void add_player(tPtrBasePlayer& p);
+	virtual void rm_player(tPtrBasePlayer& p);
+};
+
+typedef std::shared_ptr<BaseAudioDevice> tPtrBaseDevice;
 
 
 class DataBuffer
@@ -103,6 +157,7 @@ public:
 	bool is_loop;
 	tDevPtr pDev;
 	AudioFormat format;
+
 
 	pcmBuffer(){
 		_init();
