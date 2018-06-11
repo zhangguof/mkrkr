@@ -125,7 +125,7 @@ int main(int argc, char* args[])
 	// int freq;
 	// int chs;
 	// AVSampleFormat format;
-	init_al();
+	// init_al();
 	al_test_play();
 	// sdl_loop();
 	// if(play_wav()<0)

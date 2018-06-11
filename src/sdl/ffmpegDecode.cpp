@@ -266,6 +266,34 @@ int ffStream::audio_decode_frame(uint8_t *audio_buf,int buf_size)
   }
 }
 
+void ffStream::decode_all()
+{
+	if(!pdb)
+	{
+		pdb = std::make_shared<DataBuffer>();
+	}
+	
+	uint8_t buf[(MAX_AUDIO_FRAME_SIZE * 3) / 2];
+
+	int len = audio_decode_frame(buf,MAX_AUDIO_FRAME_SIZE);
+	int count = 0;
+	int total_size = 0;
+	while(len > 0)
+	{
+		count++;
+		
+		pdb->push(buf,len);
+		total_size += len;
+
+		len = audio_decode_frame(buf,MAX_AUDIO_FRAME_SIZE);
+	}
+	decode_data_size = total_size;
+	// printf("databuffer pos:%d,size:%d,size2:%d,len:%d\n",
+	// db.rpos,db.v.capacity(),db.v.size(),db.len);
+	decode_data = pdb->get_data();
+	printf("frame count:%d,size:%d\n",count,total_size);
+}
+
 
 
 int init_ffmpeg()

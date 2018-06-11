@@ -8,7 +8,7 @@
 #include "sdlAudio.hpp"
 
 #define AVCODEC_MAX_AUDIO_FRAME_SIZE (4096*2)
-#define MAX_AUDIO_FRAME_SIZE 192000
+
 
 // uint8_t *check_data = NULL;
 // extern void check_buf(uint8_t* v,uint8_t* buf, int len,int idx,int pos);

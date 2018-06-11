@@ -38,23 +38,26 @@ public:
 	{
 		playing,
 		stoped,
-		paused
+		paused,
+		init,
 	} status;
 
 	BaseAudioPlayer()
 	{
 		is_enable = false;
 		is_loop = false;
-		status = stoped;
+		status = init;
 	}
+	virtual ~BaseAudioPlayer(){}
 	void set_loop(bool s) {is_loop = s;}
-	virtual void play();
-	virtual void pause();
-	virtual void stop();
+
+	virtual void play() = 0;
+	virtual void pause()= 0;
+	virtual void stop()= 0;
 	
-	virtual void enable();
-	virtual void disable();
-	virtual void update();
+	virtual void enable()= 0;
+	virtual void disable()= 0;
+	virtual void update()= 0;
 };
 
 typedef std::shared_ptr<BaseAudioPlayer> tPtrBasePlayer;
@@ -64,87 +67,27 @@ class BaseAudioDevice
 public:
 
 	std::vector<tPtrBasePlayer> players;
+	BaseAudioDevice(){}
+	virtual ~BaseAudioDevice(){}
 
-	virtual void play();
-	virtual void pause();
-	virtual void stop();
+	virtual void play() =0;
+	virtual void pause() =0;
+	virtual void stop() = 0;
 
-	virtual void enable_player(tPtrBasePlayer p);
-	virtual void disable_player(tPtrBasePlayer p);
+	virtual void enable_player(tPtrBasePlayer p) = 0;
+	virtual void disable_player(tPtrBasePlayer p) = 0;
 
-	virtual void on_enable(tPtrBasePlayer p);
-	virtual void on_disable(tPtrBasePlayer p);
+	virtual void on_enable(tPtrBasePlayer p) = 0;
+	virtual void on_disable(tPtrBasePlayer p) = 0;
 
-	virtual void add_player(tPtrBasePlayer& p);
-	virtual void rm_player(tPtrBasePlayer& p);
+	virtual void add_player(tPtrBasePlayer p) = 0;
+	virtual void rm_player(tPtrBasePlayer p) = 0;
 };
 
 typedef std::shared_ptr<BaseAudioDevice> tPtrBaseDevice;
 
 
-class DataBuffer
-{
-public:
-	std::vector<uint8_t> v;
-	int len;
-	int rpos;
-	DataBuffer(){
-		v.resize(4096);
-		len = 0;
-		rpos = 0;
-	}
-	uint8_t* get_data()
-	{
-		return v.data();
-		// return &(*(v.begin()));
-	}
-	uint8_t* get_tail()
-	{
-		return v.data()+len;
-		// return &(*(v.begin()+len));
-	}
-	void push(uint8_t* data,int size)
-	{
-		//fix using size() better than capacity()!!!
-		if(len + size > v.size()) 
-		{
-			v.resize(len + size);
-		}
-		memcpy(get_tail(),data,size);
-		len += size;
-	}
-	int read(uint8_t** data,int n)
-	{
-		if(rpos == len)
-		{
-			return 0;
-		}
-		int read_len = n;
-		if( n > len - rpos)
-		{
-			read_len = len - rpos;
-		}
-		*data = get_data() + rpos;
-		rpos += read_len;
-		return read_len;
-	}
 
-	//read all;
-	int read(uint8_t** data)
-	{
-		int read_len = len - rpos;
-		*data = get_data() + rpos;
-		rpos = len;
-		return len;
-	}
-	void seek(int pos)
-	{
-		if(pos>=len)
-			rpos = len;
-		else
-			rpos = pos;
-	}
-};
 
 class pcmBuffer:
 public std::enable_shared_from_this<pcmBuffer>

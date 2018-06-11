@@ -202,110 +202,140 @@ int init_al(ALCdevice** pdev=nullptr)
     return 0;
 }
 
+tPtrAuDev get_al_dev()
+{
+	return ALAuidoDevice::get_inst();
+}
+
+void al_test_play()
+{
+	auto p_dev = get_al_dev();
+	auto p_player = std::make_shared<AudioPlayer>();
+	
+	auto p_ffs = std::make_shared<ffStream>("../../data/bgm/ＢＧＭ／通常１.ogg");
+    // ffStream ffs2("../../voice/a0001.ogg");
+    // ffStream ffs3("../../data/井内啓二 - 英雄願望 〜アルゴイゥ卜~.mp3");
+  
+	p_dev->add_player(static_cast<tPtrBasePlayer>(
+		   p_player));
+	p_player->enable();
+	p_player->read_from_ffstream(p_ffs);
+	p_dev->play();
+
+SDL_Delay(2000);
+//exit
+auto Context=alcGetCurrentContext();
+auto Device=alcGetContextsDevice(Context);
+alcMakeContextCurrent(NULL);
+alcDestroyContext(Context);
+alcCloseDevice(Device);
+
+
+}
 
 // alutLoadWAVFile (ALbyte *fileName, ALenum *format, void **data, ALsizei *size, ALsizei *frequency);
 // void ALUT_APIENTRY alutUnloadWAV (ALenum format, ALvoid *data, ALsizei size, ALsizei frequency);
-#define NUM_BUFFERS (4)
-void al_test_play()
+// #define NUM_BUFFERS (4)
+void al_test_play1()
 {
-	alGetError(); // clear error code
-	ALBuffers bufs(NUM_BUFFERS);
+// 	alGetError(); // clear error code
+// 	ALBuffers bufs(NUM_BUFFERS);
 
-	int error;
+// 	int error;
 
-    ALenum format;
-    ALvoid *data;
-    ALsizei size;
-    ALsizei freq;
+//     ALenum format;
+//     ALvoid *data;
+//     ALsizei size;
+//     ALsizei freq;
 
-	// Load test.wav
-	const char* name= "a1.wav";
-	alutLoadWAVFile((ALbyte*)name,&format,&data,&size,&freq);
-	if ((error = alGetError()) != AL_NO_ERROR)
-	{
-	      printf("alutLoadWAVFile test.wav : %d\n",error);
-	      // alDeleteBuffers(NUM_BUFFERS, g_Buffers);
-	      bufs.Release();
-	      return;
-	}
+// 	// Load test.wav
+// 	const char* name= "a1.wav";
+// 	alutLoadWAVFile((ALbyte*)name,&format,&data,&size,&freq);
+// 	if ((error = alGetError()) != AL_NO_ERROR)
+// 	{
+// 	      printf("alutLoadWAVFile test.wav : %d\n",error);
+// 	      // alDeleteBuffers(NUM_BUFFERS, g_Buffers);
+// 	      bufs.Release();
+// 	      return;
+// 	}
 
-	// Copy test.wav data into AL Buffer 0
-	// alBufferData(g_Buffers[0],format,data,size,freq);
-	bufs.buffer_data(format,data,size,freq,0);
+// 	// Copy test.wav data into AL Buffer 0
+// 	// alBufferData(g_Buffers[0],format,data,size,freq);
+// 	bufs.buffer_data(format,data,size,freq,0);
 
-	if ((error = alGetError()) != AL_NO_ERROR)
-	{
-	      printf("alBufferData buffer 0 : %d\n", error);
-	      // alDeleteBuffers(NUM_BUFFERS, g_Buffers);
-	      bufs.Release();
-	      return;
-	}
+// 	if ((error = alGetError()) != AL_NO_ERROR)
+// 	{
+// 	      printf("alBufferData buffer 0 : %d\n", error);
+// 	      // alDeleteBuffers(NUM_BUFFERS, g_Buffers);
+// 	      bufs.Release();
+// 	      return;
+// 	}
 
-	// Unload test.wav
-	alutUnloadWAV(format,data,size,freq);
-	if ((error = alGetError()) != AL_NO_ERROR)
-	{
-	      printf("alutUnloadWAV : %d\n", error);
-	      // alDeleteBuffers(NUM_BUFFERS, g_Buffers);
-	      bufs.Release();
-	      return;
-	}
-	bufs.dump_all_prop();
+// 	// Unload test.wav
+// 	alutUnloadWAV(format,data,size,freq);
+// 	if ((error = alGetError()) != AL_NO_ERROR)
+// 	{
+// 	      printf("alutUnloadWAV : %d\n", error);
+// 	      // alDeleteBuffers(NUM_BUFFERS, g_Buffers);
+// 	      bufs.Release();
+// 	      return;
+// 	}
+// 	bufs.dump_all_prop();
 
-	// Generate Sources
-	// alGenSources(1,source);
-	ALSources src;
+// 	// Generate Sources
+// 	// alGenSources(1,source);
+// 	ALSources src;
 
-	// alSourceRewind(source[0]);
-	// Attach buffer 0 to source
-	ALfloat gain;
-	// gain = 0.5f;
+// 	// alSourceRewind(source[0]);
+// 	// Attach buffer 0 to source
+// 	ALfloat gain;
+// 	// gain = 0.5f;
 
-	// alSourcef(source[0],AL_GAIN,gin);
-	// alGetSourcef(source[0],AL_GAIN,&gin);
-	// src.set_gain(gain);
-	src.get_gain(&gain);
-	printf("source gain:%f\n",gain);
+// 	// alSourcef(source[0],AL_GAIN,gin);
+// 	// alGetSourcef(source[0],AL_GAIN,&gin);
+// 	// src.set_gain(gain);
+// 	src.get_gain(&gain);
+// 	printf("source gain:%f\n",gain);
 
-	// alGetSourcef(source[0],AL_MAX_GAIN,&gin);
-	// printf("source max gain:%f\n", gin);
-	// alGetSourcef(source[0],AL_MIN_GAIN,&gin);
-	// printf("source min gain:%f\n", gin);
+// 	// alGetSourcef(source[0],AL_MAX_GAIN,&gin);
+// 	// printf("source max gain:%f\n", gin);
+// 	// alGetSourcef(source[0],AL_MIN_GAIN,&gin);
+// 	// printf("source min gain:%f\n", gin);
 
-	ALfloat pos[3]={0.0f,0.0f,1.0f};
+// 	ALfloat pos[3]={0.0f,0.0f,1.0f};
 
-	src.dump_prop(AL_POSITION);
-
-
-	// alSourcei(source[0], AL_BUFFER, g_Buffers[0]);
-	src.set_buffer(bufs[0]);
-
-	ALListener* listener = ALListener::GetInst();
-
-	listener->setv_pos(pos);
-
-	listener->getv_pos(pos);
-	printf("=====%.2f,%.2f,%.2f\n",pos[0],pos[1],pos[2]);
-	// src.dump_all_prop();
-
-	listener->dump_all_prop();
+// 	src.dump_prop(AL_POSITION);
 
 
-	// listener->getv_pos(pos);
-	// printf("listener pos:%f,%f,%f\n",pos[0],pos[1],pos[2]);
+// 	// alSourcei(source[0], AL_BUFFER, g_Buffers[0]);
+// 	src.set_buffer(bufs[0]);
 
-    // alSourceQueueBuffers(source[0], 1, g_Buffers);
-    // alSourcePlay(source[0]);
+// 	ALListener* listener = ALListener::GetInst();
+
+// 	listener->setv_pos(pos);
+
+// 	listener->getv_pos(pos);
+// 	printf("=====%.2f,%.2f,%.2f\n",pos[0],pos[1],pos[2]);
+// 	// src.dump_all_prop();
+
+// 	listener->dump_all_prop();
 
 
-    src.play(0);
-    // sdl_loop();
-    SDL_Delay(2000);
-// Exit
-	auto Context=alcGetCurrentContext();
-	auto Device=alcGetContextsDevice(Context);
-	alcMakeContextCurrent(NULL);
-	alcDestroyContext(Context);
-	alcCloseDevice(Device);
+// 	// listener->getv_pos(pos);
+// 	// printf("listener pos:%f,%f,%f\n",pos[0],pos[1],pos[2]);
+
+//     // alSourceQueueBuffers(source[0], 1, g_Buffers);
+//     // alSourcePlay(source[0]);
+
+
+//     src.play(0);
+//     // sdl_loop();
+//     SDL_Delay(2000);
+// // Exit
+// 	auto Context=alcGetCurrentContext();
+// 	auto Device=alcGetContextsDevice(Context);
+// 	alcMakeContextCurrent(NULL);
+// 	alcDestroyContext(Context);
+// 	alcCloseDevice(Device);
 
 }

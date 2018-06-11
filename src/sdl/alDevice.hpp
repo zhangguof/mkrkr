@@ -14,6 +14,8 @@
 #include <algorithm>
 #include <vector>
 
+extern uint32_t GetTickCount();
+
 extern int al_check_error(const char* filename,const char* fun_name,int line);
 
 #define CHECK_ERROR al_check_error(__FILE__,__FUNCTION__,__LINE__)
@@ -115,6 +117,7 @@ extern void regist_al_prop(ALenum al_name,uint16_t t,const char* name,uint16_t _
 #define REGIST_AL_PROP(al_name,t,_type) \
 regist_al_prop(al_name,t,#al_name,_type);
 
+class ALBuffers;
 
 class ALObjects
 {
@@ -253,6 +256,8 @@ public:
 	}
 
 	ALuint get_obj(int idx=0){return _objs[idx];}
+	ALuint* get_objs(){return _objs;}
+	int get_num(){return num;}
 	ALuint &operator[](int idx){return _objs[idx];}
 
 // The playing source will have its state changed to AL_PLAYING. 
@@ -279,6 +284,11 @@ public:
 // and the number of processed buffers 
 // can be detected using an alSourcei call to retrieve AL_BUFFERS_PROCESSED.
 	int queue_buffers(int n,ALuint* buffers,int idx=0);
+	// int queue_buffers(std::shared_ptr<ALBuffers>& pb,int idx=0)
+	// {
+	// 	queue_buffers(pb->get_num(),pb->get_objs(),idx);
+	// }
+
 
 // This function unqueues a set of buffers attached to a source. 
 // The number of processed buffers can be detected 
@@ -340,18 +350,32 @@ public:
 // 		ALsizei freq;
 // };
 
-class ALBuffers:public ALObjects
+typedef std::shared_ptr<ALSources> tPtrSources;
+typedef std::shared_ptr<ALBuffers> tPtrBuffers;
+
+class ALBuffers:public ALObjects,
+public std::enable_shared_from_this<ALBuffers>
 {
 private:
 	ALuint* _objs;
 	int num;
+	tPtrSources p_src;
+
 public:
-	ALBuffers(int n=1):ALObjects(AL_OBJE_BUFFERS)
+	ALBuffers(int n=1,
+	 tPtrSources _src = nullptr
+	 ):
+	ALObjects(AL_OBJE_BUFFERS)
 	{
 		num = n;
 		_objs = new ALuint[n];
 		alGenBuffers(n,_objs);
+		p_src = _src;
 		CHECK_ERROR;
+	}
+	void set_sources(tPtrSources& src)
+	{
+		p_src = src;
 	}
 	int Release();
 	~ALBuffers(){
@@ -359,6 +383,21 @@ public:
 		delete[] _objs;
 	}
 	ALuint get_obj(int idx=0){return _objs[idx];}
+	ALuint* get_objs(){return _objs;}
+	int get_num(){return num;}
+	int get_idx(ALenum obj_id)
+	{
+		for(int i=0;i<num;++i)
+		{
+			if(obj_id == _objs[i])
+				return i;
+		}
+		return -1;
+	}
+
+
+
+	
 	ALuint &operator[](int idx){return _objs[idx];}
 
 // wrap alBufferData
@@ -440,21 +479,125 @@ public:
 };
 
 //wrap sources
-//one palyer<--> one souces
+//one palyer<--> one sources
+//one source hold n buffers
+#define UPDATE_TIME (200) //ms
+#define SOURCE_BUFFER_NUM (5)
+
+inline int get_buffer_data_size(
+	int channles,
+	int freq,int update_time_ms
+	)
+{
+	return channles * freq * update_time_ms / 1000;
+}
+
 class AudioPlayer: public BaseAudioPlayer,
 public std::enable_shared_from_this<AudioPlayer>
 {
 public:
 	// tPtrPcm pcm_buf;
 	std::shared_ptr<ALSources> p_src;
-	tPtrBaseDevice pdev;
+	std::shared_ptr<ALBuffers> p_bufs;
+	std::shared_ptr<DataBuffer> pdb;
+	std::shared_ptr<ffStream> ff_stream;
 
-	AudioPlayer():BaseAudioPlayer(){
+
+
+	tPtrBaseDevice pdev;
+	int n_buffer;
+	int n_queued_buffer;
+
+
+	AudioPlayer(int nbuffer=SOURCE_BUFFER_NUM):
+	BaseAudioPlayer()
+	{
 		pdev = nullptr;
 		p_src = std::make_shared<ALSources>(1);
+		p_bufs = std::make_shared<ALBuffers>(nbuffer);
+		n_buffer = nbuffer;
+		n_queued_buffer = 0;
+		ff_stream = nullptr;
 	}
+	~AudioPlayer(){}
+	int buffer_data_one(int buf_idx,int update_time_ms)
+	{
+		int freq = ff_stream->freq;//ff_stream->target_params.sample_rate;
+		int channles = ff_stream->channels;//ff_stream->target_params.channles;
+		ALenum format = AL_FORMAT_STEREO16;
+		int size = get_buffer_data_size(channles,
+			freq,update_time_ms);
+		uint8_t* _data = nullptr;
+		int len = pdb->read(&_data, size);
+		if(len == 0)
+			return 0;
+		assert(len <= size);
+
+		p_bufs->buffer_data(
+		format,
+		_data,size,
+		freq,
+		buf_idx
+		);
+		return len;
+
+	}
+	//read bytes from data
+	void update()
+	{
+		printf("AudioPlayer update!\n");
+
+		int buffer_processed = 0;
+		if(status == init)
+			buffer_processed = n_buffer;
+		else
+			p_src->get_buffer_processed(&buffer_processed);
+
+		uint32_t buffer_ids[n_buffer];
+		int num_to_queue = 0;
+
+		if(buffer_processed>0)
+		{	
+			//get free buffer
+			int r = p_src->unqueue_buffers(
+				buffer_processed,buffer_ids);
+			if(r<0)
+				return;
+
+			for(int i=0;i<buffer_processed;++i)
+			{
+				r = buffer_data_one(
+					p_bufs->get_idx(buffer_ids[i]),
+					UPDATE_TIME
+					);
+				if(r==0)
+				{
+					//no data;
+					break;
+				}
+				num_to_queue++;
+			}
+		}
+		if(num_to_queue>0)
+		{
+			p_src->queue_buffers(num_to_queue,buffer_ids);
+		}
+	}
+	void read_from_ffstream(
+		std::shared_ptr<ffStream>& ff)
+	{
+		ff_stream = ff;
+		if(!pdb)
+		{
+			pdb = ff_stream->get_decode_buffer();
+		}
+		update();
+	}
+
 	void play()
 	{
+		printf("AudioPlayer do play!\n");
+
 		if(status == playing)
 			return;
 		if(is_enable && p_src)
@@ -505,6 +648,8 @@ public:
 	{
 		//do reset here?
 	}
+
+	 
 };
 
 extern int init_al(ALCdevice** pdev);
@@ -523,7 +668,7 @@ public:
 
 	static tPtrAuDev p_inst;// = nullptr;
 
-	tPtrAuDev get_inst()
+	static tPtrAuDev get_inst()
 	{
 		//c++0x
 		static ALAuidoDevice _inst; //= std::make_shared<ALAuidoDevice>();
@@ -545,13 +690,15 @@ public:
 	}
 	void play()
 	{
-		for(auto& it:players)
-		{
-			if(it->is_enable)
-			{
-				it->play();
-			}
-		}
+		printf("ALAuidoDevice:: do play!\n");
+		foreach_objs(&BaseAudioPlayer::play);
+		// for(auto& it:players)
+		// {
+		// 	if(it->is_enable)
+		// 	{
+		// 		it->play();
+		// 	}
+		// }
 	}
 	void stop()
 	{
@@ -575,6 +722,10 @@ public:
 	}
 	void update()
 	{
+		static uint32_t last_tick = 0;
+		uint32_t cur_tick = GetTickCount();
+		if(cur_tick - last_tick < UPDATE_TIME)
+			return;
 		for(auto& it: players)
 		{
 			if(it->is_enable)
@@ -582,6 +733,7 @@ public:
 				it->update();
 			}
 		}
+		last_tick = cur_tick;
 	}
 	void enable_player(tPtrBasePlayer p)
 	{
@@ -601,11 +753,11 @@ public:
 
 	}
 
-	void add_player(tPtrBasePlayer& p)
+	void add_player(tPtrBasePlayer p)
 	{
 		players.push_back(p);
 	}
-	void rm_player(tPtrBasePlayer& p)
+	void rm_player(tPtrBasePlayer p)
 	{
 		auto find_it = std::find(players.begin(),
 			players.end(),p);
@@ -616,12 +768,16 @@ public:
 	}
 
 private:
-	ALAuidoDevice()
+	ALAuidoDevice():BaseAudioDevice()
 	{
 		init_al(&p_al_dev);
 	}
+public:
+	~ALAuidoDevice(){}
 
 };
+
+
 
 
 
