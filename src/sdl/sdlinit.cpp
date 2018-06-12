@@ -74,6 +74,7 @@ void sdl_loop()
             if( e.type == SDL_QUIT )
             {
                 quit = true;
+                return;
             }
             //Handle keypress with current mouse position
             else if( e.type == SDL_MOUSEBUTTONUP )

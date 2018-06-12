@@ -333,8 +333,6 @@ public:
 	AL_PROP_OBJS(buffer_queued, AL_BUFFERS_QUEUED,get,int*);
 	AL_PROP_OBJS(buffer_processed, AL_BUFFERS_PROCESSED, get, int*);
 
-
-
 	AL_PROP_OBJS2(sec_offset,AL_SEC_OFFSET,get,float*,set,float)
 	AL_PROP_OBJS2(sec_offset,AL_SEC_OFFSET,get,int*,set,int)
 
@@ -344,11 +342,6 @@ public:
 
 };
 
-// struct ALAudioFormat
-// {
-// 		ALenum format; 
-// 		ALsizei freq;
-// };
 
 typedef std::shared_ptr<ALSources> tPtrSources;
 typedef std::shared_ptr<ALBuffers> tPtrBuffers;
@@ -394,9 +387,6 @@ public:
 		}
 		return -1;
 	}
-
-
-
 	
 	ALuint &operator[](int idx){return _objs[idx];}
 
@@ -418,39 +408,8 @@ public:
 		ALsizei size, 
 		ALsizei freq,int idx=0);
 
-	int buffer_data(AudioFormat* a_fromat,const ALvoid* data,ALsizei size, int idx=0)
-	{
-		ALenum format = AL_FORMAT_STEREO16;
-		int freq = a_fromat->nSamplesPerSec; //freq
-
-		if(a_fromat->format == AUDIO_S16SYS)
-		{
-			if(a_fromat->nChannels==1)
-			{
-				format = AL_FORMAT_MONO16;
-			}
-			else
-			{
-				format = AL_FORMAT_STEREO16;
-			}
-		}
-		else if(a_fromat->format == AUDIO_S8)
-		{
-			if(a_fromat->nChannels == 1)
-			{
-				format = AL_FORMAT_MONO8;
-			}
-			else
-			{
-				format = AL_FORMAT_STEREO8;
-			}
-		}
-		else{
-			printf("error:not support fomat!\n");
-			return -1;
-		}
-		return buffer_data(format,data,size,freq,idx);
-	}
+	int buffer_data(AudioFormat* a_fromat,
+		const ALvoid* data,ALsizei size,int idx=0);
 
 //-----------------get set op ---------------------
 //set prop
@@ -498,190 +457,31 @@ class AudioPlayer: public BaseAudioPlayer,
 public std::enable_shared_from_this<AudioPlayer>
 {
 public:
-	// tPtrPcm pcm_buf;
+
 	std::shared_ptr<ALSources> p_src;
 	std::shared_ptr<ALBuffers> p_bufs;
 	std::shared_ptr<DataBuffer> pdb;
 	std::shared_ptr<ffStream> ff_stream;
-
-
 
 	tPtrBaseDevice pdev;
 	int n_buffer;
 	int n_queued_buffer;
 
 
-	AudioPlayer(int nbuffer=SOURCE_BUFFER_NUM):
-	BaseAudioPlayer()
-	{
-		pdev = nullptr;
-		p_src = std::make_shared<ALSources>(1);
-		p_bufs = std::make_shared<ALBuffers>(nbuffer);
-		n_buffer = nbuffer;
-		n_queued_buffer = 0;
-		ff_stream = nullptr;
-	}
+	AudioPlayer(int nbuffer=SOURCE_BUFFER_NUM);
 	~AudioPlayer(){}
-	int buffer_data_one(int buf_idx,int update_time_ms)
-	{
-		int freq = ff_stream->freq;//ff_stream->target_params.sample_rate;
-		int channles = ff_stream->channels;//ff_stream->target_params.channles;
-		ALenum format = AL_FORMAT_STEREO16;
-		int size = get_buffer_data_size(channles,
-			freq,16,
-			update_time_ms);
-		uint8_t* _data = nullptr;
-		int len = pdb->read(&_data, size);
-		if(len == 0)
-			return 0;
-		assert(len <= size);
-
-		p_bufs->buffer_data(
-		format,
-		_data,len,freq,
-		buf_idx
-		);
-		return len;
-
-	}
+	int buffer_data_one(int buf_idx,int update_time_ms);
 	//read bytes from data
-	void update()
-	{
-		printf("AudioPlayer update!\n");
+	void update();
 
-		int buffer_processed = 0;
-		int queued_buffer = 0;
-		if(status == init)
-			buffer_processed = n_buffer;
-		else
-		{
-			
-			p_src->get_buffer_processed(&buffer_processed);
-			p_src->get_buffer_queued(&queued_buffer);
-			printf("=====now status:%d,buffer_processed:%d,queued:%d\n",status,
-				buffer_processed,queued_buffer
-			);
-			//processed all buffer.
-			if(status == stopping
-			   && n_queued_buffer == 0
-			   //&& queued_buffer == 0
-			   )
-			{
-				stop();
-				return;
-			}
-		}
+	void read_from_ffstream(std::shared_ptr<ffStream>& ff);
 
-		uint32_t buffer_ids[n_buffer];
-		uint32_t* p_buffer_ids = buffer_ids;
-		int num_to_queue = 0;
-		int r;
+	void play();
+	void pause();
+	void stop();
+	void enable();
+	void disable();
 
-		if(buffer_processed>0)
-		{	
-			//get free buffer
-			if(status != init)
-			{
-				r = p_src->unqueue_buffers(
-					buffer_processed,buffer_ids);
-
-				printf("unqueue buffers:%d\n",buffer_processed);
-				if(r<0)
-					return;
-				n_queued_buffer -= buffer_processed;
-			}
-			else
-			{
-				p_buffer_ids = p_bufs->get_objs();
-			}
-
-			for(int i=0;i<buffer_processed;++i)
-			{
-				r = buffer_data_one(
-					p_bufs->get_idx(p_buffer_ids[i]),
-					UPDATE_TIME
-					);
-				if(r==0)
-				{
-					//no data;
-					//stop it.
-					status = stopping;
-					break;
-				}
-				num_to_queue++;
-			}
-		}
-		if(num_to_queue>0)
-		{
-			p_src->queue_buffers(num_to_queue,p_buffer_ids);
-			n_queued_buffer += num_to_queue;
-			p_src->get_buffer_queued(&queued_buffer);
-
-			printf("queue buffers:%d/%d\n",num_to_queue,queued_buffer);
-		}
-	}
-	void read_from_ffstream(
-		std::shared_ptr<ffStream>& ff)
-	{
-		ff_stream = ff;
-		if(!pdb)
-		{
-			pdb = ff_stream->get_decode_buffer();
-		}
-		update();
-	}
-
-	void play()
-	{
-		printf("AudioPlayer do play!\n");
-
-		if(status == playing)
-			return;
-		if(is_enable && p_src)
-		{
-			//pdev->play();
-			assert(status == stoped || status == paused || status == init);
-
-			status = playing;
-			p_src->play();
-		}
-	}
-	void pause()
-	{
-		if(status == paused)
-			return;
-		status = paused;
-		if(p_src)
-			p_src->pause();
-	}
-	void stop()
-	{
-		printf("do stop: now status:%d\n",status);
-		if(status == stoped)
-			return;
-		reset();
-		p_src->stop();
-		status = stoped;
-		pdev->on_stop(shared_from_this());
-	}
-	void enable()
-	{
-		if(is_enable) return;
-		is_enable = true;
-		if(pdev)
-		{
-			pdev->on_enable(shared_from_this());
-		}
-	}
-	void disable()
-	{
-		if(!is_enable) return;
-		is_enable = false;
-		if(pdev)
-		{
-			pdev->on_disable(shared_from_this());
-		}
-	}
 	void set_dev(tPtrBaseDevice p)
 	{
 		pdev = p;
@@ -691,8 +491,6 @@ public:
 		//do reset here?
 		pdb->seek(0);
 	}
-
-	 
 };
 
 extern int init_al(ALCdevice** pdev);
@@ -731,64 +529,14 @@ public:
 			}
 		}
 	}
-	void play()
-	{
-		printf("ALAuidoDevice:: do play!\n");
-		foreach_objs(&BaseAudioPlayer::play);
-		// for(auto& it:players)
-		// {
-		// 	if(it->is_enable)
-		// 	{
-		// 		it->play();
-		// 	}
-		// }
-	}
-	void stop()
-	{
-		for(auto& it:players)
-		{
-			if(it->is_enable)
-			{
-				it->stop();
-			}
-		}
-	}
-	void on_stop(tPtrBasePlayer p)
-	{
-		if(p->is_loop)
-		{
-			p->status = AudioPlayer::init;
-			p->update(); //queue buffers first
-			p->play();
-		}
-	}
-	void pause()
-	{
-		for(auto& it:players)
-		{
-			if(it->is_enable)
-			{
-				it->pause();
-			}
-		}
-	}
+	void play();
+	void stop();
+	void on_stop(tPtrBasePlayer p);
+
+	void pause();
 	//return next wake
-	uint32_t update()
-	{
-		static uint32_t last_tick = 0;
-		uint32_t cur_tick = SDL_GetTicks();
-		if(cur_tick - last_tick < UPDATE_TIME)
-			return 0;
-		for(auto& it: players)
-		{
-			if(it->is_enable && it->status!= AudioPlayer::stoped)
-			{
-				it->update();
-			}
-		}
-		last_tick = cur_tick;
-		return UPDATE_TIME;
-	}
+	uint32_t update();
+
 	void enable_player(tPtrBasePlayer p)
 	{
 		p->enable();
@@ -798,45 +546,18 @@ public:
 		p->disable();
 	}
 
-	void on_enable(tPtrBasePlayer p)
-	{
-		;
-	}
-	void on_disable(tPtrBasePlayer p)
-	{
+	void on_enable(tPtrBasePlayer p){}
+	void on_disable(tPtrBasePlayer p){}
 
-	}
-
-	void add_player(tPtrBasePlayer p)
-	{
-		players.push_back(p);
-		// static_cast<std::shared_ptr<AudioPlayer> >(p)->set_dev(shared_from_this());
-		auto _p = std::static_pointer_cast<AudioPlayer>(p);
-		_p->set_dev(shared_from_this());
-	}
-	void rm_player(tPtrBasePlayer p)
-	{
-		auto find_it = std::find(players.begin(),
-			players.end(),p);
-		if(find_it!=players.end())
-		{
-			players.erase(find_it);
-		}
-	}
+	void add_player(tPtrBasePlayer p);
+	void rm_player(tPtrBasePlayer p);
 
 private:
-	ALAuidoDevice():BaseAudioDevice()
-	{
-		init_al(&p_al_dev);
-	}
+	ALAuidoDevice();
 public:
-	~ALAuidoDevice(){}
+	~ALAuidoDevice();
 
 };
-
-
-
-
 
 
 #endif

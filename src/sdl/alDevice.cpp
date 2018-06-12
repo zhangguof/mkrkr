@@ -15,165 +15,272 @@
 #include "AL/alut.h"
 
 
-int al_check_error(const char* filename,
-const char* fun_name,int line)
+//--------------AudioPlyaer------------------------
+
+AudioPlayer::AudioPlayer(int nbuffer):BaseAudioPlayer()
 {
-	ALenum error = alGetError();
-	if(error == AL_NO_ERROR)
+	pdev = nullptr;
+	p_src = std::make_shared<ALSources>(1);
+	p_bufs = std::make_shared<ALBuffers>(nbuffer);
+	n_buffer = nbuffer;
+	n_queued_buffer = 0;
+	ff_stream = nullptr;
+}
+
+int AudioPlayer::buffer_data_one(int buf_idx,int update_time_ms)
+{
+	int freq = ff_stream->freq;//ff_stream->target_params.sample_rate;
+	int channles = ff_stream->channels;//ff_stream->target_params.channles;
+	ALenum format = AL_FORMAT_STEREO16;
+	int size = get_buffer_data_size(channles,
+		freq,16,
+		update_time_ms);
+	uint8_t* _data = nullptr;
+	int len = pdb->read(&_data, size);
+	if(len == 0)
 		return 0;
-	printf("file:%s:%d,func:%s,error(%d):%s\n",
-		filename,line,fun_name,
-		error,alGetString(error));
-	return -1;
+	assert(len <= size);
+
+	p_bufs->buffer_data(format,_data,len,freq,buf_idx);
+	return len;
 }
 
-std::map<ALenum, std::shared_ptr<ALProp> > g_al_props;
-std::vector<ALenum> g_al_listener_props;
-std::vector<ALenum> g_al_buffers_props;
-std::vector<ALenum> g_al_sources_props;
-
-void regist_al_prop(const ALenum al_name,uint16_t t,const char* name, uint16_t _type)
+void AudioPlayer::update()
 {
+	printf("AudioPlayer update!\n");
+	int buffer_processed = 0;
+	int queued_buffer = 0;
+	if(status == init)
+		buffer_processed = n_buffer;
+	else
+	{
+		
+		p_src->get_buffer_processed(&buffer_processed);
+		p_src->get_buffer_queued(&queued_buffer);
+		printf("=====now status:%d,buffer_processed:%d,queued:%d\n",status,
+			buffer_processed,queued_buffer
+		);
+		//processed all buffer.
+		if(status == stopping
+		   && n_queued_buffer == 0
+		   //&& queued_buffer == 0
+		   )
+		{
+			stop();
+			return;
+		}
+	}
+	uint32_t buffer_ids[n_buffer];
+	uint32_t* p_buffer_ids = buffer_ids;
+	int num_to_queue = 0;
+	int r;
+	if(buffer_processed>0)
+	{	
+		//get free buffer
+		if(status != init)
+		{
+			r = p_src->unqueue_buffers(
+				buffer_processed,buffer_ids);
+			printf("unqueue buffers:%d\n",buffer_processed);
+			if(r<0)
+				return;
+			n_queued_buffer -= buffer_processed;
+		}
+		else
+		{
+			p_buffer_ids = p_bufs->get_objs();
+		}
+		for(int i=0;i<buffer_processed;++i)
+		{
+			r = buffer_data_one(
+				p_bufs->get_idx(p_buffer_ids[i]),
+				UPDATE_TIME
+				);
+			if(r==0)
+			{
+				//no data;
+				//stop it.
+				status = stopping;
+				break;
+			}
+			num_to_queue++;
+		}
+	}
+	if(num_to_queue>0)
+	{
+		p_src->queue_buffers(num_to_queue,p_buffer_ids);
+		n_queued_buffer += num_to_queue;
+		p_src->get_buffer_queued(&queued_buffer);
+		printf("queue buffers:%d/%d\n",num_to_queue,queued_buffer);
+	}
+}
 
-	auto it = g_al_props.find(al_name);
-	if(it!=g_al_props.end())
+void AudioPlayer::read_from_ffstream(
+	std::shared_ptr<ffStream>& ff)
+{
+	ff_stream = ff;
+	if(!pdb)
+	{
+		pdb = ff_stream->get_decode_buffer();
+	}
+	// update();
+}
+
+void AudioPlayer::play()
+{
+	printf("AudioPlayer do play!\n");
+	if(status == playing)
 		return;
-	g_al_props[al_name] = std::make_shared<ALProp>(al_name,t,name,_type);
-
-	if(_type & AL_OBJE_LISTENER)
-		g_al_listener_props.push_back(al_name);
-	if(_type & AL_OBJE_SROUCES)
-		g_al_sources_props.push_back(al_name);
-	if(_type & AL_OBJE_BUFFERS)
-		g_al_buffers_props.push_back(al_name);
-	// g_al_props.insert(std::make_pair(al_name, p));
+	if(status == init)
+	{
+		update();//push buffer frist.
+	}
+	if(is_enable && p_src)
+	{
+		//pdev->play();
+		assert(status == stoped || status == paused || status == init);
+		status = playing;
+		p_src->play();
+	}
 }
 
-void regist_all_props()
+void AudioPlayer::pause()
 {
-	//source properties
-	REGIST_AL_PROP(AL_PITCH,AL_PROP_VAL_FLOAT,AL_OBJE_SROUCES);
-
-	REGIST_AL_PROP(AL_GAIN,AL_PROP_VAL_FLOAT,AL_OBJE_SROUCES|AL_OBJE_LISTENER);
-
-	REGIST_AL_PROP(AL_MAX_DISTANCE,AL_PROP_VAL_FLOAT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_ROLLOFF_FACTOR,AL_PROP_VAL_FLOAT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_REFERENCE_DISTANCE,AL_PROP_VAL_FLOAT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_MIN_GAIN, AL_PROP_VAL_FLOAT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_MAX_GAIN, AL_PROP_VAL_FLOAT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_CONE_OUTER_GAIN, AL_PROP_VAL_FLOAT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_CONE_INNER_ANGLE, AL_PROP_VAL_FLOAT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_CONE_OUTER_ANGLE, AL_PROP_VAL_FLOAT,AL_OBJE_SROUCES);
-
-	REGIST_AL_PROP(AL_POSITION, AL_PROP_VAL_FLOATV,AL_OBJE_SROUCES | AL_OBJE_LISTENER);
-	REGIST_AL_PROP(AL_VELOCITY, AL_PROP_VAL_FLOATV,AL_OBJE_SROUCES | AL_OBJE_LISTENER);
-	REGIST_AL_PROP(AL_DIRECTION, AL_PROP_VAL_FLOATV,AL_OBJE_SROUCES);
-
-	REGIST_AL_PROP(AL_SOURCE_RELATIVE, AL_PROP_VAL_INT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_SOURCE_TYPE, AL_PROP_VAL_INT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_LOOPING, AL_PROP_VAL_INT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_BUFFER, AL_PROP_VAL_INT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_SOURCE_STATE, AL_PROP_VAL_INT,AL_OBJE_SROUCES);
-	//read only
-	REGIST_AL_PROP(AL_BUFFERS_QUEUED, AL_PROP_VAL_INT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_BUFFERS_PROCESSED, AL_PROP_VAL_INT,AL_OBJE_SROUCES);
-
-	REGIST_AL_PROP(AL_SEC_OFFSET, AL_PROP_VAL_FLOAT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_SAMPLE_OFFSET, AL_PROP_VAL_FLOAT,AL_OBJE_SROUCES);
-	REGIST_AL_PROP(AL_BYTE_OFFSET, AL_PROP_VAL_FLOAT,AL_OBJE_SROUCES);
-
-	//listener
-	REGIST_AL_PROP(AL_GAIN, AL_PROP_VAL_FLOAT,AL_OBJE_LISTENER);
-	REGIST_AL_PROP(AL_ORIENTATION, AL_PROP_VAL_FLOATV,AL_OBJE_LISTENER);
-
-	//buffers
-	REGIST_AL_PROP(AL_FREQUENCY, AL_PROP_VAL_INT,AL_OBJE_BUFFERS);
-	REGIST_AL_PROP(AL_BITS, 	 AL_PROP_VAL_INT,AL_OBJE_BUFFERS);
-	REGIST_AL_PROP(AL_CHANNELS,  AL_PROP_VAL_INT,AL_OBJE_BUFFERS);
-	REGIST_AL_PROP(AL_SIZE, 	 AL_PROP_VAL_INT,AL_OBJE_BUFFERS);
-
+	if(status == paused)
+		return;
+	status = paused;
+	if(p_src)
+		p_src->pause();
+	
 }
 
-
-//-----ALSource----------
-int ALSources::play(int idx)
+void AudioPlayer::stop()
 {
-	alSourcePlay(_objs[idx]);
-	return CHECK_ERROR;
+	printf("do stop: now status:%d\n",status);
+	if(status == stoped)
+		return;
+	reset();
+	p_src->stop();
+	status = stoped;
+	pdev->on_stop(shared_from_this());
+}
+void AudioPlayer::enable()
+{
+	if(is_enable) return;
+	is_enable = true;
+	if(pdev)
+	{
+		pdev->on_enable(shared_from_this());
+	}
+}
+void AudioPlayer::disable()
+{
+	if(!is_enable) return;
+	is_enable = false;
+	if(pdev)
+	{
+		pdev->on_disable(shared_from_this());
+	}
 }
 
-int ALSources::play_all()
-{
-	alSourcePlayv(num,_objs);
-	return CHECK_ERROR;
-}
-//The paused sources will have their state changed to AL_PAUSED.
-int ALSources::pause(int idx)
-{
-	alSourcePause(_objs[idx]);
-	return CHECK_ERROR;
-}
-int ALSources::pause_all()
-{
-	alSourcePausev(num,_objs);
-	return CHECK_ERROR;
-}
-
-int ALSources::stop(int idx)
-{
-	alSourceStop(_objs[idx]);
-	return CHECK_ERROR;
-}
-int ALSources::stop_all()
-{
-	alSourceStopv(num,_objs);
-	return CHECK_ERROR;
-}
-int ALSources::rewind(int idx)
-{
-	alSourceRewind(_objs[idx]);
-	return CHECK_ERROR;
-}
-int ALSources::rewind_all()
-{
-	alSourceRewindv(num,_objs);
-	return CHECK_ERROR;
-}
-int ALSources::queue_buffers(int n,ALuint* buffers,int idx)
-{
-	alSourceQueueBuffers(_objs[idx],n,buffers);
-	return CHECK_ERROR;
-}
-int ALSources::unqueue_buffers(int n, ALuint* buffers, int idx)
-{
-	alSourceUnqueueBuffers(_objs[idx],n,buffers);
-	return CHECK_ERROR;
-}
-
-int ALBuffers::Release()
-{
-	//release buffer data.
-	alDeleteBuffers(num,_objs);
-	return CHECK_ERROR;
-}
-
-////-----ALBuffers----------
-
-int ALBuffers::buffer_data(ALenum format,
-const ALvoid* data,ALsizei size,
-ALsizei freq,int idx)
-{
-	alBufferData(_objs[idx],format,data,size,freq);
-	return CHECK_ERROR;
-}
 
 //-------------ALAudioDevice---------------
 tPtrAuDev ALAuidoDevice::p_inst = nullptr;
 
+void ALAuidoDevice::play()
+{
+	printf("ALAuidoDevice:: do play!\n");
+	for(auto& it:players)
+	{
+		if(it->is_enable)
+		{
+			it->play();
+		}
+	}
+}
+
+void ALAuidoDevice::stop()
+{
+	for(auto& it:players)
+	{
+		if(it->is_enable)
+		{
+			it->stop();
+		}
+	}
+}
+
+void ALAuidoDevice::on_stop(tPtrBasePlayer p)
+{
+	if(p->is_loop)
+	{
+		p->status = AudioPlayer::init;
+		// p->update(); //queue buffers first
+		p->play();
+	}
+}
+
+void ALAuidoDevice::pause()
+{
+	for(auto& it:players)
+	{
+		if(it->is_enable)
+		{
+			it->pause();
+		}
+	}
+}
+//return next wake
+uint32_t ALAuidoDevice::update()
+{
+	static uint32_t last_tick = 0;
+	uint32_t cur_tick = SDL_GetTicks();
+	if(cur_tick - last_tick < UPDATE_TIME)
+		return 0;
+	for(auto& it: players)
+	{
+		if(it->is_enable && it->status!= AudioPlayer::stoped)
+		{
+			it->update();
+		}
+	}
+	last_tick = cur_tick;
+	return UPDATE_TIME;
+}
+void ALAuidoDevice::add_player(tPtrBasePlayer p)
+{
+	players.push_back(p);
+	auto _p = std::static_pointer_cast<AudioPlayer>(p);
+	_p->set_dev(shared_from_this());
+}
+void ALAuidoDevice::rm_player(tPtrBasePlayer p)
+{
+	auto find_it = std::find(players.begin(),
+		players.end(),p);
+	if(find_it!=players.end())
+	{
+		players.erase(find_it);
+	}
+}
+
+ALAuidoDevice::ALAuidoDevice():BaseAudioDevice()
+{
+	init_al(&p_al_dev);
+}
+
+ALAuidoDevice::~ALAuidoDevice()
+{
+	auto Context=alcGetCurrentContext();
+	// auto Device=alcGetContextsDevice(Context);
+	alcMakeContextCurrent(NULL);
+	alcDestroyContext(Context);
+	alcCloseDevice(p_al_dev);
+}
 //---------init al------------------------
 
 ALCdevice* cur_alc_device = nullptr;
 static bool is_init_al = false;
+extern void regist_all_props();
 
 int init_al(ALCdevice** pdev=nullptr)
 {
@@ -232,127 +339,14 @@ void al_test_play()
 	p_dev->add_player(static_cast<tPtrBasePlayer>(
 		   p_player));
 	p_player->enable();
-	p_player->set_loop(true);
+	// p_player->set_loop(true);
 	p_player->read_from_ffstream(p_ffs);
 	p_dev->play();
-	// al_loop();
+
 	regist_update(al_loop);
 
 // SDL_Delay(3000);
 	sdl_loop();
 //exit
-auto Context=alcGetCurrentContext();
-auto Device=alcGetContextsDevice(Context);
-alcMakeContextCurrent(NULL);
-alcDestroyContext(Context);
-alcCloseDevice(Device);
-
-
-}
-
-// alutLoadWAVFile (ALbyte *fileName, ALenum *format, void **data, ALsizei *size, ALsizei *frequency);
-// void ALUT_APIENTRY alutUnloadWAV (ALenum format, ALvoid *data, ALsizei size, ALsizei frequency);
-// #define NUM_BUFFERS (4)
-void al_test_play1()
-{
-// 	alGetError(); // clear error code
-// 	ALBuffers bufs(NUM_BUFFERS);
-
-// 	int error;
-
-//     ALenum format;
-//     ALvoid *data;
-//     ALsizei size;
-//     ALsizei freq;
-
-// 	// Load test.wav
-// 	const char* name= "a1.wav";
-// 	alutLoadWAVFile((ALbyte*)name,&format,&data,&size,&freq);
-// 	if ((error = alGetError()) != AL_NO_ERROR)
-// 	{
-// 	      printf("alutLoadWAVFile test.wav : %d\n",error);
-// 	      // alDeleteBuffers(NUM_BUFFERS, g_Buffers);
-// 	      bufs.Release();
-// 	      return;
-// 	}
-
-// 	// Copy test.wav data into AL Buffer 0
-// 	// alBufferData(g_Buffers[0],format,data,size,freq);
-// 	bufs.buffer_data(format,data,size,freq,0);
-
-// 	if ((error = alGetError()) != AL_NO_ERROR)
-// 	{
-// 	      printf("alBufferData buffer 0 : %d\n", error);
-// 	      // alDeleteBuffers(NUM_BUFFERS, g_Buffers);
-// 	      bufs.Release();
-// 	      return;
-// 	}
-
-// 	// Unload test.wav
-// 	alutUnloadWAV(format,data,size,freq);
-// 	if ((error = alGetError()) != AL_NO_ERROR)
-// 	{
-// 	      printf("alutUnloadWAV : %d\n", error);
-// 	      // alDeleteBuffers(NUM_BUFFERS, g_Buffers);
-// 	      bufs.Release();
-// 	      return;
-// 	}
-// 	bufs.dump_all_prop();
-
-// 	// Generate Sources
-// 	// alGenSources(1,source);
-// 	ALSources src;
-
-// 	// alSourceRewind(source[0]);
-// 	// Attach buffer 0 to source
-// 	ALfloat gain;
-// 	// gain = 0.5f;
-
-// 	// alSourcef(source[0],AL_GAIN,gin);
-// 	// alGetSourcef(source[0],AL_GAIN,&gin);
-// 	// src.set_gain(gain);
-// 	src.get_gain(&gain);
-// 	printf("source gain:%f\n",gain);
-
-// 	// alGetSourcef(source[0],AL_MAX_GAIN,&gin);
-// 	// printf("source max gain:%f\n", gin);
-// 	// alGetSourcef(source[0],AL_MIN_GAIN,&gin);
-// 	// printf("source min gain:%f\n", gin);
-
-// 	ALfloat pos[3]={0.0f,0.0f,1.0f};
-
-// 	src.dump_prop(AL_POSITION);
-
-
-// 	// alSourcei(source[0], AL_BUFFER, g_Buffers[0]);
-// 	src.set_buffer(bufs[0]);
-
-// 	ALListener* listener = ALListener::GetInst();
-
-// 	listener->setv_pos(pos);
-
-// 	listener->getv_pos(pos);
-// 	printf("=====%.2f,%.2f,%.2f\n",pos[0],pos[1],pos[2]);
-// 	// src.dump_all_prop();
-
-// 	listener->dump_all_prop();
-
-
-// 	// listener->getv_pos(pos);
-// 	// printf("listener pos:%f,%f,%f\n",pos[0],pos[1],pos[2]);
-
-//     // alSourceQueueBuffers(source[0], 1, g_Buffers);
-//     // alSourcePlay(source[0]);
-
-
-//     src.play(0);
-//     // sdl_loop();
-//     SDL_Delay(2000);
-// // Exit
-// 	auto Context=alcGetCurrentContext();
-// 	auto Device=alcGetContextsDevice(Context);
-// 	alcMakeContextCurrent(NULL);
-// 	alcDestroyContext(Context);
-// 	alcCloseDevice(Device);
 
 }
