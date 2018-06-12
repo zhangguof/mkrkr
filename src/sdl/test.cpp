@@ -132,6 +132,7 @@ int main(int argc, char* args[])
 	// {
 	// 	printf("%s\n", "error!!!");
 	// }
+	sdl_loop();
 
 
 	return 0;

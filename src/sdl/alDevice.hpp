@@ -14,7 +14,7 @@
 #include <algorithm>
 #include <vector>
 
-extern uint32_t GetTickCount();
+// extern uint32_t GetTickCount();
 
 extern int al_check_error(const char* filename,const char* fun_name,int line);
 
@@ -535,8 +535,7 @@ public:
 
 		p_bufs->buffer_data(
 		format,
-		_data,size,
-		freq,
+		_data,size,freq,
 		buf_idx
 		);
 		return len;
@@ -548,31 +547,60 @@ public:
 		printf("AudioPlayer update!\n");
 
 		int buffer_processed = 0;
+		int queued_buffer = 0;
 		if(status == init)
 			buffer_processed = n_buffer;
 		else
+		{
+			
 			p_src->get_buffer_processed(&buffer_processed);
+			p_src->get_buffer_queued(&queued_buffer);
+			printf("=====now status:%d,buffer_processed:%d,queued:%d\n",status,
+				buffer_processed,queued_buffer
+			);
+			//processed all buffer.
+			if(status == stopping &&
+			   n_queued_buffer == 0)
+			{
+				stop();
+				return;
+			}
+		}
 
 		uint32_t buffer_ids[n_buffer];
+		uint32_t* p_buffer_ids = buffer_ids;
 		int num_to_queue = 0;
+		int r;
 
 		if(buffer_processed>0)
 		{	
 			//get free buffer
-			int r = p_src->unqueue_buffers(
-				buffer_processed,buffer_ids);
-			if(r<0)
-				return;
+			if(status != init)
+			{
+				r = p_src->unqueue_buffers(
+					buffer_processed,buffer_ids);
+
+				printf("processed buffers:%d\n",buffer_processed);
+				if(r<0)
+					return;
+				n_queued_buffer -= buffer_processed;
+			}
+			else
+			{
+				p_buffer_ids = p_bufs->get_objs();
+			}
 
 			for(int i=0;i<buffer_processed;++i)
 			{
 				r = buffer_data_one(
-					p_bufs->get_idx(buffer_ids[i]),
+					p_bufs->get_idx(p_buffer_ids[i]),
 					UPDATE_TIME
 					);
 				if(r==0)
 				{
 					//no data;
+					//stop it.
+					status = stopping;
 					break;
 				}
 				num_to_queue++;
@@ -580,7 +608,10 @@ public:
 		}
 		if(num_to_queue>0)
 		{
-			p_src->queue_buffers(num_to_queue,buffer_ids);
+			p_src->queue_buffers(num_to_queue,p_buffer_ids);
+			n_queued_buffer += num_to_queue;
+
+			printf("queue buffers:%d\n",num_to_queue);
 		}
 	}
 	void read_from_ffstream(
@@ -603,6 +634,8 @@ public:
 		if(is_enable && p_src)
 		{
 			//pdev->play();
+			assert(status == stoped || status == paused || status == init);
+
 			status = playing;
 			p_src->play();
 		}
@@ -617,10 +650,13 @@ public:
 	}
 	void stop()
 	{
+		printf("do stop: now status:%d\n",status);
 		if(status == stoped)
 			return;
 		reset();
 		p_src->stop();
+		status = stoped;
+		pdev->on_stop(shared_from_this());
 	}
 	void enable()
 	{
@@ -640,13 +676,14 @@ public:
 			pdev->on_disable(shared_from_this());
 		}
 	}
-	void set_dev(tPtrBaseDevice& p)
+	void set_dev(tPtrBaseDevice p)
 	{
 		pdev = p;
 	}
 	void reset()
 	{
 		//do reset here?
+		pdb->seek(0);
 	}
 
 	 
@@ -710,6 +747,13 @@ public:
 			}
 		}
 	}
+	void on_stop(tPtrBasePlayer p)
+	{
+		if(p->is_loop)
+		{
+			p->play();
+		}
+	}
 	void pause()
 	{
 		for(auto& it:players)
@@ -720,20 +764,22 @@ public:
 			}
 		}
 	}
-	void update()
+	//return next wake
+	uint32_t update()
 	{
 		static uint32_t last_tick = 0;
-		uint32_t cur_tick = GetTickCount();
+		uint32_t cur_tick = SDL_GetTicks();
 		if(cur_tick - last_tick < UPDATE_TIME)
-			return;
+			return 0;
 		for(auto& it: players)
 		{
-			if(it->is_enable)
+			if(it->is_enable && it->status!= AudioPlayer::stoped)
 			{
 				it->update();
 			}
 		}
 		last_tick = cur_tick;
+		return UPDATE_TIME;
 	}
 	void enable_player(tPtrBasePlayer p)
 	{
@@ -756,6 +802,9 @@ public:
 	void add_player(tPtrBasePlayer p)
 	{
 		players.push_back(p);
+		// static_cast<std::shared_ptr<AudioPlayer> >(p)->set_dev(shared_from_this());
+		auto _p = std::static_pointer_cast<AudioPlayer>(p);
+		_p->set_dev(shared_from_this());
 	}
 	void rm_player(tPtrBasePlayer p)
 	{

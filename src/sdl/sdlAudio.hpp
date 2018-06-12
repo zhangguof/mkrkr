@@ -38,6 +38,7 @@ public:
 	{
 		playing,
 		stoped,
+		stopping,
 		paused,
 		init,
 	} status;
@@ -79,6 +80,7 @@ public:
 
 	virtual void on_enable(tPtrBasePlayer p) = 0;
 	virtual void on_disable(tPtrBasePlayer p) = 0;
+	virtual void on_stop(tPtrBasePlayer p) = 0;
 
 	virtual void add_player(tPtrBasePlayer p) = 0;
 	virtual void rm_player(tPtrBasePlayer p) = 0;

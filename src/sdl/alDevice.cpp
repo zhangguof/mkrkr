@@ -5,6 +5,7 @@
 #include <iostream>
 #include <memory>
 #include "alDevice.hpp"
+#include "GLDevice.hpp"
 #include "SDL.h"
 #include "ffStream.hpp"
 
@@ -207,12 +208,24 @@ tPtrAuDev get_al_dev()
 	return ALAuidoDevice::get_inst();
 }
 
+void al_loop(uint32_t interval)
+{
+	static auto pd = get_al_dev();
+	uint32_t t = pd->update();
+}
+
+// extern void sdl_loop();
+// extern void regist_update(UpdateFunc f);
+
 void al_test_play()
 {
 	auto p_dev = get_al_dev();
 	auto p_player = std::make_shared<AudioPlayer>();
+	// const char* name = "../../data/bgm/ＢＧＭ／通常１.ogg";
+	const char* name = "../../voice/a0001.ogg";
+
 	
-	auto p_ffs = std::make_shared<ffStream>("../../data/bgm/ＢＧＭ／通常１.ogg");
+	auto p_ffs = std::make_shared<ffStream>(name);
     // ffStream ffs2("../../voice/a0001.ogg");
     // ffStream ffs3("../../data/井内啓二 - 英雄願望 〜アルゴイゥ卜~.mp3");
   
@@ -221,8 +234,11 @@ void al_test_play()
 	p_player->enable();
 	p_player->read_from_ffstream(p_ffs);
 	p_dev->play();
+	// al_loop();
+	regist_update(al_loop);
 
-SDL_Delay(2000);
+// SDL_Delay(3000);
+	sdl_loop();
 //exit
 auto Context=alcGetCurrentContext();
 auto Device=alcGetContextsDevice(Context);
