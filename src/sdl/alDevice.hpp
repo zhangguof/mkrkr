@@ -482,14 +482,16 @@ public:
 //one palyer<--> one sources
 //one source hold n buffers
 #define UPDATE_TIME (200) //ms
-#define SOURCE_BUFFER_NUM (5)
+#define SOURCE_BUFFER_NUM (4)
 
 inline int get_buffer_data_size(
 	int channles,
-	int freq,int update_time_ms
+	int freq,
+	int bits,
+	int update_time_ms
 	)
 {
-	return channles * freq * update_time_ms / 1000;
+	return bits/8 * channles * freq * update_time_ms / 1000;
 }
 
 class AudioPlayer: public BaseAudioPlayer,
@@ -526,7 +528,8 @@ public:
 		int channles = ff_stream->channels;//ff_stream->target_params.channles;
 		ALenum format = AL_FORMAT_STEREO16;
 		int size = get_buffer_data_size(channles,
-			freq,update_time_ms);
+			freq,16,
+			update_time_ms);
 		uint8_t* _data = nullptr;
 		int len = pdb->read(&_data, size);
 		if(len == 0)
@@ -535,7 +538,7 @@ public:
 
 		p_bufs->buffer_data(
 		format,
-		_data,size,freq,
+		_data,len,freq,
 		buf_idx
 		);
 		return len;
@@ -559,8 +562,10 @@ public:
 				buffer_processed,queued_buffer
 			);
 			//processed all buffer.
-			if(status == stopping &&
-			   n_queued_buffer == 0)
+			if(status == stopping
+			   && n_queued_buffer == 0
+			   //&& queued_buffer == 0
+			   )
 			{
 				stop();
 				return;
@@ -580,7 +585,7 @@ public:
 				r = p_src->unqueue_buffers(
 					buffer_processed,buffer_ids);
 
-				printf("processed buffers:%d\n",buffer_processed);
+				printf("unqueue buffers:%d\n",buffer_processed);
 				if(r<0)
 					return;
 				n_queued_buffer -= buffer_processed;
@@ -610,8 +615,9 @@ public:
 		{
 			p_src->queue_buffers(num_to_queue,p_buffer_ids);
 			n_queued_buffer += num_to_queue;
+			p_src->get_buffer_queued(&queued_buffer);
 
-			printf("queue buffers:%d\n",num_to_queue);
+			printf("queue buffers:%d/%d\n",num_to_queue,queued_buffer);
 		}
 	}
 	void read_from_ffstream(
@@ -751,6 +757,8 @@ public:
 	{
 		if(p->is_loop)
 		{
+			p->status = AudioPlayer::init;
+			p->update(); //queue buffers first
 			p->play();
 		}
 	}

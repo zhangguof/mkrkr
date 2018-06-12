@@ -232,6 +232,7 @@ void al_test_play()
 	p_dev->add_player(static_cast<tPtrBasePlayer>(
 		   p_player));
 	p_player->enable();
+	p_player->set_loop(true);
 	p_player->read_from_ffstream(p_ffs);
 	p_dev->play();
 	// al_loop();
