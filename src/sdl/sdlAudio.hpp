@@ -43,10 +43,10 @@ public:
 		init,
 	} status;
 
-	BaseAudioPlayer()
+	BaseAudioPlayer(bool _loop = false)
 	{
-		is_enable = false;
-		is_loop = false;
+		is_enable = true;
+		is_loop = _loop;
 		status = init;
 	}
 	virtual ~BaseAudioPlayer(){}

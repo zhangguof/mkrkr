@@ -17,7 +17,7 @@
 
 //--------------AudioPlyaer------------------------
 
-AudioPlayer::AudioPlayer(int nbuffer):BaseAudioPlayer()
+AudioPlayer::AudioPlayer(int nbuffer,bool _loop):BaseAudioPlayer(_loop)
 {
 	pdev = nullptr;
 	p_src = std::make_shared<ALSources>(1);
@@ -25,6 +25,7 @@ AudioPlayer::AudioPlayer(int nbuffer):BaseAudioPlayer()
 	n_buffer = nbuffer;
 	n_queued_buffer = 0;
 	ff_stream = nullptr;
+	is_static_type = false;
 }
 
 int AudioPlayer::buffer_data_one(int buf_idx,int update_time_ms)
@@ -45,9 +46,30 @@ int AudioPlayer::buffer_data_one(int buf_idx,int update_time_ms)
 	return len;
 }
 
+int AudioPlayer::buffer_data_all(int buf_idx)
+{
+	int freq = ff_stream->freq;//ff_stream->target_params.sample_rate;
+	int channles = ff_stream->channels;//ff_stream->target_params.channles;
+	
+	ALenum format = AL_FORMAT_STEREO16;
+
+	int len = pdb->len;
+	uint8_t* _data = pdb->get_data();
+	// int len = pdb->read(&_data, size);
+	if(len == 0)
+		return 0;
+
+	p_bufs->buffer_data(format,_data,len,freq,buf_idx);
+	p_src->set_buffer(p_bufs->get_obj(0));
+	return len;
+}
+
 void AudioPlayer::update()
 {
 	printf("AudioPlayer update!\n");
+
+	if(is_static_type)
+		return;
 	int buffer_processed = 0;
 	int queued_buffer = 0;
 	if(status == init)
@@ -116,13 +138,25 @@ void AudioPlayer::update()
 }
 
 void AudioPlayer::read_from_ffstream(
-	std::shared_ptr<ffStream>& ff)
+	std::shared_ptr<ffStream>& ff,bool is_static)
 {
 	ff_stream = ff;
+	//clear it
+	p_src->rewind();
+	int buf = 0;
+	p_src->set_buffer(buf);
+
+	int type;
+	p_src->get_type(&type);
+	assert(type == AL_UNDETERMINED);
+
+
 	if(!pdb)
 	{
 		pdb = ff_stream->get_decode_buffer();
 	}
+	is_static_type = is_static;
+
 	// update();
 }
 
@@ -132,15 +166,29 @@ void AudioPlayer::play()
 	if(status == playing)
 		return;
 	if(status == init)
-	{
-		update();//push buffer frist.
+	{	
+		//push buffer frist.
+		if(is_static_type)
+		{
+			buffer_data_all(0);
+			if(is_loop)
+			{
+				ALenum i = AL_TRUE;
+				p_src->set_looping(i);
+			}
+		}
+		else
+		{
+			update();
+		}
 	}
-	if(is_enable && p_src)
+	if(is_enable)
 	{
 		//pdev->play();
 		assert(status == stoped || status == paused || status == init);
 		status = playing;
 		p_src->play();
+		p_src->dump_all_prop();
 	}
 }
 
@@ -162,7 +210,8 @@ void AudioPlayer::stop()
 	reset();
 	p_src->stop();
 	status = stoped;
-	pdev->on_stop(shared_from_this());
+	if(!is_static_type)
+		pdev->on_stop(shared_from_this());
 }
 void AudioPlayer::enable()
 {
@@ -327,20 +376,27 @@ void al_loop(uint32_t interval)
 void al_test_play()
 {
 	auto p_dev = get_al_dev();
-	auto p_player = std::make_shared<AudioPlayer>();
-	// const char* name = "../../data/bgm/ＢＧＭ／通常１.ogg";
-	const char* name = "../../voice/a0001.ogg";
+	auto p_player1 = std::make_shared<AudioPlayer>();
+	auto p_player2 = std::make_shared<AudioPlayer>();
 
-	
-	auto p_ffs = std::make_shared<ffStream>(name);
+	const char* name1 = "../../data/bgm/ＢＧＭ／通常１.ogg";
+	const char* name2 = "../../voice/a0001.ogg";
+
+	auto p_ffs1 = std::make_shared<ffStream>(name1);
+	auto p_ffs2 = std::make_shared<ffStream>(name2);
     // ffStream ffs2("../../voice/a0001.ogg");
     // ffStream ffs3("../../data/井内啓二 - 英雄願望 〜アルゴイゥ卜~.mp3");
   
-	p_dev->add_player(static_cast<tPtrBasePlayer>(
-		   p_player));
-	p_player->enable();
+	p_dev->add_player(static_cast<tPtrBasePlayer>(p_player1));
+	p_dev->add_player(static_cast<tPtrBasePlayer>(p_player2));
+	// p_player->enable();
 	// p_player->set_loop(true);
-	p_player->read_from_ffstream(p_ffs);
+	p_player1->read_from_ffstream(p_ffs1,true);//static type
+	p_player1->disable();
+
+	p_player2->read_from_ffstream(p_ffs2,true);
+	p_player2->set_loop(true);
+
 	p_dev->play();
 
 	regist_update(al_loop);

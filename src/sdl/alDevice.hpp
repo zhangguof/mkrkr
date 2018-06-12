@@ -463,18 +463,24 @@ public:
 	std::shared_ptr<DataBuffer> pdb;
 	std::shared_ptr<ffStream> ff_stream;
 
+//AL_SOURCE_TYPE == AL_STATIC?
+	bool is_static_type;
+
 	tPtrBaseDevice pdev;
 	int n_buffer;
 	int n_queued_buffer;
 
 
-	AudioPlayer(int nbuffer=SOURCE_BUFFER_NUM);
+	AudioPlayer(int nbuffer=SOURCE_BUFFER_NUM,
+		bool _loop = false);
 	~AudioPlayer(){}
 	int buffer_data_one(int buf_idx,int update_time_ms);
+	int buffer_data_all(int buf_idx);
 	//read bytes from data
 	void update();
 
-	void read_from_ffstream(std::shared_ptr<ffStream>& ff);
+	void read_from_ffstream(std::shared_ptr<ffStream>& ff,
+		bool is_static=false);
 
 	void play();
 	void pause();
