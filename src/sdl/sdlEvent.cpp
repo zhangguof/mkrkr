@@ -14,13 +14,19 @@ SDL_UserEvent& TimerEvent::get_event()
 	return *this;
 }
 
+extern void process_native_event(void* p_imp, SDL_UserEvent& e);
+
 void process_use_envet(SDL_UserEvent& e)
 {
-	// SDL_Log("process_use_envet:%d",e.code);
+	SDL_Log("process_use_envet:%d",e.code);
 
 	if(e.code == TIMER_EVNET_CODE)
 	{
 		tUseEventCb cb =  (tUseEventCb)(e.data1); //static_cast<tUseEventCb>(e.data1);
 		cb(e.data2);
+	}
+	else if(e.code == Native_Event_Code)
+	{
+		process_native_event(e.data1,e);
 	}
 }
