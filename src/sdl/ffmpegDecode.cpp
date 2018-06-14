@@ -160,7 +160,10 @@ int ffStream::open_audio_stream()
 	audio_swr_resampling_audio_init(&swr,
 	&target_params,aCodecCtx);
 
+	uint32_t start_tick = SDL_GetTicks();
 	read_all_packet();
+	printf("===%s:read packet cost:%u ms\n",fname.c_str(),SDL_GetTicks()-start_tick);
+
 	has_open = true;
 
 	return 0;

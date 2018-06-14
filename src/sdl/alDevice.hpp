@@ -443,6 +443,81 @@ public:
 #define UPDATE_TIME (200) //ms
 #define SOURCE_BUFFER_NUM (4)
 
+class LoopBuffer
+{
+public:
+	//std::vector<uint8_t> v;
+	uint8_t* _data;
+	int r_pos;
+	int w_pos;
+	int readable_len;
+	int writeable_len;
+	int len;
+	LoopBuffer(int size)
+	{
+		// v.resize(size);
+		_data = new uint8_t[size];
+		reset();
+
+	}
+	void reset()
+	{
+		r_pos  = w_pos = 0;
+		readable_len = 0;
+		writeable_len = len = size;
+	}
+	bool write(void* p1, int bytes)
+	{
+		if(writeable_len<bytes)
+			return false;
+		int n_pos = w_pos + bytes;
+		if(n_pos<len)
+		{
+			memcpy(_data+w_pos,p1,bytes);
+			w_pos = n_pos;
+
+		}
+		else
+		{
+			//bytes < len - w_pos
+			int remain_len = len - w_pos;
+			memcpy(_data+w_pos,p1,remain_len);
+			memcpy(_data,p1+remain_len,bytes - remain_len);
+			w_pos = bytes - remain_len;
+		}
+		writeable_len -= bytes;
+		readable_len += bytes;
+		return true;
+	}
+	bool read(void* p1,int bytes)
+	{
+		if(readable_len<bytes)
+			return false;
+		int n_pos = r_pos + bytes;
+		if(n_pos < len)
+		{
+			memcpy(p1,_data+r_pos,bytes);
+			r_pos = n_pos;
+		}
+		else
+		{
+			// bytes< len - r_pos;
+			int remain_len = len - r_pos;
+			memcpy(p1,_data+r_pos,remain_len);
+			memcpy(p1 + remain_len, _data, bytes - remain_len);
+			r_pos = bytes - remain_len;
+		}
+		writeable_len += bytes;
+		readable_len -= bytes;
+		return true;
+	}
+	~LoopBuffer()
+	{
+		delete[] _data;
+	}
+
+};
+
 inline int get_buffer_data_size(
 	int channles,
 	int freq,
@@ -462,6 +537,7 @@ public:
 	std::shared_ptr<ALBuffers> p_bufs;
 	std::shared_ptr<DataBuffer> pdb;
 	std::shared_ptr<ffStream> ff_stream;
+	bool has_lock;
 
 //AL_SOURCE_TYPE == AL_STATIC?
 	bool is_static_type;
@@ -474,6 +550,7 @@ public:
 	AudioPlayer(int nbuffer=SOURCE_BUFFER_NUM,
 		bool _loop = false);
 	~AudioPlayer(){}
+	void Release(){}
 	int buffer_data_one(int buf_idx,int update_time_ms);
 	int buffer_data_all(int buf_idx);
 	//read bytes from data
@@ -495,8 +572,14 @@ public:
 	void reset()
 	{
 		//do reset here?
-		pdb->seek(0);
+		pdb->reset();
 	}
+	void seek(int n)
+	{
+		pdb->seek(n);
+	}
+	int lock(int bytes, void** p1,int* b1);
+	int unlock(void* p1, int b1);
 };
 
 extern int init_al(ALCdevice** pdev);
@@ -512,6 +595,8 @@ public:
 public:
 	std::vector<tPtrBasePlayer> players;
 	ALCdevice* p_al_dev;
+
+	AudioFormat format;
 
 	static tPtrAuDev p_inst;// = nullptr;
 
@@ -557,6 +642,17 @@ public:
 
 	void add_player(tPtrBasePlayer p);
 	void rm_player(tPtrBasePlayer p);
+
+
+	int SetFormat(const AudioFormat* fm);
+	int GetFormat(AudioFormat* fm);
+
+	int CreateSoundBuffer(std::shared_ptr<AudioPlayer>& pbuf)
+	{
+		pbuf = std::make_shared<AudioPlayer>();
+		add_player(pbuf);
+		return 0;
+	}
 
 private:
 	ALAuidoDevice();

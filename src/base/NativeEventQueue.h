@@ -32,7 +32,7 @@ public:
 class NativeEventQueueIntarface {
 public:
 	// デフォルトハンドラ
-	// virtual void HandlerDefault( class NativeEvent& event ) = 0;
+	virtual void HandlerDefault( class NativeEvent& event ) = 0;
 
 	// Queue の生成
 	virtual void Allocate() = 0;

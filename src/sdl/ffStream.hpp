@@ -61,13 +61,21 @@ public:
 		return v.data()+len;
 		// return &(*(v.begin()+len));
 	}
-	void push(uint8_t* data,int size)
+	void ensure_size(int size)
 	{
-		//fix using size() better than capacity()!!!
-		if(len + size > v.size()) 
+		if(len + size > v.size())
 		{
 			v.resize(len + size);
 		}
+	}
+	void push(uint8_t* data,int size)
+	{
+		//fix using size() better than capacity()!!!
+		ensure_size(size);
+		// if(len + size > v.size()) 
+		// {
+		// 	v.resize(len + size);
+		// }
 		memcpy(get_tail(),data,size);
 		len += size;
 	}
@@ -101,6 +109,16 @@ public:
 			rpos = len;
 		else
 			rpos = pos;
+	}
+	void* new_buffer(int bytes)
+	{
+		ensure_size(bytes);
+		return get_tail();
+	}
+	void reset()
+	{
+		rpos = 0;
+		len = 0;
 	}
 };
 
@@ -157,7 +175,10 @@ public:
 		open_audio_stream();
 		if(is_decode_all)
 		{
+			uint32_t start_tick = SDL_GetTicks();
 			decode_all();
+			printf("===%s:decode_all cost:%u ms\n",fname.c_str(),SDL_GetTicks()-start_tick);
+
 		}
 	}
 	std::shared_ptr<DataBuffer> get_decode_buffer()

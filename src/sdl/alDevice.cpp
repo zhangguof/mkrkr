@@ -26,6 +26,7 @@ AudioPlayer::AudioPlayer(int nbuffer,bool _loop):BaseAudioPlayer(_loop)
 	n_queued_buffer = 0;
 	ff_stream = nullptr;
 	is_static_type = false;
+	has_lock = false;
 }
 
 int AudioPlayer::buffer_data_one(int buf_idx,int update_time_ms)
@@ -207,7 +208,8 @@ void AudioPlayer::stop()
 	printf("do stop: now status:%d\n",status);
 	if(status == stoped)
 		return;
-	reset();
+	// reset();
+	seek(0);
 	p_src->stop();
 	status = stoped;
 	if(!is_static_type)
@@ -232,6 +234,24 @@ void AudioPlayer::disable()
 	}
 }
 
+void AudioPlayer::lock(int bytes, void** p1,int *b1)
+{
+	if(has_lock)
+	{
+		*p1 = nullptr;
+		*b1 = 0;
+		return;
+	}
+	// *p1 = pdb.get_dat
+	*p1 = pdb->new_buffer(bytes);
+	*b1 = bytes;
+}
+
+void AudioPlayer::unlock(void* p1, int b1)
+{
+	if(has_lock)
+		has_lock = false;
+}
 
 //-------------ALAudioDevice---------------
 tPtrAuDev ALAuidoDevice::p_inst = nullptr;
@@ -310,6 +330,23 @@ void ALAuidoDevice::rm_player(tPtrBasePlayer p)
 	{
 		players.erase(find_it);
 	}
+}
+
+
+int ALAuidoDevice::SetFormat(const AudioFormat* fm)
+{
+	format = *fm;
+	// if(pDev)
+	// {
+	// 	int ret = pDev->init_spec(fm->nSamplesPerSec,fm->nChannels);
+	// 	return ret;
+	// }
+	return 0;
+}
+int ALAuidoDevice::GetFormat(AudioFormat* fm)
+{
+	*fm = format;
+	return 0;
 }
 
 ALAuidoDevice::ALAuidoDevice():BaseAudioDevice()
