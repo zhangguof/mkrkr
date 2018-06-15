@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <algorithm>
 #include "ffStream.hpp"
+#include "AL/al.h"
 
 class audioDevice;
 class pcmBuffer;
@@ -17,7 +18,8 @@ typedef tPcmPtr tPtrPcm;
 
 struct AudioFormat
 {
-  SDL_AudioFormat format; //pcm is AUDIO_S16SYS
+  // SDL_AudioFormat format; //pcm is AUDIO_S16SYS
+  ALenum format; //al format,like AL_FORMAT_STEREO16
   uint16_t  nChannels;
   uint16_t wBitsPerSample; //8 or 16
   uint16_t wFormatTag;

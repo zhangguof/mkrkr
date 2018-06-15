@@ -42,7 +42,7 @@ public:
 
 	virtual void Dispatch( class NativeEvent& event ) = 0;
 
-	virtual void PostEvent( NativeEvent& event ) = 0;
+	virtual void PostEvent( NativeEvent event ) = 0;
 };
 
 class NativeEventQueueImplement : public NativeEventQueueIntarface {
@@ -66,7 +66,7 @@ public:
 	// Queue の削除
 	void Deallocate();
 
-	void PostEvent( NativeEvent& event );
+	void PostEvent( NativeEvent event );
 
 	void* GetOwner() { return handler; }
 };

@@ -27,13 +27,15 @@ AudioPlayer::AudioPlayer(int nbuffer,bool _loop):BaseAudioPlayer(_loop)
 	ff_stream = nullptr;
 	is_static_type = false;
 	has_lock = false;
+
+
 }
 
 int AudioPlayer::buffer_data_one(int buf_idx,int update_time_ms)
 {
 	int freq = ff_stream->freq;//ff_stream->target_params.sample_rate;
 	int channles = ff_stream->channels;//ff_stream->target_params.channles;
-	ALenum format = AL_FORMAT_STEREO16;
+	ALenum _format = AL_FORMAT_STEREO16;
 	int size = get_buffer_data_size(channles,
 		freq,16,
 		update_time_ms);
@@ -43,9 +45,27 @@ int AudioPlayer::buffer_data_one(int buf_idx,int update_time_ms)
 		return 0;
 	assert(len <= size);
 
-	p_bufs->buffer_data(format,_data,len,freq,buf_idx);
+	p_bufs->buffer_data(_format,_data,len,freq,buf_idx);
 	return len;
 }
+
+
+int AudioPlayer::buffer_data_unit(int buf_idx,int bytes)
+{
+	int freq = format.nSamplesPerSec;
+	int channles = format.nChannels;
+	ALenum _format = format.format;
+	uint8_t* _data;
+	// assert(bytes == nUnitSize);
+	bool ret  = plb->read(&_data,bytes);
+	if(!ret)
+	{
+		return 0;
+	}
+	p_bufs->buffer_data(_format,_data,bytes,freq,buf_idx);
+	return bytes;
+}
+
 
 int AudioPlayer::buffer_data_all(int buf_idx)
 {
@@ -65,60 +85,105 @@ int AudioPlayer::buffer_data_all(int buf_idx)
 	return len;
 }
 
-void AudioPlayer::update()
+void AudioPlayer::unqueue_buffers(ALuint* buffer_ids,int& n)
 {
-	printf("AudioPlayer update!\n");
-
-	if(is_static_type)
-		return;
+	n = 0;
 	int buffer_processed = 0;
-	int queued_buffer = 0;
 	if(status == init)
+	{
 		buffer_processed = n_buffer;
+	}
 	else
 	{
-		
 		p_src->get_buffer_processed(&buffer_processed);
-		p_src->get_buffer_queued(&queued_buffer);
-		printf("=====now status:%d,buffer_processed:%d,queued:%d\n",status,
-			buffer_processed,queued_buffer
-		);
-		//processed all buffer.
-		if(status == stopping
-		   && n_queued_buffer == 0
-		   //&& queued_buffer == 0
-		   )
-		{
-			stop();
-			return;
-		}
 	}
-	uint32_t buffer_ids[n_buffer];
-	uint32_t* p_buffer_ids = buffer_ids;
-	int num_to_queue = 0;
-	int r;
+
 	if(buffer_processed>0)
-	{	
-		//get free buffer
-		if(status != init)
+	{
+		int r;
+		if(status!=init)
 		{
 			r = p_src->unqueue_buffers(
-				buffer_processed,buffer_ids);
-			printf("unqueue buffers:%d\n",buffer_processed);
+					buffer_processed,buffer_ids);
 			if(r<0)
 				return;
 			n_queued_buffer -= buffer_processed;
 		}
 		else
 		{
-			p_buffer_ids = p_bufs->get_objs();
+			memcpy(buffer_ids, p_bufs->get_objs(), buffer_processed);
 		}
-		for(int i=0;i<buffer_processed;++i)
+		n = buffer_processed;
+	}
+}
+
+void AudioPlayer::queue_buffers(ALuint* buffer_ids, int n)
+{
+	p_src->queue_buffers(n,buffer_ids);
+	n_queued_buffer += n;
+}
+
+void AudioPlayer::update_uint()
+{
+	int nfree = 0;
+	if(status == stopping && n_queued_buffer == 0)
+	{
+		stop();
+		return;
+	}
+	ALuint buffer_ids[n_buffer];
+
+	unqueue_buffers(buffer_ids, nfree);
+
+	int num_to_queue = 0;
+	int r;
+	if(nfree>0)
+	{	
+		for(int i=0;i<nfree;++i)
+		{
+			r = buffer_data_unit(
+				p_bufs->get_idx(buffer_ids[i]),
+				nUnitSize);
+			if(r==0)
+			{
+				status = stopping;
+				break;
+			}
+			num_to_queue++;
+		}
+	}
+	if(num_to_queue>0)
+	{
+		queue_buffers(buffer_ids, num_to_queue);
+	}
+}
+void AudioPlayer::update()
+{
+	printf("AudioPlayer update!\n");
+
+	if(is_static_type)
+		return;
+	int nfree = 0;
+	int queued_buffer = 0;
+	if(status == stopping && n_queued_buffer == 0)
+	{
+		stop();
+		return;
+	}
+
+	uint32_t buffer_ids[n_buffer];
+
+	unqueue_buffers(buffer_ids, nfree);
+
+	int num_to_queue = 0;
+	int r;
+	if(nfree>0)
+	{	
+		for(int i=0;i<nfree;++i)
 		{
 			r = buffer_data_one(
-				p_bufs->get_idx(p_buffer_ids[i]),
-				UPDATE_TIME
-				);
+				p_bufs->get_idx(buffer_ids[i]),
+				UPDATE_TIME);
 			if(r==0)
 			{
 				//no data;
@@ -131,8 +196,7 @@ void AudioPlayer::update()
 	}
 	if(num_to_queue>0)
 	{
-		p_src->queue_buffers(num_to_queue,p_buffer_ids);
-		n_queued_buffer += num_to_queue;
+		queue_buffers(buffer_ids, num_to_queue);
 		p_src->get_buffer_queued(&queued_buffer);
 		printf("queue buffers:%d/%d\n",num_to_queue,queued_buffer);
 	}
@@ -234,23 +298,32 @@ void AudioPlayer::disable()
 	}
 }
 
-void AudioPlayer::lock(int bytes, void** p1,int *b1)
+//ready for fill buffer
+bool AudioPlayer::lock(int pos,int bytes, void** p1,int* b1)
 {
 	if(has_lock)
 	{
 		*p1 = nullptr;
 		*b1 = 0;
-		return;
+		return false;
 	}
 	// *p1 = pdb.get_dat
-	*p1 = pdb->new_buffer(bytes);
+	plb->lock(pos,p1,bytes);
 	*b1 = bytes;
+	return true;
 }
 
-void AudioPlayer::unlock(void* p1, int b1)
+//end for fill buffer,sync to openal obj
+bool AudioPlayer::unlock(void* p1, int b1)
 {
 	if(has_lock)
+	{
 		has_lock = false;
+		plb->unlock(p1,b1);
+		update_uint();
+		return true;
+	}
+	return false;
 }
 
 //-------------ALAudioDevice---------------

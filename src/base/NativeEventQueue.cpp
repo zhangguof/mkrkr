@@ -34,7 +34,7 @@ void process_native_event(void* p_imp, SDL_UserEvent& e)
 		_this->WndProc(event);
 }
 
-void NativeEventQueueImplement::PostEvent(NativeEvent& e ) {
+void NativeEventQueueImplement::PostEvent(NativeEvent e ) {
 	// ::PostMessage( window_handle_, event.Message, event.WParam, event.LParam );
 	SDL_Event event;
 	if(e.data1 == nullptr)

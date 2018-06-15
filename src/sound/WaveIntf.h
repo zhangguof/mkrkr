@@ -16,6 +16,10 @@
 #include "tjsUtils.h"
 
 
+#define WAVE_FORMAT_PCM 0x0001
+#define WAVE_FORMAT_IEEE_FLOAT 0x0003
+#define WAVE_FORMAT_EXTENSIBLE 0xFFFE
+
 /*[*/
 //---------------------------------------------------------------------------
 // Sound Global Focus Mode

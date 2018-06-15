@@ -453,18 +453,52 @@ public:
 	int readable_len;
 	int writeable_len;
 	int len;
+	// op by unit size.
 	LoopBuffer(int size)
 	{
-		// v.resize(size);
+		len = size;
 		_data = new uint8_t[size];
 		reset();
-
 	}
 	void reset()
 	{
 		r_pos  = w_pos = 0;
 		readable_len = 0;
-		writeable_len = len = size;
+		writeable_len = len;;
+	}
+	bool lock(int pos,void** p1, int bytes)
+	{
+		//get write data;
+		assert(pos == w_pos);
+		int n_pos = w_pos + bytes;
+		
+		if(writeable_len < bytes)
+			return false;
+		
+		if(n_pos< len)
+		{
+			*p1 = _data+w_pos;
+		}
+		else
+		{
+			assert(bytes == len - w_pos);
+			*p1 = _data+w_pos;
+		}
+		return true;
+	}
+	bool unlock(void*p1, int bytes)
+	{
+		assert(p1 == _data + w_pos);
+		int n_pos = w_pos + bytes;
+		if(n_pos < len)
+		{
+			w_pos = n_pos;
+		}
+		else
+		{
+			w_pos = 0;
+		}
+		return true;
 	}
 	bool write(void* p1, int bytes)
 	{
@@ -479,38 +513,47 @@ public:
 		}
 		else
 		{
-			//bytes < len - w_pos
+			//bytes <= len - w_pos
+			assert(bytes == len - w_pos);
 			int remain_len = len - w_pos;
 			memcpy(_data+w_pos,p1,remain_len);
-			memcpy(_data,p1+remain_len,bytes - remain_len);
-			w_pos = bytes - remain_len;
+			// if(bytes - remain_len > 0)
+				// memcpy(_data,p1+remain_len,bytes - remain_len);
+			// w_pos = bytes - remain_len;
+			w_pos = 0;
 		}
 		writeable_len -= bytes;
 		readable_len += bytes;
 		return true;
 	}
-	bool read(void* p1,int bytes)
+	bool read(uint8_t** p1,int bytes)
 	{
 		if(readable_len<bytes)
 			return false;
 		int n_pos = r_pos + bytes;
 		if(n_pos < len)
 		{
-			memcpy(p1,_data+r_pos,bytes);
+			// memcpy(p1,_data+r_pos,bytes);
+			*p1 = _data + r_pos;
 			r_pos = n_pos;
 		}
 		else
 		{
-			// bytes< len - r_pos;
+			// bytes<= len - r_pos;
+			assert(bytes == len - r_pos);
+
 			int remain_len = len - r_pos;
-			memcpy(p1,_data+r_pos,remain_len);
-			memcpy(p1 + remain_len, _data, bytes - remain_len);
+			// memcpy(p1,_data+r_pos,remain_len);
+			*p1 = _data + r_pos;
+			// if(bytes - remain_len > 0)
+				// memcpy(p1 + remain_len, _data, bytes - remain_len);
 			r_pos = bytes - remain_len;
 		}
 		writeable_len += bytes;
 		readable_len -= bytes;
 		return true;
 	}
+
 	~LoopBuffer()
 	{
 		delete[] _data;
@@ -532,12 +575,24 @@ class AudioPlayer: public BaseAudioPlayer,
 public std::enable_shared_from_this<AudioPlayer>
 {
 public:
-
+//openAL interface
 	std::shared_ptr<ALSources> p_src;
 	std::shared_ptr<ALBuffers> p_bufs;
 	std::shared_ptr<DataBuffer> pdb;
-	std::shared_ptr<ffStream> ff_stream;
+
+//simulate DirectSound Buffer API
+	std::shared_ptr<LoopBuffer> plb;
+	int nUnits; // n ALBuffers.
+	int nSize;  //Loop buffer size.
+	int nUnitSize;
+
 	bool has_lock;
+	AudioFormat format;
+
+	//for test
+	std::shared_ptr<ffStream> ff_stream;
+	int freq;
+	
 
 //AL_SOURCE_TYPE == AL_STATIC?
 	bool is_static_type;
@@ -553,6 +608,11 @@ public:
 	void Release(){}
 	int buffer_data_one(int buf_idx,int update_time_ms);
 	int buffer_data_all(int buf_idx);
+	int buffer_data_unit(int buf_idx,int bytes);
+	void unqueue_buffers(ALuint* buffer_ids,int& n);
+	void queue_buffers(ALuint* buffer_ids, int n);
+	void update_uint();
+	
 	//read bytes from data
 	void update();
 
@@ -569,6 +629,16 @@ public:
 	{
 		pdev = p;
 	}
+	int SetFormat(AudioFormat& _format)
+	{
+		format = _format;
+		return 0;
+	}
+	int GetFormat(AudioFormat& _format)
+	{
+		_format = format;
+		return 0;
+	}
 	void reset()
 	{
 		//do reset here?
@@ -576,10 +646,38 @@ public:
 	}
 	void seek(int n)
 	{
-		pdb->seek(n);
+		// pdb->seek(n);
 	}
-	int lock(int bytes, void** p1,int* b1);
-	int unlock(void* p1, int b1);
+	void new_loop_buffer(int n,int size)
+	{
+		plb = std::make_shared<LoopBuffer>(size);
+		nUnits = n;
+		nSize =  size;
+		nUnitSize = size / n;
+	}
+	bool lock(int pos,int bytes, void** p1,int* b1);
+	bool unlock(void* p1, int b1);
+	bool GetCurrentPosition(int &play_pos, int &write_pos)
+	{
+		play_pos = plb->r_pos;
+		write_pos = plb->w_pos;
+		return true;	
+	}
+	void SetVolume(int v)
+	{
+		float vol = v/10000.0;
+		if(vol > 1.0f)
+		{
+			vol = 1.0f;
+		}
+		if(vol < 0.0f) vol = 0.0f;
+		p_src->set_gain(vol);
+	}
+	void SetFrequency(int freq)
+	{
+		// p_src->set_freq(freq);
+		this->freq = freq;
+	}
 };
 
 extern int init_al(ALCdevice** pdev);
@@ -647,12 +745,20 @@ public:
 	int SetFormat(const AudioFormat* fm);
 	int GetFormat(AudioFormat* fm);
 
-	int CreateSoundBuffer(std::shared_ptr<AudioPlayer>& pbuf)
+//use loop  buffer
+	//simulate directsound buffer
+
+	int CreateSoundBuffer(std::shared_ptr<AudioPlayer>& pbuf,int n,int size,AudioFormat& _format)
 	{
-		pbuf = std::make_shared<AudioPlayer>();
+		pbuf = std::make_shared<AudioPlayer>(n);
+		pbuf->new_loop_buffer(n,size);
+		pbuf->SetFormat(_format);
+		pbuf->set_loop(true);
+
 		add_player(pbuf);
 		return 0;
 	}
+
 
 private:
 	ALAuidoDevice();

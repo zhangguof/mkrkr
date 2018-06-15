@@ -11,6 +11,7 @@ FILE* wfopen(const wchar_t* filename, const wchar_t* mode);
 extern unsigned long GetTickCount();
 extern tjs_uint64 TVPGetTickCount();
 extern void TVPStartTickCount();
+extern uint32_t timeGetTime();
 
 extern bool TVPGetCommandLine(const tjs_char * name, tTJSVariant *value);
 

@@ -43,7 +43,7 @@
 
 #define TVP_WSB_ACCESS_FREQ (8)  // wave sound buffer access frequency (hz)
 
-#define TVP_TIMEOFS_INVALID_VALUE ((tjs_int)(- 2147483648i64)) // invalid value for 32bit time offset
+#define TVP_TIMEOFS_INVALID_VALUE ((tjs_int)(- 2147483648)) // invalid value for 32bit time offset
 
 //---------------------------------------------------------------------------
 
@@ -191,7 +191,7 @@ public:
 	bool FillBuffer(bool firstwrite = false, bool allowpause = true);
 
 private:
-	void ResetLastCheckedDecodePos(DWORD pp = (DWORD)-1);
+	void ResetLastCheckedDecodePos(int pp = -1);
 
 public:
 	tjs_int FireLabelEventsAndGetNearestLabelEventStep(tjs_int64 tick);
