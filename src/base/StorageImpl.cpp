@@ -676,7 +676,12 @@ tjs_uint64 TJS_INTF_METHOD tTVPLocalFileStream::Seek(tjs_int64 offset, tjs_int w
 		return TJS_UI64_VAL(0xffffffffffffffff);
 
 	tjs_uint64 ret = 0;
-	*(tjs_uint32*)&ret = (tjs_uint32)offset;
+	// *(tjs_uint32*)&ret = (tjs_uint32)offset;
+	ret = ::ftell(Handle);
+	if(ret == (tjs_uint64)-1)
+	{
+		return TJS_UI64_VAL(0xffffffffffffffff);
+	}
 	return ret;
 #endif
 }
