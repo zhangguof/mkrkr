@@ -18,7 +18,7 @@ extern void process_native_event(void* p_imp, SDL_UserEvent& e);
 
 void process_use_envet(SDL_UserEvent& e)
 {
-	SDL_Log("process_use_envet:%d",e.code);
+	// SDL_Log("process_use_envet:%d",e.code);
 
 	if(e.code == TIMER_EVNET_CODE)
 	{

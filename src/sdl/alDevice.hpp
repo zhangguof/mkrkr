@@ -498,6 +498,8 @@ public:
 		{
 			w_pos = 0;
 		}
+		writeable_len -= bytes;
+		readable_len += bytes;
 		return true;
 	}
 	bool write(void* p1, int bytes)
@@ -642,7 +644,8 @@ public:
 	void reset()
 	{
 		//do reset here?
-		pdb->reset();
+		if(pdb)
+			pdb->reset();
 	}
 	void seek(int n)
 	{

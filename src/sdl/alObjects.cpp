@@ -9,6 +9,7 @@ const char* fun_name,int line)
 	printf("file:%s:%d,func:%s,error(%d):%s\n",
 		filename,line,fun_name,
 		error,alGetString(error));
+	assert(false);
 	return -1;
 }
 

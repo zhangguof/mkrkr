@@ -52,7 +52,7 @@ int AudioPlayer::buffer_data_one(int buf_idx,int update_time_ms)
 
 int AudioPlayer::buffer_data_unit(int buf_idx,int bytes)
 {
-	int freq = format.nSamplesPerSec;
+	uint32_t freq = format.nSamplesPerSec;
 	int channles = format.nChannels;
 	ALenum _format = format.format;
 	uint8_t* _data;
@@ -126,9 +126,10 @@ void AudioPlayer::queue_buffers(ALuint* buffer_ids, int n)
 void AudioPlayer::update_uint()
 {
 	int nfree = 0;
+	SDL_Log("update uint!!");
 	if(status == stopping && n_queued_buffer == 0)
 	{
-		stop();
+		// stop();
 		return;
 	}
 	ALuint buffer_ids[n_buffer];
@@ -146,7 +147,7 @@ void AudioPlayer::update_uint()
 				nUnitSize);
 			if(r==0)
 			{
-				status = stopping;
+				// status = stopping;
 				break;
 			}
 			num_to_queue++;
@@ -155,6 +156,11 @@ void AudioPlayer::update_uint()
 	if(num_to_queue>0)
 	{
 		queue_buffers(buffer_ids, num_to_queue);
+
+		int queued_buffer;
+		p_src->get_buffer_queued(&queued_buffer);
+		printf("queue buffers:%d/%d\n",num_to_queue,queued_buffer);
+
 	}
 }
 void AudioPlayer::update()
@@ -162,6 +168,8 @@ void AudioPlayer::update()
 	printf("AudioPlayer update!\n");
 
 	if(is_static_type)
+		return;
+	if(!ff_stream)
 		return;
 	int nfree = 0;
 	int queued_buffer = 0;
@@ -244,7 +252,8 @@ void AudioPlayer::play()
 		}
 		else
 		{
-			update();
+			// update();
+			update_uint();
 		}
 	}
 	if(is_enable)
@@ -308,8 +317,10 @@ bool AudioPlayer::lock(int pos,int bytes, void** p1,int* b1)
 		return false;
 	}
 	// *p1 = pdb.get_dat
+	has_lock = true;
 	plb->lock(pos,p1,bytes);
 	*b1 = bytes;
+	
 	return true;
 }
 
@@ -358,7 +369,7 @@ void ALAuidoDevice::on_stop(tPtrBasePlayer p)
 	{
 		p->status = AudioPlayer::init;
 		// p->update(); //queue buffers first
-		p->play();
+		// p->play();
 	}
 }
 
