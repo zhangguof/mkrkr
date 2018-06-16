@@ -173,6 +173,7 @@ static void update(unsigned int interval)
 	}
 	event_update();
 
+
 	TVPDeliverAllEvents();
 	//render update
 	if(TVPMainWindow)
@@ -191,13 +192,16 @@ static void update(unsigned int interval)
 // 	TVPInializeFontRasterizers();
 // 	TVPFontSystem->AddFont(TJS_W("font/NotoSansCJKsc-Black.otf"));
 // }
+extern void al_loop(uint32_t interval);
 
 void tTVPApplication::Run()
 {
 	// while(sdl_loop());
 	// pre_run();
 	init_fps();
+	regist_update(al_loop);
 	regist_update(update);
+	
 	// if(TVPMainWindow)
 	// 	TVPMainWindow->UpdateContent();
 	sdl_loop();

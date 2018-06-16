@@ -803,11 +803,13 @@ static void TVPWaveFormatToWAVEFORMATEXTENSIBLE(const tTVPWaveFormat *in,
 					// out->Format.cbSize = cbextsize;
 					// out->dwChannelMask = KSAUDIO_SPEAKER_MONO;
 					// out->Samples.wValidBitsPerSample = in->BitsPerSample;
+					assert(false);
 				}
 				else
 				{
 					out->wFormatTag =
 						in->IsFloat ? WAVE_FORMAT_IEEE_FLOAT:WAVE_FORMAT_PCM;
+					out->format = AL_FORMAT_MONO16;
 					// out->Format.cbSize = 0;
 				}
 			}
@@ -817,6 +819,7 @@ static void TVPWaveFormatToWAVEFORMATEXTENSIBLE(const tTVPWaveFormat *in,
 			// stereo
 			if(TVPExpandToQuad)
 			{
+				assert(false);
 				out->wFormatTag = WAVE_FORMAT_EXTENSIBLE;
 				// out->Format.cbSize = cbextsize;
 				// out->dwChannelMask =
@@ -829,6 +832,7 @@ static void TVPWaveFormatToWAVEFORMATEXTENSIBLE(const tTVPWaveFormat *in,
 			{
 				if(in->BytesPerSample >= 3 || fraction_found)
 				{
+					assert(false);
 					out->wFormatTag = WAVE_FORMAT_EXTENSIBLE;
 					// out->Format.cbSize = cbextsize;
 					// out->dwChannelMask = KSAUDIO_SPEAKER_STEREO;
@@ -839,11 +843,13 @@ static void TVPWaveFormatToWAVEFORMATEXTENSIBLE(const tTVPWaveFormat *in,
 					out->wFormatTag =
 						in->IsFloat ? WAVE_FORMAT_IEEE_FLOAT:WAVE_FORMAT_PCM;
 					// out->Format.cbSize = 0;
+					out->format = AL_FORMAT_STEREO16;
 				}
 			}
 		}
 		else if(in->Channels == 4)
 		{
+			assert(false);
 			// assumed as FL, FR, BL, BR
 			out->wFormatTag = WAVE_FORMAT_EXTENSIBLE;
 			// out->Format.cbSize = cbextsize;
@@ -854,6 +860,7 @@ static void TVPWaveFormatToWAVEFORMATEXTENSIBLE(const tTVPWaveFormat *in,
 		}
 		else if(in->Channels == 6)
 		{
+			assert(false);
 			// assumed as 5 point 1
 			out->wFormatTag = WAVE_FORMAT_EXTENSIBLE;
 			// out->Format.cbSize = cbextsize;
@@ -881,6 +888,7 @@ static void TVPWaveFormatToWAVEFORMATEXTENSIBLE(const tTVPWaveFormat *in,
 		out->wBitsPerSample * out->nChannels / 8;
 	out->nAvgBytesPerSec =
 		out->nSamplesPerSec * out->nBlockAlign;
+	SDL_Log("Convert format:tag:%d,%d",out->wFormatTag,out->format);
 }
 //---------------------------------------------------------------------------
 static void TVPWaveFormatToWAVEFORMATEXTENSIBLE2(const tTVPWaveFormat *in,
@@ -1496,6 +1504,7 @@ tTVPWaveSoundBufferDecodeThread::~tTVPWaveSoundBufferDecodeThread()
 #define TVP_WSB_DECODE_THREAD_SLEEP_TIME 110
 void tTVPWaveSoundBufferDecodeThread::Execute(void)
 {
+	SDL_Log("Decode Thread running!");
 	while(!GetTerminated())
 	{
 		// decoder thread main loop
@@ -1520,7 +1529,11 @@ void tTVPWaveSoundBufferDecodeThread::Execute(void)
 				if(wait)
 				{
 					// buffer is full; sleep longer
+
 					DWORD elapsed = et -st;
+
+					SDL_Log("buffer is full sleep!%d,%d",
+					elapsed,TVP_WSB_DECODE_THREAD_SLEEP_TIME - elapsed);
 					if(elapsed < TVP_WSB_DECODE_THREAD_SLEEP_TIME)
 					{
 						Event.WaitFor(
@@ -1668,6 +1681,7 @@ void tTJSNI_WaveSoundBuffer::TryCreateSoundBuffer(bool use3d)
 	// compute buffer bytes
 	AccessUnitSamples = Format.nSamplesPerSec / TVP_WSB_ACCESS_FREQ; // freq/8
 	AccessUnitBytes = AccessUnitSamples * Format.nBlockAlign; //
+	SDL_Log("===AccessUnitSamples:%d,AccessUnitBytes:%d",AccessUnitSamples,AccessUnitBytes);
 
 //L1 buffer 1000ms len, split 8 part？
 //one unit is 125ms?
@@ -1778,14 +1792,14 @@ void tTJSNI_WaveSoundBuffer::CreateSoundBuffer()
 
 	TVPInitDirectSound(); // ensure DirectSound object
 
-	// bool format_is_not_identical = TVPAlwaysRecreateSoundBuffer ||
-	// 	C_InputFormat.SamplesPerSec		!= InputFormat.SamplesPerSec ||
-	// 	C_InputFormat.Channels			!= InputFormat.Channels ||
-	// 	C_InputFormat.BitsPerSample		!= InputFormat.BitsPerSample ||
-	// 	C_InputFormat.BytesPerSample	!= InputFormat.BytesPerSample ||
-	// 	C_InputFormat.SpeakerConfig		!= InputFormat.SpeakerConfig ||
-	// 	C_InputFormat.IsFloat			!= InputFormat.IsFloat;
-	bool format_is_not_identical = true;
+	bool format_is_not_identical = TVPAlwaysRecreateSoundBuffer ||
+		C_InputFormat.SamplesPerSec		!= InputFormat.SamplesPerSec ||
+		C_InputFormat.Channels			!= InputFormat.Channels ||
+		C_InputFormat.BitsPerSample		!= InputFormat.BitsPerSample ||
+		C_InputFormat.BytesPerSample	!= InputFormat.BytesPerSample ||
+		C_InputFormat.SpeakerConfig		!= InputFormat.SpeakerConfig ||
+		C_InputFormat.IsFloat			!= InputFormat.IsFloat;
+	// bool format_is_not_identical = true;
 
 	if(format_is_not_identical)
 	{
@@ -1816,57 +1830,7 @@ void tTJSNI_WaveSoundBuffer::CreateSoundBuffer()
 				msg = e.GetMessage();
 			}
 
-
-			if(failed)
-			{
-				failed = false;
-				TVPWaveFormatToWAVEFORMATEXTENSIBLE2(&InputFormat, &Format, use3d);
-				try
-				{
-					TryCreateSoundBuffer(use3d);
-				}
-				catch(eTJSError &e)
-				{
-					firstformat = TVPGetSoundBufferFormatString(Format);
-					failed = true;
-					firstfailed = true;
-					msg = e.GetMessage();
-				}
-			}
-
-			if(failed)
-			{
-		try16bits:
-				failed = false;
-				TVPWaveFormatToWAVEFORMATEXTENSIBLE16bits(&InputFormat, &Format, use3d);
-				try
-				{
-					TryCreateSoundBuffer(use3d);
-				}
-				catch(eTJSError &e)
-				{
-					failed = true;
-					msg = e.GetMessage();
-				}
-				if(!failed) forcemode = 1;
-			}
-
-			if(failed)
-			{
-		try16bits_mono:
-				failed = false;
-				TVPWaveFormatToWAVEFORMATEXTENSIBLE16bitsMono(&InputFormat, &Format, use3d);
-				try
-				{
-					TryCreateSoundBuffer(use3d);
-				}
-				catch(eTJSError &e)
-				{
-					failed = true;
-					msg = e.GetMessage();
-				}
-				if(!failed) forcemode = 2;
-			}
+	
 
 			if(failed)
 				TVPThrowExceptionMessage(msg.c_str());
@@ -1970,17 +1934,17 @@ void tTJSNI_WaveSoundBuffer::ResetSoundBuffer()
 		int hr;
 		// hr = SoundBuffer->Lock(0, BufferBytes, (void**)&p1,
 		// 	&b1, (void**)&p2, &b2, 0);
-		SoundBuffer->lock(0,BufferBytes,(void**)&p1,&b1);
+		// SoundBuffer->lock(0,BufferBytes,(void**)&p1,&b1);
 
 
-		if(p1)
-		{
-			TVPMakeSilentWaveBytes(p1, BufferBytes, &Format);
+		// if(p1)
+		// {
+		// 	TVPMakeSilentWaveBytes(p1, BufferBytes, &Format);
 
-			SoundBuffer->unlock(p1, b1);
-		}
+		// 	SoundBuffer->unlock(p1, b1);
+		// }
 
-		SoundBuffer->seek(0);
+		// SoundBuffer->seek(0);
 
 		// fill level2 buffer with silence
 		TVPMakeSilentWaveBytes(Level2Buffer, Level2BufferSize, &Format);
@@ -2052,6 +2016,7 @@ tjs_uint tTJSNI_WaveSoundBuffer::Decode(void *buffer, tjs_uint bufsamplelen,
 //---------------------------------------------------------------------------
 bool tTJSNI_WaveSoundBuffer::FillL2Buffer(bool firstwrite, bool fromdecodethread)
 {
+	SDL_Log("FillL2Buffer:cur_pos:%d,remain:%d",L2BufferWritePos,L2BufferRemain);
 	if(!fromdecodethread && Thread->GetRunning())
 		Thread->SetPriority(ttpHighest);
 			// make decoder thread priority high, before entering critical section
@@ -2100,6 +2065,7 @@ bool tTJSNI_WaveSoundBuffer::FillL2Buffer(bool firstwrite, bool fromdecodethread
 		if(decoded < (tjs_uint) AccessUnitSamples) L2BufferEnded = true;
 
 		L2BufferDecodedSamplesInUnit[L2BufferWritePos] = decoded;
+		SDL_Log("FillL2Buffer end:%d,is_end:%d",decoded,L2BufferEnded);
 	}
 
 	L2BufferWritePos++;
@@ -2118,6 +2084,7 @@ bool tTJSNI_WaveSoundBuffer::FillL2Buffer(bool firstwrite, bool fromdecodethread
 		}
 		if(Thread->GetRunning()) Thread->SetPriority(ttpbefore);
 	}
+
 
 	return true;
 }
@@ -2140,8 +2107,11 @@ tjs_uint tTJSNI_WaveSoundBuffer::ReadL2Buffer(void *buffer,
 	// But It's ok because this function will never read currently writing L2
 	// buffer. L2 buffer having at least one rendered unit is
 	// guaranteed at this point.
+	
 
 	tjs_uint decoded = L2BufferDecodedSamplesInUnit[L2BufferReadPos];
+
+	SDL_Log("ReadL2Buffer:pos:%d,decoded:%d",L2BufferReadPos,decoded);
 
 	segments = L2BufferSegmentQueues[L2BufferReadPos];
 
@@ -2174,6 +2144,7 @@ void tTJSNI_WaveSoundBuffer::FillDSBuffer(tjs_int writepos,
 	int b1, b2;
 
 	segments.Clear();
+	SDL_Log("FillDSBuffer pos:%d",writepos);
 
 	bool hr;
 	hr = SoundBuffer->lock(writepos, AccessUnitBytes,
@@ -2208,6 +2179,7 @@ void tTJSNI_WaveSoundBuffer::FillDSBuffer(tjs_int writepos,
 		}
 
 		SoundBuffer->unlock((void*)p1, b1);
+		SDL_Log("FillDSBuffer ok,pos:%d,len:%d",writepos,decoded);
 	}
 }
 //---------------------------------------------------------------------------
@@ -2220,6 +2192,8 @@ bool tTJSNI_WaveSoundBuffer::FillBuffer(bool firstwrite, bool allowpause)
 	if(!SoundBuffer) return true;
 	if(!Decoder) return true;
 	if(!BufferPlaying) return true;
+	SDL_Log("FillBuffer:firstwrite:%d,cur_pos:%d,remain:%d",
+			firstwrite,SoundBufferWritePos,L2BufferRemain);
 
 	// check paused state
 	if(allowpause)
@@ -2314,18 +2288,24 @@ bool tTJSNI_WaveSoundBuffer::FillBuffer(bool firstwrite, bool allowpause)
 			}
 		}
 
-		tjs_int wpb = wp / AccessUnitBytes;
-		tjs_int ppb = pp / AccessUnitBytes;
+		// tjs_int wpb = wp / AccessUnitBytes;
+		// tjs_int ppb = pp / AccessUnitBytes;
 
-		tjs_int d = wpb - SoundBufferWritePos;
-		if(d < 0) d += L1BufferUnits;
+		// tjs_int d = wpb - SoundBufferWritePos;
+		// if(d < 0) d += L1BufferUnits;
 
-		wpb -= ppb;
-		if(wpb < 0) wpb += L1BufferUnits;
+		// wpb -= ppb;
+		// if(wpb < 0) wpb += L1BufferUnits;
 
-		if(d <= wpb)
+		// if(d <= wpb)
+		// {
+		// 	// pp thru wp is currently playing position; cannot write there
+		// 	SDL_Log("====Can't not write!%d,%d,%d,%d",d,wpb,pp,wp);
+		// 	return true;
+		// }
+		if(!SoundBuffer->writeable())
 		{
-			// pp thru wp is currently playing position; cannot write there
+			SDL_Log("===can't write!");
 			return true;
 		}
 
@@ -2520,7 +2500,7 @@ void tTJSNI_WaveSoundBuffer::StartPlay()
 	// ensure thread
 	TVPEnsureWaveSoundBufferWorking(); // wake the playing thread up again
 	ThreadCallbackEnabled = true;
-	Thread->Continue();
+	// Thread->Continue();
 
 }
 //---------------------------------------------------------------------------

@@ -351,10 +351,12 @@ public std::enable_shared_from_this<ALBuffers>
 {
 private:
 	ALuint* _objs;
+	std::map<ALuint,ALuint> id2idx;
 	int num;
 	tPtrSources p_src;
 
 public:
+	
 	ALBuffers(int n=1,
 	 tPtrSources _src = nullptr
 	 ):
@@ -364,8 +366,13 @@ public:
 		_objs = new ALuint[n];
 		alGenBuffers(n,_objs);
 		p_src = _src;
+		for(int i=0;i<n;++i)
+		{
+			id2idx[_objs[i]] = i;
+		}
 		CHECK_ERROR;
 	}
+	
 	void set_sources(tPtrSources& src)
 	{
 		p_src = src;
@@ -380,12 +387,18 @@ public:
 	int get_num(){return num;}
 	int get_idx(ALenum obj_id)
 	{
-		for(int i=0;i<num;++i)
+		auto it = id2idx.find(obj_id);
+		if(it!=id2idx.end())
 		{
-			if(obj_id == _objs[i])
-				return i;
+			return it->second;
 		}
 		return -1;
+		// for(int i=0;i<num;++i)
+		// {
+		// 	if(obj_id == _objs[i])
+		// 		return i;
+		// }
+		// return -1;
 	}
 	
 	ALuint &operator[](int idx){return _objs[idx];}
@@ -577,11 +590,21 @@ class AudioPlayer: public BaseAudioPlayer,
 public std::enable_shared_from_this<AudioPlayer>
 {
 public:
+	enum BufferStatus
+	{
+		Queued,
+		Unqueued
+	};
+	BufferStatus* buffer_status;
+
+
+public:
 //openAL interface
 	std::shared_ptr<ALSources> p_src;
 	std::shared_ptr<ALBuffers> p_bufs;
 	std::shared_ptr<DataBuffer> pdb;
 
+	
 //simulate DirectSound Buffer API
 	std::shared_ptr<LoopBuffer> plb;
 	int nUnits; // n ALBuffers.
@@ -611,9 +634,11 @@ public:
 	int buffer_data_one(int buf_idx,int update_time_ms);
 	int buffer_data_all(int buf_idx);
 	int buffer_data_unit(int buf_idx,int bytes);
-	void unqueue_buffers(ALuint* buffer_ids,int& n);
+	
+	void unqueue_buffers();
 	void queue_buffers(ALuint* buffer_ids, int n);
 	void update_uint();
+	void update_uints();
 	
 	//read bytes from data
 	void update();
@@ -646,10 +671,15 @@ public:
 		//do reset here?
 		if(pdb)
 			pdb->reset();
+		if(plb)
+			plb->reset();
 	}
 	void seek(int n)
 	{
+		assert(false);
 		// pdb->seek(n);
+		// if(plb)
+		// 	plb->seek(n);
 	}
 	void new_loop_buffer(int n,int size)
 	{
@@ -680,6 +710,41 @@ public:
 	{
 		// p_src->set_freq(freq);
 		this->freq = freq;
+	}
+	bool writeable()
+	{
+		if(plb)
+		{
+			return plb->writeable_len > 0;
+		}
+		return false;
+	}
+//buffer status
+	void reset_buffer_status()
+	{
+		for(int i=0;i<n_buffer;++i)
+		{
+			buffer_status[i]=Unqueued;
+		}	
+	}
+	void get_free_buffers_idx(uint32_t* buffer_idx,int& n)
+	{
+		n = 0;
+		for(int i=0;i<n_buffer;++i)
+		{
+			if(buffer_status[i]==Unqueued)
+			{
+				buffer_idx[n++] = i;
+			}
+		}
+	}
+	void change_buffers_status(uint32_t* buffer_ids, int n, BufferStatus s)
+	{
+		for(int i=0;i<n;++i)
+		{
+			int idx = p_bufs->get_idx(buffer_ids[i]);
+			buffer_status[idx] = s;
+		}
 	}
 };
 

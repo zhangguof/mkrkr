@@ -28,7 +28,8 @@ AudioPlayer::AudioPlayer(int nbuffer,bool _loop):BaseAudioPlayer(_loop)
 	is_static_type = false;
 	has_lock = false;
 
-
+	buffer_status = new BufferStatus[nbuffer];
+	reset_buffer_status();
 }
 
 int AudioPlayer::buffer_data_one(int buf_idx,int update_time_ms)
@@ -52,16 +53,22 @@ int AudioPlayer::buffer_data_one(int buf_idx,int update_time_ms)
 
 int AudioPlayer::buffer_data_unit(int buf_idx,int bytes)
 {
+	SDL_Log("buffer_data_unit:%d:%d,format:%d",buf_idx,bytes,format.format);
+	assert(buf_idx >= 0);
+
 	uint32_t freq = format.nSamplesPerSec;
 	int channles = format.nChannels;
 	ALenum _format = format.format;
 	uint8_t* _data;
 	// assert(bytes == nUnitSize);
+	SDL_Log("going to read L1 buffer:readable:%d,writeable:%d",
+	plb->readable_len,plb->writeable_len);
 	bool ret  = plb->read(&_data,bytes);
 	if(!ret)
 	{
 		return 0;
 	}
+	SDL_Log("buffer_data_unit end:bytes:%d",bytes);
 	p_bufs->buffer_data(_format,_data,bytes,freq,buf_idx);
 	return bytes;
 }
@@ -85,129 +92,187 @@ int AudioPlayer::buffer_data_all(int buf_idx)
 	return len;
 }
 
-void AudioPlayer::unqueue_buffers(ALuint* buffer_ids,int& n)
+void AudioPlayer::unqueue_buffers()
 {
-	n = 0;
-	int buffer_processed = 0;
-	if(status == init)
+	if(status != init)
 	{
-		buffer_processed = n_buffer;
-	}
-	else
-	{
-		p_src->get_buffer_processed(&buffer_processed);
-	}
+		int free_buffer = 0;
+		uint32_t buffer_ids[n_buffer];
 
-	if(buffer_processed>0)
-	{
-		int r;
-		if(status!=init)
+		p_src->get_buffer_processed(&free_buffer);
+		if(free_buffer>0)
 		{
-			r = p_src->unqueue_buffers(
-					buffer_processed,buffer_ids);
+			int r = p_src->unqueue_buffers(free_buffer,buffer_ids);
 			if(r<0)
 				return;
-			n_queued_buffer -= buffer_processed;
+			change_buffers_status(buffer_ids,free_buffer,Unqueued);
+			n_queued_buffer--;
 		}
-		else
-		{
-			memcpy(buffer_ids, p_bufs->get_objs(), buffer_processed);
-		}
-		n = buffer_processed;
 	}
+	// n = 0;
+	// int free_buffer = 0;
+	// int r;
+	// // if(n_free_buffer!=0)
+	// // 	return;
+	// if(status == init)
+	// {
+	// 	//all buffer free.
+	// 	if(n_queued_buffer == 0)
+	// 	{
+	// 		free_buffer = n_buffer;
+	// 		memcpy(buffer_ids, p_bufs->get_objs(), free_buffer*sizeof(ALuint));
+	// 	}
+	// }
+	// else if(status == playing)
+	// {
+	// 	p_src->get_buffer_processed(&free_buffer);
+	// 	if(free_buffer>0)
+	// 	{
+	// 		r = p_src->unqueue_buffers(free_buffer,buffer_ids);
+	// 		if(r<0)
+	// 			return;
+	// 		n_queued_buffer--;
+	// 	}
+	// }
+	// n = free_buffer;
 }
 
 void AudioPlayer::queue_buffers(ALuint* buffer_ids, int n)
 {
 	p_src->queue_buffers(n,buffer_ids);
+	change_buffers_status(buffer_ids,n,Queued);
 	n_queued_buffer += n;
 }
 
-void AudioPlayer::update_uint()
+void AudioPlayer::update_uints()
 {
-	int nfree = 0;
-	SDL_Log("update uint!!");
+	SDL_Log("update uints");
 	if(status == stopping && n_queued_buffer == 0)
 	{
-		// stop();
 		return;
 	}
-	ALuint buffer_ids[n_buffer];
+	uint32_t buffer_idx[n_buffer];
+	uint32_t buffer_ids[n_buffer];
+	int nfree = 0;
+	unqueue_buffers();
 
-	unqueue_buffers(buffer_ids, nfree);
-
+	get_free_buffers_idx(buffer_idx,nfree);
 	int num_to_queue = 0;
-	int r;
 	if(nfree>0)
-	{	
-		for(int i=0;i<nfree;++i)
+	{
+		SDL_Log("update_uint...:%d",nfree);	
+		for(int i=0; i<nfree; ++i)
 		{
-			r = buffer_data_unit(
-				p_bufs->get_idx(buffer_ids[i]),
-				nUnitSize);
+			int idx = buffer_idx[i];
+			int r = buffer_data_unit(idx,nUnitSize);
+
 			if(r==0)
 			{
 				// status = stopping;
 				break;
 			}
+			buffer_ids[i] = p_bufs->get_obj(idx);
 			num_to_queue++;
 		}
-	}
-	if(num_to_queue>0)
-	{
 		queue_buffers(buffer_ids, num_to_queue);
-
+		//dump 
 		int queued_buffer;
 		p_src->get_buffer_queued(&queued_buffer);
 		printf("queue buffers:%d/%d\n",num_to_queue,queued_buffer);
 
 	}
+
+}
+
+void AudioPlayer::update_uint()
+{
+	// int nfree = 0;
+	// SDL_Log("update uint!!");
+	// if(status == stopping && n_queued_buffer == 0)
+	// {
+	// 	// stop();
+	// 	return;
+	// }
+
+	// // ALuint buffer_ids[n_buffer];
+	// if(n_free_buffer==0 || status != init)
+	// 	unqueue_buffers(unqueue_buffer_ids, nfree);
+	// else
+	// 	nfree = n_free_buffer;
+
+	// int num_to_queue = 0;
+	// if(nfree>0)
+	// {
+	// 	SDL_Log("update_uint...:%d",nfree);	
+	// 	for(int i=nfree-1;i>=0;--i)
+	// 	{
+	// 		int idx = p_bufs->get_idx(unqueue_buffer_ids[i]);
+	// 		int r = buffer_data_unit(idx,nUnitSize);
+	// 		if(r==0)
+	// 		{
+	// 			// status = stopping;
+	// 			break;
+	// 		}
+	// 		num_to_queue++;
+	// 	}
+	// }
+	// if(num_to_queue>0)
+	// {
+	// 	queue_buffers(unqueue_buffer_ids, num_to_queue);
+	// 	n_free_buffer -= num_to_queue;
+
+	// 	int queued_buffer;
+	// 	p_src->get_buffer_queued(&queued_buffer);
+	// 	printf("queue buffers:%d/%d,free:%d\n",num_to_queue,queued_buffer,n_free_buffer);
+
+	// }
 }
 void AudioPlayer::update()
 {
-	printf("AudioPlayer update!\n");
+	return update_uint();
+	// printf("AudioPlayer update!\n");
 
-	if(is_static_type)
-		return;
-	if(!ff_stream)
-		return;
-	int nfree = 0;
-	int queued_buffer = 0;
-	if(status == stopping && n_queued_buffer == 0)
-	{
-		stop();
-		return;
-	}
+	// if(is_static_type)
+	// 	return;
+	// if(!ff_stream)
+	// 	return;
+	// int nfree = 0;
+	// int queued_buffer = 0;
+	// if(status == stopping && n_queued_buffer == 0)
+	// {
+	// 	stop();
+	// 	return;
+	// }
 
-	uint32_t buffer_ids[n_buffer];
+	// uint32_t buffer_ids[n_buffer];
 
-	unqueue_buffers(buffer_ids, nfree);
+	// unqueue_buffers(buffer_ids, nfree);
 
-	int num_to_queue = 0;
-	int r;
-	if(nfree>0)
-	{	
-		for(int i=0;i<nfree;++i)
-		{
-			r = buffer_data_one(
-				p_bufs->get_idx(buffer_ids[i]),
-				UPDATE_TIME);
-			if(r==0)
-			{
-				//no data;
-				//stop it.
-				status = stopping;
-				break;
-			}
-			num_to_queue++;
-		}
-	}
-	if(num_to_queue>0)
-	{
-		queue_buffers(buffer_ids, num_to_queue);
-		p_src->get_buffer_queued(&queued_buffer);
-		printf("queue buffers:%d/%d\n",num_to_queue,queued_buffer);
-	}
+	// int num_to_queue = 0;
+	// int r;
+	// if(nfree>0)
+	// {	
+	// 	for(int i=0;i<nfree;++i)
+	// 	{
+	// 		r = buffer_data_one(
+	// 			p_bufs->get_idx(buffer_ids[i]),
+	// 			UPDATE_TIME);
+	// 		if(r==0)
+	// 		{
+	// 			//no data;
+	// 			//stop it.
+	// 			status = stopping;
+	// 			break;
+	// 		}
+	// 		num_to_queue++;
+	// 	}
+	// }
+	// if(num_to_queue>0)
+	// {
+	// 	queue_buffers(buffer_ids, num_to_queue);
+	// 	p_src->get_buffer_queued(&queued_buffer);
+	// 	printf("queue buffers:%d/%d\n",num_to_queue,queued_buffer);
+	// }
 }
 
 void AudioPlayer::read_from_ffstream(
@@ -253,7 +318,7 @@ void AudioPlayer::play()
 		else
 		{
 			// update();
-			update_uint();
+			update_uints();
 		}
 	}
 	if(is_enable)
@@ -281,8 +346,8 @@ void AudioPlayer::stop()
 	printf("do stop: now status:%d\n",status);
 	if(status == stoped)
 		return;
-	// reset();
-	seek(0);
+	reset();
+	// seek(0);
 	p_src->stop();
 	status = stoped;
 	if(!is_static_type)
@@ -331,7 +396,7 @@ bool AudioPlayer::unlock(void* p1, int b1)
 	{
 		has_lock = false;
 		plb->unlock(p1,b1);
-		update_uint();
+		update_uints();
 		return true;
 	}
 	return false;
@@ -394,6 +459,7 @@ uint32_t ALAuidoDevice::update()
 	{
 		if(it->is_enable && it->status!= AudioPlayer::stoped)
 		{
+			// it->update();
 			it->update();
 		}
 	}
