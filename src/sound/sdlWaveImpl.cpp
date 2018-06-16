@@ -24,6 +24,7 @@
 #include "Application.h"
 // #include "UserEvent.h"
 #include "NativeEventQueue.h"
+#include "ffStream.hpp"
 
 
 //---------------------------------------------------------------------------
@@ -221,6 +222,10 @@ void TVPRegisterTSSWaveDecoderCreator()
 //---------------------------------------------------------------------------
 class tTVPFFMPEGWaveDecoder : public tTVPWaveDecoder
 {
+	ffStream* p_ffstream;
+	uint8_t* mem_stream;
+	int mem_size;
+
 	tTJSBinaryStream *Stream;
 	tTVPWaveFormat Format;
 	tjs_uint64 DataStart;
@@ -228,21 +233,54 @@ class tTVPFFMPEGWaveDecoder : public tTVPWaveDecoder
 	tjs_uint SampleSize;
 
 public:
-	tTVPFFMPEGWaveDecoder(tTJSBinaryStream *stream, tjs_uint64 datastart,
+	tTVPFFMPEGWaveDecoder(ffStream* ps,tTJSBinaryStream *stream, tjs_uint64 datastart,
 		const tTVPWaveFormat & format);
 	~tTVPFFMPEGWaveDecoder();
 	void GetFormat(tTVPWaveFormat & format);
 	bool Render(void *buf, tjs_uint bufsamplelen, tjs_uint& rendered);
 	bool SetPosition(tjs_uint64 samplepos);
+
+static int read_packet_cb(void* opaque, uint8_t* buf, int buf_size);
 };
 //---------------------------------------------------------------------------
-tTVPFFMPEGWaveDecoder::tTVPFFMPEGWaveDecoder(tTJSBinaryStream *stream, tjs_uint64 datastart,
+tTVPFFMPEGWaveDecoder::tTVPFFMPEGWaveDecoder(ffStream* ps,tTJSBinaryStream *stream, tjs_uint64 datastart,
 	const tTVPWaveFormat & format)
 {
+	p_ffstream = ps;
 	Stream = stream;
+
+	p_ffstream->open_audio_stream_cb((void*)this, 
+	tTVPFFMPEGWaveDecoder::read_packet_cb);
+
+	auto pdb = p_ffstream->get_decode_buffer();
+
+	mem_stream = pdb->get_data();
+	mem_size = pdb->len;
+
 	DataStart = datastart;
+
+	//format init.
 	Format = format;
-	SampleSize = format.BytesPerSample * format.Channels;
+	Format.Channels = p_ffstream->channels;
+	Format.SamplesPerSec = p_ffstream->freq;
+	Format.BitsPerSample = 16;
+	Format.BytesPerSample = 2;
+
+	SampleSize = Format.BytesPerSample * Format.Channels;
+
+	Format.TotalSamples = mem_size/SampleSize;
+	assert(mem_size % SampleSize == 0);
+	// if(mem_size%SampleSize != 0)
+	// {
+	// 	Format.TotalSamples++;
+	// }
+	//time * freq = nSamples
+	Format.TotalTime = Format.TotalSamples * 1000 /(Format.SamplesPerSec);
+	Format.SpeakerConfig = 0;
+	Format.IsFloat = false;
+
+
+	
 	CurrentPos = 0;
 	Stream->SetPosition(DataStart);
 }
@@ -250,6 +288,7 @@ tTVPFFMPEGWaveDecoder::tTVPFFMPEGWaveDecoder(tTJSBinaryStream *stream, tjs_uint6
 tTVPFFMPEGWaveDecoder::~tTVPFFMPEGWaveDecoder()
 {
 	delete Stream;
+	delete p_ffstream;
 }
 //---------------------------------------------------------------------------
 void tTVPFFMPEGWaveDecoder::GetFormat(tTVPWaveFormat & format)
@@ -259,14 +298,100 @@ void tTVPFFMPEGWaveDecoder::GetFormat(tTVPWaveFormat & format)
 //---------------------------------------------------------------------------
 bool tTVPFFMPEGWaveDecoder::Render(void *buf, tjs_uint bufsamplelen, tjs_uint& rendered)
 {
+	tjs_uint64 remain = Format.TotalSamples - CurrentPos;
+	tjs_uint writesamples = bufsamplelen < remain ? bufsamplelen : (tjs_uint)remain;
+	if(writesamples == 0)
+	{
+		// already finished stream or bufsamplelen is zero
+		rendered = 0;
+		return false;
+	}
+
+	tjs_uint readsize = writesamples * SampleSize;
+	tjs_uint read = readsize;
+	if(CurrentPos * SampleSize + read > mem_size)
+	{
+		read = mem_size - CurrentPos*SampleSize;
+	}
+	// tjs_uint read = Stream->Read(buf, readsize);
+
+
+#if TJS_HOST_IS_BIG_ENDIAN
+	// endian-ness conversion
+	if(Format.BytesPerSample == 2)
+	{
+		tjs_uint16 *p = (tjs_uint16 *)buf;
+		tjs_uint16 *plim = (tjs_uint16 *)( (tjs_uint8*)buf + read);
+		while(p < plim)
+		{
+			*p = (*p>>8) + (*p<<8);
+			p++;
+		}
+	}
+	else if(Format.BytesPerSample == 3)
+	{
+		tjs_uint8 *p = (tjs_uint8 *)buf;
+		tjs_uint8 *plim = (tjs_uint8 *)( (tjs_uint8*)buf + read);
+		while(p < plim)
+		{
+			tjs_uint8 tmp = p[0];
+			p[0] = p[2];
+			p[2] = tmp;
+			p += 3;
+		}
+	}
+	else if(Format.BytesPerSample == 4)
+	{
+		tjs_uint32 *p = (tjs_uint32 *)buf;
+		tjs_uint32 *plim = (tjs_uint32 *)( (tjs_uint8*)buf + read);
+		while(p < plim)
+		{
+			*p =
+				(*p &0xff000000) >> 24 +
+				(*p &0x00ff0000) >> 8 +
+				(*p &0x0000ff00) << 8 +
+				(*p &0x000000ff) << 24;
+			p ++;
+		}
+	}
+#endif
+
+
+	rendered = read / SampleSize;
+	CurrentPos += rendered;
+
+	if(read < readsize || writesamples < bufsamplelen)
+		return false; // read error or end of stream
 
 	return true;
 }
 //---------------------------------------------------------------------------
 bool tTVPFFMPEGWaveDecoder::SetPosition(tjs_uint64 samplepos)
 {
+	if(Format.TotalSamples <= samplepos) return false;
 
+	tjs_uint64 streampos = DataStart + samplepos * SampleSize;
+	// tjs_uint64 possave = Stream->GetPosition();
+
+	// if(streampos != Stream->Seek(streampos, TJS_BS_SEEK_SET))
+	// {
+	// 	// seek failed
+	// 	Stream->Seek(possave, TJS_BS_SEEK_SET);
+	// 	return false;
+	// }
+
+	CurrentPos = samplepos;
 	return true;
+}
+
+int tTVPFFMPEGWaveDecoder::read_packet_cb(void* opaque, uint8_t* buf, int buf_size)
+{
+	tTVPFFMPEGWaveDecoder* _this = (tTVPFFMPEGWaveDecoder*) opaque;
+	tTJSBinaryStream* p_stream = _this->Stream;
+	buf_size = p_stream->Read(buf, buf_size);
+	if(!buf_size)
+		return AVERROR_EOF;
+	return buf_size;
 }
 //---------------------------------------------------------------------------
 
@@ -286,22 +411,23 @@ public:
 tTVPWaveDecoder * tTVPFFMPEGWaveDecoder_C::Create(const ttstr & storagename,
 	const ttstr &extension)
 {
-	if(extension != TJS_W(".wav")) return NULL;
+	// if(extension != TJS_W(".wav")) return NULL;
 
 	tTVPStreamHolder stream(storagename);
 
-	return NULL;
+	// return NULL;
+	ffStream* p_ffstream;
 	try
 	{
 
 		// read format
 		tTVPWaveFormat format;
 		tjs_int64 datastart;
-
+		p_ffstream = new ffStream();
 
 		// create tTVPWD_RIFFWave instance
 		format.Seekable = true;
-		tTVPFFMPEGWaveDecoder * decoder = new tTVPFFMPEGWaveDecoder(stream.Get(), datastart,
+		tTVPFFMPEGWaveDecoder * decoder = new tTVPFFMPEGWaveDecoder(p_ffstream,stream.Get(), datastart,
 			format);
 		stream.Disown();
 
@@ -309,6 +435,7 @@ tTVPWaveDecoder * tTVPFFMPEGWaveDecoder_C::Create(const ttstr & storagename,
 	}
 	catch(...)
 	{
+		delete p_ffstream;
 		// this function must be a silent one unless file open error...
 		return NULL;
 	}
@@ -1534,8 +1661,8 @@ void tTVPWaveSoundBufferDecodeThread::Execute(void)
 
 					DWORD elapsed = et -st;
 
-					SDL_Log("buffer is full sleep!%d,%d",
-					elapsed,TVP_WSB_DECODE_THREAD_SLEEP_TIME - elapsed);
+					// SDL_Log("buffer is full sleep!%d,%d",
+					// elapsed,TVP_WSB_DECODE_THREAD_SLEEP_TIME - elapsed);
 					if(elapsed < TVP_WSB_DECODE_THREAD_SLEEP_TIME)
 					{
 						Event.WaitFor(
@@ -2311,7 +2438,7 @@ bool tTJSNI_WaveSoundBuffer::FillBuffer(bool firstwrite, bool allowpause)
 		{
 			auto p = SoundBuffer->plb;
 			SDL_Log("===can't write!:rp:%d,rsize:%d,wp:%d,wsize%d:",
-			p->r_pos,p->readable_len,p->w_pos,p->writeable_len
+			p->r_pos,p->readable_len.load(),p->w_pos,p->len - p->readable_len.load()
 			);
 
 			return true;

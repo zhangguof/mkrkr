@@ -61,8 +61,8 @@ int AudioPlayer::buffer_data_unit(int buf_idx,int bytes)
 	ALenum _format = format.format;
 	uint8_t* _data;
 	// assert(bytes == nUnitSize);
-	SDL_Log("going to read L1 buffer:readable:%d,writeable:%d",
-	plb->readable_len,plb->writeable_len);
+	// SDL_Log("going to read L1 buffer:readable:%d,writeable:%d",
+	// plb->readable_len,plb->writeable_len);
 	bool ret  = plb->read(&_data,bytes);
 	if(!ret)
 	{
@@ -146,7 +146,7 @@ void AudioPlayer::queue_buffers(ALuint* buffer_ids, int n)
 
 void AudioPlayer::update_units()
 {
-	SDL_Log("update uints");
+	// SDL_Log("update uints");
 	if(status == stopping && n_queued_buffer == 0)
 	{
 		return;
@@ -186,54 +186,17 @@ void AudioPlayer::update_units()
 
 void AudioPlayer::update_uint()
 {
-	// int nfree = 0;
-	// SDL_Log("update uint!!");
-	// if(status == stopping && n_queued_buffer == 0)
-	// {
-	// 	// stop();
-	// 	return;
-	// }
-
-	// // ALuint buffer_ids[n_buffer];
-	// if(n_free_buffer==0 || status != init)
-	// 	unqueue_buffers(unqueue_buffer_ids, nfree);
-	// else
-	// 	nfree = n_free_buffer;
-
-	// int num_to_queue = 0;
-	// if(nfree>0)
-	// {
-	// 	SDL_Log("update_uint...:%d",nfree);	
-	// 	for(int i=nfree-1;i>=0;--i)
-	// 	{
-	// 		int idx = p_bufs->get_idx(unqueue_buffer_ids[i]);
-	// 		int r = buffer_data_unit(idx,nUnitSize);
-	// 		if(r==0)
-	// 		{
-	// 			// status = stopping;
-	// 			break;
-	// 		}
-	// 		num_to_queue++;
-	// 	}
-	// }
-	// if(num_to_queue>0)
-	// {
-	// 	queue_buffers(unqueue_buffer_ids, num_to_queue);
-	// 	n_free_buffer -= num_to_queue;
-
-	// 	int queued_buffer;
-	// 	p_src->get_buffer_queued(&queued_buffer);
-	// 	printf("queue buffers:%d/%d,free:%d\n",num_to_queue,queued_buffer,n_free_buffer);
-
-	// }
 }
 void AudioPlayer::update()
 {
-	return update_units();
+	if(plb)
+		return update_units();
+
+	
 	// printf("AudioPlayer update!\n");
 
 	// if(is_static_type)
-	// 	return;
+		// return;
 	// if(!ff_stream)
 	// 	return;
 	// int nfree = 0;
@@ -396,7 +359,6 @@ bool AudioPlayer::unlock(void* p1, int b1)
 	{
 		has_lock = false;
 		plb->unlock(p1,b1);
-		// update_uints();
 		return true;
 	}
 	return false;

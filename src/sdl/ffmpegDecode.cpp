@@ -9,6 +9,7 @@ extern "C" {
 #include <libavformat/avformat.h>
 #include <libswresample/swresample.h>
 #include <libavutil/opt.h>
+#include <libavformat/avio.h>
 
 #define LOGE printf
 #define LOGI printf
@@ -102,23 +103,16 @@ void audio_swr_resampling_audio_destory(SwrContext **swr_ctx){
 //class ffStream
 int ffStream::open_audio_stream()
 {
-	if(has_open)
-	{
-		return 0;
-	}
-	pFormatCtx = avformat_alloc_context();
-	if(avformat_open_input(&pFormatCtx,fname.c_str(),NULL,NULL)!=0)
-	{  
-	       printf("Couldn't open input stream.\n");  
-	       return -1;  
-    }
+	if(!pFormatCtx)
+		return -1;
+
 	// Retrieve stream information
 	if(avformat_find_stream_info(pFormatCtx, NULL)<0)
 	{
 	  return -1; // Couldn't find stream information
 	}
 	av_dump_format(pFormatCtx, 0, fname.c_str(), 0);
-	AVCodecContext *aCodecCtxOrig;
+	// AVCodecContext *aCodecCtxOrig;
 	for(int i=0; i<pFormatCtx->nb_streams; i++)
 	{
 	 	if(pFormatCtx->streams[i]->codec->codec_type == AVMEDIA_TYPE_AUDIO)
@@ -167,6 +161,74 @@ int ffStream::open_audio_stream()
 	has_open = true;
 
 	return 0;
+}
+int ffStream::open_audio_file()
+{
+	if(has_open)
+		return 0;
+	pFormatCtx = avformat_alloc_context();
+
+	if(avformat_open_input(&pFormatCtx,fname.c_str(),NULL,NULL)!=0)
+	{  
+	    printf("Couldn't open input stream.\n");  
+	    return -1;  
+	 }
+	if(!pFormatCtx)
+		return -1;
+
+	int r = open_audio_stream();
+	has_open = true;
+
+	return r;
+}
+
+
+// static int read_packet_cb(void *stream, uint8_t *buf, int buf_size)
+// {
+//     struct buffer_data *bd = (struct buffer_data *)opaque;
+//     buf_size = buf_size < bd->size?buf_size:bd->size;
+//     if (!buf_size)
+//         return AVERROR_EOF;
+//     printf("ptr:%p size:%zu\n", bd->ptr, bd->size);
+//     /* copy internal buffer data to buf */
+//     memcpy(buf, bd->ptr, buf_size);
+//     // bd->ptr  += buf_size;
+//     // bd->size -= buf_size;
+//     return buf_size;
+// }
+
+
+int ffStream::open_audio_stream_cb(void* stream,tReadPacketCB read_packet_cb)
+{
+	if(has_open)
+		return 0;
+
+	pFormatCtx = avformat_alloc_context();
+
+	avio_ctx_buffer = (uint8_t*)av_malloc(avio_ctx_buffer_size);
+	p_avio_ctx = avio_alloc_context(avio_ctx_buffer, avio_ctx_buffer_size,
+               0, stream, read_packet_cb, NULL, NULL);
+    if (!p_avio_ctx)
+    {
+    	return -1;
+    }
+
+    pFormatCtx->pb = p_avio_ctx;
+   	if(avformat_open_input(&pFormatCtx,NULL,NULL,NULL)!=0)
+	{  
+	    printf("Couldn't open input stream.\n");  
+	    return -1;  
+	 }
+	if(!pFormatCtx)
+		return -1;
+
+	int r = open_audio_stream();
+	has_open = true;
+	if(is_decode_all)
+	{
+		decode_all();
+	}
+	return r;
 }
 void ffStream::read_all_packet()
 {
@@ -232,14 +294,22 @@ int ffStream::audio_decode_frame(uint8_t *audio_buf,int buf_size)
 				printf("swr_alloc fail!!!\n");
 			}
 		}
+		if(swr)
+		{
+			data_size = audio_swr_resampling_audio(swr,
+						&target_params,&frame, frame_buf);
+			// assert(data_size <= buf_size);
+			memcpy(audio_buf, *frame_buf, data_size);
 
-		data_size = audio_swr_resampling_audio(swr,
-		&target_params,&frame, frame_buf);
-
+		}
+		else
+		{
+			// assert(data_size == frame.linesize[0]);
+			memcpy(audio_buf, frame.data[0], data_size);
+		}
 		assert(data_size <= buf_size);
-		// assert(data_size == frame.linesize[0]);
-		// memcpy(audio_buf, frame.data[0], data_size);
-		memcpy(audio_buf, *frame_buf, data_size);
+		
+		// memcpy(audio_buf, *frame_buf, data_size);
       }
       if(data_size <= 0)
       {
@@ -297,8 +367,26 @@ void ffStream::decode_all()
 	printf("frame count:%d,size:%d\n",count,total_size);
 }
 
+ffStream::~ffStream()
+{
+	if(pFormatCtx)
+		avformat_close_input(&pFormatCtx);
+	if(aCodecCtxOrig)
+		avcodec_close(aCodecCtxOrig);
+	if(aCodecCtx)
+  		avcodec_close(aCodecCtx);
+
+	if (p_avio_ctx){
+        av_freep(&p_avio_ctx->buffer);
+        av_freep(&p_avio_ctx);
+    }
+    if(swr)
+    	swr_free(&swr);
+}
 
 
+
+//---------------------
 int init_ffmpeg()
 {
 	av_register_all();

@@ -131,6 +131,7 @@ struct TargetAudioParams
 };
 
 typedef SafeQueue<AVPacket> tPacketQueue;
+typedef	int(*tReadPacketCB)(void *opaque, uint8_t *buf, int buf_size);
 
 class ffStream
 {
@@ -138,6 +139,8 @@ private:
 	std::string fname;
 	AVFormatContext *pFormatCtx;
 	AVCodecContext *aCodecCtx;
+	AVCodecContext *aCodecCtxOrig;
+
 	AVCodec* aCodec;
 	SwrContext *swr;
 	int audioStream;
@@ -150,6 +153,14 @@ private:
 	// DataBuffer db;
 	std::shared_ptr<DataBuffer> pdb;
 
+	//stream api
+	uint8_t* avio_ctx_buffer;
+	AVIOContext* p_avio_ctx;
+	const uint32_t avio_ctx_buffer_size = 4096;
+
+	bool is_decode_all;
+
+
 
 public:
 	int freq;
@@ -158,12 +169,15 @@ public:
 
 public:
 	ffStream(std::string name
-	, bool is_decode_all=true
-	):fname(name),
-	pFormatCtx(NULL),aCodecCtx(NULL),aCodec(NULL),
-	swr(NULL),
-	audioStream(-1)
+	, bool _is_decode_all=true
+	):fname(name),pFormatCtx(NULL),
+	aCodecCtx(NULL),aCodecCtxOrig(NULL),
+	aCodec(NULL),swr(NULL),audioStream(-1),
+	is_decode_all(_is_decode_all)
 	{
+		avio_ctx_buffer = NULL;
+		p_avio_ctx = NULL;
+
 		memset(&target_params,0,sizeof(target_params));
 		freq = -1;
 		channels = 0;
@@ -172,7 +186,7 @@ public:
 		decode_data_size = 0;
 		pdb = nullptr;
 
-		open_audio_stream();
+		open_audio_file();
 		if(is_decode_all)
 		{
 			uint32_t start_tick = SDL_GetTicks();
@@ -181,14 +195,28 @@ public:
 
 		}
 	}
+	ffStream(bool _is_decode_all = true):
+	fname(""),pFormatCtx(NULL),
+	aCodecCtx(NULL),aCodecCtxOrig(NULL),
+	aCodec(NULL),swr(NULL),audioStream(-1),
+	is_decode_all(_is_decode_all)
+	{
+		avio_ctx_buffer = NULL;
+		p_avio_ctx = NULL;
+	}
 	std::shared_ptr<DataBuffer> get_decode_buffer()
 	{
 		return pdb;
 	}
 	int open_audio_stream();
+	int open_audio_stream_cb(void* stream,tReadPacketCB read_packet_cb);
+	int open_audio_file();
+
 	void read_all_packet();
 	int audio_decode_frame(uint8_t* audio_buf, int buf_size);
 	void decode_all();
+
+	~ffStream();
 
 };
 
