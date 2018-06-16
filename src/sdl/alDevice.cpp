@@ -144,7 +144,7 @@ void AudioPlayer::queue_buffers(ALuint* buffer_ids, int n)
 	n_queued_buffer += n;
 }
 
-void AudioPlayer::update_uints()
+void AudioPlayer::update_units()
 {
 	SDL_Log("update uints");
 	if(status == stopping && n_queued_buffer == 0)
@@ -229,7 +229,7 @@ void AudioPlayer::update_uint()
 }
 void AudioPlayer::update()
 {
-	return update_uint();
+	return update_units();
 	// printf("AudioPlayer update!\n");
 
 	// if(is_static_type)
@@ -318,7 +318,7 @@ void AudioPlayer::play()
 		else
 		{
 			// update();
-			update_uints();
+			update_units();
 		}
 	}
 	if(is_enable)
@@ -396,7 +396,7 @@ bool AudioPlayer::unlock(void* p1, int b1)
 	{
 		has_lock = false;
 		plb->unlock(p1,b1);
-		update_uints();
+		// update_uints();
 		return true;
 	}
 	return false;

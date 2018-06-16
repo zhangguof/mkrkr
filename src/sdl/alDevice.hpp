@@ -638,7 +638,7 @@ public:
 	void unqueue_buffers();
 	void queue_buffers(ALuint* buffer_ids, int n);
 	void update_uint();
-	void update_uints();
+	void update_units();
 	
 	//read bytes from data
 	void update();

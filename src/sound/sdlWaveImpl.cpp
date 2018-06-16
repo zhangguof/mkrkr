@@ -1291,7 +1291,9 @@ void tTVPWaveSoundBufferThread::Execute(void)
 					i != TVPWaveSoundBufferVector.end(); i++)
 				{
 					if((*i)->ThreadCallbackEnabled)
+					{
 						(*i)->FillBuffer(); // fill sound buffer
+					}
 				}
 				LastFilledTick = time;
 			}
@@ -2175,6 +2177,7 @@ void tTJSNI_WaveSoundBuffer::FillDSBuffer(tjs_int writepos,
 		{
 			// decoding was finished
 			PlayStopPos = writepos + decoded*Format.nBlockAlign;
+			SDL_Log("will stop on :%d",PlayStopPos);
 				// set stop position
 		}
 
@@ -2194,6 +2197,7 @@ bool tTJSNI_WaveSoundBuffer::FillBuffer(bool firstwrite, bool allowpause)
 	if(!BufferPlaying) return true;
 	SDL_Log("FillBuffer:firstwrite:%d,cur_pos:%d,remain:%d",
 			firstwrite,SoundBufferWritePos,L2BufferRemain);
+
 
 	// check paused state
 	if(allowpause)
@@ -2305,7 +2309,11 @@ bool tTJSNI_WaveSoundBuffer::FillBuffer(bool firstwrite, bool allowpause)
 		// }
 		if(!SoundBuffer->writeable())
 		{
-			SDL_Log("===can't write!");
+			auto p = SoundBuffer->plb;
+			SDL_Log("===can't write!:rp:%d,rsize:%d,wp:%d,wsize%d:",
+			p->r_pos,p->readable_len,p->w_pos,p->writeable_len
+			);
+
 			return true;
 		}
 
