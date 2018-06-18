@@ -257,6 +257,8 @@ tTVPFFMPEGWaveDecoder::tTVPFFMPEGWaveDecoder(ffStream* ps,tTJSBinaryStream *stre
 	mem_stream = pdb->get_data();
 	mem_size = pdb->len;
 
+	
+
 	DataStart = datastart;
 
 	//format init.
@@ -268,8 +270,12 @@ tTVPFFMPEGWaveDecoder::tTVPFFMPEGWaveDecoder(ffStream* ps,tTJSBinaryStream *stre
 
 	SampleSize = Format.BytesPerSample * Format.Channels;
 
+
 	Format.TotalSamples = mem_size/SampleSize;
 	assert(mem_size % SampleSize == 0);
+
+	// printf("=====ffmpeg deocde:size:%d,samples:%d,SampleSize:%d\n",
+	// mem_size,Format.TotalSamples,SampleSize);
 	// if(mem_size%SampleSize != 0)
 	// {
 	// 	Format.TotalSamples++;
@@ -309,11 +315,15 @@ bool tTVPFFMPEGWaveDecoder::Render(void *buf, tjs_uint bufsamplelen, tjs_uint& r
 
 	tjs_uint readsize = writesamples * SampleSize;
 	tjs_uint read = readsize;
-	if(CurrentPos * SampleSize + read > mem_size)
+	tjs_uint mem_pos = CurrentPos * SampleSize;
+
+	if(mem_pos + read >= mem_size)
 	{
 		read = mem_size - CurrentPos*SampleSize;
 	}
 	// tjs_uint read = Stream->Read(buf, readsize);
+	if(read>0)
+		memcpy(buf,mem_stream + mem_pos,read);
 
 
 #if TJS_HOST_IS_BIG_ENDIAN
@@ -389,6 +399,7 @@ int tTVPFFMPEGWaveDecoder::read_packet_cb(void* opaque, uint8_t* buf, int buf_si
 	tTVPFFMPEGWaveDecoder* _this = (tTVPFFMPEGWaveDecoder*) opaque;
 	tTJSBinaryStream* p_stream = _this->Stream;
 	buf_size = p_stream->Read(buf, buf_size);
+	printf("read cb:%d\n",buf_size);
 	if(!buf_size)
 		return AVERROR_EOF;
 	return buf_size;
@@ -411,7 +422,7 @@ public:
 tTVPWaveDecoder * tTVPFFMPEGWaveDecoder_C::Create(const ttstr & storagename,
 	const ttstr &extension)
 {
-	// if(extension != TJS_W(".wav")) return NULL;
+	// if(extension == TJS_W(".wav")) return NULL;
 
 	tTVPStreamHolder stream(storagename);
 
