@@ -53,7 +53,8 @@ int AudioPlayer::buffer_data_one(int buf_idx,int update_time_ms)
 
 int AudioPlayer::buffer_data_unit(int buf_idx,int bytes)
 {
-	SDL_Log("buffer_data_unit:%d:%d,format:%d",buf_idx,bytes,format.format);
+	SDL_Log("buffer_data_unit:%d:%d,freq:%d,chs:%d,format:%d",
+	buf_idx,bytes,format.nSamplesPerSec,format.nChannels, format.format);
 	assert(buf_idx >= 0);
 
 	uint32_t freq = format.nSamplesPerSec;

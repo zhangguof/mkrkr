@@ -143,12 +143,12 @@ int ffStream::open_audio_stream()
 		//resample.
 	
 	target_params = {
-		//aCodecCtx->sample_rate,
-		DEFAUTL_FREQ,
-		DEFAUTL_CHANNELS,
-		// aCodecCtx->channels,
-		//aCodecCtx->channel_layout,
-		(uint64_t)av_get_default_channel_layout(DEFAUTL_CHANNELS),
+		aCodecCtx->sample_rate,
+		// DEFAUTL_FREQ,
+		// DEFAUTL_CHANNELS,
+		aCodecCtx->channels,
+		aCodecCtx->channel_layout,
+		// (uint64_t)av_get_default_channel_layout(DEFAUTL_CHANNELS),
 		AV_SAMPLE_FMT_S16
 	};
 	audio_swr_resampling_audio_init(&swr,
@@ -226,7 +226,9 @@ int ffStream::open_audio_stream_cb(void* stream,tReadPacketCB read_packet_cb)
 	has_open = true;
 	if(is_decode_all)
 	{
+		uint32_t now_tick = SDL_GetTicks();
 		decode_all();
+		SDL_Log("decode_all cost:%dms\n",SDL_GetTicks()-now_tick);
 	}
 	return r;
 }

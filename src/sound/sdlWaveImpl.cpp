@@ -274,8 +274,8 @@ tTVPFFMPEGWaveDecoder::tTVPFFMPEGWaveDecoder(ffStream* ps,tTJSBinaryStream *stre
 	Format.TotalSamples = mem_size/SampleSize;
 	assert(mem_size % SampleSize == 0);
 
-	// printf("=====ffmpeg deocde:size:%d,samples:%d,SampleSize:%d\n",
-	// mem_size,Format.TotalSamples,SampleSize);
+	printf("=====ffmpeg deocde:size:%d,samples:%d,SampleSize:%d\n",
+	mem_size,Format.TotalSamples,SampleSize);
 	// if(mem_size%SampleSize != 0)
 	// {
 	// 	Format.TotalSamples++;
@@ -399,7 +399,7 @@ int tTVPFFMPEGWaveDecoder::read_packet_cb(void* opaque, uint8_t* buf, int buf_si
 	tTVPFFMPEGWaveDecoder* _this = (tTVPFFMPEGWaveDecoder*) opaque;
 	tTJSBinaryStream* p_stream = _this->Stream;
 	buf_size = p_stream->Read(buf, buf_size);
-	printf("read cb:%d\n",buf_size);
+	// printf("read cb:%d\n",buf_size);
 	if(!buf_size)
 		return AVERROR_EOF;
 	return buf_size;
