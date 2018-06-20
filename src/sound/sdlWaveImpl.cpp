@@ -253,6 +253,8 @@ tTVPFFMPEGWaveDecoder::tTVPFFMPEGWaveDecoder(ffStream* ps,tTJSBinaryStream *stre
 	tTVPFFMPEGWaveDecoder::read_packet_cb);
 
 	auto pdb = p_ffstream->get_decode_buffer();
+	
+	assert(pdb!=nullptr);
 
 	mem_stream = pdb->get_data();
 	mem_size = pdb->len;
@@ -265,8 +267,8 @@ tTVPFFMPEGWaveDecoder::tTVPFFMPEGWaveDecoder(ffStream* ps,tTJSBinaryStream *stre
 	Format = format;
 	Format.Channels = p_ffstream->channels;
 	Format.SamplesPerSec = p_ffstream->freq;
-	Format.BitsPerSample = 16;
-	Format.BytesPerSample = 2;
+	Format.BitsPerSample = p_ffstream->BitsPerSample;
+	Format.BytesPerSample = p_ffstream->BytesPerSample;
 
 	SampleSize = Format.BytesPerSample * Format.Channels;
 
@@ -312,6 +314,7 @@ bool tTVPFFMPEGWaveDecoder::Render(void *buf, tjs_uint bufsamplelen, tjs_uint& r
 		rendered = 0;
 		return false;
 	}
+
 
 	tjs_uint readsize = writesamples * SampleSize;
 	tjs_uint read = readsize;
@@ -434,7 +437,7 @@ tTVPWaveDecoder * tTVPFFMPEGWaveDecoder_C::Create(const ttstr & storagename,
 		// read format
 		tTVPWaveFormat format;
 		tjs_int64 datastart;
-		p_ffstream = new ffStream();
+		p_ffstream = new ffStream(true); //decode all
 
 		// create tTVPWD_RIFFWave instance
 		format.Seekable = true;

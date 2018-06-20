@@ -10,6 +10,8 @@ extern "C" {
 #include <libswresample/swresample.h>
 #include <libavutil/opt.h>
 #include <libavformat/avio.h>
+#include <libavutil/timestamp.h>
+#include <libavutil/mathematics.h>
 
 #define LOGE printf
 #define LOGI printf
@@ -89,7 +91,10 @@ uint8_t **targetData)
 	int dst_bufsize = len * targetAudioParams->channels * 
 	av_get_bytes_per_sample(targetAudioParams->sample_fmt);
 
-    // LOGI(" dst_bufsize:%d\n",dst_bufsize);
+    // LOGI("len:%d,chs:%d,dst_bufsize:%d,fmt:%d\n",
+    // 	len,targetAudioParams->channels,dst_bufsize,
+    // 	targetAudioParams->sample_fmt
+    // 	);
     return dst_bufsize;
 }
 
@@ -159,6 +164,14 @@ int ffStream::open_audio_stream()
 	printf("===%s:read packet cost:%u ms\n",fname.c_str(),SDL_GetTicks()-start_tick);
 
 	has_open = true;
+	if(pdb==nullptr)
+	{
+		pdb = std::make_shared<DataBuffer>();
+	}
+	if(!pdecoder)
+	{
+		pdecoder = std::make_shared<FFDecoder>(pdb,&target_params,aCodecCtx,swr);
+	}
 
 	return 0;
 }
@@ -250,6 +263,24 @@ void ffStream::read_all_packet()
     printf("==read packets:%d\n",packet_q.size());
 }
 
+
+static void log_packet(const AVFormatContext *fmt_ctx, const AVPacket *pkt)
+{
+	static int nb_samples = 0;
+	static int total_time = 0;
+    AVRational *time_base = &fmt_ctx->streams[pkt->stream_index]->time_base;
+    // printf("===time_base:%d/%d\n",time_base->num,time_base->den);
+    printf("pts:%s pts_time:%s dts:%s dts_time:%s duration:%s duration_time:%s stream_index:%d\n",
+           av_ts2str(pkt->pts), av_ts2timestr(pkt->pts, time_base),
+           av_ts2str(pkt->dts), av_ts2timestr(pkt->dts, time_base),
+           av_ts2str(pkt->duration), av_ts2timestr(pkt->duration, time_base),
+           pkt->stream_index);
+    nb_samples += pkt->duration;
+    total_time += (pkt->duration * time_base->num * 1000) / (time_base->den);
+    // printf("====nb_samples:%d,total_time:%dms\n",
+    // nb_samples,total_time);
+}
+
 //one frame decode.
 static uint8_t** frame_buf = NULL;
 const int max_samples = 8192;
@@ -334,6 +365,12 @@ int ffStream::audio_decode_frame(uint8_t *audio_buf,int buf_size)
     	return -1;
     }
     packet_q.wait_and_pop(pkt);
+    // printf("==pkt info:pts:%d,dts:%d,duration:%d,pos:%d\n",
+    // pkt.pts,pkt.dts,pkt.duration,pkt.pos);
+    // log_packet(pFormatCtx,&pkt);
+    // printf("frame_size:%d,frame_number:%d\n", aCodecCtx->frame_size,
+    // aCodecCtx->frame_number
+    // );
 
 
     audio_pkt_data = pkt.data;
@@ -343,30 +380,60 @@ int ffStream::audio_decode_frame(uint8_t *audio_buf,int buf_size)
 
 void ffStream::decode_all()
 {
-	if(!pdb)
+	int size = 0;
+	size = decode_one();
+	// printf("(decode_one:%d)\n", size);
+	while(!decoded_end)
 	{
-		pdb = std::make_shared<DataBuffer>();
+		size = decode_one();
+		// printf("(decode_one:%d)\n", size);
 	}
+	// if(!pdb)
+	// {
+	// 	pdb = std::make_shared<DataBuffer>();
+	// }
 	
-	uint8_t buf[(MAX_AUDIO_FRAME_SIZE * 3) / 2];
+	// uint8_t buf[(MAX_AUDIO_FRAME_SIZE * 3) / 2];
 
-	int len = audio_decode_frame(buf,MAX_AUDIO_FRAME_SIZE);
-	int count = 0;
-	int total_size = 0;
-	while(len > 0)
-	{
-		count++;
+	// int len = audio_decode_frame(buf,MAX_AUDIO_FRAME_SIZE);
+	// int count = 0;
+	// int total_size = 0;
+	// while(len > 0)
+	// {
+	// 	count++;
 		
-		pdb->push(buf,len);
-		total_size += len;
+	// 	pdb->push(buf,len);
+	// 	total_size += len;
 
-		len = audio_decode_frame(buf,MAX_AUDIO_FRAME_SIZE);
+	// 	len = audio_decode_frame(buf,MAX_AUDIO_FRAME_SIZE);
+	// }
+	// decode_data_size = total_size;
+	// // printf("databuffer pos:%d,size:%d,size2:%d,len:%d\n",
+	// // db.rpos,db.v.capacity(),db.v.size(),db.len);
+	// decode_data = pdb->get_data();
+	// printf("frame count:%d,size:%d\n",count,total_size);
+
+}
+
+int ffStream::decode_one()
+{
+	if(decoded_end) return 0;
+	if(!pdecoder) return 0;
+	if(!pdb) return 0;
+
+	if(packet_q.empty())
+	{
+		decoded_end  = true;
+		return 0;
 	}
-	decode_data_size = total_size;
-	// printf("databuffer pos:%d,size:%d,size2:%d,len:%d\n",
-	// db.rpos,db.v.capacity(),db.v.size(),db.len);
-	decode_data = pdb->get_data();
-	printf("frame count:%d,size:%d\n",count,total_size);
+
+
+	AVPacket p;
+	packet_q.wait_and_pop(p);
+	// log_packet(pFormatCtx,&p);
+
+	return pdecoder->decode_one_pkt(p);
+
 }
 
 ffStream::~ffStream()
@@ -386,6 +453,73 @@ ffStream::~ffStream()
     	swr_free(&swr);
 }
 
+//=========ff decoder==================================
+int FFDecoder::decode(uint8_t* audio_buf, int buf_size)
+{}
+
+int FFDecoder::decode_one_pkt(AVPacket& _pkt)
+{
+	pkt = _pkt;
+	int len1;
+	int data_size = 0;
+	int got_frame = 0;
+	audio_pkt_data = pkt.data;
+	audio_pkt_size = pkt.size;
+	AVFrame* frame = av_frame_alloc();
+	int decoded_size = 0;
+
+	while(audio_pkt_size  > 0)
+	{
+		av_frame_unref(frame);
+		len1 = avcodec_decode_audio4(aCodecCtx, frame, 
+			&got_frame, &pkt);
+		if(len1 < 0)
+		{
+			// audio_pkt_size = 0;
+			break;
+		}
+		audio_pkt_data += len1;
+		audio_pkt_size -= len1;
+		data_size = 0;
+		if(got_frame)
+		{
+			data_size = av_samples_get_buffer_size(NULL, 
+					       aCodecCtx->channels,
+					       frame->nb_samples,
+					       aCodecCtx->sample_fmt,
+					       1);
+			// printf("===got_frame:%d,nb_samples:%d\n", got_frame,frame->nb_samples);
+			if(swr)
+			{
+				allocat_buffer(frame->nb_samples);
+				data_size = audio_swr_resampling_audio(swr,
+					target_params,frame, frame_buf);
+
+				pdb->push(*frame_buf,data_size);
+			}
+			else
+			{
+				pdb->push(frame->data[0],data_size);
+
+			}
+			// printf("===data_size:%d\n",data_size);
+			if(data_size <= 0)
+			{
+			/* No data yet, get more frames */
+				continue;
+			}
+			// assert(data_size > 0);
+			decoded_size += data_size;
+		}
+
+	}
+	//process one packet end.
+	if(pkt.data)
+	{
+		av_free_packet(&pkt);
+	}
+	return decoded_size;
+}
 
 
 //---------------------

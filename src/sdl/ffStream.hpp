@@ -46,10 +46,12 @@ public:
 	std::vector<uint8_t> v;
 	int len;
 	int rpos;
+	bool locked;
 	DataBuffer(){
 		v.resize(4096);
 		len = 0;
 		rpos = 0;
+		locked = false;
 	}
 	uint8_t* get_data()
 	{
@@ -72,10 +74,7 @@ public:
 	{
 		//fix using size() better than capacity()!!!
 		ensure_size(size);
-		// if(len + size > v.size()) 
-		// {
-		// 	v.resize(len + size);
-		// }
+
 		memcpy(get_tail(),data,size);
 		len += size;
 	}
@@ -120,7 +119,21 @@ public:
 		rpos = 0;
 		len = 0;
 	}
+	void* lock(int bytes)
+	{
+		if(locked) return nullptr;
+		locked = true;
+		ensure_size(bytes);
+		return get_tail();
+	}
+	void unlock()
+	{
+		if(!locked) return;
+		locked = false;
+	}
 };
+
+typedef std::shared_ptr<DataBuffer> tPtrDB;
 
 struct TargetAudioParams
 {
@@ -133,6 +146,105 @@ struct TargetAudioParams
 typedef SafeQueue<AVPacket> tPacketQueue;
 typedef	int(*tReadPacketCB)(void *opaque, uint8_t *buf, int buf_size);
 
+// struct Frame
+// {
+// 	int f_idx;
+// 	int nSamples;
+// 	Frame(int _idx,int n)
+// 	{
+// 		f_idx = _idx;
+// 		nSamples = n;
+// 	}
+// 	~Frame()
+// 	{
+// 	}
+// };
+
+// struct FrameQueue
+// {
+// 	int nSample;
+// 	int SampleSize;
+// 	std::vector<Frame> v;
+// 	std::shared_ptr<DataBuffer> pdb;
+
+// 	FrameQueue(int size,std::shared_ptr<DataBuffer>& pdb)
+// 	{
+// 		SampleSize = size;
+// 	}
+// 	void push_frame(int _idx,int n_sample,uint8_t* buf,int size)
+// 	{
+// 		Frame f(_idx,n_sample);
+// 		pdb.push(buf,size);
+// 	}
+
+// };
+
+class FFDecoder
+{
+public:
+	AVCodecContext *aCodecCtx;
+	SwrContext *swr;
+	AVPacket pkt;
+	
+	uint8_t* audio_pkt_data;
+	int audio_pkt_size;
+	uint8_t** frame_buf;
+	int max_samples;
+	TargetAudioParams* target_params;
+
+	tPtrDB pdb;
+
+	int allocat_buffer(int n_sample)
+	{
+		int ret = 0,dst_linesize;
+		if(!frame_buf)
+		{
+			ret = av_samples_alloc_array_and_samples(
+				&frame_buf, &dst_linesize, 
+				aCodecCtx->channels,max_samples,
+				target_params->sample_fmt, 0);
+			// printf("====allocat_buffer:%d\n", ret);
+		}
+		else if(n_sample > max_samples)
+		{
+			av_freep(&frame_buf[0]);
+			max_samples = n_sample;
+			ret = av_samples_alloc(frame_buf, &dst_linesize, aCodecCtx->channels,
+                 max_samples, target_params->sample_fmt, 1);
+			// printf("=====re allocat_buffer:%d\n", ret);
+		}
+
+		if(ret<0)
+		{
+			printf("swr_alloc fail!!!:max_samples:%d\n",max_samples);
+		}
+		return ret;
+	}
+
+	FFDecoder(tPtrDB& _p,TargetAudioParams* pfmt,AVCodecContext* ctx, SwrContext* _swr=NULL)
+	{
+		aCodecCtx = ctx;
+		swr = _swr;
+		audio_pkt_data = nullptr;
+		audio_pkt_size = 0;
+		frame_buf = NULL;
+		pdb = _p;
+		max_samples = 8192;
+		target_params = pfmt;
+
+	}
+	~FFDecoder()
+	{
+		if (frame_buf)
+			av_freep(&frame_buf[0]);
+		av_freep(&frame_buf);
+	}
+	int decode_one_pkt(AVPacket& _pkt);
+
+	int decode(uint8_t* audio_buf, int buf_size);
+
+};
+
 class ffStream
 {
 private:
@@ -144,7 +256,7 @@ private:
 	AVCodec* aCodec;
 	SwrContext *swr;
 	int audioStream;
-	TargetAudioParams target_params;
+	// TargetAudioParams target_params;
 	SafeQueue<AVPacket> packet_q;
 	bool has_open;
 
@@ -159,17 +271,25 @@ private:
 	const uint32_t avio_ctx_buffer_size = 4096;
 
 	bool is_decode_all;
+	
+
+	//decode
+	std::shared_ptr<FFDecoder> pdecoder;
 
 
 
 public:
 	int freq;
 	int channels;
+	bool decoded_end;
+	TargetAudioParams target_params;
+	const int BitsPerSample = 16;
+	const int BytesPerSample = 2;
 
 
 public:
 	ffStream(std::string name
-	, bool _is_decode_all=true
+	, bool _is_decode_all=false
 	):fname(name),pFormatCtx(NULL),
 	aCodecCtx(NULL),aCodecCtxOrig(NULL),
 	aCodec(NULL),swr(NULL),audioStream(-1),
@@ -185,6 +305,7 @@ public:
 		decode_data = nullptr;
 		decode_data_size = 0;
 		pdb = nullptr;
+		pdecoder = nullptr;
 
 		open_audio_file();
 		if(is_decode_all)
@@ -194,8 +315,9 @@ public:
 			printf("===%s:decode_all cost:%u ms\n",fname.c_str(),SDL_GetTicks()-start_tick);
 
 		}
+		decoded_end = false;
 	}
-	ffStream(bool _is_decode_all = true):
+	ffStream(bool _is_decode_all = false):
 	fname(""),pFormatCtx(NULL),
 	aCodecCtx(NULL),aCodecCtxOrig(NULL),
 	aCodec(NULL),swr(NULL),audioStream(-1),
@@ -203,6 +325,9 @@ public:
 	{
 		avio_ctx_buffer = NULL;
 		p_avio_ctx = NULL;
+		pdb = nullptr;
+		pdecoder = nullptr;
+		decoded_end = false;
 	}
 	std::shared_ptr<DataBuffer> get_decode_buffer()
 	{
@@ -215,6 +340,7 @@ public:
 	void read_all_packet();
 	int audio_decode_frame(uint8_t* audio_buf, int buf_size);
 	void decode_all();
+	int decode_one();
 
 	~ffStream();
 
