@@ -58,6 +58,12 @@ struct tTVPWaveFormat
 	tjs_uint32 SpeakerConfig; // bitwise OR of SPEAKER_* constants
 	bool IsFloat; // true if the data is IEEE floating point
 	bool Seekable;
+	void dump()
+	{
+		printf("Format:freq:%u,channels:%u,bits:%u,bytes:%u,nSamples:%lu,total_time:%lums\n",
+		SamplesPerSec,Channels,BitsPerSample,BytesPerSample,TotalSamples,TotalTime 
+		);
+	}
 };
 //---------------------------------------------------------------------------
 

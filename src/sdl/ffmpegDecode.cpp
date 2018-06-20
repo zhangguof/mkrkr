@@ -192,6 +192,14 @@ int ffStream::open_audio_file()
 	int r = open_audio_stream();
 	has_open = true;
 
+	if(is_decode_all)
+	{
+		uint32_t start_tick = SDL_GetTicks();
+		decode_all();
+		printf("===%s:decode_all cost:%u ms\n",fname.c_str(),SDL_GetTicks()-start_tick);
+
+	}
+
 	return r;
 }
 
@@ -216,6 +224,8 @@ int ffStream::open_audio_stream_cb(void* stream,tReadPacketCB read_packet_cb)
 	if(has_open)
 		return 0;
 
+
+
 	pFormatCtx = avformat_alloc_context();
 
 	avio_ctx_buffer = (uint8_t*)av_malloc(avio_ctx_buffer_size);
@@ -223,6 +233,7 @@ int ffStream::open_audio_stream_cb(void* stream,tReadPacketCB read_packet_cb)
                0, stream, read_packet_cb, NULL, NULL);
     if (!p_avio_ctx)
     {
+    	printf("error allock avio buffer fail!!!\n");
     	return -1;
     }
 
@@ -236,6 +247,7 @@ int ffStream::open_audio_stream_cb(void* stream,tReadPacketCB read_packet_cb)
 		return -1;
 
 	int r = open_audio_stream();
+	assert(r == 0);
 	has_open = true;
 	if(is_decode_all)
 	{
@@ -253,6 +265,7 @@ void ffStream::read_all_packet()
 	{
 		if(packet.stream_index == audioStream) {
     		packet_q.push(packet);
+    		on_packet(packet);
     		// printf("packet size:%d\n",packet.size);
   		}
   		else
@@ -266,8 +279,8 @@ void ffStream::read_all_packet()
 
 static void log_packet(const AVFormatContext *fmt_ctx, const AVPacket *pkt)
 {
-	static int nb_samples = 0;
-	static int total_time = 0;
+	// static int nb_samples = 0;
+	// static int total_time = 0;
     AVRational *time_base = &fmt_ctx->streams[pkt->stream_index]->time_base;
     // printf("===time_base:%d/%d\n",time_base->num,time_base->den);
     printf("pts:%s pts_time:%s dts:%s dts_time:%s duration:%s duration_time:%s stream_index:%d\n",
@@ -275,10 +288,19 @@ static void log_packet(const AVFormatContext *fmt_ctx, const AVPacket *pkt)
            av_ts2str(pkt->dts), av_ts2timestr(pkt->dts, time_base),
            av_ts2str(pkt->duration), av_ts2timestr(pkt->duration, time_base),
            pkt->stream_index);
-    nb_samples += pkt->duration;
-    total_time += (pkt->duration * time_base->num * 1000) / (time_base->den);
+    // nb_samples += pkt->duration;
+    // total_time += (pkt->duration * time_base->num * 1000) / (time_base->den);
     // printf("====nb_samples:%d,total_time:%dms\n",
     // nb_samples,total_time);
+}
+static uint32_t get_pkt_duration(const AVFormatContext *fmt_ctx, const AVPacket *pkt)
+{
+	AVRational *time_base = &fmt_ctx->streams[pkt->stream_index]->time_base;
+	return (pkt->duration * time_base->num * 1000) / (time_base->den);
+}
+static uint32_t get_pkt_samples(const AVPacket* pkt)
+{
+	return pkt->duration;
 }
 
 //one frame decode.
@@ -431,9 +453,21 @@ int ffStream::decode_one()
 	AVPacket p;
 	packet_q.wait_and_pop(p);
 	// log_packet(pFormatCtx,&p);
+	
 
-	return pdecoder->decode_one_pkt(p);
+	int len =  pdecoder->decode_one_pkt(p);
+	if(len > 0){
+//		decoded_size += len;
+		// printf("===decode one :%d\n",len);
+	} 
+	return len;
 
+}
+
+void ffStream::on_packet(AVPacket& pkt)
+{
+	total_time += get_pkt_duration(pFormatCtx,&pkt);
+	n_src_samples += get_pkt_samples(&pkt);
 }
 
 ffStream::~ffStream()

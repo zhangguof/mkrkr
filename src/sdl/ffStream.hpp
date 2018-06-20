@@ -78,6 +78,11 @@ public:
 		memcpy(get_tail(),data,size);
 		len += size;
 	}
+
+	int readable_size()
+	{
+		return len - rpos;
+	}
 	int read(uint8_t** data,int n)
 	{
 		if(rpos == len)
@@ -101,6 +106,17 @@ public:
 		*data = get_data() + rpos;
 		rpos = len;
 		return len;
+	}
+	int fill(uint8_t* data,int n)
+	{
+		if(rpos == len)
+			return 0;
+		int read_len = n;
+		if(n > len -rpos)
+			read_len = len - rpos;
+		memcpy(data,get_data()+rpos, read_len);
+		rpos += read_len;
+		return read_len;
 	}
 	void seek(int pos)
 	{
@@ -260,8 +276,8 @@ private:
 	SafeQueue<AVPacket> packet_q;
 	bool has_open;
 
-	uint8_t* decode_data;
-	int decode_data_size;
+	// uint8_t* decode_data;
+	// int decode_data_size;
 	// DataBuffer db;
 	std::shared_ptr<DataBuffer> pdb;
 
@@ -281,53 +297,55 @@ private:
 public:
 	int freq;
 	int channels;
-	bool decoded_end;
+	
 	TargetAudioParams target_params;
 	const int BitsPerSample = 16;
 	const int BytesPerSample = 2;
+	uint64_t total_time; //ms
+	uint64_t n_src_samples;
+
+	bool decoded_end;
+	// uint32_t read_pos;
+	// uint32_t decoded_len;
 
 
 public:
 	ffStream(std::string name
 	, bool _is_decode_all=false
-	):fname(name),pFormatCtx(NULL),
-	aCodecCtx(NULL),aCodecCtxOrig(NULL),
-	aCodec(NULL),swr(NULL),audioStream(-1),
-	is_decode_all(_is_decode_all)
+	):is_decode_all(_is_decode_all)
 	{
-		avio_ctx_buffer = NULL;
-		p_avio_ctx = NULL;
-
-		memset(&target_params,0,sizeof(target_params));
-		freq = -1;
-		channels = 0;
-		has_open = false;
-		decode_data = nullptr;
-		decode_data_size = 0;
-		pdb = nullptr;
-		pdecoder = nullptr;
-
+		init();
+		fname = name;
 		open_audio_file();
-		if(is_decode_all)
-		{
-			uint32_t start_tick = SDL_GetTicks();
-			decode_all();
-			printf("===%s:decode_all cost:%u ms\n",fname.c_str(),SDL_GetTicks()-start_tick);
-
-		}
-		decoded_end = false;
 	}
 	ffStream(bool _is_decode_all = false):
-	fname(""),pFormatCtx(NULL),
-	aCodecCtx(NULL),aCodecCtxOrig(NULL),
-	aCodec(NULL),swr(NULL),audioStream(-1),
 	is_decode_all(_is_decode_all)
 	{
+		init();
+	}
+	void init()
+	{
+		fname = "";
+		pFormatCtx = NULL;
+		aCodecCtx = NULL;
+		aCodecCtxOrig = NULL;
+		aCodec = NULL;
+		swr = NULL;
+		audioStream = -1;
+
+		memset(&target_params,0,sizeof(target_params));
+
+		freq = -1;
+		channels = 0;
+
 		avio_ctx_buffer = NULL;
 		p_avio_ctx = NULL;
 		pdb = nullptr;
 		pdecoder = nullptr;
 		decoded_end = false;
+		total_time = 0;
+		n_src_samples = 0;
+		has_open = false;
 	}
 	std::shared_ptr<DataBuffer> get_decode_buffer()
 	{
@@ -341,6 +359,25 @@ public:
 	int audio_decode_frame(uint8_t* audio_buf, int buf_size);
 	void decode_all();
 	int decode_one();
+
+	void on_packet(AVPacket& pkt);
+	int Read(void* buf, uint32_t readsize)
+	{
+		int has_read = 0;
+		while(!decoded_end && readsize > pdb->readable_size())
+		{
+			decode_one();
+		}
+		has_read = pdb->fill((uint8_t*)buf,readsize);
+		return has_read;
+	}
+	void SetPos(uint32_t pos)
+	{
+		// read_pos = pos;
+		while(!decoded_end && pos > pdb->readable_size())
+			decode_one();
+		pdb->seek(pos);
+	}
 
 	~ffStream();
 
