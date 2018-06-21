@@ -17,7 +17,8 @@ src_path  = "src"
 frameworks = ['CoreAudio','OpenGL',
 			  'AudioToolbox','ForceFeedback','Carbon',
 			  'CoreFoundation','Cocoa','IOKit','CoreVideo',
-			  'Metal',
+			  'Metal','AVFoundation','CoreMedia','Security',
+			  'VideoToolbox',
 			  ]
 
 
@@ -26,10 +27,12 @@ frameworks = ['CoreAudio','OpenGL',
 
 cpp_path = ['./','src',
 			'src/objects','src/utils',
-			'src/base','src/visual','src/visual/sdl',
+			'src/base','src/visual',
+			'src/visual/sdl',
+			'src/sound',
 			'src/environ',
 			'src/extension',
-			'src/sdl'
+			'src/sdl',
 ]
 
 refuse_files = set(['utils/TimerImpl.cpp',
@@ -62,6 +65,7 @@ refuse_files = set(['utils/TimerImpl.cpp',
 	# "un_pack_xp3.cpp",
 	"src/sdl/test.cpp",
 	"main.cpp",
+	"src/sound/WaveImpl.cpp",
 	])
 include_path = list(cpp_path)
 include_path.extend([
@@ -70,21 +74,13 @@ include_path.extend([
 	'../boost_1_67_0/',
 	'src/ext_libs_src/',
 	'../sdl/SDL2-2.0.8/include',
+	'../ffmpeg-4.0/',
 	'src/ext_libs_src/freetype-2.9/include',
 	'src/ext_libs_src/libpng-1.6.34',
+	'src/ext_libs_src/openal-soft-1.18.2/include',
+	'src/ext_libs_src/freealut-1.1.0/include',
 	"src/plugins/KAGParser",
 
-	# "./include",
-	# './tools/freetype-2.7/include',
-	#'./external/jxrlib/common/include',
-	# './tools/libjpeg-turbo-1.5.3',
-	# './visual/win32',
-	# './tools/zlib','./external/onig/src',
-	# './external/libpng','/Users/tony/workspace/github/boost_1_67_0',
-	# "plugins/KAGParser",
-	# "sdl",
-	# "../sdl/SDL2-2.0.8/include",
-	#'visual/gl/','visual/IA32/'
 	])
 
 #src files.
@@ -145,7 +141,9 @@ def build_main_in_darwin():
 	libs = ['tjs2','onig','z',
 	'boost_filesystem','boost_system',
 	'SDL2','GLEW','soil',
-	'freetype','bz2','kagparser','png16','iconv',
+	'freetype','bz2','kagparser','png16','iconv','lzma',
+	'avformat','avcodec','avutil','swscale','swresample',
+	'openal',
 	]
 	lib_path = ['./libs',]
 	env.Program(target=target, source=cpp_src,
@@ -182,7 +180,7 @@ def build_in_win32():
 
 def build_main():
 	if platform == "darwin":
-		build_static_lib()
+		# build_static_lib()
 		build_main_in_darwin()
 	elif platform == "win32":
 		build_in_win32()
