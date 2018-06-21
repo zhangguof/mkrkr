@@ -4,6 +4,7 @@
 #ifdef _WIN32
 #include <mmsystem.h>
 #endif
+#include "utils.h"
 
 //---------------------------------------------------------------------------
 // TVPGetRoughTickCount
@@ -16,7 +17,7 @@ tjs_uint32 TVPGetRoughTickCount32()
 #else
 	//#error Not implemented yet.
 	//TODO
-	return 0;
+	return timeGetTime();
 #endif
 }
 //---------------------------------------------------------------------------
