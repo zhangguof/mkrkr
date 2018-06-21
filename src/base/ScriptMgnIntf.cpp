@@ -36,7 +36,7 @@
 #include "Random.h"
 #include "tjsRandomGenerator.h"
 #include "SysInitIntf.h"
-// #include "PhaseVocoderFilter.h"
+#include "PhaseVocoderFilter.h"
 #include "BasicDrawDevice.h"
 #include "BinaryStream.h"
 // #include "SysInitImpl.h"
@@ -525,11 +525,11 @@ void TVPInitScriptEngine()
 	/* WaveSoundBuffer and its filters */
 	iTJSDispatch2 * waveclass = NULL;
 	REGISTER_OBJECT(WaveSoundBuffer, (waveclass = TVPCreateNativeClass_WaveSoundBuffer()));
-	// dsp = new tTJSNC_PhaseVocoder();
-	// val = tTJSVariant(dsp);
-	// dsp->Release();
-	// waveclass->PropSet(TJS_MEMBERENSURE|TJS_IGNOREPROP|TJS_STATICMEMBER,
-		// TJS_W("PhaseVocoder"), NULL, &val, waveclass);
+	dsp = new tTJSNC_PhaseVocoder();
+	val = tTJSVariant(dsp);
+	dsp->Release();
+	waveclass->PropSet(TJS_MEMBERENSURE|TJS_IGNOREPROP|TJS_STATICMEMBER,
+		TJS_W("PhaseVocoder"), NULL, &val, waveclass);
 
 	// Window and its drawdevices 
 	iTJSDispatch2 * windowclass = NULL;

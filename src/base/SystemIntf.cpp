@@ -15,10 +15,10 @@
 #include "SysInitIntf.h"
 // #include "SysInitImpl.h"
 #include "MsgIntf.h"
-// #include "GraphicsLoaderIntf.h"
+#include "GraphicsLoaderIntf.h"
 #include "EventIntf.h"
-// #include "LayerIntf.h"
-// #include "LayerBitmapIntf.h"
+#include "LayerIntf.h"
+#include "LayerBitmapIntf.h"
 #include "Random.h"
 #include "ScriptMgnIntf.h"
 #include "DebugIntf.h"
@@ -172,7 +172,7 @@ TJS_END_NATIVE_STATIC_METHOD_DECL(/*func. name*/removeContinuousHandler)
 TJS_BEGIN_NATIVE_METHOD_DECL(/*func. name*/clearGraphicCache)
 {
 	// clear graphic cache
-	// TVPClearGraphicCache();
+	TVPClearGraphicCache();
 
 	return TJS_S_OK;
 }
@@ -324,7 +324,7 @@ TJS_BEGIN_NATIVE_PROP_DECL(graphicCacheLimit)
 	TJS_BEGIN_NATIVE_PROP_GETTER
 	{
 		//TODO
-		// *result = (tjs_int)TVPGetGraphicCacheLimit();
+		*result = (tjs_int)TVPGetGraphicCacheLimit();
 		return TJS_S_OK;
 	}
 	TJS_END_NATIVE_PROP_GETTER
@@ -332,7 +332,7 @@ TJS_BEGIN_NATIVE_PROP_DECL(graphicCacheLimit)
 	TJS_BEGIN_NATIVE_PROP_SETTER
 	{
 		//TODO
-		// TVPSetGraphicCacheLimit((tjs_int)*param);
+		TVPSetGraphicCacheLimit((tjs_int)*param);
 		return TJS_S_OK;
 	}
 	TJS_END_NATIVE_PROP_SETTER
@@ -385,34 +385,34 @@ TJS_BEGIN_NATIVE_PROP_DECL(exitOnWindowClose)
 }
 TJS_END_NATIVE_STATIC_PROP_DECL(exitOnWindowClose)
 //----------------------------------------------------------------------
-// TJS_BEGIN_NATIVE_PROP_DECL(drawThreadNum)
-// {
-//         TJS_BEGIN_NATIVE_PROP_GETTER
-//           {
-//             *result = TVPDrawThreadNum;
-//             return TJS_S_OK;
-//           }
-//         TJS_END_NATIVE_PROP_GETTER
-//         TJS_BEGIN_NATIVE_PROP_SETTER
-//           {
-//             TVPDrawThreadNum = (tjs_int)*param;
-//             return TJS_S_OK;
-//           }
-// 	TJS_END_NATIVE_PROP_SETTER
-// }
-// TJS_END_NATIVE_STATIC_PROP_DECL(drawThreadNum)
+TJS_BEGIN_NATIVE_PROP_DECL(drawThreadNum)
+{
+        TJS_BEGIN_NATIVE_PROP_GETTER
+          {
+            *result = TVPDrawThreadNum;
+            return TJS_S_OK;
+          }
+        TJS_END_NATIVE_PROP_GETTER
+        TJS_BEGIN_NATIVE_PROP_SETTER
+          {
+            TVPDrawThreadNum = (tjs_int)*param;
+            return TJS_S_OK;
+          }
+	TJS_END_NATIVE_PROP_SETTER
+}
+TJS_END_NATIVE_STATIC_PROP_DECL(drawThreadNum)
 //----------------------------------------------------------------------
-// TJS_BEGIN_NATIVE_PROP_DECL(processorNum)
-// {
-//         TJS_BEGIN_NATIVE_PROP_GETTER
-//           {
-//             *result = TVPGetProcessorNum();
-//             return TJS_S_OK;
-//           }
-//         TJS_END_NATIVE_PROP_GETTER
-// 	TJS_DENY_NATIVE_PROP_SETTER
-// }
-// TJS_END_NATIVE_STATIC_PROP_DECL(processorNum)
+TJS_BEGIN_NATIVE_PROP_DECL(processorNum)
+{
+        TJS_BEGIN_NATIVE_PROP_GETTER
+          {
+            *result = TVPGetProcessorNum();
+            return TJS_S_OK;
+          }
+        TJS_END_NATIVE_PROP_GETTER
+	TJS_DENY_NATIVE_PROP_SETTER
+}
+TJS_END_NATIVE_STATIC_PROP_DECL(processorNum)
 //----------------------------------------------------------------------
 TJS_BEGIN_NATIVE_PROP_DECL(exeBits)
 {

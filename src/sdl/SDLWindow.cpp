@@ -52,6 +52,7 @@ LayerLeft(0), LayerTop(0),touch_points_(this)
     height = h;
     TJSNativeInstance = ni;
     app->AddWindow(this);
+    SetVisibleFromScript(true);
 }
 SDLWindow::~SDLWindow()
 {
