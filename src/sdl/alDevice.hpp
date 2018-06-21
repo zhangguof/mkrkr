@@ -208,7 +208,9 @@ public:
 
 	AudioPlayer(int nbuffer=SOURCE_BUFFER_NUM,
 		bool _loop = false);
-	~AudioPlayer(){}
+	~AudioPlayer(){
+		printf("====Release AudioPlayer!!!\n");
+	}
 	void Release(){}
 	int buffer_data_one(int buf_idx,int update_time_ms);
 	int buffer_data_all(int buf_idx);
@@ -228,6 +230,7 @@ public:
 	void play();
 	void pause();
 	void stop();
+	void do_stop();
 	void enable();
 	void disable();
 
@@ -252,6 +255,7 @@ public:
 			pdb->reset();
 		if(plb)
 			plb->reset();
+		
 	}
 	void seek(int n)
 	{

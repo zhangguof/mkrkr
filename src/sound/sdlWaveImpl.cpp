@@ -1455,6 +1455,7 @@ void tTVPWaveSoundBufferThread::Execute(void)
 					if((*i)->ThreadCallbackEnabled)
 					{
 						(*i)->FillBuffer(); // fill sound buffer
+						(*i)->update();
 					}
 				}
 				LastFilledTick = time;
@@ -2430,6 +2431,7 @@ bool tTJSNI_WaveSoundBuffer::FillBuffer(bool firstwrite, bool allowpause)
 					PlayStopPos < (tjs_int)pp)
 				{
 					FlushAllLabelEvents();
+					// SoundBuffer->do_stop();
 					SoundBuffer->stop();
 					ResetSamplePositions();
 					DSBufferPlaying = false;
@@ -2444,6 +2446,7 @@ bool tTJSNI_WaveSoundBuffer::FillBuffer(bool firstwrite, bool allowpause)
 					PlayStopPos < (tjs_int)pp)
 				{
 					FlushAllLabelEvents();
+					// SoundBuffer->do_stop();
 					SoundBuffer->stop();
 					ResetSamplePositions();
 					DSBufferPlaying = false;

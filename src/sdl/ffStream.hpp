@@ -267,7 +267,7 @@ private:
 	std::string fname;
 	AVFormatContext *pFormatCtx;
 	AVCodecContext *aCodecCtx;
-	AVCodecContext *aCodecCtxOrig;
+	// AVCodecContext *aCodecCtxOrig;
 
 	AVCodec* aCodec;
 	SwrContext *swr;
@@ -328,7 +328,7 @@ public:
 		fname = "";
 		pFormatCtx = NULL;
 		aCodecCtx = NULL;
-		aCodecCtxOrig = NULL;
+		// aCodecCtxOrig = NULL;
 		aCodec = NULL;
 		swr = NULL;
 		audioStream = -1;

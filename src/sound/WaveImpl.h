@@ -292,6 +292,13 @@ protected:
 public:
 	tjs_int GetVisBuffer(tjs_int16 *dest, tjs_int numsamples, tjs_int channels,
 		tjs_int aheadsamples);
+	//update
+public:
+	void update()
+	{
+		if(SoundBuffer)
+			SoundBuffer->update();
+	}
 };
 //---------------------------------------------------------------------------
 

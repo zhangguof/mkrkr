@@ -150,6 +150,7 @@ void AudioPlayer::update_units()
 	// SDL_Log("update uints");
 	if(status == stopping && n_queued_buffer == 0)
 	{
+		stop();
 		return;
 	}
 	uint32_t buffer_idx[n_buffer];
@@ -264,9 +265,11 @@ void AudioPlayer::read_from_ffstream(
 
 void AudioPlayer::play()
 {
-	printf("AudioPlayer do play!\n");
+	printf("AudioPlayer do play!:status:%d\n",status);
 	if(status == playing)
 		return;
+	// reset_buffer_status();
+	
 	if(status == init)
 	{	
 		//push buffer frist.
@@ -288,6 +291,8 @@ void AudioPlayer::play()
 	if(is_enable)
 	{
 		//pdev->play();
+		if(status == stopping)
+			stop();
 		assert(status == stoped || status == paused || status == init);
 		status = playing;
 		p_src->play();
@@ -308,14 +313,26 @@ void AudioPlayer::pause()
 void AudioPlayer::stop()
 {
 	printf("do stop: now status:%d\n",status);
-	if(status == stoped)
+	if(status == stoped || status == init)
 		return;
-	reset();
 	// seek(0);
-	p_src->stop();
 	status = stoped;
-	if(!is_static_type)
-		pdev->on_stop(shared_from_this());
+	reset();
+	p_src->stop();
+	reset_buffer_status();
+	p_src->set_buffer(0);
+	p_src->rewind();
+	status = init;
+	
+	// if(!is_static_type)
+	// 	pdev->on_stop(shared_from_this());
+}
+void AudioPlayer::do_stop()
+{
+	printf("do stopping: now status:%d\n",status);
+	if(status == stoped || status == stopping)
+		return;
+	// status = stopping;
 }
 void AudioPlayer::enable()
 {
@@ -423,7 +440,6 @@ uint32_t ALAuidoDevice::update()
 		if(it->is_enable && it->status!= AudioPlayer::stoped)
 		{
 			// it->update();
-			it->update();
 		}
 	}
 	last_tick = cur_tick;
