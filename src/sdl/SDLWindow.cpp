@@ -268,3 +268,69 @@ bool SDLWindow::GetOrientation( int& orientation, int& rotate ) const {
 	return false;
 }
 
+tTVPMouseButton TVP_TMouseButton_To_tTVPMouseButton(int button) {
+	return (tTVPMouseButton)button;
+}
+tjs_uint32 TVP_TShiftState_To_uint32(int b)
+{
+	return 0;
+}
+
+void SDLWindow::OnMouseDown( int button, int shift, int x, int y )
+{
+	// MouseVelocityTracker.addMovement( TVPGetRoughTickCount32(), (float)x, (float)y );
+
+	LastMouseDownX = x;
+	LastMouseDownY = y;
+
+	if(TJSNativeInstance) {
+		tjs_uint32 s = TVP_TShiftState_To_uint32(shift);
+		// s |= GetMouseButtonState();
+		tTVPMouseButton b = TVP_TMouseButton_To_tTVPMouseButton(button);
+		TVPPostInputEvent( new tTVPOnMouseDownInputEvent(TJSNativeInstance, x, y, b, s));
+	}
+}
+void SDLWindow::OnMouseUp( int button, int shift, int x, int y )
+{
+	// MouseVelocityTracker.addMovement( TVPGetRoughTickCount32(), (float)x, (float)y );
+	if(TJSNativeInstance) {
+		tjs_uint32 s = TVP_TShiftState_To_uint32(shift);
+		// s |= GetMouseButtonState();
+		tTVPMouseButton b = TVP_TMouseButton_To_tTVPMouseButton(button);
+		TVPPostInputEvent( new tTVPOnMouseUpInputEvent(TJSNativeInstance, x, y, b, s));
+	}
+}
+void SDLWindow::OnMouseMove( int shift, int x, int y )
+{
+	// TranslateWindowToDrawArea(x, y);
+	// MouseVelocityTracker.addMovement( TVPGetRoughTickCount32(), (float)x, (float)y );
+	if( TJSNativeInstance ) {
+		tjs_uint32 s = TVP_TShiftState_To_uint32(shift);
+		// s |= GetMouseButtonState();
+		TVPPostInputEvent( new tTVPOnMouseMoveInputEvent(TJSNativeInstance, x, y, s), TVP_EPT_DISCARDABLE );
+	}
+
+	// RestoreMouseCursor();
+
+	int pos = (y << 16) + x;
+	// TVPPushEnvironNoise(&pos, sizeof(pos));
+
+	LastMouseMovedPos.x = x;
+	LastMouseMovedPos.y = y;
+}
+
+void SDLWindow::OnMouseDoubleClick( int button, int x, int y )
+{
+	// fire double click event
+	if( TJSNativeInstance ) {
+		TVPPostInputEvent( new tTVPOnDoubleClickInputEvent(TJSNativeInstance, LastMouseDownX, LastMouseDownY));
+	}
+}
+void SDLWindow::OnMouseClick( int button, int shift, int x, int y )
+{
+		// fire click event
+	if( TJSNativeInstance ) {
+		TVPPostInputEvent( new tTVPOnClickInputEvent(TJSNativeInstance, LastMouseDownX, LastMouseDownY));
+	}
+}
+

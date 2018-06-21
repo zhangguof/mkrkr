@@ -315,11 +315,11 @@ public:
 	virtual bool OnCloseQuery() { return true; }
 	virtual void OnFocus(HWND hFocusLostWnd) {}
 	virtual void OnFocusLost(HWND hFocusingWnd) {}
-	virtual void OnMouseDown( int button, int shift, int x, int y ){}
-	virtual void OnMouseUp( int button, int shift, int x, int y ){}
-	virtual void OnMouseMove( int shift, int x, int y ){}
-	virtual void OnMouseDoubleClick( int button, int x, int y ) {}
-	virtual void OnMouseClick( int button, int shift, int x, int y ){}
+	virtual void OnMouseDown( int button, int shift, int x, int y );
+	virtual void OnMouseUp( int button, int shift, int x, int y );
+	virtual void OnMouseMove( int shift, int x, int y );
+	virtual void OnMouseDoubleClick( int button, int x, int y ) ;
+	virtual void OnMouseClick( int button, int shift, int x, int y );
 	virtual void OnMouseWheel( int delta, int shift, int x, int y ){}
 	virtual void OnKeyUp( WORD vk, int shift ){}
 	virtual void OnKeyDown( WORD vk, int shift, int repeat, bool prevkeystate ){}

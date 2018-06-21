@@ -1,5 +1,7 @@
 #include "GLDevice.hpp"
 // #include "shaders.hpp"
+#include "tjsCommHead.h"
+#include "WindowImpl.h"
 
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
@@ -56,6 +58,8 @@ int init_sdl()
 
 extern void process_use_envet(SDL_UserEvent& e);
 
+extern tTJSNI_Window * TVPMainWindow;
+
 void sdl_loop()
 {
     unsigned int last_time = 0;
@@ -63,6 +67,9 @@ void sdl_loop()
     unsigned int interval;
     bool quit = false;
     SDL_Event e;
+    SDLWindow* win = NULL;
+    if(TVPMainWindow)
+    	win = TVPMainWindow->GetForm();
 
     while( !quit )
     {
@@ -84,13 +91,31 @@ void sdl_loop()
                 if(e.button.button == SDL_BUTTON_LEFT)
                 {
                     printf("mouse click Left:x:%d,y:%d\n", x,y);
+                    if(win)
+                    {
+                    	win->OnMouseDown(mbLeft,0,x,y);
+                    }
                 }
-                else if(e.button.button == SDL_BUTTON_RIGHT)
-                {
-                    printf("mouse click Right:x:%d,y:%d\n", x,y);
-                }
+                // else if(e.button.button == SDL_BUTTON_RIGHT)
+                // {
+                //     printf("mouse click Right:x:%d,y:%d\n", x,y);
+                // }
                 
                 // handleKeys( e.text.text[ 0 ], x, y );
+            }
+            else if(e.type == SDL_MOUSEBUTTONDOWN)
+            {
+            	int x = 0, y = 0;
+                SDL_GetMouseState( &x, &y );
+                if(e.button.button == SDL_BUTTON_LEFT)
+                {
+                    printf("mouse click Left up:x:%d,y:%d\n", x,y);
+                    if(win)
+                    {
+                    	win->OnMouseClick(mbLeft,0,x,y);
+                    	win->OnMouseUp(mbLeft,0,x,y);
+                    }
+                }
             }
             else if( e.type == SDL_USEREVENT)
             {
