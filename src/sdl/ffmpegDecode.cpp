@@ -117,7 +117,7 @@ int ffStream::open_audio_stream()
 	  return -1; // Couldn't find stream information
 	}
 	av_dump_format(pFormatCtx, 0, fname.c_str(), 0);
-	// AVCodecContext *aCodecCtxOrig;
+	AVCodecContext *aCodecCtxOrig;
 	for(int i=0; i<pFormatCtx->nb_streams; i++)
 	{
 	 	if(pFormatCtx->streams[i]->codec->codec_type == AVMEDIA_TYPE_AUDIO)
@@ -474,8 +474,8 @@ ffStream::~ffStream()
 {
 	if(pFormatCtx)
 		avformat_close_input(&pFormatCtx);
-	if(aCodecCtxOrig)
-		avcodec_close(aCodecCtxOrig);
+	// if(aCodecCtxOrig)
+	// 	avcodec_close(aCodecCtxOrig);
 	if(aCodecCtx)
   		avcodec_close(aCodecCtx);
 
