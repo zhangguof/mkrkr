@@ -30,7 +30,7 @@ void GLTexture::update_texture()
 		return;
     // glBindTexture(GL_TEXTURE_2D, id);
 	glTexImage2D(GL_TEXTURE_2D, 0, 
-	format, width, height,0, 
+	inter_format, width, height,0, 
 	format, type, pixels);
 
     glGenerateMipmap(GL_TEXTURE_2D);

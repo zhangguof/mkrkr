@@ -11,8 +11,9 @@
 class GLTexture
 {
 public:
-// GLenum inter_fromat =  GL_RGB;//or GL_RGBA
-GLenum format =  GL_RGBA; //or GL_RGBA
+GLenum inter_format =  GL_RGBA;//or GL_RGBA
+// GLenum format =  GL_RGBA; //or GL_RGBA
+GLenum format = GL_BGRA;
 GLenum type = GL_UNSIGNED_BYTE;
 
 	GLuint id;
