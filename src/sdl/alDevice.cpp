@@ -53,8 +53,8 @@ int AudioPlayer::buffer_data_one(int buf_idx,int update_time_ms)
 
 int AudioPlayer::buffer_data_unit(int buf_idx,int bytes)
 {
-	SDL_Log("buffer_data_unit:%d:%d,freq:%d,chs:%d,format:%d",
-	buf_idx,bytes,format.nSamplesPerSec,format.nChannels, format.format);
+	// SDL_Log("buffer_data_unit:%d:%d,freq:%d,chs:%d,format:%d",
+//	buf_idx,bytes,format.nSamplesPerSec,format.nChannels, format.format);
 	assert(buf_idx >= 0);
 
 	uint32_t freq = format.nSamplesPerSec;
@@ -69,7 +69,7 @@ int AudioPlayer::buffer_data_unit(int buf_idx,int bytes)
 	{
 		return 0;
 	}
-	SDL_Log("buffer_data_unit end:bytes:%d",bytes);
+	// SDL_Log("buffer_data_unit end:bytes:%d",bytes);
 	p_bufs->buffer_data(_format,_data,bytes,freq,buf_idx);
 	return bytes;
 }
@@ -161,7 +161,7 @@ void AudioPlayer::update_units()
 	int num_to_queue = 0;
 	if(nfree>0)
 	{
-		SDL_Log("update_uint...:%d",nfree);	
+		// SDL_Log("update_uint...:%d",nfree);	
 		for(int i=0; i<nfree; ++i)
 		{
 			int idx = buffer_idx[i];
@@ -177,9 +177,9 @@ void AudioPlayer::update_units()
 		}
 		queue_buffers(buffer_ids, num_to_queue);
 		//dump 
-		int queued_buffer;
-		p_src->get_buffer_queued(&queued_buffer);
-		printf("queue buffers:%d/%d\n",num_to_queue,queued_buffer);
+		// int queued_buffer;
+		// p_src->get_buffer_queued(&queued_buffer);
+		// printf("queue buffers:%d/%d\n",num_to_queue,queued_buffer);
 
 	}
 

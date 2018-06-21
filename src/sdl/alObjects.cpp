@@ -150,7 +150,7 @@ int ALBuffers::buffer_data(ALenum format,
 const ALvoid* data,ALsizei size,
 ALsizei freq,int idx)
 {
-	SDL_Log("buffer_data:format:%d,id:%d",format,_objs[idx]);
+	// SDL_Log("buffer_data:format:%d,id:%d",format,_objs[idx]);
 	alBufferData(_objs[idx],format,data,size,freq);
 	return CHECK_ERROR;
 }
