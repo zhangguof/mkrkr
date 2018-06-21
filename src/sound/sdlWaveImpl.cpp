@@ -2180,7 +2180,7 @@ tjs_uint tTJSNI_WaveSoundBuffer::Decode(void *buffer, tjs_uint bufsamplelen,
 //---------------------------------------------------------------------------
 bool tTJSNI_WaveSoundBuffer::FillL2Buffer(bool firstwrite, bool fromdecodethread)
 {
-	SDL_Log("FillL2Buffer:cur_pos:%d,remain:%d",L2BufferWritePos,L2BufferRemain);
+	// SDL_Log("FillL2Buffer:cur_pos:%d,remain:%d",L2BufferWritePos,L2BufferRemain);
 	if(!fromdecodethread && Thread->GetRunning())
 		Thread->SetPriority(ttpHighest);
 			// make decoder thread priority high, before entering critical section
@@ -2229,7 +2229,7 @@ bool tTJSNI_WaveSoundBuffer::FillL2Buffer(bool firstwrite, bool fromdecodethread
 		if(decoded < (tjs_uint) AccessUnitSamples) L2BufferEnded = true;
 
 		L2BufferDecodedSamplesInUnit[L2BufferWritePos] = decoded;
-		SDL_Log("FillL2Buffer end:%d,is_end:%d",decoded,L2BufferEnded);
+		// SDL_Log("FillL2Buffer end:%d,is_end:%d",decoded,L2BufferEnded);
 	}
 
 	L2BufferWritePos++;
@@ -2275,7 +2275,7 @@ tjs_uint tTJSNI_WaveSoundBuffer::ReadL2Buffer(void *buffer,
 
 	tjs_uint decoded = L2BufferDecodedSamplesInUnit[L2BufferReadPos];
 
-	SDL_Log("ReadL2Buffer:pos:%d,decoded:%d",L2BufferReadPos,decoded);
+	// SDL_Log("ReadL2Buffer:pos:%d,decoded:%d",L2BufferReadPos,decoded);
 
 	segments = L2BufferSegmentQueues[L2BufferReadPos];
 
@@ -2308,7 +2308,7 @@ void tTJSNI_WaveSoundBuffer::FillDSBuffer(tjs_int writepos,
 	int b1, b2;
 
 	segments.Clear();
-	SDL_Log("FillDSBuffer pos:%d",writepos);
+	// SDL_Log("FillDSBuffer pos:%d",writepos);
 
 	bool hr;
 	hr = SoundBuffer->lock(writepos, AccessUnitBytes,
@@ -2339,12 +2339,12 @@ void tTJSNI_WaveSoundBuffer::FillDSBuffer(tjs_int writepos,
 		{
 			// decoding was finished
 			PlayStopPos = writepos + decoded*Format.nBlockAlign;
-			SDL_Log("will stop on :%d",PlayStopPos);
+			// SDL_Log("will stop on :%d",PlayStopPos);
 				// set stop position
 		}
 
 		SoundBuffer->unlock((void*)p1, b1);
-		SDL_Log("FillDSBuffer ok,pos:%d,len:%d",writepos,decoded);
+		// SDL_Log("FillDSBuffer ok,pos:%d,len:%d",writepos,decoded);
 	}
 }
 //---------------------------------------------------------------------------
@@ -2357,8 +2357,8 @@ bool tTJSNI_WaveSoundBuffer::FillBuffer(bool firstwrite, bool allowpause)
 	if(!SoundBuffer) return true;
 	if(!Decoder) return true;
 	if(!BufferPlaying) return true;
-	SDL_Log("FillBuffer:firstwrite:%d,cur_pos:%d,remain:%d",
-			firstwrite,SoundBufferWritePos,L2BufferRemain);
+	// SDL_Log("FillBuffer:firstwrite:%d,cur_pos:%d,remain:%d",
+	// 		firstwrite,SoundBufferWritePos,L2BufferRemain);
 
 
 	// check paused state
@@ -2472,9 +2472,9 @@ bool tTJSNI_WaveSoundBuffer::FillBuffer(bool firstwrite, bool allowpause)
 		if(!SoundBuffer->writeable())
 		{
 			auto p = SoundBuffer->plb;
-			SDL_Log("===can't write!:rp:%d,rsize:%d,wp:%d,wsize%d:",
-			p->r_pos,p->readable_len.load(),p->w_pos,p->len - p->readable_len.load()
-			);
+			// SDL_Log("===can't write!:rp:%d,rsize:%d,wp:%d,wsize%d:",
+			// p->r_pos,p->readable_len.load(),p->w_pos,p->len - p->readable_len.load()
+			// );
 
 			return true;
 		}
