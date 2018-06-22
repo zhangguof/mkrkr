@@ -14,7 +14,9 @@ SDL_UserEvent& TimerEvent::get_event()
 	return *this;
 }
 
+#ifndef SDL_TEST
 extern void process_native_event(void* p_imp, SDL_UserEvent& e);
+#endif
 
 void process_use_envet(SDL_UserEvent& e)
 {
@@ -27,6 +29,8 @@ void process_use_envet(SDL_UserEvent& e)
 	}
 	else if(e.code == Native_Event_Code)
 	{
+		#ifndef SDL_TEST
 		process_native_event(e.data1,e);
+		#endif
 	}
 }

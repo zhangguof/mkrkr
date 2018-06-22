@@ -7,7 +7,7 @@ ALUT_ROOT = ../ext_libs_src/freealut-1.1.0
 CC = c++
 CFLAG=-g -I${SDL_ROOT} -I./ -I${OPENAL_ROOT}/include \
 -I${ALUT_ROOT}/include \
--I${FFMPGE_ROOT} -std=c++11  -DBMP_SUPPORTED -DPPM_SUPPORTED
+-I${FFMPGE_ROOT} -std=c++11  -DBMP_SUPPORTED -DPPM_SUPPORTED -DSDL_TEST
 
 # CFLAG2 = -g -I${SDL_ROOT} -I./ -I${LIBJPEG} -DBMP_SUPPORTED -DPPM_SUPPORTED
 LD = c++
@@ -32,7 +32,9 @@ LFALG = -arch x86_64 \
 all: test
 
 test: test.o GLDevice.o load_bmp.o gltexture.o sdlAudio.o \
-ffmpegDecode.o sdlinit.o sdlEvent.o alDevice.o alDevice.o alObjects.o
+ffmpegDecode.o sdlinit.o sdlEvent.o alDevice.o alDevice.o alObjects.o \
+ffvideo.o
+
 	$(LD) -o $@ $^ $(LFALG)
 
 

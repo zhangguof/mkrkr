@@ -113,6 +113,92 @@ int &freq, int &chs, AVSampleFormat& format);
 // }
 extern int init_al(ALCdevice** pdev=nullptr);
 extern void al_test_play();
+// extern void test_ff_video_play(); 
+
+
+// extern void test_ff_loop(uint32_t interval);
+
+// extern Device* g_dev;
+GLTexture* img_tex1;
+GLTexture* img_tex2;
+std::shared_ptr<FrameBuffer> pbf;
+float fps = 29.97;
+uint32_t one_frame_time = 1000 / 29.97;
+int cnt = 0;
+void test_ff_loop(uint32_t interval)
+{
+	static uint32_t last_time = 0;
+	uint32_t now = time_now();
+	if(now - last_time >= one_frame_time)
+	{
+		// printf("update:%d,%d\n", now - last_time,cnt);
+		uint8_t* buf = nullptr;
+		int w = 1024;
+		int h = 768;
+		cnt++;
+
+		int size = pbf->read(&buf,w*h*4);
+		// assert(size > 0);
+		if(size > 0)
+			img_tex1->set_buf(buf,w,h);
+		// if(is_img1)
+		// {
+		// 	printf("change to img 2\n");
+		// 	g_dev->set_texture(tex2);
+		// 	is_img1 = false;
+		// }
+		// else
+		// {
+		// 	printf("change to img 1\n");
+		// 	g_dev->set_texture(tex1);
+		// 	is_img1 = true;
+		// }
+		last_time = time_now();
+	}
+	g_dev->render(interval);
+}
+
+void test_ff_video_play()
+{
+	std::string fname = "../../video/01_01.mpg";
+	// std::string fname = "../../video/06_04_d.mpg";
+	auto fs = std::make_shared<ffStream>(fname);
+	//decode all
+	int f_cnt = 0;
+	uint32_t now_t = time_now();
+	while(!fs->video_decoded_end)
+	{
+		int r = fs->video_decode_one();
+		if(r>0)
+			f_cnt++;
+	}
+	uint32_t cost_time = time_now() - now_t;
+	printf("decode all cost:%dms,frames:%d,frame_pre_time:%f\n", cost_time , f_cnt, cost_time*1.0 / f_cnt);
+	pbf = fs->get_video_buffer();
+	int w,h;
+	w = 1024;
+	h = 768;
+
+	int one_frame_size = w * h * 4;
+	printf("one_frame_size:%d\n", one_frame_size);
+	uint8_t* buf = nullptr;
+
+	img_tex1 = new GLTexture();
+	// img_tex2 = new GLTexture();
+	img_tex1->set_format(GL_RGBA);
+	// img_tex2->set_format(GL_RGB);
+
+	int size = pbf->read(&buf,one_frame_size);
+	assert(size > 0);
+	img_tex1->set_buf(buf,w,h);
+	size = pbf->read(&buf,one_frame_size);
+	// assert(size > 0);
+	// img_tex2->set_buf(buf,w,h);
+	g_dev->set_texture(img_tex1);
+
+}
+
+
 int main(int argc, char* args[])
 {
 	// test_queue();
@@ -120,18 +206,37 @@ int main(int argc, char* args[])
 	// printf("(%d)\n", n);
 	init_ffmpeg();
 	init_sdl();
-	uint8_t *buf = NULL;
-	// int len = 0;
-	// int freq;
-	// int chs;
-	// AVSampleFormat format;
-	// init_al();
-	al_test_play();
-	// sdl_loop();
-	// if(play_wav()<0)
-	// {
-	// 	printf("%s\n", "error!!!");
-	// }
+	int w = 1024;
+	int h = 768;
+
+	SDL_Window* win = SDL_CreateWindow(
+        "test",                  // window title
+        SDL_WINDOWPOS_UNDEFINED,           // initial x position
+        SDL_WINDOWPOS_UNDEFINED,           // initial y position
+        w,                               // width, in pixels
+        h,                               // height, in pixels
+        SDL_WINDOW_OPENGL                  // flags - see below
+    );
+    if(!win)
+    {
+ 	    printf("win create error:%s\n",SDL_GetError());
+
+    }
+
+    if(win)
+    {
+    	init_gl_context(win);
+    }
+	// uint8_t *buf = NULL;
+	auto gldevice = create_gl_device(w,h);
+	gldevice->init_render();
+	g_dev = gldevice;
+
+
+	// al_test_play();
+	test_ff_video_play();
+	regist_update(test_ff_loop);
+
 	sdl_loop();
 
 

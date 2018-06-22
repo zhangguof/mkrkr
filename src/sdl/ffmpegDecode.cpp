@@ -21,6 +21,7 @@ int init_ffmpeg();
 #ifdef __cplusplus
 }
 #endif
+extern uint32_t time_now();
 
 //stream --> Packets --> decode -->frame
 
@@ -105,29 +106,11 @@ void audio_swr_resampling_audio_destory(SwrContext **swr_ctx){
     }
 }
 
-//class ffStream
-int ffStream::open_audio_stream()
+int ffStream::open_audio()
 {
-	if(!pFormatCtx)
-		return -1;
+	assert(audioStream!=-1);
 
-	// Retrieve stream information
-	if(avformat_find_stream_info(pFormatCtx, NULL)<0)
-	{
-	  return -1; // Couldn't find stream information
-	}
-	av_dump_format(pFormatCtx, 0, fname.c_str(), 0);
 	AVCodecContext *aCodecCtxOrig;
-	for(int i=0; i<pFormatCtx->nb_streams; i++)
-	{
-	 	if(pFormatCtx->streams[i]->codec->codec_type == AVMEDIA_TYPE_AUDIO)
-	 	{
-	    	audioStream=i;
-	    	break;
-	   	}
-	  }
-  	if(audioStream==-1)
-	  	return -1; 
 	aCodecCtxOrig = pFormatCtx->streams[audioStream]->codec;
 	aCodec = avcodec_find_decoder(aCodecCtxOrig->codec_id);
 	aCodecCtx = avcodec_alloc_context3(aCodec);
@@ -141,29 +124,21 @@ int ffStream::open_audio_stream()
 	this->freq = aCodecCtx->sample_rate;
 
 	AVSampleFormat format = aCodecCtx->sample_fmt;
-	printf("open stream orig:\nchannels:%d\nfreq:%d\nformat:%s\nlayout:%d\n",
+	printf("open auido stream orig:\nchannels:%d\nfreq:%d\nformat:%s\nlayout:%d\n",
 		channels,freq,av_get_sample_fmt_name(format),
 		aCodecCtx->channel_layout
 		);
-		//resample.
 	
 	target_params = {
 		aCodecCtx->sample_rate,
-		// DEFAUTL_FREQ,
-		// DEFAUTL_CHANNELS,
 		aCodecCtx->channels,
 		aCodecCtx->channel_layout,
-		// (uint64_t)av_get_default_channel_layout(DEFAUTL_CHANNELS),
-		AV_SAMPLE_FMT_S16
-	};
+		AV_SAMPLE_FMT_S16};
+
 	audio_swr_resampling_audio_init(&swr,
 	&target_params,aCodecCtx);
 
-	uint32_t start_tick = SDL_GetTicks();
-	read_all_packet();
-	printf("===%s:read packet cost:%u ms\n",fname.c_str(),SDL_GetTicks()-start_tick);
-
-	has_open = true;
+	
 	if(pdb==nullptr)
 	{
 		pdb = std::make_shared<DataBuffer>();
@@ -172,6 +147,89 @@ int ffStream::open_audio_stream()
 	{
 		pdecoder = std::make_shared<FFDecoder>(pdb,&target_params,aCodecCtx,swr);
 	}
+	return 0;
+}
+
+int ffStream::open_video()
+{
+	assert(videoStream != -1);
+	AVCodecContext *vCodecCtxOrig;
+	vCodecCtxOrig = pFormatCtx->streams[videoStream]->codec;
+	vCodec = avcodec_find_decoder(vCodecCtxOrig->codec_id);
+	if(vCodec == NULL)
+	{
+		fprintf(stderr, "Unsupported codec!\n");
+    	return -1; // Codec not found
+	}
+	 // Copy context
+	vCodecCtx = avcodec_alloc_context3(vCodec);
+	if(avcodec_copy_context(vCodecCtx, vCodecCtxOrig) != 0)
+	{
+    	fprintf(stderr, "Couldn't copy codec context");
+    	return -1; // Error copying codec context
+    }
+
+      // Open codec
+	if(avcodec_open2(vCodecCtx, vCodec, NULL)<0)
+		return -1; // Could not open codec
+
+	if(!pvbuf)
+		pvbuf = std::make_shared<FrameBuffer>();
+
+	if(!pvdecoder)
+		pvdecoder = std::make_shared<FFVDecoder>(pvbuf,vCodecCtx);
+
+
+}
+
+//class ffStream
+int ffStream::open_audio_stream()
+{
+	if(!pFormatCtx)
+		return -1;
+
+	// Retrieve stream information
+	if(avformat_find_stream_info(pFormatCtx, NULL)<0)
+	{
+	  return -1; // Couldn't find stream information
+	}
+	av_dump_format(pFormatCtx, 0, fname.c_str(), 0);
+
+	// AVCodecContext *aCodecCtxOrig;
+	for(int i=0; i<pFormatCtx->nb_streams; i++)
+	{
+		auto _ct = pFormatCtx->streams[i]->codec->codec_type;
+	 	if(audioStream==-1 && _ct == AVMEDIA_TYPE_AUDIO)
+	 	{
+	    	audioStream=i;
+	    	// break;
+	   	}
+	   	if(videoStream==-1 && _ct ==  AVMEDIA_TYPE_VIDEO)
+	   	{
+	   		videoStream = i;
+	   	}
+	  }
+  	if(audioStream==-1 && videoStream == -1)
+	  	return -1; 
+	if(audioStream!=-1)
+	{
+		int ret = open_audio();
+		if(ret<0) return ret;
+	}
+	if(videoStream!=-1)
+	{
+		int ret = open_video();
+		if(ret<0) return ret;
+	}
+	if(audioStream !=-1 || videoStream!=-1)
+	{
+		uint32_t start_tick = SDL_GetTicks();
+		read_all_packet();
+		printf("===%s:read packet cost:%u ms\n",fname.c_str(),SDL_GetTicks()-start_tick);
+
+	}
+
+	has_open = true;
 
 	return 0;
 }
@@ -183,7 +241,7 @@ int ffStream::open_audio_file()
 
 	if(avformat_open_input(&pFormatCtx,fname.c_str(),NULL,NULL)!=0)
 	{  
-	    printf("Couldn't open input stream.\n");  
+	    printf("Couldn't open input stream file:%s\n",fname.c_str());  
 	    return -1;  
 	 }
 	if(!pFormatCtx)
@@ -268,12 +326,18 @@ void ffStream::read_all_packet()
     		on_packet(packet);
     		// printf("packet size:%d\n",packet.size);
   		}
+  		else if (packet.stream_index == videoStream)
+  		{
+  			video_packet_q.push(packet);
+  			on_packet(packet);
+  		}
   		else
   		{
     		av_free_packet(&packet);
     	}
     }
-    printf("==read packets:%d\n",packet_q.size());
+    printf("==read auido packets:%d\n",packet_q.size());
+    printf("==read video packets:%d\n", video_packet_q.size());
 }
 
 
@@ -461,13 +525,44 @@ int ffStream::decode_one()
 		// printf("===decode one :%d\n",len);
 	} 
 	return len;
-
 }
+
+int ffStream::video_decode_one()
+{
+	if(video_decoded_end) return 0;
+	if(!pvbuf) return 0;
+	if(!pvdecoder) return 0;
+
+	if(video_packet_q.empty())
+	{
+		video_decoded_end  = true;
+		return 0;
+	}
+
+
+	AVPacket p;
+	video_packet_q.wait_and_pop(p);
+	// log_packet(pFormatCtx,&p);
+	
+
+	int len =  pvdecoder->decode_one_pkt(p);
+	if(len > 0){
+//		decoded_size += len;
+		// printf("===decode one :%d\n",len);
+	} 
+	return len;
+}
+
 
 void ffStream::on_packet(AVPacket& pkt)
 {
-	total_time += get_pkt_duration(pFormatCtx,&pkt);
-	n_src_samples += get_pkt_samples(&pkt);
+	if(pkt.stream_index == audioStream)
+	{
+		total_time += get_pkt_duration(pFormatCtx,&pkt);
+		n_src_samples += get_pkt_samples(&pkt);
+	}
+	// log_packet(pFormatCtx,&pkt);
+
 }
 
 ffStream::~ffStream()
@@ -489,7 +584,9 @@ ffStream::~ffStream()
 
 //=========ff decoder==================================
 int FFDecoder::decode(uint8_t* audio_buf, int buf_size)
-{}
+{
+	return 0;
+}
 
 int FFDecoder::decode_one_pkt(AVPacket& _pkt)
 {
@@ -553,6 +650,144 @@ int FFDecoder::decode_one_pkt(AVPacket& _pkt)
 		av_free_packet(&pkt);
 	}
 	return decoded_size;
+}
+
+//ff video decoder
+
+int FFVDecoder::decode_one_pkt(AVPacket& _pkt)
+{
+	pkt = _pkt;
+	video_pkt_data = pkt.data;
+	video_pkt_size = pkt.size;
+
+
+//use for scaling
+	uint8_t *dst_data[4];
+    int dst_linesize[4];
+    // AVPixelFormat dst_pix_fmt = AV_PIX_FMT_RGB24;
+    AVPixelFormat dst_pix_fmt = AV_PIX_FMT_RGBA;
+    int dst_w, dst_h;
+    int dst_bufsize;
+
+	AVFrame* pFrame =av_frame_alloc();
+	// AVFrame* pFrameRGB=av_frame_alloc();
+	if(pFrame == NULL)
+	{
+		printf("frame alloc fail!\n");
+		return -1;
+	}
+
+	// int numBytes=avpicture_get_size(PIX_FMT_RGB24, pCodecCtx->width,
+	// 		      pCodecCtx->height);
+	// uint8_t* buffer=(uint8_t *)av_malloc(numBytes*sizeof(uint8_t));
+
+  // Assign appropriate parts of buffer to image planes in pFrameRGB
+  // Note that pFrameRGB is an AVFrame, but AVFrame is a superset
+  // of AVPicture
+  	// avpicture_fill((AVPicture *)pFrameRGB, buffer, PIX_FMT_RGB24,
+		 // pCodecCtx->width, pCodecCtx->height);
+	dst_w = pCodecCtx->width;
+	dst_h = pCodecCtx->height;
+	// printf("width:%d,height:%d\n", dst_w,dst_h);
+  
+  // initialize SWS context for software scaling
+  	if(sws_ctx==NULL)
+  	{
+  		sws_ctx = sws_getContext(pCodecCtx->width, pCodecCtx->height,pCodecCtx->pix_fmt,
+		   dst_w,dst_h,dst_pix_fmt,
+		   SWS_BILINEAR,NULL,NULL,NULL);
+  		if(!sws_ctx){
+	        fprintf(stderr,
+	                "Impossible to create scale context for the conversion "
+	                "fmt:%s s:%dx%d -> fmt:%s s:%dx%d\n",
+	                av_get_pix_fmt_name(pCodecCtx->pix_fmt), pCodecCtx->width, pCodecCtx->height,
+	                av_get_pix_fmt_name(dst_pix_fmt), dst_w, dst_h);
+	        return -1;
+    	}
+  	}
+  	int decoded_frame = 0;
+  	int ret;
+  	if ((ret = av_image_alloc(dst_data, dst_linesize,
+                              dst_w, dst_h, dst_pix_fmt, 1)) < 0)
+  	{
+        fprintf(stderr, "Could not allocate destination image\n");
+        return -1;
+    }
+    dst_bufsize = ret;
+
+    ret = avcodec_send_packet(pCodecCtx, &pkt);
+    if(ret < 0)
+    {
+    	fprintf(stderr, "Error submitting the packet to the decoder\n");
+        return -1;
+    }
+    while(ret >= 0)
+    {
+    	av_frame_unref(pFrame);
+    	// Decode video frame
+
+    	ret = avcodec_receive_frame(pCodecCtx, pFrame);
+        if (ret == AVERROR_EOF)
+        {
+        	return -1;
+        }
+        else if(ret == AVERROR(EAGAIN))
+        {
+        	break;
+        }
+	    else if (ret < 0)
+	    {
+	    	fprintf(stderr, "Error during decoding\n");
+            return -1;
+	    }
+
+	    // printf("decoded frame %3d\n", pCodecCtx->frame_number);	      
+
+
+		// Convert the image from its native format to RGB
+		sws_scale(sws_ctx, (uint8_t const * const *)pFrame->data,
+				  pFrame->linesize, 0, pCodecCtx->height,
+				  dst_data, dst_linesize);
+		decoded_frame++;
+
+		// printf("video decode one:%d,frame_linesize:%d,dst_linesize:%d\n",dst_bufsize, pFrame->linesize[0],dst_linesize[0]);
+		pfb->push_frame(dst_data[0], dst_w * dst_h * 4);
+		// char fname[1024];
+		// sprintf(fname,"img%d.ppm",pCodecCtx->frame_number);
+		// FILE *dst_file = fopen(fname, "wb");
+	 //    if (!dst_file) {
+	 //        fprintf(stderr, "Could not open destination file %s\n", fname);
+	 //        return -1;
+	 //    }
+	 //      // Write header
+  // 		fprintf(dst_file, "P6\n%d %d\n255\n", dst_w, dst_h);
+	 //   	fwrite(dst_data[0], 1, dst_bufsize, dst_file);
+
+	}
+	// pdb->push(dst_data[0],dst_bufsize);
+	        /* write scaled image to file */
+	// std::string fname = "img";
+
+	// Free the packet that was allocated by av_read_frame
+	av_free_packet(&pkt);
+
+	av_freep(&dst_data[0]);
+	// sws_freeContext(sws_ctx);
+  
+  // Free the YUV frame
+	av_frame_free(&pFrame);
+  
+  // Close the codecs
+  // avcodec_close(pCodecCtx);
+  // avcodec_close(pCodecCtxOrig);
+
+  // // Close the video file
+  // avformat_close_input(&pFormatCtx);
+	return decoded_frame;
+}
+int FFVDecoder::decode(uint8_t* video_buf, int buf_size)
+{
+	return 0;
 }
 
 
