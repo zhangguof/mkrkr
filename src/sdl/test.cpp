@@ -11,6 +11,7 @@
 #include "ffStream.hpp"
 #include "sdlAudio.hpp"
 #include "alDevice.hpp"
+#include "ffvideo.hpp"
 
 // extern int init_ffmpeg();
 
@@ -118,6 +119,7 @@ extern void al_test_play();
 
 // extern void test_ff_loop(uint32_t interval);
 
+
 // extern Device* g_dev;
 GLTexture* img_tex1;
 GLTexture* img_tex2;
@@ -125,56 +127,70 @@ std::shared_ptr<FrameBuffer> pbf;
 float fps = 29.97;
 uint32_t one_frame_time = 1000 / 29.97;
 int cnt = 0;
+
+void img_buff_fill_cb(uint8_t* buf,int w,int h,int size)
+{
+	if(img_tex1)
+	{
+		assert(size == img_tex1->format_size);
+		img_tex1->set_buf(buf,w,h);
+	}
+}
+
+VideoPlayer* vp=nullptr;
+
 void test_ff_loop(uint32_t interval)
 {
-	static uint32_t last_time = 0;
-	uint32_t now = time_now();
-	if(now - last_time >= one_frame_time)
-	{
-		// printf("update:%d,%d\n", now - last_time,cnt);
-		uint8_t* buf = nullptr;
-		int w = 1024;
-		int h = 768;
-		cnt++;
+	if(vp)
+		vp->update();
+	// static uint32_t last_time = 0;
+	// uint32_t now = time_now();
+	// if(now - last_time >= one_frame_time)
+	// {
+	// 	// printf("update:%d,%d\n", now - last_time,cnt);
+	// 	uint8_t* buf = nullptr;
+	// 	int w = 1024;
+	// 	int h = 768;
+	// 	cnt++;
 
-		int size = pbf->read(&buf,w*h*4);
-		// assert(size > 0);
-		if(size > 0)
-			img_tex1->set_buf(buf,w,h);
-		// if(is_img1)
-		// {
-		// 	printf("change to img 2\n");
-		// 	g_dev->set_texture(tex2);
-		// 	is_img1 = false;
-		// }
-		// else
-		// {
-		// 	printf("change to img 1\n");
-		// 	g_dev->set_texture(tex1);
-		// 	is_img1 = true;
-		// }
-		last_time = time_now();
-	}
+	// 	int size = pbf->read(&buf,w*h*4);
+	// 	// assert(size > 0);
+	// 	if(size > 0)
+	// 		img_tex1->set_buf(buf,w,h);
+	// 	// if(is_img1)
+	// 	// {
+	// 	// 	printf("change to img 2\n");
+	// 	// 	g_dev->set_texture(tex2);
+	// 	// 	is_img1 = false;
+	// 	// }
+	// 	// else
+	// 	// {
+	// 	// 	printf("change to img 1\n");
+	// 	// 	g_dev->set_texture(tex1);
+	// 	// 	is_img1 = true;
+	// 	// }
+	// 	last_time = time_now();
+	// }
 	g_dev->render(interval);
 }
 
 void test_ff_video_play()
 {
-	std::string fname = "../../video/01_01.mpg";
-	// std::string fname = "../../video/06_04_d.mpg";
-	auto fs = std::make_shared<ffStream>(fname);
-	//decode all
-	int f_cnt = 0;
-	uint32_t now_t = time_now();
-	while(!fs->video_decoded_end)
-	{
-		int r = fs->video_decode_one();
-		if(r>0)
-			f_cnt++;
-	}
-	uint32_t cost_time = time_now() - now_t;
-	printf("decode all cost:%dms,frames:%d,frame_pre_time:%f\n", cost_time , f_cnt, cost_time*1.0 / f_cnt);
-	pbf = fs->get_video_buffer();
+	// std::string fname = "../../video/01_01.mpg";
+	std::string fname = "../../video/06_04_d.mpg";
+	// auto fs = std::make_shared<ffStream>(fname);
+	// //decode all
+	// int f_cnt = 0;
+	// uint32_t now_t = time_now();
+	// while(!fs->video_decoded_end)
+	// {
+	// 	int r = fs->video_decode_nframe();
+	// 	if(r>0)
+	// 		f_cnt++;
+	// }
+	// uint32_t cost_time = time_now() - now_t;
+	// printf("decode all cost:%dms,frames:%d,frame_pre_time:%f\n", cost_time , f_cnt, cost_time*1.0 / f_cnt);
+	// pbf = fs->get_video_buffer();
 	int w,h;
 	w = 1024;
 	h = 768;
@@ -188,13 +204,19 @@ void test_ff_video_play()
 	img_tex1->set_format(GL_RGBA);
 	// img_tex2->set_format(GL_RGB);
 
-	int size = pbf->read(&buf,one_frame_size);
-	assert(size > 0);
-	img_tex1->set_buf(buf,w,h);
-	size = pbf->read(&buf,one_frame_size);
+	// int size = pbf->read(&buf,one_frame_size);
+	// assert(size > 0);
+	// img_tex1->set_buf(buf,w,h);
+	// size = pbf->read(&buf,one_frame_size);
 	// assert(size > 0);
 	// img_tex2->set_buf(buf,w,h);
 	g_dev->set_texture(img_tex1);
+	vp = new VideoPlayer();
+	vp->set_cb(img_buff_fill_cb);
+	vp->open(fname);
+	vp->set_loop(true);
+	vp->play();
+
 
 }
 

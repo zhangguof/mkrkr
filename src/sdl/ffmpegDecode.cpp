@@ -527,7 +527,7 @@ int ffStream::decode_one()
 	return len;
 }
 
-int ffStream::video_decode_one()
+int ffStream::video_decode_nframe(int nframe)
 {
 	if(video_decoded_end) return 0;
 	if(!pvbuf) return 0;
@@ -538,19 +538,24 @@ int ffStream::video_decode_one()
 		video_decoded_end  = true;
 		return 0;
 	}
-
-
+	int cnt = 0;
 	AVPacket p;
-	video_packet_q.wait_and_pop(p);
-	// log_packet(pFormatCtx,&p);
-	
-
-	int len =  pvdecoder->decode_one_pkt(p);
-	if(len > 0){
-//		decoded_size += len;
-		// printf("===decode one :%d\n",len);
-	} 
-	return len;
+	while(1)
+	{
+		video_packet_q.wait_and_pop(p);
+		int r = pvdecoder->decode_one_pkt(p);
+		if(r>0)
+			cnt+=r;
+		if(cnt >= nframe)
+			break;
+		if(video_packet_q.empty())
+		{
+			video_decoded_end = true;
+			break;
+		}
+	}
+	printf("video decode %d frame\n", cnt);
+	return cnt;
 }
 
 

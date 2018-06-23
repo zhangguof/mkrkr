@@ -22,7 +22,7 @@ extern "C" {
 #endif
 #include "ffStream.hpp"
 extern uint32_t time_now();
-typedef void (*FILL_BUFFER_FUNC)(uint8_t* buf,int size);
+typedef void (*FILL_BUFFER_FUNC)(uint8_t* buf,int w,int h,int size);
 
 enum VideoStatus
 {
@@ -44,6 +44,8 @@ public:
 	int width;
 	int heigh;
 	VideoStatus status;
+	// int cur_pos;
+	bool is_loop;
 
 
 	VideoPlayer();
@@ -53,6 +55,21 @@ public:
 	void set_cb(FILL_BUFFER_FUNC cb)
 	{
 		fill_cb = cb;
+	}
+	void on_stop()
+	{
+		assert(status == Playing);
+		status = Stoped;
+		// cur_pos = 0;
+		if(is_loop)
+		{
+			p_ffstream->SetFrame(0);
+			status = Playing;
+		}
+	}
+	void set_loop(bool s)
+	{
+		is_loop = s;
 	}
 
 

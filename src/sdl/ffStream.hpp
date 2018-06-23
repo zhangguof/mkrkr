@@ -90,11 +90,24 @@ public:
 	}
 	int read(uint8_t** data, int size)
 	{	
+		// if(frame_size!=size)
+		// 	printf("frame_size:%d,size:%d\n", frame_size,size);
 		assert(frame_size == size);
 		if(cur_pos >= len)
 			return 0;
 		*data = v[cur_pos++]->data;
 		return size;
+	}
+	int seek(uint32_t pos)
+	{
+		if(pos > len)
+			pos = len;
+		cur_pos = pos;
+		return pos;
+	}
+	int readable_frame()
+	{
+		return len - cur_pos;
 	}
 };
 
@@ -435,7 +448,7 @@ public:
 
 public:
 	//video
-	int video_decode_one();
+	int video_decode_nframe(int nframe = 1);
 	double get_fps()
 	{
 		if(vCodecCtx)
@@ -528,6 +541,7 @@ public:
 	int decode_one();
 
 	void on_packet(AVPacket& pkt);
+//audio
 	int Read(void* buf, uint32_t readsize)
 	{
 		int has_read = 0;
@@ -544,6 +558,30 @@ public:
 		while(!decoded_end && pos > pdb->readable_size())
 			decode_one();
 		pdb->seek(pos);
+	}
+//video
+	int GetFrame(uint8_t** data, int size)
+	{
+		// int next_pos = cur_pos + 1;
+		while(!video_decoded_end && pvbuf->readable_frame()<1)
+		{
+			video_decode_nframe(5);
+		}
+		int r = pvbuf->read(data,size);
+		if(r > 0)
+		{
+			// cur_pos = next_pos;
+			return r;
+		}
+		return 0;
+	}
+	void SetFrame(uint32_t pos)
+	{
+		while(!video_decoded_end && pos > pvbuf->len)
+		{
+			video_decode_nframe(5);
+		}
+		pvbuf->seek(pos);
 	}
 public:
 	int open_audio();

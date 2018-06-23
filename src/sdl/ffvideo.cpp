@@ -11,9 +11,11 @@ VideoPlayer::VideoPlayer()
 	width = heigh = 0;
 	fill_cb = nullptr;
 	status = Init;
+	// cur_pos = 0;
+	is_loop = false;
 }
 
-VideoPlayer::open(std::string s)
+void VideoPlayer::open(std::string s)
 {
 	fname = s;
 	p_ffstream = std::make_shared<ffStream>(s);
@@ -21,6 +23,7 @@ VideoPlayer::open(std::string s)
 	fps = p_ffstream->get_fps();
 	width = p_ffstream->get_width();
 	heigh = p_ffstream->get_height();
+	status = Init;
 }
 
 void VideoPlayer::play()
@@ -39,11 +42,13 @@ void VideoPlayer::update()
 	uint32_t cur = time_now();
 	if(cur >= next_update_tick)
 	{
-		uint32_t* buf = nullptr;
-		int size = pbf->read(&buf,width*heigh*format_size);
-		if(size > 0)
-			fill_cb(buf,size);
-
+		uint8_t* buf = nullptr;
+		// int size = pbf->read(&buf,width*heigh*format_size);
+		int n = p_ffstream->GetFrame(&buf,width*heigh*format_size);
+		if(n > 0)
+			fill_cb(buf,width,heigh,format_size);
+		else
+			on_stop();
 		next_update_tick = time_now() + (uint32_t)(1000.0/fps);
 	}
 }
