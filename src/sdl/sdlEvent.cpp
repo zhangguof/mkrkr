@@ -27,7 +27,7 @@ void process_use_envet(SDL_UserEvent& e)
 		tUseEventCb cb =  (tUseEventCb)(e.data1); //static_cast<tUseEventCb>(e.data1);
 		cb(e.data2);
 	}
-	else if(e.code == Native_Event_Code)
+	else if(e.code & Native_Event_Code_MASK)
 	{
 		#ifndef SDL_TEST
 		process_native_event(e.data1,e);

@@ -4,7 +4,8 @@
 
 #define TIMER_EVNET_CODE (0x1000)
 
-#define Native_Event_Code (0x1001)
+#define Native_Event_Code_MASK (0x10000)
+#define Native_Event_Code (Native_Event_Code_MASK + 1)
 
 
 

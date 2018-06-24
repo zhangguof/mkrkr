@@ -10,17 +10,17 @@ class NativeEvent:public SDL_UserEvent
 public:
 
 	NativeEvent(){
-		data1 = nullptr;
+		data1 = nullptr; // data1 = NativeEventQueue*
 		data2 = nullptr;
 		code = Native_Event_Code;
 		type = SDL_USEREVENT;
 	}
 
-	NativeEvent(void* func,void* data)
+	NativeEvent(void* func,void* data,int _code=Native_Event_Code)
 	{
 		data1 = func;
 		data2 = data;
-		code = Native_Event_Code;
+		code = _code;
 		type = SDL_USEREVENT;
 	}
 	SDL_UserEvent& get_event()
