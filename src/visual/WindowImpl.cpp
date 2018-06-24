@@ -1076,8 +1076,8 @@ tTJSNI_Window::tTJSNI_Window()
 	Form = NULL;
 }
 //---------------------------------------------------------------------------
-const int default_win_width = 640;
-const int default_win_height = 480;
+const int default_win_width = 1024;
+const int default_win_height = 768;
 tjs_error TJS_INTF_METHOD
 tTJSNI_Window::Construct(tjs_int numparams, tTJSVariant **param,
 		iTJSDispatch2 *tjs_obj)

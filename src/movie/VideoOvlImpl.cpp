@@ -167,16 +167,16 @@ void tTJSNI_VideoOverlay::Open(const ttstr &_name)
 	{
 		{
 			if(Mode == vomLayer)
-				GetVideoLayerObject(EventQueue.GetOwner(), istream, name.c_str(), ext.c_str(), size, &VideoOverlay);
+				// assert(false);
+				GetVideoLayerObject(&EventQueue, istream, name.c_str(), ext.c_str(), size, &VideoOverlay);
 			else if(Mode == vomMixer)
 				assert(false);
 				//GetMixingVideoOverlayObject(EventQueue.GetOwner(), istream, name.c_str(), ext.c_str(), size, &VideoOverlay);
 			else if(Mode == vomMFEVR)
 				assert(false);
 				// GetMFVideoOverlayObject(EventQueue.GetOwner(), istream, name.c_str(), ext.c_str(), size, &VideoOverlay);
-			else
-				assert(false);
-				// GetVideoOverlayObject(EventQueue.GetOwner(), istream, name.c_str(), ext.c_str(), size, &VideoOverlay);
+			else //vomOverlay
+				GetVideoLayerObject(&EventQueue, istream, name.c_str(), ext.c_str(), size, &VideoOverlay);
 		}
 
 		if( (Mode == vomOverlay) || (Mode == vomMixer) || (Mode == vomMFEVR) )
@@ -497,6 +497,7 @@ void tTJSNI_VideoOverlay::SetRectOffset(tjs_int ofsx, tjs_int ofsy)
 //void __fastcall tTJSNI_VideoOverlay::WndProc(Messages::TMessage &Msg)
 void tTJSNI_VideoOverlay::WndProc( NativeEvent& ev )
 {
+	SDL_Log("VideoOverlay::WndProc!!:%d",ev.code);
 	// EventQueue's message procedure
 	if(VideoOverlay)
 	{
@@ -538,6 +539,10 @@ void tTJSNI_VideoOverlay::WndProc( NativeEvent& ev )
 					case EC_UPDATE:
 						if( Mode == vomLayer && Status == ssPlay )
 						{
+
+							SDL_Log("====EC_UPDATE!!");
+							VideoOverlay->update();
+
 							int	curFrame = *((int*)p1);
 							if( Layer1 == NULL && Layer2 == NULL )	// nothing to do.
 								return;

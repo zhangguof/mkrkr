@@ -30,7 +30,7 @@
 // #include "ClipboardIntf.h"
 #include "MsgIntf.h"
 //#include "KAGParser.h"
-// #include "VideoOvlIntf.h"
+#include "VideoOvlIntf.h"
 //#include "PadIntf.h"
 #include "TextStream.h"
 #include "Random.h"
@@ -514,7 +514,7 @@ void TVPInitScriptEngine()
 	REGISTER_OBJECT(System, TVPCreateNativeClass_System());
 	REGISTER_OBJECT(Storages, TVPCreateNativeClass_Storages());
 	REGISTER_OBJECT(Plugins, TVPCreateNativeClass_Plugins());
-	// REGISTER_OBJECT(VideoOverlay, TVPCreateNativeClass_VideoOverlay());
+	REGISTER_OBJECT(VideoOverlay, TVPCreateNativeClass_VideoOverlay());
 	// REGISTER_OBJECT(Clipboard, TVPCreateNativeClass_Clipboard());
 	REGISTER_OBJECT(Scripts, TVPCreateNativeClass_Scripts()); // declared in this file
 	REGISTER_OBJECT(Rect, TVPCreateNativeClass_Rect());

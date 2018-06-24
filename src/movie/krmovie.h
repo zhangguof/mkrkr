@@ -114,6 +114,8 @@ public:
 	virtual void  GetSaturationStepSize( float *v ) = 0;
 	virtual void  GetSaturation( float *v ) = 0;
 	virtual void  SetSaturation( float v ) = 0;
+
+	virtual void update() = 0;
 };
 //---------------------------------------------------------------------------
 

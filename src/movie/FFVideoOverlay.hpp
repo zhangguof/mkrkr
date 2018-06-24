@@ -3,12 +3,31 @@
 #include "krmovie.h"
 #include "ffStream.hpp"
 #include "ffvideo.hpp"
+#include "NativeEventQueue.h"
+#include "voMode.h"
 
 class FFVideoOverlay:public iTVPVideoOverlay
 {
 public:
 	WHAND win;
 	tTVPVideoStatus status;
+	NativeEventQueueImplement* event_queue;
+public:
+	std::shared_ptr<ffStream> p_ffstream;
+	std::shared_ptr<VideoPlayer> p_vplayer;
+
+public:
+	FFVideoOverlay();
+	void set_owner(void* eq)
+	{
+		event_queue = reinterpret_cast<NativeEventQueueImplement*> (eq);
+	}
+	void open(tTJSBinaryStream *stream,
+		const wchar_t * streamname,
+		const wchar_t *type, uint64_t size);
+	
+	int _cur_frame;
+	void push_update_event();
 
 public:
 	void  AddRef(){}
@@ -99,6 +118,8 @@ public:
 	void  GetSaturationStepSize( float *v ) {}
 	void  GetSaturation( float *v ) {}
 	void  SetSaturation( float v ) {}
+
+	void update(){p_vplayer->update();}
 };
 
 

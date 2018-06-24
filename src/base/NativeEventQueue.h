@@ -85,6 +85,10 @@ public:
 	void Dispatch( NativeEvent &ev ) {
 		(owner_->*handler_)(ev);
 	}
+	void* GetOwner()
+	{
+		return (void*) owner_;
+	}
 };
 
 #endif // __NATIVE_EVENT_QUEUE_H__

@@ -109,6 +109,10 @@ public:
 	{
 		return len - cur_pos;
 	}
+	int get_pos()
+	{
+		return cur_pos;
+	}
 };
 
 class DataBuffer
@@ -476,6 +480,7 @@ public:
 
 
 
+
 public:
 	ffStream(std::string name
 	, bool _is_decode_all=false
@@ -560,7 +565,7 @@ public:
 		pdb->seek(pos);
 	}
 //video
-	int GetFrame(uint8_t** data, int size)
+	int ReadFrame(uint8_t** data, int size)
 	{
 		// int next_pos = cur_pos + 1;
 		while(!video_decoded_end && pvbuf->readable_frame()<1)
@@ -582,6 +587,10 @@ public:
 			video_decode_nframe(5);
 		}
 		pvbuf->seek(pos);
+	}
+	int GetFrame()
+	{
+		return pvbuf->get_pos();
 	}
 public:
 	int open_audio();

@@ -42,16 +42,32 @@ public:
 	FILL_BUFFER_FUNC fill_cb;
 	const int format_size = 4;
 	int width;
-	int heigh;
+	int height;
 	VideoStatus status;
 	// int cur_pos;
 	bool is_loop;
 
 
+	uint8_t* buf1;
+	uint8_t* buf2;
+	uint8_t* front_buffer;
+	int buf_size;
+
+
 	VideoPlayer();
 	void play();
 	void open(std::string s);
+	void open(std::shared_ptr<ffStream>& fs);
 	void update();
+
+	void swap_buf(uint8_t* buf,int size);
+	void set_video_buffer(uint8_t* buff1,uint8_t* buff2,int size)
+	{
+		buf1 = buff1;
+		buf2 = buff2;
+		buf_size = size;
+	}
+
 	void set_cb(FILL_BUFFER_FUNC cb)
 	{
 		fill_cb = cb;
@@ -70,6 +86,15 @@ public:
 	void set_loop(bool s)
 	{
 		is_loop = s;
+	}
+
+	int GetFrame()
+	{
+		return p_ffstream->GetFrame();
+	}
+	void SetFrame(int f)
+	{
+		p_ffstream->SetFrame(f);
 	}
 
 

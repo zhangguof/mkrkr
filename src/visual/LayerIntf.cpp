@@ -2507,6 +2507,7 @@ iTJSDispatch2 * tTJSNI_BaseLayer::LoadImages(const ttstr &name, tjs_uint32 color
 	// 0x40000000 (TVP_clAlphaMat) + 0xRRGGBB ( 0xRRGGBB = matting color )
 	//                          : do matting with the color using alpha blending.
 	// returns graphic image metainfo.
+	TVPAddLog(ttstr("==in loadImages!!:")+name);
 
 	if(!MainImage) TVPThrowExceptionMessage(TVPNotDrawableLayerType);
 
