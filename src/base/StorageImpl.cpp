@@ -161,6 +161,13 @@ void TJS_INTF_METHOD tTVPFileMedia::GetListAt(const ttstr &_name, iTVPStorageLis
 	GetLocalName(name);
 	boost::filesystem::recursive_directory_iterator iEnd;
 	boost::filesystem::path base_path(name.c_str());
+	if(!boost::filesystem::exists(base_path))
+	{
+		printf("file:%ls not exists!\n", name.c_str());
+		return;
+	}
+
+
 	for(auto p= boost::filesystem::recursive_directory_iterator(name.c_str());
 		p!=iEnd;++p)
 	{
