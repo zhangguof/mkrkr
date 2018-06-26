@@ -53,7 +53,10 @@ void FFVideoOverlay::Stop()
 }
 void FFVideoOverlay::Pause()
 {
-	
+	if(p_vplayer)
+	{
+		p_vplayer->pause();
+	}
 }
 
 void FFVideoOverlay::SetPosition(uint64_t tick) {
@@ -62,14 +65,18 @@ void FFVideoOverlay::SetPosition(uint64_t tick) {
 void FFVideoOverlay::GetPosition(uint64_t *tick) {
 
 }
-void FFVideoOverlay::GetStatus(tTVPVideoStatus *status) {
+void FFVideoOverlay::GetStatus(tTVPVideoStatus *_status) {
+	*_status = status;
 
 }
 
 
 void FFVideoOverlay::Rewind() 
 {
-
+	if(p_vplayer)
+	{
+		p_vplayer->rewind();
+	}
 }
 void FFVideoOverlay::SetFrame( int f ) 
 {
@@ -170,7 +177,10 @@ void FFVideoOverlay::GetEvent(long *evcode, void **param1,void **param2, bool *g
 	}
 	else if(p_vplayer->status == Complete) //read end.
 	{
+		SDL_Log("on Complete!!!!");
 		*evcode = EC_COMPLETE;
+		
+		*got = true;
 		ev_events--;
 	}
 
@@ -190,14 +200,15 @@ void FFVideoOverlay::push_graphnotify_event()
 	event_queue->PostEvent(ev);
 	ev_events++;
 }
-// void FFVideoOverlay::push_complete_event()
-// {
-// 	NativeEvent ev;
-// 	ev.set_code(WM_GRAPHNOTIFY);
-// 	event_queue->PostEvent(ev);
-// 	ev_events++;
 
-// }
+void FFVideoOverlay::push_statechange_event(tTVPVideoStatus vs_s)
+{
+	NativeEvent ev;
+	ev.set_code(WM_STATE_CHANGE);
+	ev.param = reinterpret_cast<void*>(vs_s);
+	event_queue->PostEvent(ev);
+}
+
 
 void FFVideoOverlay::update(uint32_t interval)
 {
@@ -206,10 +217,9 @@ void FFVideoOverlay::update(uint32_t interval)
 	// printf("===FFVideoOverlay:update:%d\n",ret);
 	if(ret)
 		push_graphnotify_event();
-	// if(p_vplayer->status == Complete)
-	// {
-		
-	// }
+	if(p_vplayer->status == Complete)
+		push_statechange_event(vsEnded);
+
 }
 
 

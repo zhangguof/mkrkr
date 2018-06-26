@@ -62,6 +62,16 @@ public:
 	{
 		status = Stoped;
 	}
+	void pause()
+	{
+		status = Paused;
+	}
+	void rewind()
+	{
+		status = Init;
+		SetFrame(0);
+
+	}
 	void open(std::string s);
 	void open(std::shared_ptr<ffStream>& fs);
 	int update();

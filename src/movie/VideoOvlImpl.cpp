@@ -516,6 +516,7 @@ void tTJSNI_VideoOverlay::WndProc( NativeEvent& ev )
 				switch( evcode )
 				{
 					case EC_COMPLETE:
+					SDL_Log("hand EC_COMPLETE====,%d",Status);
 						if( Status == ssPlay )
 						{
 							if( Loop )

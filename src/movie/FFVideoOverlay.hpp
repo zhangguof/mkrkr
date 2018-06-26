@@ -30,6 +30,8 @@ public:
 	int _cur_frame;
 	int ev_events;
 	void push_graphnotify_event();
+	void push_statechange_event(tTVPVideoStatus vs_s);
+
 
 public:
 	void  AddRef(){}
