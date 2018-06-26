@@ -38,7 +38,7 @@ public:
 	void event_handle(NativeEvent& e)
 	{
 		// int* p = (int*)e.data2;
-		int p = reinterpret_cast<uint64_t>(e.data2);
+		int p = reinterpret_cast<uint64_t>(e.param);
 		printf("handle in %lu,get num:%d\n",
 		SDL_ThreadID(),p);
 		Sleep(2000);
@@ -52,7 +52,7 @@ public:
 		NativeEvent e;
 		while (cnt--)
 		{
-			e.data2 = reinterpret_cast<void*>(param);
+			e.param = reinterpret_cast<void*>(param);
 			event_q->PostEvent(e);
 			printf("==post event\n");
 			Sleep(500);

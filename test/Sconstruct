@@ -31,10 +31,11 @@ cpp_path = ['./',
 			'../src/utils',
 			'../src/base','../src/visual',
 			'../src/visual/sdl',
-			# '../src/sound',
+			'../src/sound',
 			'../src/environ',
 			'../src/extension',
 			'../src/sdl',
+			'../src/movie',
 ]
 
 refuse_files = set([
@@ -64,11 +65,13 @@ refuse_files = set([
 	# # "visual/LoadPNG.cpp","visual/LoadJPEG.cpp",
 	# "utils/TimerIntf.cpp",
 	# "visual/SaveTLG6.cpp",
+	'../src/sound/WaveImpl.cpp',
 	"../test.cpp",
 	"../un_pack_xp3.cpp",
 	"../src/sdl/test.cpp",
 	"test_tjs_script.cpp",
 	"test_timer.cpp",
+
 	])
 include_path = list(cpp_path)
 include_path.extend([
