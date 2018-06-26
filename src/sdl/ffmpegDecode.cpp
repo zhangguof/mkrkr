@@ -555,6 +555,7 @@ int ffStream::video_decode_nframe(int nframe)
 		}
 	}
 	printf("video decode %d frame\n", cnt);
+	printf("cur_frame:%d\n", vCodecCtx->frame_number);
 	return cnt;
 }
 

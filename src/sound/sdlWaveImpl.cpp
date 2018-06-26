@@ -2310,7 +2310,7 @@ void tTJSNI_WaveSoundBuffer::FillDSBuffer(tjs_int writepos,
 	int b1, b2;
 
 	segments.Clear();
-	// SDL_Log("FillDSBuffer pos:%d",writepos);
+	// SDL_Log("FillDSBuffer pos:%d,AccessUnitBytes:%d",writepos,AccessUnitBytes);
 
 	bool hr;
 	hr = SoundBuffer->lock(writepos, AccessUnitBytes,

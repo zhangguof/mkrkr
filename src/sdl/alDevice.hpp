@@ -65,9 +65,9 @@ public:
 		//get write data;
 		if(pos!=w_pos)
 		{
-			SDL_Log("(=====)Error:pos:%d,w_pos:%d\n",pos,w_pos);
+			SDL_Log("(=====)Error:pos:%d,w_pos:%d:len:%d,bytes:%d\n",pos,w_pos,len,bytes);
 		}
-		assert(pos == w_pos);
+		// assert(pos == w_pos);
 		int n_pos = w_pos + bytes;
 		if(len - readable_len < bytes)
 			return false;

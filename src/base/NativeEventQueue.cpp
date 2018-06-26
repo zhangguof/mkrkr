@@ -15,7 +15,7 @@ void NativeEventQueueImplement::WndProc(NativeEvent& event) {
 
 // デフォルトハンドラ
 void NativeEventQueueImplement::HandlerDefault( NativeEvent& event ) {
-	SDL_Log("handle HandlerDefault???");
+	// SDL_Log("handle HandlerDefault???:event:%d",event.get_code());
 	// event.Result = ::DefWindowProc(event.HWnd,event.Message,event.WParam,event.LParam);
 }
 void NativeEventQueueImplement::Allocate() {

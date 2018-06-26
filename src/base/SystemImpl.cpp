@@ -69,7 +69,7 @@ bool TVPGetAsyncKeyState(tjs_uint keycode, bool getcurrent)
 	// TVPGetAsyncKeyState at the same keycode.
 
 	//TODO
-	assert(false);
+	// assert(false);
 	// if(keycode >= VK_PAD_FIRST  && keycode <= VK_PAD_LAST)
 	// {
 	// 	// JoyPad related keys are treated in DInputMgn.cpp

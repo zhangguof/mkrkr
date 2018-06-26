@@ -5,9 +5,9 @@
 #include "ffvideo.hpp"
 #include "NativeEventQueue.h"
 #include "voMode.h"
-#include "GLDevice.hpp"
+// #include "GLDevice.hpp"
 
-class FFVideoOverlay:public iTVPVideoOverlay,public UpdateObj
+class FFVideoOverlay:public iTVPVideoOverlay//,public UpdateObj
 {
 public:
 	WHAND win;
@@ -16,6 +16,8 @@ public:
 public:
 	std::shared_ptr<ffStream> p_ffstream;
 	std::shared_ptr<VideoPlayer> p_vplayer;
+	int StopFrame;
+	std::wstring stream_name;
 
 public:
 	FFVideoOverlay();
@@ -29,7 +31,8 @@ public:
 	
 	int _cur_frame;
 	int ev_events;
-	void push_graphnotify_event();
+	std::map<int,int> ev_event_map;
+	void push_graphnotify_event(int code);
 	void push_statechange_event(tTVPVideoStatus vs_s);
 
 

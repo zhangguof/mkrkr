@@ -193,6 +193,7 @@ static void update(unsigned int interval)
 // 	TVPFontSystem->AddFont(TJS_W("font/NotoSansCJKsc-Black.otf"));
 // }
 extern void al_loop(uint32_t interval);
+extern void VideoPlayer_Loop(uint32_t interval);
 
 void tTVPApplication::Run()
 {
@@ -201,6 +202,7 @@ void tTVPApplication::Run()
 	init_fps();
 	regist_update(al_loop);
 	regist_update(update);
+	regist_update(VideoPlayer_Loop);
 	
 	// if(TVPMainWindow)
 	// 	TVPMainWindow->UpdateContent();

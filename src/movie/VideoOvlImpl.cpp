@@ -114,6 +114,7 @@ void TJS_INTF_METHOD tTJSNI_VideoOverlay::Invalidate()
 void tTJSNI_VideoOverlay::Open(const ttstr &_name)
 {
 	// open
+	SDL_Log("VideoOverlay::open!!%ls",_name.c_str());
 
 	// first, close
 	Close();
@@ -223,6 +224,7 @@ void tTJSNI_VideoOverlay::Open(const ttstr &_name)
 	SetStatus(ssStop);
 }
 //---------------------------------------------------------------------------
+extern iTVPVideoOverlay* g_curVideoOverlay;
 void tTJSNI_VideoOverlay::Close()
 {
 	// close
@@ -230,6 +232,8 @@ void tTJSNI_VideoOverlay::Close()
 	if(VideoOverlay)
 	{
 		VideoOverlay->Release(), VideoOverlay = NULL;
+		g_curVideoOverlay = VideoOverlay;
+
 		// ::SetFocus(Window->GetWindowHandle());
 	}
 	if(LocalTempStorageHolder)
