@@ -48,6 +48,8 @@ public:
 	// int cur_pos;
 	bool is_loop;
 	// void (*on_complete_cb)();
+	uint64_t total_frames;
+	uint64_t total_time;
 
 
 	uint8_t* buf1;

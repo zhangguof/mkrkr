@@ -17,6 +17,9 @@ VideoPlayer::VideoPlayer()
 	buf1 = buf2 = nullptr;
 	buf_size = 0;
 	front_buffer = nullptr;
+
+	total_frames = 0;
+	total_time = 0;
 }
 
 void VideoPlayer::open(std::string s)
@@ -28,6 +31,9 @@ void VideoPlayer::open(std::string s)
 	width = p_ffstream->get_width();
 	height = p_ffstream->get_height();
 	status = Init;
+
+	//
+
 }
 
 
@@ -39,6 +45,11 @@ void VideoPlayer::open(std::shared_ptr<ffStream>& fs)
 	width = p_ffstream->get_width();
 	height = p_ffstream->get_height();
 	status = Init;
+	total_frames = p_ffstream->GetFrameNums();
+	total_time = p_ffstream->GetVideoTotalTime();
+
+	SDL_Log("total_time:%lums,total_frames:%lu\n", 
+			p_ffstream->GetVideoTotalTime(),p_ffstream->GetFrameNums());
 }
 
 

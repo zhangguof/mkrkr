@@ -566,6 +566,14 @@ void ffStream::on_packet(AVPacket& pkt)
 		total_time += get_pkt_duration(pFormatCtx,&pkt);
 		n_src_samples += get_pkt_samples(&pkt);
 	}
+	else if(pkt.stream_index == videoStream)
+	{
+		// log_packet(pFormatCtx,&pkt);
+		// total_frame += 
+		auto av_stream = pFormatCtx->streams[pkt.stream_index];
+		auto frame_new_base = av_div_q(av_stream->time_base,vCodecCtx->time_base);
+		total_frame += pkt.duration * frame_new_base.num / frame_new_base.den;
+	}
 	// log_packet(pFormatCtx,&pkt);
 
 }

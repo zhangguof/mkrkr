@@ -447,6 +447,7 @@ public:
 
 	bool decoded_end;
 	bool video_decoded_end;
+	uint64_t total_frame;
 	// uint32_t read_pos;
 	// uint32_t decoded_len;
 
@@ -526,6 +527,7 @@ public:
 		pvbuf = nullptr;
 		pvdecoder = nullptr;
 		video_decoded_end = false;
+		total_frame = 0;
 		
 	}
 	std::shared_ptr<DataBuffer> get_decode_buffer()
@@ -591,6 +593,14 @@ public:
 	int GetFrame()
 	{
 		return pvbuf->get_pos();
+	}
+	uint64_t GetFrameNums()
+	{
+		return total_frame;
+	}
+	uint64_t GetVideoTotalTime() //ms
+	{
+		return (uint64_t)(1000 * total_frame / get_fps());
 	}
 public:
 	int open_audio();
