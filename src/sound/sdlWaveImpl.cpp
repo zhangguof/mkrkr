@@ -1365,7 +1365,7 @@ tTVPWaveSoundBufferThread::~tTVPWaveSoundBufferThread()
 void tTVPWaveSoundBufferThread::UtilWndProc( NativeEvent& ev )
 {
 	// Window procedure of UtilWindow
-	if( ev.data1 && !GetTerminated())
+	if( ev._id!=-1 && !GetTerminated())
 	{
 		// pending events occur
 		tTJSCriticalSectionHolder holder(TVPWaveSoundBufferVectorCS); // protect the object
@@ -1442,7 +1442,8 @@ void tTVPWaveSoundBufferThread::Execute(void)
 				if(!WndProcToBeCalled)
 				{
 					WndProcToBeCalled = true;
-					EventQueue.PostEvent( NativeEvent() );
+					NativeEvent e;
+					EventQueue.PostEvent(e);
 				}
 			}
 
