@@ -751,6 +751,16 @@ int FFVDecoder::decode_one_pkt(AVPacket& _pkt)
 
 
 		// Convert the image from its native format to RGB
+		
+		//reversal image use of bmp.
+        pFrame->data[0] += pFrame->linesize[0] * (pCodecCtx->height - 1);   
+        pFrame->linesize[0] *= -1;   
+        pFrame->data[1] += pFrame->linesize[1] * (pCodecCtx->height / 2 - 1);   
+        pFrame->linesize[1] *= -1;   
+        pFrame->data[2] += pFrame->linesize[2] * (pCodecCtx->height / 2 - 1);   
+        pFrame->linesize[2] *= -1;   
+
+
 		sws_scale(sws_ctx, (uint8_t const * const *)pFrame->data,
 				  pFrame->linesize, 0, pCodecCtx->height,
 				  dst_data, dst_linesize);

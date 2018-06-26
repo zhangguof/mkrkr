@@ -85,32 +85,6 @@ int VideoPlayer::update()
 	return 0;
 }
 
-// void VideoPlayer::update()
-// {
-// 	if(status != Playing)
-// 		return;
-// 	uint32_t cur = time_now();
-// 	if(cur >= next_update_tick)
-// 	{
-// 		uint8_t* buf = nullptr;
-// 		// int size = pbf->read(&buf,width*heigh*format_size);
-// 		int n = p_ffstream->GetFrame(&buf,width*height*format_size);
-// 		if(n > 0)
-// 		{
-// 			if(fill_cb)
-// 			{
-// 				fill_cb(buf,width,height,format_size);
-// 			}
-// 			else
-// 			{
-// 				swap_buf(buf,width*height*format_size);
-// 			}
-// 		}
-// 		else
-// 			on_stop();
-// 		next_update_tick = time_now() + (uint32_t)(1000.0/fps);
-// 	}
-// }
 
 void VideoPlayer::swap_buf(uint8_t* buf,int size)
 {
