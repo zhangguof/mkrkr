@@ -497,7 +497,7 @@ void tTJSNI_VideoOverlay::SetRectOffset(tjs_int ofsx, tjs_int ofsy)
 //void __fastcall tTJSNI_VideoOverlay::WndProc(Messages::TMessage &Msg)
 void tTJSNI_VideoOverlay::WndProc( NativeEvent& ev )
 {
-	SDL_Log("VideoOverlay::WndProc!!:%d",ev.get_code());
+	// SDL_Log("VideoOverlay::WndProc!!:%d",ev.get_code());
 	// EventQueue's message procedure
 	if(VideoOverlay)
 	{
@@ -540,8 +540,8 @@ void tTJSNI_VideoOverlay::WndProc( NativeEvent& ev )
 						if( Mode == vomLayer && Status == ssPlay )
 						{
 
-							SDL_Log("====EC_UPDATE!!");
-							VideoOverlay->update();
+							// SDL_Log("====EC_UPDATE!!");
+							// VideoOverlay->update();
 
 							int	curFrame = *((int*)p1);
 							if( Layer1 == NULL && Layer2 == NULL )	// nothing to do.

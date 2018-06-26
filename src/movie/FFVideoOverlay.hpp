@@ -5,8 +5,9 @@
 #include "ffvideo.hpp"
 #include "NativeEventQueue.h"
 #include "voMode.h"
+#include "GLDevice.hpp"
 
-class FFVideoOverlay:public iTVPVideoOverlay
+class FFVideoOverlay:public iTVPVideoOverlay,public UpdateObj
 {
 public:
 	WHAND win;
@@ -28,7 +29,7 @@ public:
 	
 	int _cur_frame;
 	int ev_events;
-	void push_update_event();
+	void push_graphnotify_event();
 
 public:
 	void  AddRef(){}
@@ -120,7 +121,7 @@ public:
 	void  GetSaturation( float *v ) {}
 	void  SetSaturation( float v ) {}
 
-	void update(){p_vplayer->update();}
+	void update(uint32_t interval);
 };
 
 

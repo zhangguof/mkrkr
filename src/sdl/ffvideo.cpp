@@ -46,18 +46,18 @@ void VideoPlayer::play()
 {
 	printf("(VideoPlayer:play)\n");
 
-	if(next_update_tick == 0)
-		next_update_tick = time_now();
-	next_update_tick = time_now();
+	// if(next_update_tick == 0)
+	// 	next_update_tick = time_now();
+	// next_update_tick = time_now();
 	status = Playing;
 	update();
 }
-void VideoPlayer::update()
+int VideoPlayer::update()
 {
 	if(status != Playing)
-		return;
-	printf("(VideoPlayer:update)\n");
+		return 0;
 	uint32_t cur = time_now();
+	// printf("(VideoPlayer:update):%d,%d\n",cur,next_update_tick);
 	if(cur >= next_update_tick)
 	{
 		uint8_t* buf = nullptr;
@@ -75,9 +75,14 @@ void VideoPlayer::update()
 			}
 		}
 		else
-			on_stop();
+		{
+			on_complete();
+			
+		}
 		next_update_tick = time_now() + (uint32_t)(1000.0/fps);
+		return 1;
 	}
+	return 0;
 }
 
 // void VideoPlayer::update()

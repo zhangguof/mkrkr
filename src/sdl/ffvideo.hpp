@@ -29,7 +29,8 @@ enum VideoStatus
 	Init,
 	Playing,
 	Stoped,
-	Paused
+	Paused,
+	Complete,
 };
 
 class VideoPlayer
@@ -46,6 +47,7 @@ public:
 	VideoStatus status;
 	// int cur_pos;
 	bool is_loop;
+	// void (*on_complete_cb)();
 
 
 	uint8_t* buf1;
@@ -56,9 +58,13 @@ public:
 
 	VideoPlayer();
 	void play();
+	void stop()
+	{
+		status = Stoped;
+	}
 	void open(std::string s);
 	void open(std::shared_ptr<ffStream>& fs);
-	void update();
+	int update();
 
 	void swap_buf(uint8_t* buf,int size);
 	void set_video_buffer(uint8_t* buff1,uint8_t* buff2,int size)
@@ -72,10 +78,10 @@ public:
 	{
 		fill_cb = cb;
 	}
-	void on_stop()
+	void on_complete()
 	{
 		assert(status == Playing);
-		status = Stoped;
+		status = Complete;
 		// cur_pos = 0;
 		if(is_loop)
 		{

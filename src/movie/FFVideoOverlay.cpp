@@ -40,12 +40,16 @@ void FFVideoOverlay::Play()
 	if(p_vplayer)
 	{
 		p_vplayer->play();
-		push_update_event();
+		// push_graphnotify_event();
+		// update(0);
 	}
 }
 void FFVideoOverlay::Stop()
 {
-
+	if(p_vplayer)
+	{
+		p_vplayer->stop();
+	}
 }
 void FFVideoOverlay::Pause()
 {
@@ -164,7 +168,7 @@ void FFVideoOverlay::GetEvent(long *evcode, void **param1,void **param2, bool *g
 		*got = true;
 		ev_events--;
 	}
-	else if(p_vplayer->status == Stoped) //read end.
+	else if(p_vplayer->status == Complete) //read end.
 	{
 		*evcode = EC_COMPLETE;
 		ev_events--;
@@ -177,18 +181,41 @@ void FFVideoOverlay::FreeEventParams(long evcode, void* param1, void* param2)
 
 }
 
-void FFVideoOverlay::push_update_event()
+void FFVideoOverlay::push_graphnotify_event()
 {
+	// SDL_Log("push_graphnotify_event!!:%d",ev_events);
 	NativeEvent ev;
 	// ev.code = WM_GRAPHNOTIFY;
 	ev.set_code(WM_GRAPHNOTIFY);
 	event_queue->PostEvent(ev);
 	ev_events++;
 }
+// void FFVideoOverlay::push_complete_event()
+// {
+// 	NativeEvent ev;
+// 	ev.set_code(WM_GRAPHNOTIFY);
+// 	event_queue->PostEvent(ev);
+// 	ev_events++;
 
+// }
+
+void FFVideoOverlay::update(uint32_t interval)
+{
+	// printf("===FFVideoOverlay::update\n");
+	int ret  =  p_vplayer->update();
+	// printf("===FFVideoOverlay:update:%d\n",ret);
+	if(ret)
+		push_graphnotify_event();
+	// if(p_vplayer->status == Complete)
+	// {
+		
+	// }
+}
 
 
 //----------------------------------------------------------------------------
+
+
 void GetVideoLayerObject(
 	void* event_queue, tTJSBinaryStream *stream, const wchar_t * streamname,
 	const wchar_t *type, uint64_t size, iTVPVideoOverlay **out)
@@ -200,4 +227,7 @@ void GetVideoLayerObject(
 
 	if( *out )
 		static_cast<FFVideoOverlay*>(*out)->open(stream, streamname, type, size );
+	//regist update
+	regist_objupdate((UpdateObj*)p);
+
 }
