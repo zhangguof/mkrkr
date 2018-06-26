@@ -2117,7 +2117,7 @@ TJS_BEGIN_NATIVE_METHOD_DECL(registerMessageReceiver)
 	// _this->RegisterWindowMessageReceiver((tTVPWMRRegMode)((tjs_int)*param[0]),
 	// 	reinterpret_cast<void *>((tjs_intptr_t)(*param[1])),
 	// 	reinterpret_cast<const void *>((tjs_intptr_t)(*param[2])));
-	assert(false);//TODO
+	// assert(false);//TODO
 	return TJS_S_OK;
 }
 TJS_END_NATIVE_METHOD_DECL_OUTER(cls, registerMessageReceiver)

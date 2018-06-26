@@ -50,6 +50,8 @@
 //---------------------------------------------------------------------------
 extern "C"{
 extern	HRESULT KAGParser_V2Link(iTVPFunctionExporter *exporter);
+extern  HRESULT menu_V2Link(iTVPFunctionExporter *exporter);
+
 }
 
 static tTJSHashTable<ttstr, void *> TVPImportFuncs;
@@ -66,6 +68,7 @@ void TVPAddImportFunction(const tjs_char *name, void *ptr)
 void TVPImportFunctions()
 {
 	TVPAddImportFunction("KAGParser_V2Link",(void*)KAGParser_V2Link);
+	TVPAddImportFunction("menu_V2Link",(void*)menu_V2Link);
 }
 
 void TVPInitImportFuncs()

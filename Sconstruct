@@ -127,7 +127,8 @@ def build_main_in_darwin():
 	libs = ['tjs2','onig','z',
 	'boost_filesystem','boost_system',
 	'SDL2','GLEW','soil',
-	'freetype','bz2','kagparser','png16','iconv','lzma',
+	'freetype','bz2','kagparser','menu',
+	'png16','iconv','lzma',
 	'avformat','avcodec','avutil','swscale','swresample',
 	'openal',
 	]
