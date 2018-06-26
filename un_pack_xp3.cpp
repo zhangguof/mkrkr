@@ -138,13 +138,24 @@ void un_pack(ttstr data_file,ttstr dst_dir)
 
 }
 
-int main()
+int main(int argc, char* argv[])
 {
 	setlocale(LC_ALL, "");
 	Application = new tTVPApplication;
 	//Application->PrintConsole("1哈哈哈!\n",7);
 	TVPLoadMessage();
 	TVPSetXP3ArchiveExtractionFilter(xp3_filter);
+	std::string name = "data"; 
+	std::string out = "data";
+	if(argc > 1)
+	{
+		name = argv[1];
+	}
+	std::string file_name = name + ".xp3";
+	if(argc > 2)
+	{
+		out = argv[2];
+	}
 	
 
 	try
@@ -152,7 +163,8 @@ int main()
 
 		// TVPSystemInit();
 		TVPSetCurrentDirectory(ExePath());
-		un_pack(TJS_W("voice.xp3"),"voice");
+		// un_pack(TJS_W("video.xp3"),"voice");
+		un_pack(file_name.c_str(),out.c_str());
 		// tTVPXP3Archive* xp3_arc = new tTVPXP3Archive(TJS_W("data.xp3"));
 		// for(int idx=0;idx<2;idx++)
 		// {

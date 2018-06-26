@@ -33,6 +33,7 @@ cpp_path = ['./','src',
 			'src/environ',
 			'src/extension',
 			'src/sdl',
+			'src/movie',
 ]
 
 refuse_files = set(['utils/TimerImpl.cpp',
