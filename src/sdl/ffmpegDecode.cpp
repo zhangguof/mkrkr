@@ -670,7 +670,8 @@ int FFVDecoder::decode_one_pkt(AVPacket& _pkt)
 	uint8_t *dst_data[4];
     int dst_linesize[4];
     // AVPixelFormat dst_pix_fmt = AV_PIX_FMT_RGB24;
-    AVPixelFormat dst_pix_fmt = AV_PIX_FMT_RGBA;
+    // AVPixelFormat dst_pix_fmt = AV_PIX_FMT_RGBA;
+    AVPixelFormat dst_pix_fmt = AV_PIX_FMT_BGRA;
     int dst_w, dst_h;
     int dst_bufsize;
 

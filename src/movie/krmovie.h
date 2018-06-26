@@ -123,7 +123,7 @@ public:
 //---------------------------------------------------------------------------
 #define WM_GRAPHNOTIFY  (Native_Event_Code+1)
 #define WM_CALLBACKCMD  (Native_Event_Code+2)
-#define EC_UPDATE		(Native_Event_Code+3)
+// #define EC_UPDATE		(Native_Event_Code+3)
 #define WM_STATE_CHANGE	(Native_Event_Code+4)
 //---------------------------------------------------------------------------
 

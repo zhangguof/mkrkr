@@ -18,6 +18,7 @@ FFVideoOverlay::FFVideoOverlay()
 	p_ffstream = nullptr;
 	p_vplayer = nullptr;
 	event_queue = nullptr;
+	ev_events = 0;
 
 }
 
@@ -148,6 +149,12 @@ void FFVideoOverlay::PresentVideoImage()
 
 void FFVideoOverlay::GetEvent(long *evcode, void **param1,void **param2, bool *got)
 {
+	if(ev_events<=0)
+	{
+		*got = false;
+		return;
+	}
+
 	if(p_vplayer->status == Playing)
 	{
 		*evcode = EC_UPDATE;
@@ -155,10 +162,12 @@ void FFVideoOverlay::GetEvent(long *evcode, void **param1,void **param2, bool *g
 		GetFrame(&_cur_frame);
 		*param1 = &_cur_frame;
 		*got = true;
+		ev_events--;
 	}
 	else if(p_vplayer->status == Stoped) //read end.
 	{
 		*evcode = EC_COMPLETE;
+		ev_events--;
 	}
 
 }
@@ -171,8 +180,10 @@ void FFVideoOverlay::FreeEventParams(long evcode, void* param1, void* param2)
 void FFVideoOverlay::push_update_event()
 {
 	NativeEvent ev;
-	ev.code = WM_GRAPHNOTIFY;
+	// ev.code = WM_GRAPHNOTIFY;
+	ev.set_code(WM_GRAPHNOTIFY);
 	event_queue->PostEvent(ev);
+	ev_events++;
 }
 
 

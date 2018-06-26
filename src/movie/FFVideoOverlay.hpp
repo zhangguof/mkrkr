@@ -27,6 +27,7 @@ public:
 		const wchar_t *type, uint64_t size);
 	
 	int _cur_frame;
+	int ev_events;
 	void push_update_event();
 
 public:

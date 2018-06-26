@@ -497,11 +497,11 @@ void tTJSNI_VideoOverlay::SetRectOffset(tjs_int ofsx, tjs_int ofsy)
 //void __fastcall tTJSNI_VideoOverlay::WndProc(Messages::TMessage &Msg)
 void tTJSNI_VideoOverlay::WndProc( NativeEvent& ev )
 {
-	SDL_Log("VideoOverlay::WndProc!!:%d",ev.code);
+	SDL_Log("VideoOverlay::WndProc!!:%d",ev.get_code());
 	// EventQueue's message procedure
 	if(VideoOverlay)
 	{
-		switch(ev.code) {
+		switch(ev.get_code()) {
 		case WM_GRAPHNOTIFY:
 		{
 			long evcode;
@@ -647,7 +647,7 @@ void tTJSNI_VideoOverlay::WndProc( NativeEvent& ev )
 		}
 		case WM_STATE_CHANGE:
 			{
-				uint64_t WParam = reinterpret_cast<uint64_t>(ev.data2);
+				uint64_t WParam = reinterpret_cast<uint64_t>(ev.param);
 				switch( WParam ) {
 				case vsStopped:
 					SetStatusAsync( ssStop );
