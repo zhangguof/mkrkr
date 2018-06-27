@@ -612,6 +612,18 @@ retry:
 		break;
 	}
 	Handle = ::fopen(localname.AsNarrowStdString().c_str(),mode);
+	if(Handle == NULL)
+	{
+		if(access == TJS_BS_WRITE)
+		{
+			if(TVPCreateFolders(TVPLocalExtractFilePath(localname)))
+			{
+				Handle = ::fopen(localname.AsNarrowStdString().c_str(),mode);
+
+			}
+		}
+	}
+	assert(Handle!=NULL);
 	path = boost::filesystem::path(localname.c_str());
 
 #endif
