@@ -1,0 +1,10 @@
+*.pdb
+*.obj
+*.lib
+*.exp
+*.log
+*.tlog
+*.sdf
+*.suo
+*.user
+.vs/
