@@ -51,6 +51,7 @@
 extern "C"{
 extern	HRESULT KAGParser_V2Link(iTVPFunctionExporter *exporter);
 extern  HRESULT menu_V2Link(iTVPFunctionExporter *exporter);
+extern  HRESULT layerExSave_V2Link(iTVPFunctionExporter *exporter);
 
 }
 
@@ -69,6 +70,7 @@ void TVPImportFunctions()
 {
 	TVPAddImportFunction("KAGParser_V2Link",(void*)KAGParser_V2Link);
 	TVPAddImportFunction("menu_V2Link",(void*)menu_V2Link);
+	TVPAddImportFunction("layerExSave_V2Link",(void*)layerExSave_V2Link);
 }
 
 void TVPInitImportFuncs()

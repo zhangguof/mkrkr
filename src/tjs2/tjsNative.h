@@ -297,7 +297,7 @@ inline TJS_EXP_FUNC_DEF(tTJSNativeClassForPlugin *, TJSCreateNativeClassForPlugi
 // following macros are to be written in the constructor of child class
 // to define native methods/properties.
 /*]*/
-#ifdef __TP_STUB_H__
+#if (defined __TP_STUB_H__) || (defined __TP_STUB1_H__)
 /*[*/
 #define TJS_NCM_REG_THIS classobj
 #define TJS_NATIVE_SET_ClassID TJS_NATIVE_CLASSID_NAME = TJS_NCM_CLASSID;
