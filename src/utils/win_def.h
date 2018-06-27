@@ -199,6 +199,7 @@ typedef struct tagBITMAPINFO {
 
 #define S_OK ((HRESULT)0L)
 #define S_FALSE ((HRESULT)1L)
+#define E_FAIL (-1)
 
 
 typedef struct tagSIZE

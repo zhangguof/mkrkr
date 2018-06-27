@@ -121,7 +121,7 @@ ttstr TVPGetVersionInformation(void)
 	// ttstr version = TVPFormatMessage(TVPVersionInformation, verstr, tjsverstr);
 	// std::wstring str = ApplicationSpecialPath::ReplaceStringAll( version.AsStdString(), std::wstring(L"%DATE%"), std::wstring(TVPCompileDate) );
 	// str = ApplicationSpecialPath::ReplaceStringAll( str, std::wstring(L"%TIME%"), std::wstring(TVPCompileTime) );
-	return ttstr("moblie krkrz 0.0.0.1");
+	return ttstr("Moble  KrKrZ 0.0.0.1");
 }
 
 int MulDiv(int a,int b, int c)
