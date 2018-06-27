@@ -16,7 +16,7 @@ public:
 	
 	tTVPApplication();
 	~tTVPApplication();
-	bool StartApplication( int argc, tjs_char* argv[] );
+	bool StartApplication( int argc, char* argv[] );
 
 	void PrintConsole( const wchar_t* mes, unsigned long len, bool iserror = false );
 	std::wstring GetTitle() const { return title_; }

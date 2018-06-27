@@ -18,3 +18,4 @@ src/plugins/ncbind/build
 *.filters
 *.sln
 *.dblite
+src/sdl/test

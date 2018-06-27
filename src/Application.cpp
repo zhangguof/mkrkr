@@ -24,11 +24,31 @@ tTVPApplication::tTVPApplication(){
 }
 tTVPApplication::~tTVPApplication(){}
 
+const int max_arg_cnt = 20;
+int _argc;
+// tjs_char ** _wargv;
+ttstr _argv[max_arg_cnt];
 
-
-bool StartApplication( int argc, tjs_char* argv[] )
+const tjs_char* sel_data_path = NULL;
+bool tTVPApplication::StartApplication( int argc, char* argv[] )
 {
 	wprintf(L"StartApplication!\n");
+	_argc = argc;
+	for(int i= 0;i<argc;++i)
+	{
+		_argv[i] = argv[i];
+		// TVPAddLog(_argv[i]);
+	}
+	for(int i=0;i<argc;++i)
+	{
+		if(_argv[i] == TJS_W("-data") && i+1<argc)
+		{
+			sel_data_path = _argv[i+1].c_str();
+			wprintf(TJS_W("====sel data path:%ls\n"),sel_data_path);
+			break;
+		}
+	}
+
 }
 
 void tTVPApplication::PrintConsole( const wchar_t* mes, unsigned long len, bool iserror)
