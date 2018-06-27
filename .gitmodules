@@ -1,3 +1,6 @@
 [submodule "src/external/oniguruma"]
 	path = src/external/oniguruma
 	url = https://github.com/kkos/oniguruma.git
+[submodule "src/plugins/menu"]
+	path = src/plugins/menu
+	url = git@tony-home.com:repos/menu.git
