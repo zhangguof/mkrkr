@@ -5,3 +5,16 @@ test/test
 *.wav
 src/ext_libs_src
 voice
+src/plugins/layerExSave/vs2005
+src/plugins/layerExSave/vs2010
+src/plugins/layerExSave/vs2012
+src/plugins/layerExSave/vs2008
+*.map
+src/plugins/KAGParser/vcproj
+src/plugins/KAGParser/build
+src/plugins/ncbind/build
+*.vcproj
+*.vcxproj
+*.filters
+*.sln
+*.dblite

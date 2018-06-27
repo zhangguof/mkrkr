@@ -56,20 +56,26 @@ include_path.extend([
 	'src/ext_libs_src/freealut-1.1.0/include',
 	"src/plugins/KAGParser",
 
-	# "./include",
-	# './tools/freetype-2.7/include',
-	#'./external/jxrlib/common/include',
-	# './tools/libjpeg-turbo-1.5.3',
-	# './visual/win32',
-	# './tools/zlib','./external/onig/src',
-	# './external/libpng','/Users/tony/workspace/github/boost_1_67_0',
-	# "plugins/KAGParser",
-	# "sdl",
-	# "../sdl/SDL2-2.0.8/include",
-	#'visual/gl/','visual/IA32/'
 	])
 
 #src files.
+
+plugin_infos = {
+	"base":{"path":['src/plugins/'],},
+	"layerexsave":{
+		"path":['src/plugins/layerexsave',
+				'src/plugins/layerexsave/LodePNG'],
+		"include":['src/plugins','src/plugins/ncbind'],
+		'refuse_files':['src/plugins/layerexsave/savetlg5.cpp',]
+	},
+	"kagparser":{
+		"path":['src/plugins/KAGParser'],
+	},
+	"menu":{
+		"path":['src/plugins/menu'],
+
+	},
+}
 
 def search_cpp_src(paths):
 	cpp_srcs = []
@@ -84,6 +90,20 @@ def search_cpp_src(paths):
 					cpp_srcs.append(fpath)
 			break
 	return cpp_srcs
+
+#add plugins
+def search_plugins(infos,out_cpp_path,out_include_path,out_refuse_files):
+	for plugin_name,item in infos.items():
+		if item.get("path"):
+			out_cpp_path.extend(item['path'])
+		if item.get('include'):
+			out_include_path.extend(item['include'])
+		if item.get('refuse_files'):
+			for f in item['refuse_files']:
+				out_refuse_files.add(f);
+
+search_plugins(plugin_infos,cpp_path,include_path,refuse_files)
+
 cpp_src = search_cpp_src(cpp_path)
 
 
@@ -123,30 +143,21 @@ def build_static_lib():
 
 def build_main_in_darwin():
 	link_flags = " ".join(["-framework %s"%s for s in frameworks])
-	cc_flags = " -std=c++0x -g -DTVP_LOG_TO_COMMANDLINE_CONSOLE -DTVP_NO_CHECK_WIDE_CHAR_SIZE"
+	cc_flags = " -std=c++0x -g " \
+			   "-DTVP_LOG_TO_COMMANDLINE_CONSOLE " \
+			   "-DTVP_NO_CHECK_WIDE_CHAR_SIZE " \
+			   "-DDEBUG "
 	libs = ['tjs2','onig','z',
 	'boost_filesystem','boost_system',
 	'SDL2','GLEW','soil',
-	'freetype','bz2','kagparser','menu',
+	'freetype','bz2',
 	'png16','iconv','lzma',
 	'avformat','avcodec','avutil','swscale','swresample',
 	'openal',
-	]
-	lib_path = ['./libs',]
-	env.Program(target=target, source=cpp_src,
-		CC='c++', 
-		CXX='clang++',
-		CCFLAGS=cc_flags, LINKFLAGS=link_flags,
-		LIBS = libs, LIBPATH = lib_path)
-
-def build_in_darwin():
-	link_flags = " ".join(["-framework %s"%s for s in frameworks])
-	cc_flags = " -std=c++0x -g -DTVP_LOG_TO_COMMANDLINE_CONSOLE -DTVP_NO_CHECK_WIDE_CHAR_SIZE"
-	libs = ['freetype','turbojpeg','z','bz2','onig','png',
-	'iconv',
-	'boost_filesystem','boost_system',
-	'kagparser',
-	'SDL2','GLEW','soil'
+	#plugins
+	# 'kagparser',
+	'menu',
+	#'layerexsave','ncbind'
 	]
 	lib_path = ['./libs',]
 	env.Program(target=target, source=cpp_src,
