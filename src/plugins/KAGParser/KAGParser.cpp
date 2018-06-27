@@ -29,7 +29,7 @@
 
 const tjs_char* TVPKAGNoLine = TJS_W("読み込もうとしたシナリオファイル %1 は空です");
 const tjs_char* TVPKAGCannotOmmitFirstLabelName = TJS_W("シナリオファイルの最初のラベル名は省略できません");
-static const tjs_char* TVPInternalError = TJS_W("内部エラーが発生しました: at %1 line %2");
+// static const tjs_char* TVPInternalError = TJS_W("内部エラーが発生しました: at %1 line %2");
 const tjs_char* TVPKAGMalformedSaveData = TJS_W("栞データが異常です。データが破損している可能性があります");
 const tjs_char* TVPKAGLabelNotFound = TJS_W("シナリオファイル %1 内にラベル %2 が見つかりません");
 const tjs_char* TVPLabelOrScriptInMacro = TJS_W("ラベルや iscript はマクロ中に記述できません");

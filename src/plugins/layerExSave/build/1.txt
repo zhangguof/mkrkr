@@ -1,0 +1,1943 @@
+Scanning dependencies of target layerexsave
+[ 16%] Building CXX object CMakeFiles/layerexsave.dir/Main.cpp.o
+In file included from /Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/Main.cpp:1:
+In file included from /Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../ncbind/ncbind.hpp:5:
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2321:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantString *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2332:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantString *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2343:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantString *, const tjs_char *, tjs_int);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2354:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantString *, const tjs_nchar *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2365:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantString *, tjs_uint);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2376:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantString *, const tjs_char *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2387:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantString *, tjs_uint);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2398:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantString *, const tjs_char *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2409:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantString *, const tjs_char *, tjs_int);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2420:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariantString *(__stdcall * __functype)(tTJSVariantString *);
+                                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2431:24: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_uint32 *(__stdcall * __functype)(tTJSVariantString *);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2442:28: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef const tjs_char *(__stdcall * __functype)(const tTJSVariantString *);
+                                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2453:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_int(__stdcall * __functype)(const tTJSVariantString *);
+                                ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2464:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTVInteger(__stdcall * __functype)(const tTJSVariantString *);
+                                   ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2475:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTVReal(__stdcall * __functype)(const tTJSVariantString *);
+                                ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2486:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(const tTJSVariantString *, tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2497:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_int(__stdcall * __functype)(const tTJSVariantString *);
+                                ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2518:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantOctet *, const tjs_uint8 *, tjs_uint);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2529:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantOctet *, const tjs_uint8 *, tjs_uint , const tjs_uint8 *, tjs_uint);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2540:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantOctet *, const tTJSVariantOctet *, const tTJSVariantOctet *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2551:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantOctet *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2562:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantOctet *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2573:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariantOctet *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2584:20: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_uint(__stdcall * __functype)(const tTJSVariantOctet *);
+                                 ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2595:29: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef const tjs_uint8 *(__stdcall * __functype)(const tTJSVariantOctet *);
+                                          ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2615:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, iTJSDispatch2 *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2626:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2637:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2648:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, iTJSDispatch2 *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2659:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, iTJSDispatch2 *, iTJSDispatch2 *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2670:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tjs_char *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2681:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSString &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2692:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tjs_nchar *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2703:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tjs_uint8 *, tjs_uint);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2714:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, bool);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2725:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, tjs_int32);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2736:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, tjs_int64);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2747:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, tjs_real);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2758:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tjs_uint8 * *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2769:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2780:27: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariantType(__stdcall * __functype)(tTJSVariant *);
+                                        ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2791:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2802:32: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariantClosure &(__stdcall * __functype)(tTJSVariant *);
+                                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2813:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2824:27: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef iTJSDispatch2 *(__stdcall * __functype)(tTJSVariant *);
+                                        ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2835:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2846:24: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_uint32 *(__stdcall * __functype)(tTJSVariant *);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2857:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2868:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2879:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2890:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2901:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2912:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, iTJSDispatch2 *);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2923:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, iTJSDispatch2 *);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2934:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, iTJSDispatch2 *, iTJSDispatch2 *);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2945:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, tTJSVariantClosure);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2956:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, tTJSVariantString *);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2967:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, tTJSVariantOctet *);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2978:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, const tTJSString &);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:2989:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, const tjs_char *);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3000:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, const tjs_nchar *);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3011:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, bool);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3022:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, tjs_int32);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3033:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, const tTVInteger);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3044:25: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant &(__stdcall * __functype)(tTJSVariant *, tjs_real);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3055:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3066:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3077:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3088:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3099:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3110:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3121:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3132:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3143:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3154:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3165:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3176:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3187:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3198:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3209:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3220:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3231:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3242:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3253:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3264:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3275:27: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariantType(__stdcall * __functype)(const tTJSVariant *);
+                                        ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3286:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3297:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3308:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3319:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3330:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3341:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSVariant *, const tjs_char *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3352:27: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef iTJSDispatch2 *(__stdcall * __functype)(const tTJSVariant *);
+                                        ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3363:27: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef iTJSDispatch2 *(__stdcall * __functype)(const tTJSVariant *);
+                                        ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3374:27: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef iTJSDispatch2 *(__stdcall * __functype)(const tTJSVariant *);
+                                        ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3385:27: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef iTJSDispatch2 *(__stdcall * __functype)(const tTJSVariant *);
+                                        ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3396:32: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariantClosure &(__stdcall * __functype)(const tTJSVariant *);
+                                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3407:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariantString *(__stdcall * __functype)(const tTJSVariant *);
+                                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3418:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariantString *(__stdcall * __functype)(const tTJSVariant *);
+                                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3429:28: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef const tjs_char *(__stdcall * __functype)(const tTJSVariant *);
+                                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3440:30: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariantOctet *(__stdcall * __functype)(const tTJSVariant *);
+                                           ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3451:30: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariantOctet *(__stdcall * __functype)(const tTJSVariant *);
+                                           ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3462:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTVInteger(__stdcall * __functype)(const tTJSVariant *);
+                                   ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3473:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(const tTJSVariant *, tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3484:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTVInteger(__stdcall * __functype)(const tTJSVariant *);
+                                   ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3495:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSVariant *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3506:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_int(__stdcall * __functype)(const tTJSVariant *);
+                                ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3517:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTVReal(__stdcall * __functype)(const tTJSVariant *);
+                                ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3528:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTVReal(__stdcall * __functype)(const tTJSVariant *);
+                                ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3539:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3550:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3561:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3572:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3583:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3594:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3605:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3616:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3627:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3638:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3649:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3660:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3671:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, tjs_int);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3682:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3693:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3704:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3715:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3726:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3737:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3748:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3759:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3770:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3781:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3792:23: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariant(__stdcall * __functype)(const tTJSVariant *, const tTJSVariant &);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3803:18: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void *(__stdcall * __functype)(size_t);
+                               ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3814:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(void *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3825:18: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void *(__stdcall * __functype)(size_t);
+                               ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3836:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(void *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3847:18: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void *(__stdcall * __functype)(size_t , void *);
+                               ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3867:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3878:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, const tTJSString &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3889:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, tTJSVariantString *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3900:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, const tjs_char *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3911:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, const tjs_nchar *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3922:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, const tTJSStringBufferLength);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3933:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, tjs_char);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3944:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, const tTJSVariant &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3955:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, const tTJSString &, int);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3966:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, const tjs_char *, int);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3977:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, tjs_int);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3988:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:3999:24: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSString &(__stdcall * __functype)(tTJSString *, const tTJSString &);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4010:24: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSString &(__stdcall * __functype)(tTJSString *, const tjs_char *);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4021:24: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSString &(__stdcall * __functype)(tTJSString *, const tjs_nchar *);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4032:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, const tTJSString &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4043:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, const tTJSVariantString *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4054:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, const tjs_char *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4065:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, tjs_char);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4076:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4087:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_char *(__stdcall * __functype)(tTJSString *, tjs_uint);
+                                   ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4098:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_char *(__stdcall * __functype)(tTJSString *, tjs_uint);
+                                   ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4109:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4120:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *, const tTJSString &, const tTJSString &, bool);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4131:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4142:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(tTJSString *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4153:24: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_uint32 *(__stdcall * __functype)(tTJSString *);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4164:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_char *(__stdcall * __functype)(tTJSString *);
+                                   ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4175:28: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef const tjs_char *(__stdcall * __functype)(const tTJSString *);
+                                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4186:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSVariantString *(__stdcall * __functype)(const tTJSString *);
+                                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4197:21: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_int64(__stdcall * __functype)(const tTJSString *);
+                                  ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4208:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSString *, const tTJSString &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4219:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSString *, const tTJSString &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4230:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_int(__stdcall * __functype)(const tTJSString *, const tTJSString &);
+                                ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4241:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSString *, const tjs_char *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4252:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSString *, const tjs_char *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4263:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_int(__stdcall * __functype)(const tTJSString *, const tjs_char *);
+                                ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4274:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSString *, const tTJSString &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4285:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSString *, const tTJSString &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4296:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSString(__stdcall * __functype)(const tTJSString *, const tTJSString &);
+                                   ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4307:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSString(__stdcall * __functype)(const tTJSString *, const tjs_char *);
+                                   ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4318:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tTJSString(__stdcall * __functype)(const tTJSString *, tjs_char);
+                                   ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4329:20: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_char(__stdcall * __functype)(const tTJSString *, tjs_uint);
+                                 ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4340:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(const tTJSString *, tTJSString &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4351:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(const tTJSString *, tTJSString &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4362:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(const tTJSString *, tTJSString &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4373:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(const tTJSString *, tTJSString &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4384:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSString *, const tjs_char *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4395:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSString *, const tTJSString &);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4406:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_int(__stdcall * __functype)(const tTJSString *);
+                                ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4417:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(const tTJSString *, tjs_nchar *, tjs_int);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4428:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef bool(__stdcall * __functype)(const tTJSString *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4439:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_int(__stdcall * __functype)(const tTJSString *);
+                                ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4450:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_int(__stdcall * __functype)(const tTJSString *);
+                                ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4461:20: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef tjs_char(__stdcall * __functype)(const tTJSString *);
+                                 ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4472:18: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void *(__stdcall * __functype)(size_t);
+                               ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4483:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(void *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4494:18: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void *(__stdcall * __functype)(size_t);
+                               ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4505:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void(__stdcall * __functype)(void *);
+                             ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4516:18: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+                typedef void *(__stdcall * __functype)(size_t , void *);
+                               ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4643:4: warning: field 'FileHash' will be initialized after field 'SizeOfSelf' [-Wreorder]
+                        FileHash(filehash),
+                        ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5847:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_int (__stdcall * __functype)(const tjs_char *);
+                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5857:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_char * (__stdcall * __functype)(tjs_int , tjs_char *);
+                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5867:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_char * (__stdcall * __functype)(tjs_int64 , tjs_char *);
+                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5877:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_int (__stdcall * __functype)(const tjs_char *, const tjs_char *, size_t);
+                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5887:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_int (__stdcall * __functype)(const tjs_char *, const tjs_char *);
+                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5897:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_char *, const tjs_char *, size_t);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5907:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_char *, const tjs_char *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5917:18: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef size_t (__stdcall * __functype)(const tjs_char *);
+                        ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5927:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_char * (__stdcall * __functype)(tjs_uint);
+                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5937:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_char * (__stdcall * __functype)(tjs_char *, tjs_uint);
+                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5947:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_char *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5957:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(const tjs_char *, const tjs_char *);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5967:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(const tjs_char *, tjs_int);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5977:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(const tjs_char *);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5987:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(const tjs_nchar *);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:5997:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(const tjs_uint8 * *);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6007:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(tjs_uint);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6017:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(tTJSVariantString *, const tjs_char *);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6027:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(tTJSVariantString *, const tTJSVariantString *);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6037:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(const tjs_char *, tjs_uint , tTJSVariant * *);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6047:28: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef const tjs_char * (__stdcall * __functype)(tTJSVariantType);
+                                  ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6057:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSString (__stdcall * __functype)(const tTJSVariant &, tjs_int);
+                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6067:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSString (__stdcall * __functype)(const tTJSVariant &);
+                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6077:18: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void * (__stdcall * __functype)(tjs_uint , tjs_uint);
+                        ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6087:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(void *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6097:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_uint32 (__stdcall * __functype)(tjs_real);
+                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6107:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSString (__stdcall * __functype)(const tjs_char *, const tTJSString &);
+                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6117:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSString (__stdcall * __functype)(tjs_uint32 , int);
+                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6127:21: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_int32 (__stdcall * __functype)(const tjs_char *);
+                           ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6137:21: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_int32 (__stdcall * __functype)(const tjs_char *);
+                           ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6147:28: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef const tjs_char * (__stdcall * __functype)(tjs_int32);
+                                  ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6157:35: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSNativeClassMethod * (__stdcall * __functype)(tTJSNativeClassMethodCallback);
+                                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6167:35: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSNativeClassMethod * (__stdcall * __functype)(tTJSNativeClassMethodCallback);
+                                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6170:104: error: unknown type name 'tTJSNativeClassPropertySetCallback'; did you mean 'tTJSNativeClassPropertyGetCallback'?
+inline tTJSNativeClassProperty * TJSCreateNativeClassProperty(tTJSNativeClassPropertyGetCallback get , tTJSNativeClassPropertySetCallback set)
+                                                                                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                                                       tTJSNativeClassPropertyGetCallback
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:1668:49: note: 'tTJSNativeClassPropertyGetCallback' declared here
+typedef TJS::tTJSNativeClassPropertyGetCallback tTJSNativeClassPropertyGetCallback;
+                                                ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6177:98: error: unknown type name 'tTJSNativeClassPropertySetCallback'; did you mean 'tTJSNativeClassPropertyGetCallback'?
+        typedef tTJSNativeClassProperty * (__stdcall * __functype)(tTJSNativeClassPropertyGetCallback , tTJSNativeClassPropertySetCallback);
+                                                                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                                                        tTJSNativeClassPropertyGetCallback
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:1668:49: note: 'tTJSNativeClassPropertyGetCallback' declared here
+typedef TJS::tTJSNativeClassPropertyGetCallback tTJSNativeClassPropertyGetCallback;
+                                                ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6177:37: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSNativeClassProperty * (__stdcall * __functype)(tTJSNativeClassPropertyGetCallback , tTJSNativeClassPropertySetCallback);
+                                           ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6180:39: error: unknown type name 'tTJSNativeClass'
+inline void TJSNativeClassRegisterNCM(tTJSNativeClass * cls , const tjs_char * name , iTJSDispatch2 * dsp , const tjs_char * classname , tTJSNativeInstanceType type , tjs_uint32 flags = 0)
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6187:40: error: unknown type name 'tTJSNativeClass'; did you mean 'TJS::tTJSNativeClass'?
+        typedef void (__stdcall * __functype)(tTJSNativeClass *, const tjs_char *, iTJSDispatch2 *, const tjs_char *, tTJSNativeInstanceType , tjs_uint32);
+                                              ^~~~~~~~~~~~~~~
+                                              TJS::tTJSNativeClass
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:789:7: note: 'TJS::tTJSNativeClass' declared here
+class tTJSNativeClass : public iTJSDispatch2 { };
+      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6187:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tTJSNativeClass *, const tjs_char *, iTJSDispatch2 *, const tjs_char *, tTJSNativeInstanceType , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6190:38: error: unknown type name 'tTJSNativeClass'
+inline void TJSNativeClassSetClassID(tTJSNativeClass * cls , tjs_int32 classid)
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6197:40: error: unknown type name 'tTJSNativeClass'; did you mean 'TJS::tTJSNativeClass'?
+        typedef void (__stdcall * __functype)(tTJSNativeClass *, tjs_int32);
+                                              ^~~~~~~~~~~~~~~
+                                              TJS::tTJSNativeClass
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:789:7: note: 'TJS::tTJSNativeClass' declared here
+class tTJSNativeClass : public iTJSDispatch2 { };
+      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6197:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tTJSNativeClass *, tjs_int32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6200:86: error: unknown type name 'tTJSCreateNativeInstance'; did you mean 'TJS::tTJSCreateNativeInstance'?
+inline tTJSNativeClassForPlugin * TJSCreateNativeClassForPlugin(const ttstr & name , tTJSCreateNativeInstance createinstance)
+                                                                                     ^~~~~~~~~~~~~~~~~~~~~~~~
+                                                                                     TJS::tTJSCreateNativeInstance
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:786:48: note: 'TJS::tTJSCreateNativeInstance' declared here
+typedef iTJSNativeInstance * (TJS_INTF_METHOD *tTJSCreateNativeInstance)();
+                                               ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6207:77: error: unknown type name 'tTJSCreateNativeInstance'; did you mean 'TJS::tTJSCreateNativeInstance'?
+        typedef tTJSNativeClassForPlugin * (__stdcall * __functype)(const ttstr &, tTJSCreateNativeInstance);
+                                                                                   ^~~~~~~~~~~~~~~~~~~~~~~~
+                                                                                   TJS::tTJSCreateNativeInstance
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:786:48: note: 'TJS::tTJSCreateNativeInstance' declared here
+typedef iTJSNativeInstance * (TJS_INTF_METHOD *tTJSCreateNativeInstance)();
+                                               ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6207:38: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSNativeClassForPlugin * (__stdcall * __functype)(const ttstr &, tTJSCreateNativeInstance);
+                                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6217:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)();
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6227:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)();
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6237:30: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantOctet * (__stdcall * __functype)(const tjs_uint8 *, tjs_uint);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6247:30: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantOctet * (__stdcall * __functype)(const tjs_uint8 *, tjs_uint , const tjs_uint8 *, tjs_uint);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6257:30: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantOctet * (__stdcall * __functype)(const tTJSVariantOctet *, const tTJSVariantOctet *);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6267:30: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantOctet * (__stdcall * __functype)(const tjs_uint8 * *);
+                                    ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6277:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tTJSVariantOctet *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6287:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(const tTJSVariantOctet *);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6297:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(const tTJSVariantClosure &);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6307:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(tjs_int64);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6317:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(tjs_real);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6327:31: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTJSVariantString * (__stdcall * __functype)(tjs_real);
+                                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6337:22: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTVInteger (__stdcall * __functype)(const tjs_char *);
+                            ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6347:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tTVReal (__stdcall * __functype)(const tjs_char *);
+                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6357:27: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef iTJSDispatch2 * (__stdcall * __functype)(iTJSDispatch2 * *);
+                                 ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6367:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_int (__stdcall * __functype)(iTJSDispatch2 *);
+                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6377:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_int (__stdcall * __functype)(iTJSDispatch2 *, tTJSVariant *, tjs_uint , tjs_int);
+                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6387:27: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef iTJSDispatch2 * (__stdcall * __functype)(iTJSDispatch2 * *);
+                                 ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6397:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)(const tjs_char *);
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6407:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)(const ttstr &);
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6417:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_int , tTJSVariant &, const tTJSVariant *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6427:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)();
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6437:27: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef iTJSDispatch2 * (__stdcall * __functype)();
+                                 ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6447:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)();
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6457:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)();
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6467:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(iTVPStorageMedia *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6477:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(iTVPStorageMedia *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6487:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef bool (__stdcall * __functype)(const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6497:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef bool (__stdcall * __functype)(const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6507:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)(const ttstr &);
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6517:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6527:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6537:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)(const ttstr &);
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6547:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)(const ttstr &);
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6557:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)(const ttstr &);
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6567:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)(const ttstr &);
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6577:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6587:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6597:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)(const ttstr &);
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6607:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef bool (__stdcall * __functype)(const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6617:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)();
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6620:8: error: unknown type name 'iTJSTextReadStream'; did you mean 'TJS::iTJSTextReadStream'?
+inline iTJSTextReadStream * TVPCreateTextStreamForRead(const ttstr & name , const ttstr & modestr)
+       ^~~~~~~~~~~~~~~~~~
+       TJS::iTJSTextReadStream
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:1311:7: note: 'TJS::iTJSTextReadStream' declared here
+class iTJSTextReadStream
+      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6627:10: error: unknown type name 'iTJSTextReadStream'; did you mean 'TJS::iTJSTextReadStream'?
+        typedef iTJSTextReadStream * (__stdcall * __functype)(const ttstr &, const ttstr &);
+                ^~~~~~~~~~~~~~~~~~
+                TJS::iTJSTextReadStream
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:1311:7: note: 'TJS::iTJSTextReadStream' declared here
+class iTJSTextReadStream
+      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6627:32: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef iTJSTextReadStream * (__stdcall * __functype)(const ttstr &, const ttstr &);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6630:8: error: unknown type name 'iTJSTextReadStream'; did you mean 'TJS::iTJSTextReadStream'?
+inline iTJSTextReadStream * TVPCreateTextStreamForReadByEncoding(const ttstr & name , const ttstr & modestr , const ttstr & encoding)
+       ^~~~~~~~~~~~~~~~~~
+       TJS::iTJSTextReadStream
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:1311:7: note: 'TJS::iTJSTextReadStream' declared here
+class iTJSTextReadStream
+      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6637:10: error: unknown type name 'iTJSTextReadStream'; did you mean 'TJS::iTJSTextReadStream'?
+        typedef iTJSTextReadStream * (__stdcall * __functype)(const ttstr &, const ttstr &, const ttstr &);
+                ^~~~~~~~~~~~~~~~~~
+                TJS::iTJSTextReadStream
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:1311:7: note: 'TJS::iTJSTextReadStream' declared here
+class iTJSTextReadStream
+      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6637:32: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef iTJSTextReadStream * (__stdcall * __functype)(const ttstr &, const ttstr &, const ttstr &);
+                                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6647:33: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef iTJSTextWriteStream * (__stdcall * __functype)(const ttstr &, const ttstr &);
+                                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6657:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6667:28: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef const tjs_char * (__stdcall * __functype)();
+                                  ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6677:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_int (__stdcall * __functype)(const tjs_char *, char *);
+                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6687:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_int (__stdcall * __functype)(const char *, tjs_char *);
+                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6697:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tTVPXP3ArchiveExtractionFilter);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6707:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)();
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6717:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef bool (__stdcall * __functype)();
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6727:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(bool);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6737:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef bool (__stdcall * __functype)();
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6747:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(iTJSDispatch2 *, iTJSDispatch2 *, ttstr &, tjs_uint32 , tjs_uint32 , tjs_uint , tTJSVariant *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6757:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_int (__stdcall * __functype)(iTJSDispatch2 *, iTJSDispatch2 *, const ttstr &, tjs_uint32);
+                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6767:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef bool (__stdcall * __functype)(iTJSDispatch2 *, iTJSDispatch2 *, const ttstr &, tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6777:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_int (__stdcall * __functype)(iTJSDispatch2 *, iTJSDispatch2 *, const ttstr &, tjs_uint32);
+                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6787:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(iTJSDispatch2 *, iTJSDispatch2 *, tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6797:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(iTJSDispatch2 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6807:27: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef iTJSDispatch2 * (__stdcall * __functype)(const tjs_char *, iTJSDispatch2 *, iTJSDispatch2 *);
+                                 ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6817:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tTVPContinuousEventCallbackIntf *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6827:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tTVPContinuousEventCallbackIntf *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6837:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tTVPCompactEventCallbackIntf *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6847:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tTVPCompactEventCallbackIntf *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6857:27: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef iTJSDispatch2 * (__stdcall * __functype)();
+                                 ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6867:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &, tTJSVariant *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6877:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &, iTJSDispatch2 *, tTJSVariant *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6887:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &, tTJSVariant *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6897:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &, iTJSDispatch2 *, tTJSVariant *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6907:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &, const ttstr &, tjs_int , tTJSVariant *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6917:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &, const ttstr &, tjs_int , iTJSDispatch2 *, tTJSVariant *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6927:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &, const ttstr &, tjs_int , tTJSVariant *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6937:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &, const ttstr &, tjs_int , iTJSDispatch2 *, tTJSVariant *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6947:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &, tTJSVariant *, bool , const tjs_char *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6957:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &, iTJSDispatch2 *, tTJSVariant *, bool , const tjs_char *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6967:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)();
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6977:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const tjs_uint8 *, size_t , iTJSDispatch2 *, tTJSVariant *, const tjs_char *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6987:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:6997:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef bool (__stdcall * __functype)(const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7007:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef bool (__stdcall * __functype)(const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7017:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef bool (__stdcall * __functype)(const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7027:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const char *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7037:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const tjs_char *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7047:18: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void * (__stdcall * __functype)(size_t);
+                        ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7057:18: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void * (__stdcall * __functype)(void *, size_t);
+                        ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7067:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(void *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7077:15: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef int (__stdcall * __functype)(unsigned char *, unsigned long *, const unsigned char *, unsigned long);
+                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7087:15: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef int (__stdcall * __functype)(unsigned char *, unsigned long *, const unsigned char *, unsigned long);
+                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7097:15: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef int (__stdcall * __functype)(unsigned char *, unsigned long *, const unsigned char *, unsigned long , int);
+                     ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7107:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(TVP_md5_state_t *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7117:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(TVP_md5_state_t *, const tjs_uint8 *, int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7127:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(TVP_md5_state_t *, tjs_uint8 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7137:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef bool (__stdcall * __functype)(const tjs_char *, iTJSDispatch2 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7147:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef bool (__stdcall * __functype)(const tjs_char *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7157:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tTVPTryBlockFunction , tTVPCatchBlockFunction , tTVPFinallyBlockFunction , void *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7167:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7177:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7187:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const void *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7197:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(void *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7207:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)(const tjs_char *, const ttstr &);
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7217:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)(const tjs_char *, const ttstr &, const ttstr &);
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7227:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const tjs_char *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7237:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const tjs_char *, const ttstr &, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7247:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const tjs_char *, const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7257:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(const tjs_char *, const ttstr &, const ttstr &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7267:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)();
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7277:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)();
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7287:17: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef ttstr (__stdcall * __functype)();
+                       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7297:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_int &, tjs_int &, tjs_int &, tjs_int &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7307:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_int &, tjs_int &, tjs_int &);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7317:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7327:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7337:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7347:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7357:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7367:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7377:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7387:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7397:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7407:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7417:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7427:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7437:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7447:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7457:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7467:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7477:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7487:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7497:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7507:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7517:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7527:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7537:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7547:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7557:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7567:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7577:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7587:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7597:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7607:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7617:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7627:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7637:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7647:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7657:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7667:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7677:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7687:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7697:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7707:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7717:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7727:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7737:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7747:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7757:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7767:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7777:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7787:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7797:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7807:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7817:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7827:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7837:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7847:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7857:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7867:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7877:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7887:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7897:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7907:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7917:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7927:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7937:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7947:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7957:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7967:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7977:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7987:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:7997:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8007:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8017:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8027:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8037:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, const tjs_uint32 *, const tjs_uint8 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8047:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, const tjs_uint32 *, const tjs_uint8 *, const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8057:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, const tjs_uint32 *, const tjs_uint8 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8067:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, const tjs_uint32 *, const tjs_uint8 *, const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8077:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, const tjs_uint32 *, const tjs_uint8 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8087:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, const tjs_uint32 *, const tjs_uint8 *, const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8097:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8107:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32 , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8117:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8127:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32 , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8137:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8147:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32 , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8157:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8167:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32 , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8177:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8187:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8197:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8207:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8217:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32 , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8227:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32 , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8237:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32 , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8247:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_uint32 , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8257:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tjs_uint32 , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8267:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tjs_uint32 , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8277:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tjs_uint32 , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8287:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8297:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8307:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8317:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8327:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8337:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8347:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8357:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8367:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8377:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8387:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8397:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8407:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8417:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8427:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8437:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8447:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8457:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8467:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8477:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8487:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8497:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8507:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8517:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8527:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8537:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8547:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8557:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8567:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8577:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8587:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8597:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8607:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8617:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8627:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8637:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8647:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8657:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, const tjs_uint32 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8667:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8677:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8687:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8697:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , const tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8707:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8717:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8727:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8737:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8747:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8757:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8767:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8777:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tjs_uint32);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8787:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint16 *, const tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8797:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint16 *, const tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8807:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8817:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8827:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_uint16 *, const tjs_uint16 *, const tjs_uint16 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8837:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_uint16 *, const tjs_uint16 *, const tjs_uint16 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8847:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_uint32 *, const tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8857:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_uint32 *, const tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8867:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, tjs_uint8 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8877:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8887:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8897:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8907:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8917:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tTVPGLGammaAdjustTempData *, const tTVPGLGammaAdjustData *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8927:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tTVPGLGammaAdjustTempData *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8937:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tTVPGLGammaAdjustTempData *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8947:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_int , tTVPGLGammaAdjustTempData *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8957:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint8 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8967:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint8 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8977:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, tjs_int , tjs_int , tjs_int , const tjs_uint8 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8987:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint8 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:8997:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint8 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9007:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, tjs_int , tjs_int , tjs_int , const tjs_uint8 *, tjs_int , tjs_int , tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9017:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint8 *, tjs_int , const tjs_uint32 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9027:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint8 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9037:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , const tjs_uint32 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9047:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint8 *, tjs_int , const tjs_uint32 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9057:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint8 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9067:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , const tjs_uint32 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9077:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint8 *, tjs_int , const tjs_uint32 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9087:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int , const tjs_uint32 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9097:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9107:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint16 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9117:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint16 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9127:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint8 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9137:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9147:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint8 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9157:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9167:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9177:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9187:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9197:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint16 *, const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9207:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint16 *, const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9217:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint32 *, tjs_int , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9227:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint8 *, tjs_uint8 * const *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9237:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint8 *, const tjs_uint8 *, tjs_uint8 * const *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9247:19: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef tjs_int (__stdcall * __functype)(tjs_uint8 *, const tjs_uint8 *, tjs_int , tjs_uint8 *, tjs_int);
+                         ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9257:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_int8 *, tjs_int , tjs_uint8 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9267:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_int8 *, tjs_int , tjs_uint8 *);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9277:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_uint32 *, tjs_int , tjs_int , tjs_int , tjs_uint8 *, tjs_int , tjs_uint32 *, tjs_uint32 , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9287:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, tjs_uint32 *, tjs_int , tjs_int , tjs_uint8 *, tjs_int , tjs_uint32 *, tjs_uint32 , tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9297:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9307:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9317:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9327:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9337:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9347:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9357:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9367:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9377:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9387:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9397:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9407:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9417:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9427:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9437:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9447:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9457:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9467:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9477:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9487:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9497:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9507:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9517:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9527:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9537:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9547:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9557:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9567:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9577:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9587:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9597:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9607:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9617:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9627:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9637:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9647:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9657:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9667:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9677:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9687:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9697:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9707:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9717:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9727:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9737:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9747:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9757:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9767:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9777:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9787:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9797:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9807:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9817:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9827:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9837:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9847:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9857:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9867:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9877:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9887:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9897:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9907:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9917:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int);
+                      ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:9927:16: warning: calling convention '__stdcall' ignored for this target [-Wignored-attributes]
+        typedef void (__stdcall * __functype)(tjs_uint32 *, const tjs_uint32 *, tjs_int , tjs_int);
+                      ^
+In file included from /Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/Main.cpp:1:
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../ncbind/ncbind.hpp:1577:34: warning: delete called on non-final 'ncbRawCallbackMethod<tTJSNativeClassMethodCallback>' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+        void      Release()     const { delete this; }
+                                        ^
+In file included from /Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/Main.cpp:32:
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/./compress.hpp:7:9: error: reference to 'TJS' is ambiguous
+typedef TJS::tTJSBinaryStream IStream;
+        ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4539:11: note: candidate found by name lookup is 'TJS'
+namespace TJS{
+          ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:1325:11: note: candidate found by name lookup is 'TJS::TJS'
+namespace TJS{
+          ^
+In file included from /Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/Main.cpp:32:
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/./compress.hpp:8:8: error: reference to 'TJS' is ambiguous
+extern TJS::tTJSBinaryStream * TVPCreateStream(const ttstr & _name, tjs_uint32 flags);
+       ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:4539:11: note: candidate found by name lookup is 'TJS'
+namespace TJS{
+          ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/../win32/tp_stub.h:1325:11: note: candidate found by name lookup is 'TJS::TJS'
+namespace TJS{
+          ^
+In file included from /Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/Main.cpp:32:
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/./compress.hpp:142:6: error: member reference base type 'IStream' (aka 'int') is not a structure or union
+                out->Write(&data[0], size);
+                ~~~^ ~~~~~
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/Main.cpp:91:5: warning: field 'handler' will be initialized after field 'notify' [-Wreorder]
+                : handler(handler), notify(notify), layer(layer), filename(filename), info(info), canceled(false) {}
+                  ^
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/Main.cpp:212:43: warning: implicit conversion of NULL constant to 'WPARAM' (aka 'unsigned int') [-Wnull-conversion]
+        void postMessage(UINT msg, WPARAM wparam=NULL, LPARAM lparam=NULL) {
+                                                ~^~~~
+                                                 0
+611 warnings and 15 errors generated.
+make[2]: *** [CMakeFiles/layerexsave.dir/Main.cpp.o] Error 1
+make[1]: *** [CMakeFiles/layerexsave.dir/all] Error 2
+make: *** [all] Error 2

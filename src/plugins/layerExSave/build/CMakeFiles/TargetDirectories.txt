@@ -1,0 +1,3 @@
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/build/CMakeFiles/rebuild_cache.dir
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/build/CMakeFiles/edit_cache.dir
+/Users/tony/workspace/github/mkrkr/src/plugins/layerExSave/build/CMakeFiles/layerexsave.dir

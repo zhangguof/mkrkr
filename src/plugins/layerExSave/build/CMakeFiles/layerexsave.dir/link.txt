@@ -1,0 +1,2 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc liblayerexsave.a  CMakeFiles/layerexsave.dir/Main.cpp.o CMakeFiles/layerexsave.dir/savepng.cpp.o CMakeFiles/layerexsave.dir/utils.cpp.o CMakeFiles/layerexsave.dir/LodePNG/lodepng.cpp.o CMakeFiles/layerexsave.dir/Users/tony/workspace/github/mkrkr/src/plugins/win32/tp_stub.cpp.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib liblayerexsave.a
