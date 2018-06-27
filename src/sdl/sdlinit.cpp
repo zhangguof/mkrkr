@@ -99,18 +99,24 @@ void sdl_loop()
                 SDL_GetMouseState( &x, &y );
                 if(e.button.button == SDL_BUTTON_LEFT)
                 {
-                    printf("mouse click Left:x:%d,y:%d\n", x,y);
+                    printf("mouse click Left up:x:%d,y:%d\n", x,y);
 					#ifndef SDL_TEST                   
                     if(win)
                     {
-                    	win->OnMouseDown(mbLeft,0,x,y);
+                    	win->OnMouseClick(mbLeft,0,x,y);
+                    	win->OnMouseUp(mbLeft,0,x,y);
                     }
                     #endif
                 }
-                // else if(e.button.button == SDL_BUTTON_RIGHT)
-                // {
-                //     printf("mouse click Right:x:%d,y:%d\n", x,y);
-                // }
+                else if(e.button.button == SDL_BUTTON_RIGHT)
+                {
+                    printf("mouse click Right up:x:%d,y:%d\n", x,y);
+                    if(win)
+                    {
+                    	win->OnMouseClick(mbRight,0,x,y);
+                    	win->OnMouseUp(mbRight,0,x,y);
+                    }
+                }
                 
                 // handleKeys( e.text.text[ 0 ], x, y );
             }
@@ -120,15 +126,24 @@ void sdl_loop()
                 SDL_GetMouseState( &x, &y );
                 if(e.button.button == SDL_BUTTON_LEFT)
                 {
-                    printf("mouse click Left up:x:%d,y:%d\n", x,y);
+                    printf("mouse click Left down:x:%d,y:%d\n", x,y);
                     #ifndef SDL_TEST
                     if(win)
                     {
-                    	win->OnMouseClick(mbLeft,0,x,y);
-                    	win->OnMouseUp(mbLeft,0,x,y);
+                    	// win->OnMouseClick(mbLeft,0,x,y);
+                    	win->OnMouseDown(mbLeft,0,x,y);
                     }
                     #endif
                 }
+                else if(e.button.button == SDL_BUTTON_RIGHT)
+                {
+                    printf("mouse click Right down:x:%d,y:%d\n", x,y);
+                    if(win)
+                    {
+                    	// win->OnMouseClick(mbRight,0,x,y);
+                    	win->OnMouseDown(mbRight,0,x,y);
+                    }
+                }             
             }
             else if( e.type == SDL_USEREVENT)
             {
