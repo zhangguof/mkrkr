@@ -9520,7 +9520,7 @@ TJS_BEGIN_NATIVE_PROP_DECL(mainImageBuffer)
 	TJS_BEGIN_NATIVE_PROP_GETTER
 	{
 		TJS_GET_NATIVE_INSTANCE(/*var. name*/_this, /*var. type*/tTJSNI_Layer);;
-		*result = reinterpret_cast<const void*>(_this->GetMainImagePixelBuffer());
+		*result = reinterpret_cast<tjs_int64>(_this->GetMainImagePixelBuffer());
 		return TJS_S_OK;
 	}
 	TJS_END_NATIVE_PROP_GETTER
@@ -9534,7 +9534,7 @@ TJS_BEGIN_NATIVE_PROP_DECL(mainImageBufferForWrite)
 	TJS_BEGIN_NATIVE_PROP_GETTER
 	{
 		TJS_GET_NATIVE_INSTANCE(/*var. name*/_this, /*var. type*/tTJSNI_Layer);;
-		*result = reinterpret_cast<const void*>(_this->GetMainImagePixelBufferForWrite());
+		*result = reinterpret_cast<tjs_int64>(_this->GetMainImagePixelBufferForWrite());
 		return TJS_S_OK;
 	}
 	TJS_END_NATIVE_PROP_GETTER
