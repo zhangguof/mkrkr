@@ -25,7 +25,7 @@ extern tjs_char  TVPArchiveDelimiter; //  = '>';
 //---------------------------------------------------------------------------
 // utilities
 //---------------------------------------------------------------------------
-ttstr TVPStringFromBMPUnicode(const tjs_uint16 *src, tjs_int maxlen = -1);
+ttstr TVPStringFromBMPUnicode(const tjs_uint16 *src, tjs_int maxlen = -1,bool fix16=false);
 //---------------------------------------------------------------------------
 
 

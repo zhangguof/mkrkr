@@ -44,6 +44,7 @@ class tTVPTextReadStream : public iTJSTextReadStream
 	size_t BufferLen;
 	tjs_char *BufferPtr;
 	tjs_int CryptMode;
+	bool fix16;
 
 public:
 	tTVPTextReadStream(const ttstr  & name, const ttstr & modestr, const ttstr &encoding,tTJSBinaryStream * s=NULL)
@@ -60,6 +61,7 @@ public:
 		Buffer = NULL;
 		DirectLoad = false;
 		CryptMode = -1;
+		fix16 = true; //in utf16.
 
 		// check o mode
 		if(s==NULL)
@@ -110,9 +112,17 @@ public:
 				DirectLoad = CryptMode != 2;
 
 				Stream->Read(mark, 4); // original bom code comes here (is not compressed)
-				if(mark[0] != 0xff || mark[1] != 0xfe || mark[2]!=0x0 || mark[3]!=0x0)
+				if(mark[0] != 0xff || mark[1] != 0xfe)
 					TVPThrowExceptionMessage(TVPUnsupportedCipherMode, name);
-
+				if(mark[2] == 0x0 && mark[3] == 0x0)
+				{
+					//utf32 mark.
+					fix16 = false;
+				}
+				else
+				{
+					Stream->SetPosition(ofs+2+1+2);
+				}
 
 				if(CryptMode == 2)
 				{
@@ -315,7 +325,7 @@ public:
 					delete [] buf;
 					throw;
 				}
-				targ = TVPStringFromBMPUnicode((tjs_uint16*)buf);
+				targ = TVPStringFromBMPUnicode((tjs_uint16*)buf,-1,fix16);
 				delete [] buf;
 				return read;
 			}

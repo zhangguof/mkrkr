@@ -456,7 +456,7 @@ tTVPXP3Archive::tTVPXP3Archive(const ttstr & name) : tTVPArchive(name)
 
 				tjs_int len = ReadI16FromMem(indexdata + ch_info_start + 20);
 				ttstr name = TVPStringFromBMPUnicode(
-						(const tjs_uint16 *)(indexdata + ch_info_start + 22), len);
+						(const tjs_uint16 *)(indexdata + ch_info_start + 22), len, true);
 				item.Name = name;
 				NormalizeInArchiveStorageName(item.Name);
 

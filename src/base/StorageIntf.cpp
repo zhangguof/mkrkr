@@ -57,7 +57,8 @@ static tTJSCriticalSection TVPCreateStreamCS;
 //---------------------------------------------------------------------------
 // utilities
 //---------------------------------------------------------------------------
-ttstr TVPStringFromBMPUnicode(const tjs_uint16 *src, tjs_int maxlen)
+//add fix16 use to read .xp3 file make from win32.
+ttstr TVPStringFromBMPUnicode(const tjs_uint16 *src, tjs_int maxlen,bool fix16)
 {
 	// convert to ttstr from BMP unicode
 	if(sizeof(tjs_char) == 2)
@@ -73,18 +74,43 @@ ttstr TVPStringFromBMPUnicode(const tjs_uint16 *src, tjs_int maxlen)
 		// sizeof(tjs_char) is 4 (UCS32)
   		// FIXME: NOT TESTED CODE
 		tjs_int len = 0;
-		const tjs_uint32 *p = (tjs_uint32 *)src;
-		while(*p) len++, p++;
+		const tjs_uint16 *p16 = NULL;;
+		const tjs_uint32 *p32 = NULL;
+		if(fix16)
+		{
+			p16 = src;
+			while(*p16) len++, p16++;
+		}
+		else
+		{
+			p32 = (tjs_uint32 *)src;
+			while(*p32) len++, p32++;
+		}
 		if(maxlen != -1 && len > maxlen) len = maxlen;
 		ttstr ret((tTJSStringBufferLength)(len));
 		tjs_char *dest = ret.Independ();
-		p =(tjs_uint32 *)src;
-		while(len && *p)
+		// p =(tjs_uint32 *)src;
+		if(fix16)
 		{
-			*dest = *p;
-			dest++;
-			p++;
-			len --;
+			p16 = src;
+			while(len && *p16)
+			{
+				*dest = *p16;
+				dest++;
+				p16++;
+				len --;
+			}
+		}
+		else
+		{
+			p32 = (tjs_uint32*)src;
+			while(len && *p32)
+			{
+				*dest = *p32;
+				dest++;
+				p32++;
+				len --;
+			}
 		}
 		*dest = 0;
 		ret.FixLen();
@@ -660,7 +686,10 @@ void tTVPArchive::AddToHash()
 		ttstr name = GetName(i);
 		NormalizeInArchiveStorageName(name);
 		Hash.Add(name, i);
+		// TVPAddLog(ttstr(TJS_W("arcHash name:")) + name);
+		// wprintf(TJS_W("==arcfile %d, name:%ls\n"),i,name.c_str());
 	}
+	wprintf(TJS_W("total:%d\n"),Count);
 }
 //---------------------------------------------------------------------------
 tTJSBinaryStream * tTVPArchive::CreateStream(const ttstr & name)
@@ -1007,6 +1036,7 @@ static bool TVPClearAutoPathCacheCallbackInit = false;
 //---------------------------------------------------------------------------
 void TVPAddAutoPath(const ttstr & name)
 {
+	TVPAddLog(ttstr(TJS_W("==add auto path:"))+name);
 	tTJSCriticalSectionHolder cs_holder(TVPCreateStreamCS);
 
 	tjs_char lastchar = name.GetLastChar();
