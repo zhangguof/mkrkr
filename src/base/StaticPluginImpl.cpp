@@ -383,7 +383,33 @@ tTVPStaticPlugin::tTVPStaticPlugin(const ttstr & name)
 	try
 	{
 		// retrieve each functions
-		ttstr plugin_name = name;
+		const tjs_char* pca;
+		const tjs_char *pa,*pb;
+		tjs_char* pc;
+
+		ttstr tmp(name);
+		pc = tmp.Independ();
+		while(*pc)
+		{
+			if(*pc == TJS_W('\\')) *pc = TJS_W('/');
+			pc++;
+		}
+
+		pca = tmp.c_str();
+		pa = pca;
+		pb = pca + tmp.GetLen();
+		while(*pca)
+		{
+			if(*pca == TJS_W('/'))
+				pa = pca+1; //get lasat '/'
+			if(*pca == TJS_W('.'))
+				pb = pca;
+			pca++;
+		}
+
+		// ttstr plugin_name = name;
+		ttstr plugin_name = ttstr(pa,int(pb - pa));
+		TVPAddLog(ttstr(TJS_W("load plug-in:")+plugin_name));
 		void *fun;
 		TVPFunctionImporter.QueryFuncion(plugin_name+TJS_W("_V2Link"),&fun);
 		V2Link = (tTVPV2LinkProc) fun;
