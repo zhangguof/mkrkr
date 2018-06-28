@@ -46,6 +46,8 @@ extern ttstr TVPNormalizeStorageName(const ttstr & _name);
 extern tjs_char  TVPArchiveDelimiter;
 extern void TVPAddImportantLog(const ttstr &line);
 
+extern const tjs_char* sel_data_path;
+
 void sel_project_dir()
 {
 	wchar_t buf[MAX_PATH];
@@ -53,6 +55,21 @@ void sel_project_dir()
 	bool nosel = false;
 	bool forcesel = false;
 	bool forcedataxp3 = false;
+
+	if(!nosel && sel_data_path != NULL)
+	{
+		wchar_t tmp[MAX_PATH];
+		TJS_strcpy(tmp,ExePath().c_str());
+		TJS_strcat(tmp, sel_data_path);
+		if(TVPCheckExistentLocalFolder(ttstr(tmp)))
+		{
+			TJS_strcat(tmp, TJS_W("/"));
+			TJS_strcpy(buf, tmp);
+			TVPProjectDirSelected = true;
+			bufset = true;
+			nosel = true;
+		}
+	}
 
 	// check "data.xp3" archive
  	if(!nosel)
