@@ -2447,8 +2447,8 @@ bool tTJSNI_WaveSoundBuffer::FillBuffer(bool firstwrite, bool allowpause)
 					PlayStopPos < (tjs_int)pp)
 				{
 					FlushAllLabelEvents();
-					// SoundBuffer->do_stop();
-					SoundBuffer->stop();
+					SoundBuffer->do_stop();
+					// SoundBuffer->stop();
 					ResetSamplePositions();
 					DSBufferPlaying = false;
 					BufferPlaying = false;

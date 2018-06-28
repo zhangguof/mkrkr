@@ -332,7 +332,7 @@ void AudioPlayer::do_stop()
 	printf("do stopping: now status:%d\n",status);
 	if(status == stoped || status == stopping)
 		return;
-	// status = stopping;
+	status = stopping;
 }
 void AudioPlayer::enable()
 {
