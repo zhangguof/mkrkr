@@ -90,15 +90,16 @@ public:
 		// check first of the file - whether the file is unicode
 		try
 		{
-			tjs_uint8 mark[2] = {0,0};
-			Stream->Read(mark, 2);
-			if(mark[0] == 0xff && mark[1] == 0xfe)
+			tjs_uint8 mark[4] = {0,0,0,0}; //fix for utf32
+			Stream->Read(mark, 4);
+			if(mark[0] == 0xff && mark[1] == 0xfe && mark[2]==0x0 && mark[3] == 0x0)
 			{
 				// unicode
 				DirectLoad = true;
 			}
 			else if(mark[0] == 0xfe && mark[1] == 0xfe)
 			{
+				Stream->SetPosition(ofs+2);
 				// ciphered text or compressed
 				tjs_uint8 mode[1];
 				Stream->Read(mode, 1);
@@ -108,8 +109,8 @@ public:
 				CryptMode = mode[0];
 				DirectLoad = CryptMode != 2;
 
-				Stream->Read(mark, 2); // original bom code comes here (is not compressed)
-				if(mark[0] != 0xff || mark[1] != 0xfe)
+				Stream->Read(mark, 4); // original bom code comes here (is not compressed)
+				if(mark[0] != 0xff || mark[1] != 0xfe || mark[2]!=0x0 || mark[3]!=0x0)
 					TVPThrowExceptionMessage(TVPUnsupportedCipherMode, name);
 
 
@@ -128,7 +129,7 @@ public:
 					{
 						Stream->ReadBuffer(nbuf, (unsigned long)compressed);
 						Buffer = new tjs_char [ (BufferLen = (destlen =
-								(unsigned long)uncompressed) / 2) + 1];
+								(unsigned long)uncompressed) / 4) + 1]; //fix for utf32
 						int result = uncompress( /* uncompress from zlib */
 							(unsigned char*)Buffer,
 							&destlen, (unsigned char*)nbuf,
@@ -274,12 +275,12 @@ public:
 				// sizeof(tjs_char) is 4
 				// FIXME: NOT TESTED CODE
 				if(size == 0) size = static_cast<tjs_uint>(Stream->GetSize() - Stream->GetPosition());
-				tjs_uint16 *buf = new tjs_uint16[size / 2];
+				tjs_char *buf = new tjs_char[size + 1];
 				tjs_uint read;
 				try
 				{
-					read = Stream->Read(buf, size * 2); // 2 = BMP unicode size
-					read /= 2;
+					read = Stream->Read(buf, size * 4); // 2 = BMP unicode size
+					read /= 4;
 #if TJS_HOST_IS_BIG_ENDIAN
 					// re-order input
 					for(tjs_uint i = 0; i<read; i++)
@@ -314,7 +315,7 @@ public:
 					delete [] buf;
 					throw;
 				}
-				targ = TVPStringFromBMPUnicode(buf);
+				targ = TVPStringFromBMPUnicode((tjs_uint16*)buf);
 				delete [] buf;
 				return read;
 			}
@@ -438,7 +439,7 @@ public:
 		// now output text stream will write unicode texts
 		static tjs_uint8 bommark[4] = { 0xff, 0xfe,
 										0x00, 0x00/*dummy 2bytes*/ };
-		Stream->WriteBuffer(bommark, 2);
+		Stream->WriteBuffer(bommark, 4); //fix 4 for utf32
 
 		if(CryptMode == 2)
 		{
@@ -532,24 +533,25 @@ public:
 
 	void TJS_INTF_METHOD Write(const ttstr & targ)
 	{
-		tjs_uint16 *buf;
+		// tjs_uint16 *buf;
+		tjs_char* buf;
 		tjs_int len = targ.GetLen();
-		buf = new tjs_uint16 [len + 1];
+		buf = new tjs_char [len + 1];
 		try
 		{
 			const tjs_char *src = targ.c_str();
 			tjs_int i;
 			for(i = 0; i < len; i++)
 			{
-				if(src[i] < 0x10000)
+				// if(src[i] < 0x10000)
 					buf[i] = src[i];
-				else
-					buf[i] = TJS_W('?');
+				// else
+				// 	buf[i] = TJS_W('?');
 			}
 			buf[i] = 0;
 
 #if TJS_HOST_IS_BIG_ENDIAN
-			tjs_uint16 *p;
+			tjs_char *p;
 			if(CryptMode == 1)
 			{
 				// simple crypt
@@ -572,7 +574,8 @@ public:
 			{
 				while(*p)
 				{
-					*p = ((*p >> 8) & 0xff) + ((*p & 0xff) << 8);
+					//*p = ((*p >> 8) & 0xff) + ((*p & 0xff) << 8);
+					*p = ((*p >> 24) & 0xff) | (((*p >> 16) & 0xff)<<8) | (((*p>>8) & 0xff)<<16) | ((*p & 0xff)<<24);
 					p++;
 				}
 			}
@@ -582,7 +585,7 @@ public:
 			if(CryptMode == 1)
 			{
 				// simple crypt
-				tjs_uint16 *p;
+				tjs_char *p;
 				p = buf;
 				if(p)
 				{
@@ -595,12 +598,12 @@ public:
 					}
 				}
 
-				WriteRawData(buf, len * sizeof(tjs_uint16));
+				WriteRawData(buf, len * sizeof(tjs_char));
 
 			}
 			else
 			{
-				WriteRawData(buf, len * sizeof(tjs_uint16));
+				WriteRawData(buf, len * sizeof(tjs_char));
 			}
 #endif
 		}

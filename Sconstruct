@@ -156,7 +156,7 @@ def build_main_in_darwin():
 	'openal',
 	#plugins
 	# 'kagparser',
-	'menu',
+	#'menu',
 	#'layerexsave','ncbind'
 	]
 	lib_path = ['./libs',]

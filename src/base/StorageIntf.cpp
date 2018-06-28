@@ -73,12 +73,12 @@ ttstr TVPStringFromBMPUnicode(const tjs_uint16 *src, tjs_int maxlen)
 		// sizeof(tjs_char) is 4 (UCS32)
   		// FIXME: NOT TESTED CODE
 		tjs_int len = 0;
-		const tjs_uint16 *p = src;
+		const tjs_uint32 *p = (tjs_uint32 *)src;
 		while(*p) len++, p++;
 		if(maxlen != -1 && len > maxlen) len = maxlen;
 		ttstr ret((tTJSStringBufferLength)(len));
 		tjs_char *dest = ret.Independ();
-		p = src;
+		p =(tjs_uint32 *)src;
 		while(len && *p)
 		{
 			*dest = *p;
