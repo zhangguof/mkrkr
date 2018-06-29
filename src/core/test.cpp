@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "SDL.h"
 #include "GLDevice.hpp"
+#include <boost/filesystem.hpp>
 extern "C"
 {
 #define STB_IMAGE_IMPLEMENTATION
@@ -44,6 +45,8 @@ extern "C" int init_core_test(int argc,char *argv[])
 	char *base_path = SDL_GetBasePath();
 	SDL_Log("core test start!");
 	SDL_Log("base_path:%s",base_path);
+    boost::filesystem::path p = boost::filesystem::current_path();
+    SDL_Log("cur path from filesystem:%s",p.c_str());
 	init_sdl_test(w, h);
 	g_dev = create_gl_device(w, h);
 	g_dev->init_render();
