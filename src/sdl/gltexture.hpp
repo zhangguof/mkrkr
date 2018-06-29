@@ -1,6 +1,14 @@
 #ifndef _GL_TEXTURE_H_
 #define _GL_TEXTURE_H_
-#include "GL/glew.h"
+
+//#if TARGET_OS_IPHONE
+#include "SDL_opengles2.h"
+#include <OpenGLES/ES3/gl.h>
+#include <OpenGLES/ES3/glext.h>
+//#else
+// #include "GL/glew.h"
+//#endif
+
 #include "SDL.h"
 #include "SDL_opengl.h"
 #include <assert.h>
@@ -11,10 +19,10 @@
 class GLTexture
 {
 public:
-GLenum inter_format =  GL_RGBA;//or GL_RGBA
-// GLenum format =  GL_RGBA; //or GL_RGBA
-GLenum format = GL_BGRA;
-GLenum type = GL_UNSIGNED_BYTE;
+	GLenum inter_format =  GL_RGBA;//or GL_RGBA
+	// GLenum format =  GL_RGBA; //or GL_RGBA
+	GLenum format = GL_BGRA;
+	GLenum type = GL_UNSIGNED_BYTE;
 
 	GLuint id;
 	int width;
@@ -37,8 +45,15 @@ GLenum type = GL_UNSIGNED_BYTE;
 	{
 		format_size = (format==GL_RGB?3:4);
 		type_size   = (type == GL_UNSIGNED_BYTE?sizeof(GLubyte):sizeof(GLuint));
+		int pre_buf_size = buf_size;
 		buf_size = width * height * format_size * type_size;
-		pitch = width * format_size * type_size; //one row size;	
+		pitch = width * format_size * type_size; //one row size;
+		if(pre_buf_size!=buf_size && pixels!=NULL)
+		{
+			free(pixels);
+			pixels = NULL;
+			new_buf(); 
+		}
 	}
 	~GLTexture()
 	{

@@ -4,7 +4,7 @@
 
 #include "DrawDevice.h"
 // #include <d3d9.h>
-#include "GL/glew.h"
+// #include "GL/glew.h"
 #include "SDL.h"
 #include "SDL_opengl.h"
 #include "gltexture.hpp"

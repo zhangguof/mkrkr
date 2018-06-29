@@ -4,6 +4,14 @@ vs_shader = "simple_vs.glsl"
 fs_shader = "simple_fs.glsl"
 out_hpp = "../shaders.hpp"
 
+shader_infos = [
+	("simple_vs.glsl","simple_vs_shader"),
+	("simple_fs.glsl","simple_fs_shader"),
+
+	("simple_es_vs.glsl","simple_es_vs_shader"),
+	("simple_es_fs.glsl","simple_es_fs_shader"),
+]
+
 template = '''
 //gen by gen_shaders.py
 #ifndef _SHADERS_H_
@@ -20,11 +28,18 @@ def read_shader_file(filename):
 	return s
 
 def main():
-	vs_str = read_shader_file(vs_shader)
-	fs_str = read_shader_file(fs_shader)
-	vs = 'const char* simple_vs_shader="%s";'%(vs_str)
-	fs = 'const char* simple_fs_shader="%s";'%(fs_str)
-	var_s = "\n".join([vs,fs])
+	shaders = []
+	for info in shader_infos:
+		file_name, var_name = info
+		read_s = read_shader_file(file_name)
+		new_s = 'const char* %s="%s";'%(var_name,read_s)
+		shaders.append(new_s)
+
+	# vs_str = read_shader_file(vs_shader)
+	# fs_str = read_shader_file(fs_shader)
+	# vs = 'const char* simple_vs_shader="%s";'%(vs_str)
+	# fs = 'const char* simple_fs_shader="%s";'%(fs_str)
+	var_s = "\n".join(shaders)
 	with open(out_hpp,"wb") as f:
 		f.write(template%var_s)
 	

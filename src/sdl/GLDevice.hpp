@@ -1,8 +1,30 @@
 #ifndef _H_DEVICE_
 #define _H_DEVICE_
-// #include "T3D.hpp"
 
-#include "GL/glew.h"
+// #define PRINT_MACRO_HELPER(x) #x 
+// #define PRINT_MACRO(x) #x"="PRINT_MACRO_HELPER(x) 
+
+// #pragma message(PRINT_MACRO(TARGET_OS_IPHONE))
+// #pragma message(PRINT_MACRO(__APPLE__))
+// #pragma message(PRINT_MACRO(__IPHONEOS__))
+
+
+//#if TARGET_OS_IPHONE
+// #pragma message("in TARGET_OS_IPHONE")
+// #error("TARGET_OS_IPHONE error222！！！")
+
+#include "SDL_opengles2.h"
+#include <OpenGLES/ES3/gl.h>
+#include <OpenGLES/ES3/glext.h>
+
+//#else
+
+//#error("TARGET_OS_IPHONE error！！！")
+
+// #include "GL/glew.h"
+
+//#endif
+
 #include "SDL.h"
 #include "SDL_opengl.h"
 
@@ -12,6 +34,7 @@
 
 #ifdef __APPLE__
 #include <unistd.h>
+
 #endif
 
 #include <sys/types.h>
@@ -23,7 +46,7 @@
 #include <utility>
 #include <vector>
 
-#include <SOIL.h>
+//#include <SOIL.h>
 // #include "imgbuf.h"
 #include "gltexture.hpp"
 
@@ -62,7 +85,7 @@ public:
 
 class SHADER
 {
-    GLuint shader;
+    GLuint shader_id;
     const char* vet_file_path;
     const char* frag_file_path;
 public:
@@ -71,6 +94,7 @@ public:
     void read_shader_file(const char *fname,char *buf);
     void init_shader();
     void use();
+    GLint glGetAttribLocation(const GLchar* name);
 
 };
 
@@ -82,7 +106,7 @@ class VAOMGR
     int num;
 public:
     VAOMGR(int n);
-    void gen_vao_vbo(GLfloat vertices[],size_t size);
+    void gen_vao_vbo(GLfloat vertices[],size_t size,int pos_loc=0,int tex_loc=1);
 
     void bind();
     void ubind();
@@ -106,6 +130,8 @@ class Device: public UpdateObj
     //opengl
     VAOMGR *vao;
     SHADER *shader;
+    int position_loc;
+    int tex_coord_loc;
 
     // GLuint texture;
 public:
@@ -164,7 +190,7 @@ public:
 
 int  init_sdl();
 int init_gl_context(SDL_Window* win);
-void sdl_loop();
+extern "C" void sdl_loop();
 void regist_update(UpdateFunc f);
 void regist_objupdate(UpdateObj* p);
 
