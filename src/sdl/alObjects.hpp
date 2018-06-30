@@ -4,10 +4,15 @@
 #include "ffStream.hpp"
 #include "sdlAudio.hpp"
 
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+#include <OpenAL/OpenAL.h>
+#else
+
 #include "AL/alc.h"
 #include "AL/al.h"
 #include "AL/alext.h"
 #include "AL/alut.h"
+#endif
 
 #include <map>
 #include <string>

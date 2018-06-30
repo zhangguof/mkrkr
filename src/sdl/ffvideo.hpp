@@ -4,17 +4,17 @@
 
 #include "SDL.h"
 #include <string>
-#include <safeQueue.hpp>
+#include "safeQueue.hpp"
 #include <string.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <libavcodec/avcodec.h>  
-#include <libavformat/avformat.h>
-#include <libswresample/swresample.h>
-#include <libavutil/opt.h>
+#include "libavcodec/avcodec.h"
+#include "libavformat/avformat.h"
+#include "libswresample/swresample.h"
+#include "libavutil/opt.h"
 
 
 #ifdef __cplusplus

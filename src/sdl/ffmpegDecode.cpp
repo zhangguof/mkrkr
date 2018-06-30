@@ -5,13 +5,13 @@
 extern "C" {
 #endif
 
-#include <libavcodec/avcodec.h>  
-#include <libavformat/avformat.h>
-#include <libswresample/swresample.h>
-#include <libavutil/opt.h>
-#include <libavformat/avio.h>
-#include <libavutil/timestamp.h>
-#include <libavutil/mathematics.h>
+//#include <libavcodec/avcodec.h>
+//#include <libavformat/avformat.h>
+//#include <libswresample/swresample.h>
+//#include <libavutil/opt.h>
+//#include <libavformat/avio.h>
+//#include <libavutil/timestamp.h>
+//#include <libavutil/mathematics.h>
 
 #define LOGE printf
 #define LOGI printf
@@ -124,7 +124,7 @@ int ffStream::open_audio()
 	this->freq = aCodecCtx->sample_rate;
 
 	AVSampleFormat format = aCodecCtx->sample_fmt;
-	printf("open auido stream orig:\nchannels:%d\nfreq:%d\nformat:%s\nlayout:%d\n",
+    printf("open auido stream orig:\nchannels:%d\nfreq:%d\nformat:%s\nlayout:%llu\n",
 		channels,freq,av_get_sample_fmt_name(format),
 		aCodecCtx->channel_layout
 		);

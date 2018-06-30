@@ -4,21 +4,22 @@
 
 #include "SDL.h"
 #include <string>
-#include <safeQueue.hpp>
+#include "safeQueue.hpp"
 #include <string.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <libavcodec/avcodec.h>  
-#include <libavformat/avformat.h>
-#include <libswresample/swresample.h>
-
-#include <libavutil/opt.h>
-#include <libswscale/swscale.h>
-
-#include <libavutil/imgutils.h>
+#include "libavcodec/avcodec.h"
+#include "libavformat/avformat.h"
+#include "libswresample/swresample.h"
+#include "libavutil/opt.h"
+#include "libswscale/swscale.h"
+#include "libavutil/imgutils.h"
+#include "libavformat/avio.h"
+#include "libavutil/timestamp.h"
+#include "libavutil/mathematics.h"
 
 #define LOGE printf
 #define LOGI printf

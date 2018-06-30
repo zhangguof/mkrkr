@@ -4,10 +4,6 @@
 #include "ffStream.hpp"
 #include "sdlAudio.hpp"
 
-#include "AL/alc.h"
-#include "AL/al.h"
-#include "AL/alext.h"
-#include "AL/alut.h"
 
 #include <map>
 #include <string>

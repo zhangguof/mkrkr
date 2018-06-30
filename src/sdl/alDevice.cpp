@@ -9,10 +9,10 @@
 #include "SDL.h"
 #include "ffStream.hpp"
 
-#include "AL/alc.h"
-#include "AL/al.h"
-#include "AL/alext.h"
-#include "AL/alut.h"
+//#include "AL/alc.h"
+//#include "AL/al.h"
+//#include "AL/alext.h"
+//#include "AL/alut.h"
 
 
 //--------------AudioPlyaer------------------------
@@ -77,10 +77,16 @@ int AudioPlayer::buffer_data_unit(int buf_idx,int bytes)
 
 int AudioPlayer::buffer_data_all(int buf_idx)
 {
-	int freq = ff_stream->freq;//ff_stream->target_params.sample_rate;
-	int channles = ff_stream->channels;//ff_stream->target_params.channles;
-	
-	ALenum format = AL_FORMAT_STEREO16;
+	int freq = ff_stream->target_params.sample_rate;
+    int channels = ff_stream->target_params.channels;
+    assert(channels == 1 || channels ==2);
+    ALenum format = AL_FORMAT_STEREO16;
+    if(channels == 1)
+    {
+        format = AL_FORMAT_MONO16;
+    }
+    
+//    ALenum format = ff_stream->target_params.sample_fmt;
 
 	int len = pdb->len;
 	uint8_t* _data = pdb->get_data();
@@ -543,32 +549,32 @@ void al_test_play()
 {
 	auto p_dev = get_al_dev();
 	auto p_player1 = std::make_shared<AudioPlayer>();
-	auto p_player2 = std::make_shared<AudioPlayer>();
+	// auto p_player2 = std::make_shared<AudioPlayer>();
 
-	const char* name1 = "../../data/bgm/ＢＧＭ／通常１.ogg";
-	const char* name2 = "../../voice/a0001.ogg";
+    std::string name1 = "a0001.ogg";
+	// const char* name2 = "../../voice/a0001.ogg";
 
-	auto p_ffs1 = std::make_shared<ffStream>(name1);
-	auto p_ffs2 = std::make_shared<ffStream>(name2);
+	auto p_ffs1 = std::make_shared<ffStream>(name1,true);
+	// auto p_ffs2 = std::make_shared<ffStream>(name2);
     // ffStream ffs2("../../voice/a0001.ogg");
     // ffStream ffs3("../../data/井内啓二 - 英雄願望 〜アルゴイゥ卜~.mp3");
   
 	p_dev->add_player(static_cast<tPtrBasePlayer>(p_player1));
-	p_dev->add_player(static_cast<tPtrBasePlayer>(p_player2));
-	// p_player->enable();
-	// p_player->set_loop(true);
+	// p_dev->add_player(static_cast<tPtrBasePlayer>(p_player2));
+     p_player1->enable();
+     p_player1->set_loop(true);
 	p_player1->read_from_ffstream(p_ffs1,true);//static type
-	p_player1->disable();
+	// p_player1->disable();
 
-	p_player2->read_from_ffstream(p_ffs2,true);
-	p_player2->set_loop(true);
+	// p_player2->read_from_ffstream(p_ffs2,true);
+	// p_player2->set_loop(true);
 
 	p_dev->play();
 
 	regist_update(al_loop);
 
 // SDL_Delay(3000);
-	sdl_loop();
+	// sdl_loop();
 //exit
 
 }

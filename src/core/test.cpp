@@ -2,6 +2,7 @@
 #include "SDL.h"
 #include "GLDevice.hpp"
 #include <boost/filesystem.hpp>
+#include "ffStream.hpp"
 extern "C"
 {
 #define STB_IMAGE_IMPLEMENTATION
@@ -38,6 +39,8 @@ unsigned char* fill_color(unsigned int col,int w, int h)
 	return (unsigned char *) buf;
 
 }
+extern void al_test_play();
+
 extern "C" int init_core_test(int argc,char *argv[])
 {
 	int w = win_width;
@@ -63,6 +66,11 @@ extern "C" int init_core_test(int argc,char *argv[])
 	tex->set_buf(data,width,height);
 //    free(buf);
     stbi_image_free(data);
+    
+//voice test
+    // std::string fname = "a0001.ogg";
+    // auto ps = std::make_shared<ffStream>(fname);
+    al_test_play();
 
 	regist_update(render);
     return 0;

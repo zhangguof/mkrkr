@@ -5,7 +5,12 @@
 #include <cstdint>
 #include <algorithm>
 #include "ffStream.hpp"
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+#include <OpenAL/OpenAL.h>
+#else
 #include "AL/al.h"
+#endif
+
 
 class audioDevice;
 class pcmBuffer;
