@@ -27,7 +27,6 @@
 		EAA36D0D20E7BF5100A4BD78 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0820E7BF5100A4BD78 /* libavformat.a */; };
 		EAA36D0E20E7BF5100A4BD78 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0920E7BF5100A4BD78 /* libswscale.a */; };
 		EAA36D0F20E7BF5100A4BD78 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0A20E7BF5100A4BD78 /* libavutil.a */; };
-		EAA36D1020E7BF5100A4BD78 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0B20E7BF5100A4BD78 /* libavcodec.a */; };
 		EAA36D1420E7C11D00A4BD78 /* a0001.ogg in Resources */ = {isa = PBXBuildFile; fileRef = EAA36D1320E7C11D00A4BD78 /* a0001.ogg */; };
 		EAA36D1520E7C17500A4BD78 /* ffmpegDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80C620E66F49003378DF /* ffmpegDecode.cpp */; };
 		EAA36D1620E7C17C00A4BD78 /* ffvideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80A620E66F49003378DF /* ffvideo.cpp */; };
@@ -45,6 +44,7 @@
 		EAA36D2A20E7CB1000A4BD78 /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D2920E7CB1000A4BD78 /* libiconv.2.4.0.tbd */; };
 		EAA36D2C20E7CC6600A4BD78 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D2B20E7CC6600A4BD78 /* OpenAL.framework */; };
 		EAA36D2E20E7DA8200A4BD78 /* 01_01_d.mpg in Resources */ = {isa = PBXBuildFile; fileRef = EAA36D2D20E7DA8200A4BD78 /* 01_01_d.mpg */; };
+		EAA36D2F20E8030A00A4BD78 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0B20E7BF5100A4BD78 /* libavcodec.a */; };
 		EAFCB15620E6A027003A1736 /* test0.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFCB15520E6A026003A1736 /* test0.png */; };
 		EAFCB15A20E6A32F003A1736 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15920E6A32F003A1736 /* libSDL2.a */; };
 		EAFCB15C20E6A3B3003A1736 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15B20E6A3B2003A1736 /* Metal.framework */; };
@@ -135,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA36D2F20E8030A00A4BD78 /* libavcodec.a in Frameworks */,
 				EAA36D2C20E7CC6600A4BD78 /* OpenAL.framework in Frameworks */,
 				EAA36D2A20E7CB1000A4BD78 /* libiconv.2.4.0.tbd in Frameworks */,
 				EAA36D2820E7CB0000A4BD78 /* CoreVideo.framework in Frameworks */,
@@ -148,7 +149,6 @@
 				EAA36D0D20E7BF5100A4BD78 /* libavformat.a in Frameworks */,
 				EAA36D0E20E7BF5100A4BD78 /* libswscale.a in Frameworks */,
 				EAA36D0F20E7BF5100A4BD78 /* libavutil.a in Frameworks */,
-				EAA36D1020E7BF5100A4BD78 /* libavcodec.a in Frameworks */,
 				EAFCB15F20E6B47C003A1736 /* libboost_filesystem.a in Frameworks */,
 				EAFCB16020E6B47C003A1736 /* libboost_system.a in Frameworks */,
 				EAFCB15C20E6A3B3003A1736 /* Metal.framework in Frameworks */,
