@@ -74,7 +74,7 @@ public:
 		SetFrame(0);
 
 	}
-	void open(std::string s);
+	void open(std::string s,bool turn_img=true);
 	void open(std::shared_ptr<ffStream>& fs);
 	int update();
 

@@ -22,7 +22,7 @@ VideoPlayer::VideoPlayer()
 	total_time = 0;
 }
 
-void VideoPlayer::open(std::string s)
+void VideoPlayer::open(std::string s,bool turn_img)
 {
 	fname = s;
 	p_ffstream = std::make_shared<ffStream>(s);
@@ -31,6 +31,7 @@ void VideoPlayer::open(std::string s)
 	width = p_ffstream->get_width();
 	height = p_ffstream->get_height();
 	status = Init;
+    p_ffstream->turn_img = turn_img;
 
 	//
 

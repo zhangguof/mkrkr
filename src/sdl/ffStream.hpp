@@ -386,7 +386,7 @@ public:
 			av_freep(&frame_buf[0]);
 		av_freep(&frame_buf);
 	}
-	int decode_one_pkt(AVPacket& _pkt);
+	int decode_one_pkt(AVPacket& _pkt, bool turn_img=true);
 	int decode(uint8_t* video_buf, int buf_size);
 
 
@@ -449,6 +449,7 @@ public:
 	bool decoded_end;
 	bool video_decoded_end;
 	uint64_t total_frame;
+    bool turn_img;
 	// uint32_t read_pos;
 	// uint32_t decoded_len;
 
@@ -529,6 +530,7 @@ public:
 		pvdecoder = nullptr;
 		video_decoded_end = false;
 		total_frame = 0;
+        turn_img = true;
 		
 	}
 	std::shared_ptr<DataBuffer> get_decode_buffer()

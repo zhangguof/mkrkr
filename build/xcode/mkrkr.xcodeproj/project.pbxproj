@@ -44,6 +44,7 @@
 		EAA36D2820E7CB0000A4BD78 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D2720E7CB0000A4BD78 /* CoreVideo.framework */; };
 		EAA36D2A20E7CB1000A4BD78 /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D2920E7CB1000A4BD78 /* libiconv.2.4.0.tbd */; };
 		EAA36D2C20E7CC6600A4BD78 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D2B20E7CC6600A4BD78 /* OpenAL.framework */; };
+		EAA36D2E20E7DA8200A4BD78 /* 01_01_d.mpg in Resources */ = {isa = PBXBuildFile; fileRef = EAA36D2D20E7DA8200A4BD78 /* 01_01_d.mpg */; };
 		EAFCB15620E6A027003A1736 /* test0.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFCB15520E6A026003A1736 /* test0.png */; };
 		EAFCB15A20E6A32F003A1736 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15920E6A32F003A1736 /* libSDL2.a */; };
 		EAFCB15C20E6A3B3003A1736 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15B20E6A3B2003A1736 /* Metal.framework */; };
@@ -112,6 +113,7 @@
 		EAA36D2720E7CB0000A4BD78 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		EAA36D2920E7CB1000A4BD78 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
 		EAA36D2B20E7CC6600A4BD78 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		EAA36D2D20E7DA8200A4BD78 /* 01_01_d.mpg */ = {isa = PBXFileReference; lastKnownFileType = video.mpeg; name = 01_01_d.mpg; path = ../../data1/01_01_d.mpg; sourceTree = "<group>"; };
 		EAD4825B20E6005F0015AE5E /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		EAD4825C20E6005F0015AE5E /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		EAFCB15520E6A026003A1736 /* test0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test0.png; path = ../../data1/bmp/test0.png; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				EAFCB15520E6A026003A1736 /* test0.png */,
+				EAA36D2D20E7DA8200A4BD78 /* 01_01_d.mpg */,
 				FD77A07E0E26BDA900F39101 /* Default.png */,
 				EAA36D1320E7C11D00A4BD78 /* a0001.ogg */,
 				FD77A07C0E26BD8C00F39101 /* Icon.png */,
@@ -366,6 +369,7 @@
 				FD77A07F0E26BDA900F39101 /* Default.png in Resources */,
 				EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */,
 				945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */,
+				EAA36D2E20E7DA8200A4BD78 /* 01_01_d.mpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

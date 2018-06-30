@@ -543,7 +543,7 @@ int ffStream::video_decode_nframe(int nframe)
 	while(1)
 	{
 		video_packet_q.wait_and_pop(p);
-		int r = pvdecoder->decode_one_pkt(p);
+		int r = pvdecoder->decode_one_pkt(p,turn_img);
 		if(r>0)
 			cnt+=r;
 		if(cnt >= nframe)
@@ -668,7 +668,7 @@ int FFDecoder::decode_one_pkt(AVPacket& _pkt)
 
 //ff video decoder
 
-int FFVDecoder::decode_one_pkt(AVPacket& _pkt)
+int FFVDecoder::decode_one_pkt(AVPacket& _pkt,bool turn_img)
 {
 	pkt = _pkt;
 	video_pkt_data = pkt.data;
@@ -762,12 +762,15 @@ int FFVDecoder::decode_one_pkt(AVPacket& _pkt)
 		// Convert the image from its native format to RGB
 		
 		//reversal image use of bmp.
-        pFrame->data[0] += pFrame->linesize[0] * (pCodecCtx->height - 1);   
-        pFrame->linesize[0] *= -1;   
-        pFrame->data[1] += pFrame->linesize[1] * (pCodecCtx->height / 2 - 1);   
-        pFrame->linesize[1] *= -1;   
-        pFrame->data[2] += pFrame->linesize[2] * (pCodecCtx->height / 2 - 1);   
-        pFrame->linesize[2] *= -1;   
+        if(turn_img)
+        {
+            pFrame->data[0] += pFrame->linesize[0] * (pCodecCtx->height - 1);
+            pFrame->linesize[0] *= -1;
+            pFrame->data[1] += pFrame->linesize[1] * (pCodecCtx->height / 2 - 1);
+            pFrame->linesize[1] *= -1;
+            pFrame->data[2] += pFrame->linesize[2] * (pCodecCtx->height / 2 - 1);
+            pFrame->linesize[2] *= -1;
+        }
 
 
 		sws_scale(sws_ctx, (uint8_t const * const *)pFrame->data,
