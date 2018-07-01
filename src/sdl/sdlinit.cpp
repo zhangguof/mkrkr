@@ -81,6 +81,11 @@ int init_gl_context(SDL_Window* win)
     
     return 1;
 }
+#else
+int init_gl_context(SDL_Window* win)
+{
+    return init_gles_context(win);
+}
 #endif
 
 
@@ -248,9 +253,9 @@ extern "C" void init_sdl_test(int w,int h)
         SDL_WINDOWPOS_UNDEFINED,           // initial y position
         w,                               // width, in pixels
         h,                               // height, in pixels
-        SDL_WINDOW_OPENGL                  // flags - see below
+        SDL_WINDOW_OPENGL|SDL_WINDOW_ALLOW_HIGHDPI                  // flags - see below
     );
-	#ifdef TARGET_OS_IPHONE
+	#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 		init_gles_context(win);
 	#else
 		init_gl_context(win);

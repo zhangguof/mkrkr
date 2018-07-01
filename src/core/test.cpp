@@ -64,8 +64,8 @@ void img_buff_fill_cb(uint8_t* buf,int w,int h,int size)
 
 void test_ff_video_play()
 {
-     std::string fname = "01_01_d.mpg";
-//    std::string fname = "06_04_d.mpg";
+     // std::string fname = "01_01_d.mpg";
+   std::string fname = "06_04_d.mpg";
     // auto fs = std::make_shared<ffStream>(fname);
     // //decode all
     // int f_cnt = 0;
@@ -127,6 +127,52 @@ static void test_img()
 extern void al_test_play();
 extern "C" int init_ffmpeg();
 
+int check_info()
+{
+    int i, display_mode_count;
+    SDL_DisplayMode mode;
+    Uint32 f;
+    
+    SDL_Log("SDL_GetNumVideoDisplays(): %i", SDL_GetNumVideoDisplays());
+    
+    display_mode_count = SDL_GetNumDisplayModes(0);
+    if (display_mode_count < 1) {
+        SDL_Log("SDL_GetNumDisplayModes failed: %s", SDL_GetError());
+        return 1;
+    }
+    SDL_Log("SDL_GetNumDisplayModes: %i", display_mode_count);
+    
+    for (i = 0; i < display_mode_count; ++i) {
+        if (SDL_GetDisplayMode(0, i, &mode) != 0) {
+            SDL_Log("SDL_GetDisplayMode failed: %s", SDL_GetError());
+            return 1;
+        }
+        f = mode.format;
+        
+        SDL_Log("Mode %i\tbpp %i\t%s\t%i x %i", i,
+                SDL_BITSPERPIXEL(f), SDL_GetPixelFormatName(f), mode.w, mode.h);
+    }
+    
+    
+    // Declare display mode structure to be filled in.
+    SDL_DisplayMode current;
+    
+    // Get current display mode of all displays.
+    for(int i = 0; i < SDL_GetNumVideoDisplays(); ++i){
+        
+        int should_be_zero = SDL_GetCurrentDisplayMode(i, &current);
+        
+        if(should_be_zero != 0)
+            // In case of error...
+            SDL_Log("Could not get display mode for video display #%d: %s", i, SDL_GetError());
+        
+        else
+            // On success, print the current display mode.
+            SDL_Log("Display #%d: current display mode is %dx%dpx @ %dhz.", i, current.w, current.h, current.refresh_rate);
+        
+    }
+    return 0;
+}
 
 extern "C" int init_core_test(int argc,char *argv[])
 {
@@ -145,6 +191,9 @@ extern "C" int init_core_test(int argc,char *argv[])
 	g_dev->init_render();
     
 //    test_img();
+    SDL_SetHint(SDL_HINT_VIDEO_HIGHDPI_DISABLED, "0");
+    
+    check_info();
 
 
     

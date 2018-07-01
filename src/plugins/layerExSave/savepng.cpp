@@ -1,7 +1,8 @@
 #include "ncbind/ncbind.hpp"
 #include "savepng.hpp"
 
-#include "zlib/zlib.h"
+//#include "zlib/zlib.h"
+#include <zlib.h>
 
 #define PNGTYPE_RGBA8888 (0x08060000L)
 

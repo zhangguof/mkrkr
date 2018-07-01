@@ -2,15 +2,15 @@
 #include "GLDevice.hpp"
 #include "shaders.hpp"
 
-//#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 ////do something
 const char* defalut_vs_shader = simple_es_vs_shader;
 const char* defalut_fs_shader = simple_es_fs_shader;
-//#else
-//const char* defalut_vs_shader = simple_vs_shader;
-//const char* defalut_fs_shader = simple_fs_shader;
-//
-//#endif
+#else
+const char* defalut_vs_shader = simple_vs_shader;
+const char* defalut_fs_shader = simple_fs_shader;
+
+#endif
 
 
 extern SDL_Window* gWindow;

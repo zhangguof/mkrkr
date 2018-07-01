@@ -1,12 +1,12 @@
 #ifndef _GL_TEXTURE_H_
 #define _GL_TEXTURE_H_
 
-//#if TARGET_OS_IPHONE
+//#if TARGET_OS_IPHONE||TARGET_IPHONE_SIMULATOR
 #include "SDL_opengles2.h"
 #include <OpenGLES/ES3/gl.h>
 #include <OpenGLES/ES3/glext.h>
 //#else
-// #include "GL/glew.h"
+//#include "GL/glew.h"
 //#endif
 
 #include "SDL.h"

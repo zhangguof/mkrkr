@@ -126,7 +126,7 @@ typedef uintptr_t tjs_uintptr_t;
 	typedef int64_t tjs_int64;
 	typedef uint64_t tjs_uint64;
 #endif
-
+#include <stddef.h>
 typedef wchar_t tjs_char;
 
 typedef char tjs_nchar;

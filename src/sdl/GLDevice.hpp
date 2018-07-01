@@ -1,28 +1,15 @@
 #ifndef _H_DEVICE_
 #define _H_DEVICE_
 
-// #define PRINT_MACRO_HELPER(x) #x 
-// #define PRINT_MACRO(x) #x"="PRINT_MACRO_HELPER(x) 
-
-// #pragma message(PRINT_MACRO(TARGET_OS_IPHONE))
-// #pragma message(PRINT_MACRO(__APPLE__))
-// #pragma message(PRINT_MACRO(__IPHONEOS__))
 
 
-//#if TARGET_OS_IPHONE
-// #pragma message("in TARGET_OS_IPHONE")
-// #error("TARGET_OS_IPHONE error222！！！")
 
+//#if TARGET_OS_IPHONE||TARGET_IPHONE_SIMULATOR
 #include "SDL_opengles2.h"
 #include <OpenGLES/ES3/gl.h>
 #include <OpenGLES/ES3/glext.h>
-
 //#else
-
-//#error("TARGET_OS_IPHONE error！！！")
-
-// #include "GL/glew.h"
-
+//#include "GL/glew.h"
 //#endif
 
 #include "SDL.h"

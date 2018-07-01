@@ -34,7 +34,7 @@ LayerLeft(0), LayerTop(0),touch_points_(this)
         SDL_WINDOWPOS_UNDEFINED,           // initial y position
         w,                               // width, in pixels
         h,                               // height, in pixels
-        SDL_WINDOW_OPENGL                  // flags - see below
+        SDL_WINDOW_OPENGL|SDL_WINDOW_ALLOW_HIGHDPI                  // flags - see below
     );
     if(!win)
     {

@@ -1,4 +1,4 @@
-﻿//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 /*
 	TVP2 ( T Visual Presenter 2 )  A script authoring tool
 	Copyright (C) 2000 W.Dee <dee@kikyou.info> and contributors
@@ -877,7 +877,8 @@ bool TVPUnloadPlugin(const ttstr & name)
 //---------------------------------------------------------------------------
 // some service functions for plugin
 //---------------------------------------------------------------------------
-#include "zlib/zlib.h"
+//#include "zlib/zlib.h"
+#include <zlib.h>
 int ZLIB_uncompress(unsigned char *dest, unsigned long *destlen,
 	const unsigned char *source, unsigned long sourcelen)
 {

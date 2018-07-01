@@ -46,7 +46,7 @@ void xp3_filter(tTVPXP3ExtractionFilterInfo* info)
 
 extern void TVPInitImportFuncs();
 
-int main(int argc, char* argv[])
+extern "C" int app_main(int argc, char* argv[])
 {
 	setlocale(LC_ALL, "");
 	// TVPSetCurrentDirectory(ExePath());

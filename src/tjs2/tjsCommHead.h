@@ -57,10 +57,16 @@
 
 
 #ifdef __APPLE__
-#include <sys/malloc.h>
-// #include "win_api.h"
+    #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+        #include <stdlib.h>
+    #else
+//#error("error !!!")
+//        #include <sys/malloc.h>
+    #endif
 #else
-#include <malloc.h>
+
+    #include <malloc.h>
+
 #endif
 
 #include <vector>

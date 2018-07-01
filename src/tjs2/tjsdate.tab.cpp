@@ -91,7 +91,8 @@
 /* TJS2 date string parser */
 
 #if defined(__APPLE__)
-#include <sys/malloc.h>
+//#include <sys/malloc.h>
+#include <stdlib.h>
 #else
 #include <malloc.h>
 #endif 

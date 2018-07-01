@@ -91,7 +91,8 @@
 /* TJS2 conditional compiling control's conditional expression parser */
 
 #ifdef __APPLE__
-#include <sys/malloc.h>
+//#include <sys/malloc.h>
+#include <stdlib.h>
 #else
 #include <malloc.h>
 #endif

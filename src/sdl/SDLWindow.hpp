@@ -6,7 +6,7 @@
 #include "TouchPoint.h"
 #include "WindowIntf.h"
 #include "Application.h"
-#include <SDL.h>
+#include "SDL.h"
 #include "DebugIntf.h"
 
 enum {

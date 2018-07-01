@@ -2479,7 +2479,8 @@ static void __stdcall TVP_Stub_5f6d263c0d48d03f6eb0dc44c9dd0be2(tjs_uint32 * des
 	return TVPPsExclusionBlend_HDA_o(dest, src, len, opa);
 }
 
-#include <zlib/zlib.h>
+//#include <zlib/zlib.h>
+#include <zlib.h>
 /* function table is pretty large; is compressed via zlib */
 static tjs_uint8 compressed_functable[] = {
 0x78, 0x9c, 0xc5, 0x5d, 0xeb, 0x6f, 0x1b, 0x37, 0x12, 0xef, 0x9f, 0xe2, 0xfb, 0xd0, 0x40, 0x4d, 
