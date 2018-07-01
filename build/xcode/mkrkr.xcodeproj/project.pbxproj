@@ -12,6 +12,156 @@
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */; };
+		EA1930AC20E87A6D002621DB /* 06_04_d.mpg in Resources */ = {isa = PBXBuildFile; fileRef = EA1930AB20E87A6C002621DB /* 06_04_d.mpg */; };
+		EA1930AE20E8AED0002621DB /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1930AD20E8AED0002621DB /* libpng.a */; };
+		EA1930B120E8B010002621DB /* libfreetyped.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1930AF20E8B00F002621DB /* libfreetyped.a */; };
+		EA1930B220E8B010002621DB /* libonig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1930B020E8B00F002621DB /* libonig.a */; };
+		EA19332520E8B190002621DB /* BitmapIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930B420E8B18E002621DB /* BitmapIntf.cpp */; };
+		EA19332620E8B190002621DB /* ResampleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930B520E8B18E002621DB /* ResampleImage.cpp */; };
+		EA19332720E8B190002621DB /* WindowImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930B720E8B18E002621DB /* WindowImpl.cpp */; };
+		EA19332820E8B190002621DB /* WindowIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930B820E8B18E002621DB /* WindowIntf.cpp */; };
+		EA19332920E8B190002621DB /* LoadPNG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930BB20E8B18E002621DB /* LoadPNG.cpp */; };
+		EA19332A20E8B190002621DB /* LayerIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930BD20E8B18E002621DB /* LayerIntf.cpp */; };
+		EA19332B20E8B190002621DB /* FontSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930BE20E8B18E002621DB /* FontSystem.cpp */; };
+		EA19332C20E8B190002621DB /* BitmapBitsAlloc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930BF20E8B18E002621DB /* BitmapBitsAlloc.cpp */; };
+		EA19332D20E8B190002621DB /* LayerImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930C120E8B18E002621DB /* LayerImpl.cpp */; };
+		EA19332E20E8B190002621DB /* LayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930C220E8B18E002621DB /* LayerManager.cpp */; };
+		EA19332F20E8B190002621DB /* GraphicsLoaderImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930C320E8B18E002621DB /* GraphicsLoaderImpl.cpp */; };
+		EA19333020E8B190002621DB /* GraphicsLoaderIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930C520E8B18E002621DB /* GraphicsLoaderIntf.cpp */; };
+		EA19333120E8B190002621DB /* FreeType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930C720E8B18E002621DB /* FreeType.cpp */; };
+		EA19333220E8B190002621DB /* FreeTypeFontRasterizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930CB20E8B18E002621DB /* FreeTypeFontRasterizer.cpp */; };
+		EA19333320E8B190002621DB /* BitmapLayerTreeOwner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930CE20E8B18E002621DB /* BitmapLayerTreeOwner.cpp */; };
+		EA19333420E8B190002621DB /* LayerTreeOwnerImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930D020E8B18E002621DB /* LayerTreeOwnerImpl.cpp */; };
+		EA19333520E8B190002621DB /* PrerenderedFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930D420E8B18E002621DB /* PrerenderedFont.cpp */; };
+		EA19333620E8B190002621DB /* BitmapInfomation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930DF20E8B18E002621DB /* BitmapInfomation.cpp */; };
+		EA19333720E8B190002621DB /* DrawDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930E120E8B18E002621DB /* DrawDevice.cpp */; };
+		EA19333820E8B190002621DB /* BasicDrawDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930E520E8B18E002621DB /* BasicDrawDevice.cpp */; };
+		EA19333920E8B190002621DB /* blend_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930E720E8B18E002621DB /* blend_function.cpp */; };
+		EA19333A20E8B190002621DB /* WeightFunctor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930EE20E8B18E002621DB /* WeightFunctor.cpp */; };
+		EA19333B20E8B190002621DB /* ComplexRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930EF20E8B18E002621DB /* ComplexRect.cpp */; };
+		EA19333C20E8B190002621DB /* CharacterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930F020E8B18E002621DB /* CharacterData.cpp */; };
+		EA19333D20E8B190002621DB /* LayerBitmapImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930F120E8B18E002621DB /* LayerBitmapImpl.cpp */; };
+		EA19333E20E8B190002621DB /* LayerBitmapIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930F220E8B18E002621DB /* LayerBitmapIntf.cpp */; };
+		EA19333F20E8B190002621DB /* TransIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930F720E8B18E002621DB /* TransIntf.cpp */; };
+		EA19334020E8B190002621DB /* tvpgl.c in Sources */ = {isa = PBXBuildFile; fileRef = EA1930F920E8B18E002621DB /* tvpgl.c */; };
+		EA19334120E8B190002621DB /* RectItf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930FA20E8B18E002621DB /* RectItf.cpp */; };
+		EA19334220E8B190002621DB /* DebugIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1930FD20E8B18E002621DB /* DebugIntf.cpp */; };
+		EA19334320E8B190002621DB /* tjsDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19310020E8B18E002621DB /* tjsDebug.cpp */; };
+		EA19334420E8B190002621DB /* tjsScriptBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19310220E8B18E002621DB /* tjsScriptBlock.cpp */; };
+		EA19334520E8B190002621DB /* tjsConstArrayData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19310420E8B18E002621DB /* tjsConstArrayData.cpp */; };
+		EA19334620E8B190002621DB /* tjsCompileControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19310920E8B18E002621DB /* tjsCompileControl.cpp */; };
+		EA19334720E8B190002621DB /* tjsArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19310A20E8B18E002621DB /* tjsArray.cpp */; };
+		EA19334820E8B190002621DB /* tjsRegExp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19310E20E8B18E002621DB /* tjsRegExp.cpp */; };
+		EA19334920E8B190002621DB /* tjsDateParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19310F20E8B18E002621DB /* tjsDateParser.cpp */; };
+		EA19334A20E8B190002621DB /* tjsDisassemble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19311020E8B18E002621DB /* tjsDisassemble.cpp */; };
+		EA19334B20E8B190002621DB /* tjsGlobalStringMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19311220E8B18E002621DB /* tjsGlobalStringMap.cpp */; };
+		EA19334C20E8B190002621DB /* MsgImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19311620E8B18E002621DB /* MsgImpl.cpp */; };
+		EA19334D20E8B190002621DB /* MsgIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19311720E8B18E002621DB /* MsgIntf.cpp */; };
+		EA19334E20E8B190002621DB /* string_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19311820E8B18E002621DB /* string_table.cpp */; };
+		EA19334F20E8B190002621DB /* MsgLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19311B20E8B18E002621DB /* MsgLoad.cpp */; };
+		EA19335020E8B190002621DB /* tjsLex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19311C20E8B18E002621DB /* tjsLex.cpp */; };
+		EA19335220E8B190002621DB /* tjsMT19937ar-cok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19311E20E8B18E002621DB /* tjsMT19937ar-cok.cpp */; };
+		EA19335320E8B190002621DB /* tjsInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19312120E8B18E002621DB /* tjsInterface.cpp */; };
+		EA19335420E8B190002621DB /* tjsObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19312220E8B18E002621DB /* tjsObject.cpp */; };
+		EA19335520E8B190002621DB /* tjsOctPack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19312320E8B18E002621DB /* tjsOctPack.cpp */; };
+		EA19335620E8B190002621DB /* tjsDate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19312720E8B18E002621DB /* tjsDate.cpp */; };
+		EA19335720E8B190002621DB /* tjsMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19312920E8B18E002621DB /* tjsMath.cpp */; };
+		EA19335820E8B190002621DB /* tjsVariantString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19312A20E8B18E002621DB /* tjsVariantString.cpp */; };
+		EA19335920E8B190002621DB /* uni_cp932.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19312F20E8B18E002621DB /* uni_cp932.cpp */; };
+		EA19335A20E8B190002621DB /* cp932_uni.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19313120E8B18E002621DB /* cp932_uni.cpp */; };
+		EA19335B20E8B190002621DB /* tjsString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19313220E8B18E002621DB /* tjsString.cpp */; };
+		EA19335C20E8B190002621DB /* tjsVariant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19313620E8B18E002621DB /* tjsVariant.cpp */; };
+		EA19335D20E8B190002621DB /* tjs.tab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19313920E8B18E002621DB /* tjs.tab.cpp */; };
+		EA19335E20E8B190002621DB /* tjsBinarySerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19313A20E8B18E002621DB /* tjsBinarySerializer.cpp */; };
+		EA19335F20E8B190002621DB /* tjsNative.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19313C20E8B18E002621DB /* tjsNative.cpp */; };
+		EA19336020E8B190002621DB /* tjsDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19313D20E8B18E002621DB /* tjsDictionary.cpp */; };
+		EA19336120E8B190002621DB /* tjsInterCodeExec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19314120E8B18E002621DB /* tjsInterCodeExec.cpp */; };
+		EA19336220E8B190002621DB /* tjsUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19314620E8B18E002621DB /* tjsUtils.cpp */; };
+		EA19336320E8B190002621DB /* tjsConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19314920E8B18E002621DB /* tjsConfig.cpp */; };
+		EA19336420E8B190002621DB /* tjsNamespace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19314A20E8B18E002621DB /* tjsNamespace.cpp */; };
+		EA19336520E8B190002621DB /* tjsdate.tab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19314B20E8B18E002621DB /* tjsdate.tab.cpp */; };
+		EA19336620E8B190002621DB /* tjsByteCodeLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19314F20E8B18E002621DB /* tjsByteCodeLoader.cpp */; };
+		EA19336720E8B190002621DB /* tjsScriptCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19315020E8B18E002621DB /* tjsScriptCache.cpp */; };
+		EA19336820E8B190002621DB /* tjspp.tab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19315320E8B18E002621DB /* tjspp.tab.cpp */; };
+		EA19337520E8B190002621DB /* tjsObjectExtendable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19316120E8B18F002621DB /* tjsObjectExtendable.cpp */; };
+		EA19337620E8B190002621DB /* tjs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19316220E8B18F002621DB /* tjs.cpp */; };
+		EA19337720E8B190002621DB /* tjsMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19316320E8B18F002621DB /* tjsMessage.cpp */; };
+		EA19337820E8B190002621DB /* tjsError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19316620E8B18F002621DB /* tjsError.cpp */; };
+		EA19337920E8B190002621DB /* CharacterSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19316A20E8B18F002621DB /* CharacterSet.cpp */; };
+		EA19337A20E8B190002621DB /* tjsException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19316C20E8B18F002621DB /* tjsException.cpp */; };
+		EA19337B20E8B190002621DB /* tjsInterCodeGen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19316D20E8B18F002621DB /* tjsInterCodeGen.cpp */; };
+		EA19337C20E8B190002621DB /* tjsRandomGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19316F20E8B18F002621DB /* tjsRandomGenerator.cpp */; };
+		EA19337D20E8B190002621DB /* Extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19317120E8B18F002621DB /* Extension.cpp */; };
+		EA19337E20E8B190002621DB /* ThreadImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19317420E8B18F002621DB /* ThreadImpl.cpp */; };
+		EA19337F20E8B190002621DB /* ThreadIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19317520E8B18F002621DB /* ThreadIntf.cpp */; };
+		EA19338020E8B190002621DB /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19317720E8B18F002621DB /* utils.cpp */; };
+		EA19338120E8B190002621DB /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19317920E8B18F002621DB /* Random.cpp */; };
+		EA19338220E8B190002621DB /* TimerImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19317E20E8B18F002621DB /* TimerImpl.cpp */; };
+		EA19338320E8B190002621DB /* TimerIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19317F20E8B18F002621DB /* TimerIntf.cpp */; };
+		EA19338420E8B190002621DB /* MiscUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19318120E8B18F002621DB /* MiscUtility.cpp */; };
+		EA19338520E8B190002621DB /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = EA19318220E8B18F002621DB /* md5.c */; };
+		EA19338620E8B190002621DB /* TVPTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19318920E8B18F002621DB /* TVPTimer.cpp */; };
+		EA19338720E8B190002621DB /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19318B20E8B18F002621DB /* test.cpp */; };
+		EA19338820E8B190002621DB /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EA19318D20E8B18F002621DB /* main.c */; };
+		EA19338920E8B190002621DB /* ffvideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19318F20E8B18F002621DB /* ffvideo.cpp */; };
+		EA19338A20E8B190002621DB /* gltexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319120E8B18F002621DB /* gltexture.cpp */; };
+		EA19338C20E8B190002621DB /* SDLWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319620E8B18F002621DB /* SDLWindow.cpp */; };
+		EA19338D20E8B190002621DB /* sdlinit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319720E8B18F002621DB /* sdlinit.cpp */; };
+		EA19338E20E8B190002621DB /* GLDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319820E8B18F002621DB /* GLDevice.cpp */; };
+		EA19339020E8B190002621DB /* sdlAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319B20E8B18F002621DB /* sdlAudio.cpp */; };
+		EA19339320E8B190002621DB /* alObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319E20E8B18F002621DB /* alObjects.cpp */; };
+		EA19339420E8B190002621DB /* ffmpegDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931A620E8B18F002621DB /* ffmpegDecode.cpp */; };
+		EA19339520E8B190002621DB /* simple_es_vs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA1931A920E8B18F002621DB /* simple_es_vs.glsl */; };
+		EA19339620E8B190002621DB /* simple_fs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA1931AA20E8B18F002621DB /* simple_fs.glsl */; };
+		EA19339720E8B190002621DB /* simple_es_fs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA1931AB20E8B18F002621DB /* simple_es_fs.glsl */; };
+		EA19339820E8B190002621DB /* gen_shaders.py in Resources */ = {isa = PBXBuildFile; fileRef = EA1931AC20E8B18F002621DB /* gen_shaders.py */; };
+		EA19339920E8B190002621DB /* simple_vs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA1931AD20E8B18F002621DB /* simple_vs.glsl */; };
+		EA19339B20E8B190002621DB /* alDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931B120E8B18F002621DB /* alDevice.cpp */; };
+		EA19339C20E8B190002621DB /* sdlEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931B520E8B18F002621DB /* sdlEvent.cpp */; };
+		EA19339D20E8B190002621DB /* VideoOvlIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931BA20E8B18F002621DB /* VideoOvlIntf.cpp */; };
+		EA19339E20E8B190002621DB /* VideoOvlImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931BB20E8B18F002621DB /* VideoOvlImpl.cpp */; };
+		EA19339F20E8B190002621DB /* FFVideoOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931BC20E8B18F002621DB /* FFVideoOverlay.cpp */; };
+		EA1933A020E8B190002621DB /* TVPVideoOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931C020E8B18F002621DB /* TVPVideoOverlay.cpp */; };
+		EA1933D320E8B191002621DB /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19320920E8B18F002621DB /* utils.cpp */; };
+		EA1933D520E8B191002621DB /* savepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19320D20E8B18F002621DB /* savepng.cpp */; };
+		EA1933E020E8B191002621DB /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19321D20E8B18F002621DB /* lodepng.cpp */; };
+		EA19340B20E8B191002621DB /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19325B20E8B18F002621DB /* Main.cpp */; };
+		EA19340D20E8B191002621DB /* KAGParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19325F20E8B18F002621DB /* KAGParser.cpp */; };
+		EA19343720E8B191002621DB /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19329B20E8B190002621DB /* Main.cpp */; };
+		EA19343920E8B191002621DB /* WindowMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19329F20E8B190002621DB /* WindowMenu.cpp */; };
+		EA19343A20E8B191002621DB /* MenuItemIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932A020E8B190002621DB /* MenuItemIntf.cpp */; };
+		EA19346920E8B191002621DB /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932E220E8B190002621DB /* Main.cpp */; };
+		EA19346B20E8B191002621DB /* tp_stub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932E720E8B190002621DB /* tp_stub.cpp */; };
+		EA19346C20E8B191002621DB /* TextStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932E920E8B190002621DB /* TextStream.cpp */; };
+		EA19346D20E8B191002621DB /* SystemImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932EA20E8B190002621DB /* SystemImpl.cpp */; };
+		EA19346E20E8B191002621DB /* SystemIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932EB20E8B190002621DB /* SystemIntf.cpp */; };
+		EA19346F20E8B191002621DB /* UtilStreams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932ED20E8B190002621DB /* UtilStreams.cpp */; };
+		EA19347020E8B191002621DB /* StorageIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932F020E8B190002621DB /* StorageIntf.cpp */; };
+		EA19347120E8B191002621DB /* StorageImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932F120E8B190002621DB /* StorageImpl.cpp */; };
+		EA19347220E8B191002621DB /* XP3Archive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932F220E8B190002621DB /* XP3Archive.cpp */; };
+		EA19347320E8B191002621DB /* PluginIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932F420E8B190002621DB /* PluginIntf.cpp */; };
+		EA19347420E8B191002621DB /* StaticPluginImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932F520E8B190002621DB /* StaticPluginImpl.cpp */; };
+		EA19347520E8B191002621DB /* NativeEventQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932F620E8B190002621DB /* NativeEventQueue.cpp */; };
+		EA19347620E8B191002621DB /* ScriptMgnIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932FB20E8B190002621DB /* ScriptMgnIntf.cpp */; };
+		EA19347720E8B191002621DB /* EventIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932FC20E8B190002621DB /* EventIntf.cpp */; };
+		EA19347820E8B191002621DB /* EventImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1932FE20E8B190002621DB /* EventImpl.cpp */; };
+		EA19347920E8B191002621DB /* SysInitIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19330520E8B190002621DB /* SysInitIntf.cpp */; };
+		EA19347A20E8B191002621DB /* FuncStubs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19330720E8B190002621DB /* FuncStubs.cpp */; };
+		EA19347B20E8B191002621DB /* BinaryStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19330820E8B190002621DB /* BinaryStream.cpp */; };
+		EA19347C20E8B191002621DB /* TouchPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19330C20E8B190002621DB /* TouchPoint.cpp */; };
+		EA19347D20E8B191002621DB /* PhaseVocoderFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19330F20E8B190002621DB /* PhaseVocoderFilter.cpp */; };
+		EA19347E20E8B191002621DB /* SoundBufferBaseIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19331020E8B190002621DB /* SoundBufferBaseIntf.cpp */; };
+		EA19347F20E8B191002621DB /* SoundBufferBaseImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19331120E8B190002621DB /* SoundBufferBaseImpl.cpp */; };
+		EA19348020E8B191002621DB /* PhaseVocoderDSP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19331220E8B190002621DB /* PhaseVocoderDSP.cpp */; };
+		EA19348120E8B191002621DB /* WaveSegmentQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19331420E8B190002621DB /* WaveSegmentQueue.cpp */; };
+		EA19348220E8B191002621DB /* RealFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19331720E8B190002621DB /* RealFFT.cpp */; };
+		EA19348320E8B191002621DB /* sdlWaveImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19331820E8B190002621DB /* sdlWaveImpl.cpp */; };
+		EA19348420E8B191002621DB /* WaveFormatConverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19331B20E8B190002621DB /* WaveFormatConverter.cpp */; };
+		EA19348520E8B191002621DB /* MathAlgorithms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19331F20E8B190002621DB /* MathAlgorithms.cpp */; };
+		EA19348620E8B191002621DB /* WaveLoopManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19332120E8B190002621DB /* WaveLoopManager.cpp */; };
+		EA19348820E8B191002621DB /* WaveIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19332420E8B190002621DB /* WaveIntf.cpp */; };
+		EA19348A20E8B1B8002621DB /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19348920E8B1B8002621DB /* Application.cpp */; };
+		EA19348D20E8C0A5002621DB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19348B20E8B280002621DB /* main.cpp */; };
 		EA1F246920E5F5C200BD563F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1F246820E5F5C100BD563F /* AVFoundation.framework */; };
 		EA2F80A320E66F2A003378DF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EAD4825C20E6005F0015AE5E /* main.c */; };
 		EA2F80A420E66F2D003378DF /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD4825B20E6005F0015AE5E /* test.cpp */; };
@@ -67,6 +217,333 @@
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		EA1930AB20E87A6C002621DB /* 06_04_d.mpg */ = {isa = PBXFileReference; lastKnownFileType = video.mpeg; name = 06_04_d.mpg; path = ../../data/video/06_04_d.mpg; sourceTree = "<group>"; };
+		EA1930AD20E8AED0002621DB /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = ../../libs/ios/libpng.a; sourceTree = "<group>"; };
+		EA1930AF20E8B00F002621DB /* libfreetyped.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetyped.a; path = ../../libs/ios/libfreetyped.a; sourceTree = "<group>"; };
+		EA1930B020E8B00F002621DB /* libonig.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libonig.a; path = ../../libs/ios/libonig.a; sourceTree = "<group>"; };
+		EA1930B420E8B18E002621DB /* BitmapIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BitmapIntf.cpp; sourceTree = "<group>"; };
+		EA1930B520E8B18E002621DB /* ResampleImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResampleImage.cpp; sourceTree = "<group>"; };
+		EA1930B720E8B18E002621DB /* WindowImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WindowImpl.cpp; sourceTree = "<group>"; };
+		EA1930B820E8B18E002621DB /* WindowIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WindowIntf.cpp; sourceTree = "<group>"; };
+		EA1930B920E8B18E002621DB /* WindowImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowImpl.h; sourceTree = "<group>"; };
+		EA1930BA20E8B18E002621DB /* drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drawable.h; sourceTree = "<group>"; };
+		EA1930BB20E8B18E002621DB /* LoadPNG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadPNG.cpp; sourceTree = "<group>"; };
+		EA1930BC20E8B18E002621DB /* WindowIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowIntf.h; sourceTree = "<group>"; };
+		EA1930BD20E8B18E002621DB /* LayerIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayerIntf.cpp; sourceTree = "<group>"; };
+		EA1930BE20E8B18E002621DB /* FontSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FontSystem.cpp; sourceTree = "<group>"; };
+		EA1930BF20E8B18E002621DB /* BitmapBitsAlloc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BitmapBitsAlloc.cpp; sourceTree = "<group>"; };
+		EA1930C020E8B18E002621DB /* RectItf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectItf.h; sourceTree = "<group>"; };
+		EA1930C120E8B18E002621DB /* LayerImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayerImpl.cpp; sourceTree = "<group>"; };
+		EA1930C220E8B18E002621DB /* LayerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayerManager.cpp; sourceTree = "<group>"; };
+		EA1930C320E8B18E002621DB /* GraphicsLoaderImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsLoaderImpl.cpp; sourceTree = "<group>"; };
+		EA1930C420E8B18E002621DB /* TransIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransIntf.h; sourceTree = "<group>"; };
+		EA1930C520E8B18E002621DB /* GraphicsLoaderIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsLoaderIntf.cpp; sourceTree = "<group>"; };
+		EA1930C620E8B18E002621DB /* WeightFunctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeightFunctor.h; sourceTree = "<group>"; };
+		EA1930C720E8B18E002621DB /* FreeType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FreeType.cpp; sourceTree = "<group>"; };
+		EA1930C820E8B18E002621DB /* FreeTypeFontRasterizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeTypeFontRasterizer.h; sourceTree = "<group>"; };
+		EA1930C920E8B18E002621DB /* BitmapIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitmapIntf.h; sourceTree = "<group>"; };
+		EA1930CA20E8B18E002621DB /* FontSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSystem.h; sourceTree = "<group>"; };
+		EA1930CB20E8B18E002621DB /* FreeTypeFontRasterizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FreeTypeFontRasterizer.cpp; sourceTree = "<group>"; };
+		EA1930CC20E8B18E002621DB /* LayerTreeOwnerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerTreeOwnerImpl.h; sourceTree = "<group>"; };
+		EA1930CD20E8B18E002621DB /* LayerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerImpl.h; sourceTree = "<group>"; };
+		EA1930CE20E8B18E002621DB /* BitmapLayerTreeOwner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BitmapLayerTreeOwner.cpp; sourceTree = "<group>"; };
+		EA1930CF20E8B18E002621DB /* LayerIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerIntf.h; sourceTree = "<group>"; };
+		EA1930D020E8B18E002621DB /* LayerTreeOwnerImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayerTreeOwnerImpl.cpp; sourceTree = "<group>"; };
+		EA1930D120E8B18E002621DB /* LayerTreeOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerTreeOwner.h; sourceTree = "<group>"; };
+		EA1930D220E8B18E002621DB /* ComplexRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplexRect.h; sourceTree = "<group>"; };
+		EA1930D320E8B18E002621DB /* tvpgl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tvpgl.h; sourceTree = "<group>"; };
+		EA1930D420E8B18E002621DB /* PrerenderedFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrerenderedFont.cpp; sourceTree = "<group>"; };
+		EA1930D520E8B18E002621DB /* CharacterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterData.h; sourceTree = "<group>"; };
+		EA1930D620E8B18E002621DB /* FreeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeType.h; sourceTree = "<group>"; };
+		EA1930D720E8B18E002621DB /* LayerBitmapIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerBitmapIntf.h; sourceTree = "<group>"; };
+		EA1930D820E8B18E002621DB /* LayerBitmapImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerBitmapImpl.h; sourceTree = "<group>"; };
+		EA1930D920E8B18E002621DB /* FontRasterizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontRasterizer.h; sourceTree = "<group>"; };
+		EA1930DA20E8B18E002621DB /* BitmapLayerTreeOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitmapLayerTreeOwner.h; sourceTree = "<group>"; };
+		EA1930DB20E8B18E002621DB /* ResampleImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResampleImage.h; sourceTree = "<group>"; };
+		EA1930DC20E8B18E002621DB /* PrerenderedFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrerenderedFont.h; sourceTree = "<group>"; };
+		EA1930DD20E8B18E002621DB /* GraphicsLoaderIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsLoaderIntf.h; sourceTree = "<group>"; };
+		EA1930DE20E8B18E002621DB /* GraphicsLoaderImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsLoaderImpl.h; sourceTree = "<group>"; };
+		EA1930DF20E8B18E002621DB /* BitmapInfomation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BitmapInfomation.cpp; sourceTree = "<group>"; };
+		EA1930E120E8B18E002621DB /* DrawDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrawDevice.cpp; sourceTree = "<group>"; };
+		EA1930E220E8B18E002621DB /* blend_variation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blend_variation.h; sourceTree = "<group>"; };
+		EA1930E320E8B18E002621DB /* blend_util_func.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blend_util_func.h; sourceTree = "<group>"; };
+		EA1930E420E8B18E002621DB /* TVPColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVPColor.h; sourceTree = "<group>"; };
+		EA1930E520E8B18E002621DB /* BasicDrawDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicDrawDevice.cpp; sourceTree = "<group>"; };
+		EA1930E620E8B18E002621DB /* DrawDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawDevice.h; sourceTree = "<group>"; };
+		EA1930E720E8B18E002621DB /* blend_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = blend_function.cpp; sourceTree = "<group>"; };
+		EA1930E820E8B18E002621DB /* blend_functor_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blend_functor_c.h; sourceTree = "<group>"; };
+		EA1930E920E8B18E002621DB /* tvpgl_mathutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tvpgl_mathutil.h; sourceTree = "<group>"; };
+		EA1930EA20E8B18E002621DB /* BasicDrawDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicDrawDevice.h; sourceTree = "<group>"; };
+		EA1930EB20E8B18E002621DB /* tvpinputdefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tvpinputdefs.h; sourceTree = "<group>"; };
+		EA1930EC20E8B18E002621DB /* LayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerManager.h; sourceTree = "<group>"; };
+		EA1930ED20E8B18E002621DB /* BitmapInfomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitmapInfomation.h; sourceTree = "<group>"; };
+		EA1930EE20E8B18E002621DB /* WeightFunctor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WeightFunctor.cpp; sourceTree = "<group>"; };
+		EA1930EF20E8B18E002621DB /* ComplexRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComplexRect.cpp; sourceTree = "<group>"; };
+		EA1930F020E8B18E002621DB /* CharacterData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharacterData.cpp; sourceTree = "<group>"; };
+		EA1930F120E8B18E002621DB /* LayerBitmapImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayerBitmapImpl.cpp; sourceTree = "<group>"; };
+		EA1930F220E8B18E002621DB /* LayerBitmapIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayerBitmapIntf.cpp; sourceTree = "<group>"; };
+		EA1930F320E8B18E002621DB /* tvpfontstruc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tvpfontstruc.h; sourceTree = "<group>"; };
+		EA1930F420E8B18E002621DB /* ResampleImageInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResampleImageInternal.h; sourceTree = "<group>"; };
+		EA1930F520E8B18E002621DB /* FreeTypeFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeTypeFace.h; sourceTree = "<group>"; };
+		EA1930F620E8B18E002621DB /* BitmapBitsAlloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitmapBitsAlloc.h; sourceTree = "<group>"; };
+		EA1930F720E8B18E002621DB /* TransIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransIntf.cpp; sourceTree = "<group>"; };
+		EA1930F820E8B18E002621DB /* argb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = argb.h; sourceTree = "<group>"; };
+		EA1930F920E8B18E002621DB /* tvpgl.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = tvpgl.c; sourceTree = "<group>"; };
+		EA1930FA20E8B18E002621DB /* RectItf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RectItf.cpp; sourceTree = "<group>"; };
+		EA1930FB20E8B18E002621DB /* transhandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transhandler.h; sourceTree = "<group>"; };
+		EA1930FD20E8B18E002621DB /* DebugIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DebugIntf.cpp; sourceTree = "<group>"; };
+		EA1930FE20E8B18E002621DB /* DebugIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugIntf.h; sourceTree = "<group>"; };
+		EA19310020E8B18E002621DB /* tjsDebug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsDebug.cpp; sourceTree = "<group>"; };
+		EA19310120E8B18E002621DB /* tjsScriptBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsScriptBlock.h; sourceTree = "<group>"; };
+		EA19310220E8B18E002621DB /* tjsScriptBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsScriptBlock.cpp; sourceTree = "<group>"; };
+		EA19310320E8B18E002621DB /* tjsArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsArray.h; sourceTree = "<group>"; };
+		EA19310420E8B18E002621DB /* tjsConstArrayData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsConstArrayData.cpp; sourceTree = "<group>"; };
+		EA19310520E8B18E002621DB /* tjsException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsException.h; sourceTree = "<group>"; };
+		EA19310620E8B18E002621DB /* tjsVariantString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsVariantString.h; sourceTree = "<group>"; };
+		EA19310720E8B18E002621DB /* tjsBinarySerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsBinarySerializer.h; sourceTree = "<group>"; };
+		EA19310820E8B18E002621DB /* tjspp.tab.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tjspp.tab.hpp; sourceTree = "<group>"; };
+		EA19310920E8B18E002621DB /* tjsCompileControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsCompileControl.cpp; sourceTree = "<group>"; };
+		EA19310A20E8B18E002621DB /* tjsArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsArray.cpp; sourceTree = "<group>"; };
+		EA19310B20E8B18E002621DB /* tjsInterCodeExec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsInterCodeExec.h; sourceTree = "<group>"; };
+		EA19310C20E8B18E002621DB /* tjsConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsConfig.h; sourceTree = "<group>"; };
+		EA19310D20E8B18E002621DB /* tjsNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsNative.h; sourceTree = "<group>"; };
+		EA19310E20E8B18E002621DB /* tjsRegExp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsRegExp.cpp; sourceTree = "<group>"; };
+		EA19310F20E8B18E002621DB /* tjsDateParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsDateParser.cpp; sourceTree = "<group>"; };
+		EA19311020E8B18E002621DB /* tjsDisassemble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsDisassemble.cpp; sourceTree = "<group>"; };
+		EA19311120E8B18E002621DB /* tjsCompileControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsCompileControl.h; sourceTree = "<group>"; };
+		EA19311220E8B18E002621DB /* tjsGlobalStringMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsGlobalStringMap.cpp; sourceTree = "<group>"; };
+		EA19311420E8B18E002621DB /* string_table_resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_table_resource.h; sourceTree = "<group>"; };
+		EA19311520E8B18E002621DB /* MsgIntfInc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgIntfInc.h; sourceTree = "<group>"; };
+		EA19311620E8B18E002621DB /* MsgImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MsgImpl.cpp; sourceTree = "<group>"; };
+		EA19311720E8B18E002621DB /* MsgIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MsgIntf.cpp; sourceTree = "<group>"; };
+		EA19311820E8B18E002621DB /* string_table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = string_table.cpp; sourceTree = "<group>"; };
+		EA19311920E8B18E002621DB /* MsgImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgImpl.h; sourceTree = "<group>"; };
+		EA19311A20E8B18E002621DB /* MsgIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgIntf.h; sourceTree = "<group>"; };
+		EA19311B20E8B18E002621DB /* MsgLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MsgLoad.cpp; sourceTree = "<group>"; };
+		EA19311C20E8B18E002621DB /* tjsLex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsLex.cpp; sourceTree = "<group>"; };
+		EA19311D20E8B18E002621DB /* tjsDateWordMap.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsDateWordMap.cc; sourceTree = "<group>"; };
+		EA19311E20E8B18E002621DB /* tjsMT19937ar-cok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "tjsMT19937ar-cok.cpp"; sourceTree = "<group>"; };
+		EA19311F20E8B18E002621DB /* tjs.tab.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tjs.tab.hpp; sourceTree = "<group>"; };
+		EA19312020E8B18E002621DB /* tjsMT19937ar-cok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "tjsMT19937ar-cok.h"; sourceTree = "<group>"; };
+		EA19312120E8B18E002621DB /* tjsInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsInterface.cpp; sourceTree = "<group>"; };
+		EA19312220E8B18E002621DB /* tjsObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsObject.cpp; sourceTree = "<group>"; };
+		EA19312320E8B18E002621DB /* tjsOctPack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsOctPack.cpp; sourceTree = "<group>"; };
+		EA19312420E8B18E002621DB /* tjsLex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsLex.h; sourceTree = "<group>"; };
+		EA19312520E8B18E002621DB /* tjsVariant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsVariant.h; sourceTree = "<group>"; };
+		EA19312620E8B18E002621DB /* tjsInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsInterface.h; sourceTree = "<group>"; };
+		EA19312720E8B18E002621DB /* tjsDate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsDate.cpp; sourceTree = "<group>"; };
+		EA19312820E8B18E002621DB /* tjsObjectExtendable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsObjectExtendable.h; sourceTree = "<group>"; };
+		EA19312920E8B18E002621DB /* tjsMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsMath.cpp; sourceTree = "<group>"; };
+		EA19312A20E8B18E002621DB /* tjsVariantString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsVariantString.cpp; sourceTree = "<group>"; };
+		EA19312B20E8B18E002621DB /* tjsDateParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsDateParser.h; sourceTree = "<group>"; };
+		EA19312D20E8B18E002621DB /* uni_cp932.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uni_cp932.h; sourceTree = "<group>"; };
+		EA19312E20E8B18E002621DB /* ApplicationSpecialPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationSpecialPath.h; sourceTree = "<group>"; };
+		EA19312F20E8B18E002621DB /* uni_cp932.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uni_cp932.cpp; sourceTree = "<group>"; };
+		EA19313020E8B18E002621DB /* cp932_uni.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cp932_uni.h; sourceTree = "<group>"; };
+		EA19313120E8B18E002621DB /* cp932_uni.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cp932_uni.cpp; sourceTree = "<group>"; };
+		EA19313220E8B18E002621DB /* tjsString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsString.cpp; sourceTree = "<group>"; };
+		EA19313320E8B18E002621DB /* tjsByteCodeLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsByteCodeLoader.h; sourceTree = "<group>"; };
+		EA19313420E8B18E002621DB /* tjsErrorInc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsErrorInc.h; sourceTree = "<group>"; };
+		EA19313520E8B18E002621DB /* tjsMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsMath.h; sourceTree = "<group>"; };
+		EA19313620E8B18E002621DB /* tjsVariant.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsVariant.cpp; sourceTree = "<group>"; };
+		EA19313720E8B18E002621DB /* tjsdate.tab.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tjsdate.tab.hpp; sourceTree = "<group>"; };
+		EA19313820E8B18E002621DB /* tjsOctPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsOctPack.h; sourceTree = "<group>"; };
+		EA19313920E8B18E002621DB /* tjs.tab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjs.tab.cpp; sourceTree = "<group>"; };
+		EA19313A20E8B18E002621DB /* tjsBinarySerializer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsBinarySerializer.cpp; sourceTree = "<group>"; };
+		EA19313B20E8B18E002621DB /* tjsTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsTypes.h; sourceTree = "<group>"; };
+		EA19313C20E8B18E002621DB /* tjsNative.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsNative.cpp; sourceTree = "<group>"; };
+		EA19313D20E8B18E002621DB /* tjsDictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsDictionary.cpp; sourceTree = "<group>"; };
+		EA19313E20E8B18E002621DB /* tjsDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsDate.h; sourceTree = "<group>"; };
+		EA19313F20E8B18E002621DB /* tjsErrorDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsErrorDefs.h; sourceTree = "<group>"; };
+		EA19314020E8B18E002621DB /* tjsDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsDictionary.h; sourceTree = "<group>"; };
+		EA19314120E8B18E002621DB /* tjsInterCodeExec.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsInterCodeExec.cpp; sourceTree = "<group>"; };
+		EA19314220E8B18E002621DB /* tjsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsUtils.h; sourceTree = "<group>"; };
+		EA19314320E8B18E002621DB /* tjsInterCodeGen.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = tjsInterCodeGen.h; sourceTree = "<group>"; };
+		EA19314420E8B18E002621DB /* tjsError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsError.h; sourceTree = "<group>"; };
+		EA19314520E8B18E002621DB /* tjsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsObject.h; sourceTree = "<group>"; };
+		EA19314620E8B18E002621DB /* tjsUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsUtils.cpp; sourceTree = "<group>"; };
+		EA19314720E8B18E002621DB /* tjsDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsDebug.h; sourceTree = "<group>"; };
+		EA19314820E8B18E002621DB /* tjsRandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsRandomGenerator.h; sourceTree = "<group>"; };
+		EA19314920E8B18E002621DB /* tjsConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsConfig.cpp; sourceTree = "<group>"; };
+		EA19314A20E8B18E002621DB /* tjsNamespace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsNamespace.cpp; sourceTree = "<group>"; };
+		EA19314B20E8B18E002621DB /* tjsdate.tab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsdate.tab.cpp; sourceTree = "<group>"; };
+		EA19314C20E8B18E002621DB /* tjsNamespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsNamespace.h; sourceTree = "<group>"; };
+		EA19314D20E8B18E002621DB /* tjsHashSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsHashSearch.h; sourceTree = "<group>"; };
+		EA19314E20E8B18E002621DB /* tjsConstArrayData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsConstArrayData.h; sourceTree = "<group>"; };
+		EA19314F20E8B18E002621DB /* tjsByteCodeLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsByteCodeLoader.cpp; sourceTree = "<group>"; };
+		EA19315020E8B18E002621DB /* tjsScriptCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsScriptCache.cpp; sourceTree = "<group>"; };
+		EA19315120E8B18E002621DB /* tjsCommHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsCommHead.h; sourceTree = "<group>"; };
+		EA19315220E8B18E002621DB /* tjsMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsMessage.h; sourceTree = "<group>"; };
+		EA19315320E8B18E002621DB /* tjspp.tab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjspp.tab.cpp; sourceTree = "<group>"; };
+		EA19316120E8B18F002621DB /* tjsObjectExtendable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsObjectExtendable.cpp; sourceTree = "<group>"; };
+		EA19316220E8B18F002621DB /* tjs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjs.cpp; sourceTree = "<group>"; };
+		EA19316320E8B18F002621DB /* tjsMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsMessage.cpp; sourceTree = "<group>"; };
+		EA19316420E8B18F002621DB /* tjs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjs.h; sourceTree = "<group>"; };
+		EA19316520E8B18F002621DB /* tjsScriptCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsScriptCache.h; sourceTree = "<group>"; };
+		EA19316620E8B18F002621DB /* tjsError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsError.cpp; sourceTree = "<group>"; };
+		EA19316720E8B18F002621DB /* tjsString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsString.h; sourceTree = "<group>"; };
+		EA19316820E8B18F002621DB /* tjsGlobalStringMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsGlobalStringMap.h; sourceTree = "<group>"; };
+		EA19316A20E8B18F002621DB /* CharacterSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharacterSet.cpp; sourceTree = "<group>"; };
+		EA19316B20E8B18F002621DB /* CharacterSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterSet.h; sourceTree = "<group>"; };
+		EA19316C20E8B18F002621DB /* tjsException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsException.cpp; sourceTree = "<group>"; };
+		EA19316D20E8B18F002621DB /* tjsInterCodeGen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsInterCodeGen.cpp; sourceTree = "<group>"; };
+		EA19316E20E8B18F002621DB /* tjsRegExp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsRegExp.h; sourceTree = "<group>"; };
+		EA19316F20E8B18F002621DB /* tjsRandomGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tjsRandomGenerator.cpp; sourceTree = "<group>"; };
+		EA19317120E8B18F002621DB /* Extension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Extension.cpp; sourceTree = "<group>"; };
+		EA19317220E8B18F002621DB /* Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extension.h; sourceTree = "<group>"; };
+		EA19317420E8B18F002621DB /* ThreadImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThreadImpl.cpp; sourceTree = "<group>"; };
+		EA19317520E8B18F002621DB /* ThreadIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThreadIntf.cpp; sourceTree = "<group>"; };
+		EA19317620E8B18F002621DB /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		EA19317720E8B18F002621DB /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
+		EA19317820E8B18F002621DB /* ObjectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectList.h; sourceTree = "<group>"; };
+		EA19317920E8B18F002621DB /* Random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Random.cpp; sourceTree = "<group>"; };
+		EA19317A20E8B18F002621DB /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		EA19317B20E8B18F002621DB /* FilePathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilePathUtil.h; sourceTree = "<group>"; };
+		EA19317C20E8B18F002621DB /* StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtil.h; sourceTree = "<group>"; };
+		EA19317D20E8B18F002621DB /* TVPTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVPTimer.h; sourceTree = "<group>"; };
+		EA19317E20E8B18F002621DB /* TimerImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimerImpl.cpp; sourceTree = "<group>"; };
+		EA19317F20E8B18F002621DB /* TimerIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimerIntf.cpp; sourceTree = "<group>"; };
+		EA19318020E8B18F002621DB /* win_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = win_def.h; sourceTree = "<group>"; };
+		EA19318120E8B18F002621DB /* MiscUtility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MiscUtility.cpp; sourceTree = "<group>"; };
+		EA19318220E8B18F002621DB /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
+		EA19318320E8B18F002621DB /* ThreadIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadIntf.h; sourceTree = "<group>"; };
+		EA19318420E8B18F002621DB /* ThreadImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadImpl.h; sourceTree = "<group>"; };
+		EA19318520E8B18F002621DB /* TimerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerImpl.h; sourceTree = "<group>"; };
+		EA19318620E8B18F002621DB /* TimerIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerIntf.h; sourceTree = "<group>"; };
+		EA19318720E8B18F002621DB /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
+		EA19318820E8B18F002621DB /* Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Random.h; sourceTree = "<group>"; };
+		EA19318920E8B18F002621DB /* TVPTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TVPTimer.cpp; sourceTree = "<group>"; };
+		EA19318B20E8B18F002621DB /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
+		EA19318C20E8B18F002621DB /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		EA19318D20E8B18F002621DB /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		EA19318F20E8B18F002621DB /* ffvideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ffvideo.cpp; sourceTree = "<group>"; };
+		EA19319020E8B18F002621DB /* SOIL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOIL.h; sourceTree = "<group>"; };
+		EA19319120E8B18F002621DB /* gltexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gltexture.cpp; sourceTree = "<group>"; };
+		EA19319220E8B18F002621DB /* safeQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = safeQueue.hpp; sourceTree = "<group>"; };
+		EA19319320E8B18F002621DB /* load_bmp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = load_bmp.cpp; sourceTree = "<group>"; };
+		EA19319420E8B18F002621DB /* alDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alDevice.hpp; sourceTree = "<group>"; };
+		EA19319520E8B18F002621DB /* imgbuf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imgbuf.h; sourceTree = "<group>"; };
+		EA19319620E8B18F002621DB /* SDLWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SDLWindow.cpp; sourceTree = "<group>"; };
+		EA19319720E8B18F002621DB /* sdlinit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlinit.cpp; sourceTree = "<group>"; };
+		EA19319820E8B18F002621DB /* GLDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLDevice.cpp; sourceTree = "<group>"; };
+		EA19319920E8B18F002621DB /* sdlEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sdlEvent.hpp; sourceTree = "<group>"; };
+		EA19319B20E8B18F002621DB /* sdlAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlAudio.cpp; sourceTree = "<group>"; };
+		EA19319E20E8B18F002621DB /* alObjects.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alObjects.cpp; sourceTree = "<group>"; };
+		EA19319F20E8B18F002621DB /* sdlAudio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sdlAudio.hpp; sourceTree = "<group>"; };
+		EA1931A120E8B18F002621DB /* glxew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glxew.h; sourceTree = "<group>"; };
+		EA1931A220E8B18F002621DB /* eglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eglew.h; sourceTree = "<group>"; };
+		EA1931A320E8B18F002621DB /* wglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wglew.h; sourceTree = "<group>"; };
+		EA1931A420E8B18F002621DB /* glew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glew.h; sourceTree = "<group>"; };
+		EA1931A520E8B18F002621DB /* shaders.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = shaders.hpp; sourceTree = "<group>"; };
+		EA1931A620E8B18F002621DB /* ffmpegDecode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ffmpegDecode.cpp; sourceTree = "<group>"; };
+		EA1931A720E8B18F002621DB /* alObjects.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alObjects.hpp; sourceTree = "<group>"; };
+		EA1931A920E8B18F002621DB /* simple_es_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simple_es_vs.glsl; sourceTree = "<group>"; };
+		EA1931AA20E8B18F002621DB /* simple_fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simple_fs.glsl; sourceTree = "<group>"; };
+		EA1931AB20E8B18F002621DB /* simple_es_fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simple_es_fs.glsl; sourceTree = "<group>"; };
+		EA1931AC20E8B18F002621DB /* gen_shaders.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = gen_shaders.py; sourceTree = "<group>"; };
+		EA1931AD20E8B18F002621DB /* simple_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simple_vs.glsl; sourceTree = "<group>"; };
+		EA1931AE20E8B18F002621DB /* ffvideo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ffvideo.hpp; sourceTree = "<group>"; };
+		EA1931B020E8B18F002621DB /* gltexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = gltexture.hpp; sourceTree = "<group>"; };
+		EA1931B120E8B18F002621DB /* alDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alDevice.cpp; sourceTree = "<group>"; };
+		EA1931B220E8B18F002621DB /* ffStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ffStream.hpp; sourceTree = "<group>"; };
+		EA1931B320E8B18F002621DB /* SDLWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SDLWindow.hpp; sourceTree = "<group>"; };
+		EA1931B420E8B18F002621DB /* GLDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLDevice.hpp; sourceTree = "<group>"; };
+		EA1931B520E8B18F002621DB /* sdlEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlEvent.cpp; sourceTree = "<group>"; };
+		EA1931B720E8B18F002621DB /* VideoOvlIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoOvlIntf.h; sourceTree = "<group>"; };
+		EA1931B820E8B18F002621DB /* VideoOvlImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoOvlImpl.h; sourceTree = "<group>"; };
+		EA1931B920E8B18F002621DB /* TVPVideoOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVPVideoOverlay.h; sourceTree = "<group>"; };
+		EA1931BA20E8B18F002621DB /* VideoOvlIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VideoOvlIntf.cpp; sourceTree = "<group>"; };
+		EA1931BB20E8B18F002621DB /* VideoOvlImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VideoOvlImpl.cpp; sourceTree = "<group>"; };
+		EA1931BC20E8B18F002621DB /* FFVideoOverlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFVideoOverlay.cpp; sourceTree = "<group>"; };
+		EA1931BD20E8B18F002621DB /* voMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = voMode.h; sourceTree = "<group>"; };
+		EA1931BE20E8B18F002621DB /* krmovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = krmovie.h; sourceTree = "<group>"; };
+		EA1931BF20E8B18F002621DB /* FFVideoOverlay.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FFVideoOverlay.hpp; sourceTree = "<group>"; };
+		EA1931C020E8B18F002621DB /* TVPVideoOverlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TVPVideoOverlay.cpp; sourceTree = "<group>"; };
+		EA1931C520E8B18F002621DB /* ncbind.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ncbind.hpp; sourceTree = "<group>"; };
+		EA1931C720E8B18F002621DB /* ncb_foreach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ncb_foreach.h; sourceTree = "<group>"; };
+		EA1931C920E8B18F002621DB /* ncb_invoke.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ncb_invoke.hpp; sourceTree = "<group>"; };
+		EA19320120E8B18F002621DB /* ncbind.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ncbind.cpp; sourceTree = "<group>"; };
+		EA19320920E8B18F002621DB /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
+		EA19320B20E8B18F002621DB /* savetlg5.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = savetlg5.hpp; sourceTree = "<group>"; };
+		EA19320C20E8B18F002621DB /* compress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = compress.hpp; sourceTree = "<group>"; };
+		EA19320D20E8B18F002621DB /* savepng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = savepng.cpp; sourceTree = "<group>"; };
+		EA19321820E8B18F002621DB /* savepng.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = savepng.hpp; sourceTree = "<group>"; };
+		EA19321C20E8B18F002621DB /* lodepng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lodepng.h; sourceTree = "<group>"; };
+		EA19321D20E8B18F002621DB /* lodepng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lodepng.cpp; sourceTree = "<group>"; };
+		EA19325520E8B18F002621DB /* utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
+		EA19325620E8B18F002621DB /* savetlg5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = savetlg5.cpp; sourceTree = "<group>"; };
+		EA19325B20E8B18F002621DB /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		EA19325D20E8B18F002621DB /* KAGParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAGParser.h; sourceTree = "<group>"; };
+		EA19325F20E8B18F002621DB /* KAGParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KAGParser.cpp; sourceTree = "<group>"; };
+		EA19326720E8B18F002621DB /* tjsHashSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tjsHashSearch.h; sourceTree = "<group>"; };
+		EA19329B20E8B190002621DB /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		EA19329D20E8B190002621DB /* MenuItemIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemIntf.h; sourceTree = "<group>"; };
+		EA19329F20E8B190002621DB /* WindowMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WindowMenu.cpp; sourceTree = "<group>"; };
+		EA1932A020E8B190002621DB /* MenuItemIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuItemIntf.cpp; sourceTree = "<group>"; };
+		EA1932A120E8B190002621DB /* ObjectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectList.h; sourceTree = "<group>"; };
+		EA1932A220E8B190002621DB /* WindowMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowMenu.h; sourceTree = "<group>"; };
+		EA1932E220E8B190002621DB /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		EA1932E620E8B190002621DB /* tp_stub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tp_stub.h; sourceTree = "<group>"; };
+		EA1932E720E8B190002621DB /* tp_stub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tp_stub.cpp; sourceTree = "<group>"; };
+		EA1932E920E8B190002621DB /* TextStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextStream.cpp; sourceTree = "<group>"; };
+		EA1932EA20E8B190002621DB /* SystemImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SystemImpl.cpp; sourceTree = "<group>"; };
+		EA1932EB20E8B190002621DB /* SystemIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SystemIntf.cpp; sourceTree = "<group>"; };
+		EA1932EC20E8B190002621DB /* SystemImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemImpl.h; sourceTree = "<group>"; };
+		EA1932ED20E8B190002621DB /* UtilStreams.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UtilStreams.cpp; sourceTree = "<group>"; };
+		EA1932EE20E8B190002621DB /* SystemIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemIntf.h; sourceTree = "<group>"; };
+		EA1932EF20E8B190002621DB /* FuncStubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuncStubs.h; sourceTree = "<group>"; };
+		EA1932F020E8B190002621DB /* StorageIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StorageIntf.cpp; sourceTree = "<group>"; };
+		EA1932F120E8B190002621DB /* StorageImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StorageImpl.cpp; sourceTree = "<group>"; };
+		EA1932F220E8B190002621DB /* XP3Archive.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XP3Archive.cpp; sourceTree = "<group>"; };
+		EA1932F320E8B190002621DB /* PluginIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginIntf.h; sourceTree = "<group>"; };
+		EA1932F420E8B190002621DB /* PluginIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PluginIntf.cpp; sourceTree = "<group>"; };
+		EA1932F520E8B190002621DB /* StaticPluginImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StaticPluginImpl.cpp; sourceTree = "<group>"; };
+		EA1932F620E8B190002621DB /* NativeEventQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeEventQueue.cpp; sourceTree = "<group>"; };
+		EA1932F720E8B190002621DB /* NativeEventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeEventQueue.h; sourceTree = "<group>"; };
+		EA1932F820E8B190002621DB /* EventIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventIntf.h; sourceTree = "<group>"; };
+		EA1932F920E8B190002621DB /* EventImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventImpl.h; sourceTree = "<group>"; };
+		EA1932FA20E8B190002621DB /* BinaryStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryStream.h; sourceTree = "<group>"; };
+		EA1932FB20E8B190002621DB /* ScriptMgnIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScriptMgnIntf.cpp; sourceTree = "<group>"; };
+		EA1932FC20E8B190002621DB /* EventIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventIntf.cpp; sourceTree = "<group>"; };
+		EA1932FD20E8B190002621DB /* SysInitIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysInitIntf.h; sourceTree = "<group>"; };
+		EA1932FE20E8B190002621DB /* EventImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventImpl.cpp; sourceTree = "<group>"; };
+		EA1932FF20E8B190002621DB /* TextStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextStream.h; sourceTree = "<group>"; };
+		EA19330020E8B190002621DB /* StorageImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageImpl.h; sourceTree = "<group>"; };
+		EA19330120E8B190002621DB /* StorageIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageIntf.h; sourceTree = "<group>"; };
+		EA19330220E8B190002621DB /* StaticPluginImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticPluginImpl.h; sourceTree = "<group>"; };
+		EA19330320E8B190002621DB /* XP3Archive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XP3Archive.h; sourceTree = "<group>"; };
+		EA19330420E8B190002621DB /* ScriptMgnIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptMgnIntf.h; sourceTree = "<group>"; };
+		EA19330520E8B190002621DB /* SysInitIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SysInitIntf.cpp; sourceTree = "<group>"; };
+		EA19330620E8B190002621DB /* UtilStreams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilStreams.h; sourceTree = "<group>"; };
+		EA19330720E8B190002621DB /* FuncStubs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FuncStubs.cpp; sourceTree = "<group>"; };
+		EA19330820E8B190002621DB /* BinaryStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryStream.cpp; sourceTree = "<group>"; };
+		EA19330A20E8B190002621DB /* TouchPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchPoint.h; sourceTree = "<group>"; };
+		EA19330B20E8B190002621DB /* TVPWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVPWindow.h; sourceTree = "<group>"; };
+		EA19330C20E8B190002621DB /* TouchPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchPoint.cpp; sourceTree = "<group>"; };
+		EA19330E20E8B190002621DB /* WaveLoopManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveLoopManager.h; sourceTree = "<group>"; };
+		EA19330F20E8B190002621DB /* PhaseVocoderFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhaseVocoderFilter.cpp; sourceTree = "<group>"; };
+		EA19331020E8B190002621DB /* SoundBufferBaseIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundBufferBaseIntf.cpp; sourceTree = "<group>"; };
+		EA19331120E8B190002621DB /* SoundBufferBaseImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundBufferBaseImpl.cpp; sourceTree = "<group>"; };
+		EA19331220E8B190002621DB /* PhaseVocoderDSP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhaseVocoderDSP.cpp; sourceTree = "<group>"; };
+		EA19331320E8B190002621DB /* WaveSegmentQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveSegmentQueue.h; sourceTree = "<group>"; };
+		EA19331420E8B190002621DB /* WaveSegmentQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaveSegmentQueue.cpp; sourceTree = "<group>"; };
+		EA19331520E8B190002621DB /* SoundBufferBaseIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundBufferBaseIntf.h; sourceTree = "<group>"; };
+		EA19331620E8B190002621DB /* SoundBufferBaseImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundBufferBaseImpl.h; sourceTree = "<group>"; };
+		EA19331720E8B190002621DB /* RealFFT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RealFFT.cpp; sourceTree = "<group>"; };
+		EA19331820E8B190002621DB /* sdlWaveImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlWaveImpl.cpp; sourceTree = "<group>"; };
+		EA19331920E8B190002621DB /* RealFFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealFFT.h; sourceTree = "<group>"; };
+		EA19331A20E8B190002621DB /* PhaseVocoderFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhaseVocoderFilter.h; sourceTree = "<group>"; };
+		EA19331B20E8B190002621DB /* WaveFormatConverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaveFormatConverter.cpp; sourceTree = "<group>"; };
+		EA19331C20E8B190002621DB /* WaveImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveImpl.h; sourceTree = "<group>"; };
+		EA19331D20E8B190002621DB /* PhaseVocoderDSP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhaseVocoderDSP.h; sourceTree = "<group>"; };
+		EA19331E20E8B190002621DB /* WaveIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveIntf.h; sourceTree = "<group>"; };
+		EA19331F20E8B190002621DB /* MathAlgorithms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MathAlgorithms.cpp; sourceTree = "<group>"; };
+		EA19332020E8B190002621DB /* MathAlgorithms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathAlgorithms.h; sourceTree = "<group>"; };
+		EA19332120E8B190002621DB /* WaveLoopManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaveLoopManager.cpp; sourceTree = "<group>"; };
+		EA19332220E8B190002621DB /* RingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingBuffer.h; sourceTree = "<group>"; };
+		EA19332420E8B190002621DB /* WaveIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaveIntf.cpp; sourceTree = "<group>"; };
+		EA19348920E8B1B8002621DB /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Application.cpp; path = ../../src/Application.cpp; sourceTree = "<group>"; };
+		EA19348B20E8B280002621DB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../main.cpp; sourceTree = "<group>"; };
 		EA1F246820E5F5C100BD563F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EA2F80A620E66F49003378DF /* ffvideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ffvideo.cpp; sourceTree = "<group>"; };
 		EA2F80A720E66F49003378DF /* SOIL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOIL.h; sourceTree = "<group>"; };
@@ -135,6 +612,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1930B120E8B010002621DB /* libfreetyped.a in Frameworks */,
+				EA1930B220E8B010002621DB /* libonig.a in Frameworks */,
+				EA1930AE20E8AED0002621DB /* libpng.a in Frameworks */,
 				EAA36D2F20E8030A00A4BD78 /* libavcodec.a in Frameworks */,
 				EAA36D2C20E7CC6600A4BD78 /* OpenAL.framework in Frameworks */,
 				EAA36D2A20E7CB1000A4BD78 /* libiconv.2.4.0.tbd in Frameworks */,
@@ -192,6 +672,20 @@
 		29B97315FDCFA39411CA2CEA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EA19348B20E8B280002621DB /* main.cpp */,
+				EA19348920E8B1B8002621DB /* Application.cpp */,
+				EA1932E820E8B190002621DB /* base */,
+				EA19318A20E8B18F002621DB /* core */,
+				EA19330920E8B190002621DB /* environ */,
+				EA19317020E8B18F002621DB /* extension */,
+				EA1931B620E8B18F002621DB /* movie */,
+				EA1930FC20E8B18E002621DB /* objects */,
+				EA1931C120E8B18F002621DB /* plugins */,
+				EA19318E20E8B18F002621DB /* sdl */,
+				EA19330D20E8B190002621DB /* sound */,
+				EA1930FF20E8B18E002621DB /* tjs2 */,
+				EA19317320E8B18F002621DB /* utils */,
+				EA1930B320E8B18E002621DB /* visual */,
 				EA2F80A520E66F49003378DF /* sdl */,
 				EAD4825A20E6005F0015AE5E /* core */,
 			);
@@ -203,6 +697,7 @@
 			children = (
 				EAFCB15520E6A026003A1736 /* test0.png */,
 				EAA36D2D20E7DA8200A4BD78 /* 01_01_d.mpg */,
+				EA1930AB20E87A6C002621DB /* 06_04_d.mpg */,
 				FD77A07E0E26BDA900F39101 /* Default.png */,
 				EAA36D1320E7C11D00A4BD78 /* a0001.ogg */,
 				FD77A07C0E26BD8C00F39101 /* Icon.png */,
@@ -214,6 +709,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA1930AF20E8B00F002621DB /* libfreetyped.a */,
+				EA1930B020E8B00F002621DB /* libonig.a */,
+				EA1930AD20E8AED0002621DB /* libpng.a */,
 				EAA36D2B20E7CC6600A4BD78 /* OpenAL.framework */,
 				EAA36D2920E7CB1000A4BD78 /* libiconv.2.4.0.tbd */,
 				EAA36D2720E7CB0000A4BD78 /* CoreVideo.framework */,
@@ -244,6 +742,519 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA1930B320E8B18E002621DB /* visual */ = {
+			isa = PBXGroup;
+			children = (
+				EA1930B420E8B18E002621DB /* BitmapIntf.cpp */,
+				EA1930B520E8B18E002621DB /* ResampleImage.cpp */,
+				EA1930B620E8B18E002621DB /* video */,
+				EA1930B720E8B18E002621DB /* WindowImpl.cpp */,
+				EA1930B820E8B18E002621DB /* WindowIntf.cpp */,
+				EA1930B920E8B18E002621DB /* WindowImpl.h */,
+				EA1930BA20E8B18E002621DB /* drawable.h */,
+				EA1930BB20E8B18E002621DB /* LoadPNG.cpp */,
+				EA1930BC20E8B18E002621DB /* WindowIntf.h */,
+				EA1930BD20E8B18E002621DB /* LayerIntf.cpp */,
+				EA1930BE20E8B18E002621DB /* FontSystem.cpp */,
+				EA1930BF20E8B18E002621DB /* BitmapBitsAlloc.cpp */,
+				EA1930C020E8B18E002621DB /* RectItf.h */,
+				EA1930C120E8B18E002621DB /* LayerImpl.cpp */,
+				EA1930C220E8B18E002621DB /* LayerManager.cpp */,
+				EA1930C320E8B18E002621DB /* GraphicsLoaderImpl.cpp */,
+				EA1930C420E8B18E002621DB /* TransIntf.h */,
+				EA1930C520E8B18E002621DB /* GraphicsLoaderIntf.cpp */,
+				EA1930C620E8B18E002621DB /* WeightFunctor.h */,
+				EA1930C720E8B18E002621DB /* FreeType.cpp */,
+				EA1930C820E8B18E002621DB /* FreeTypeFontRasterizer.h */,
+				EA1930C920E8B18E002621DB /* BitmapIntf.h */,
+				EA1930CA20E8B18E002621DB /* FontSystem.h */,
+				EA1930CB20E8B18E002621DB /* FreeTypeFontRasterizer.cpp */,
+				EA1930CC20E8B18E002621DB /* LayerTreeOwnerImpl.h */,
+				EA1930CD20E8B18E002621DB /* LayerImpl.h */,
+				EA1930CE20E8B18E002621DB /* BitmapLayerTreeOwner.cpp */,
+				EA1930CF20E8B18E002621DB /* LayerIntf.h */,
+				EA1930D020E8B18E002621DB /* LayerTreeOwnerImpl.cpp */,
+				EA1930D120E8B18E002621DB /* LayerTreeOwner.h */,
+				EA1930D220E8B18E002621DB /* ComplexRect.h */,
+				EA1930D320E8B18E002621DB /* tvpgl.h */,
+				EA1930D420E8B18E002621DB /* PrerenderedFont.cpp */,
+				EA1930D520E8B18E002621DB /* CharacterData.h */,
+				EA1930D620E8B18E002621DB /* FreeType.h */,
+				EA1930D720E8B18E002621DB /* LayerBitmapIntf.h */,
+				EA1930D820E8B18E002621DB /* LayerBitmapImpl.h */,
+				EA1930D920E8B18E002621DB /* FontRasterizer.h */,
+				EA1930DA20E8B18E002621DB /* BitmapLayerTreeOwner.h */,
+				EA1930DB20E8B18E002621DB /* ResampleImage.h */,
+				EA1930DC20E8B18E002621DB /* PrerenderedFont.h */,
+				EA1930DD20E8B18E002621DB /* GraphicsLoaderIntf.h */,
+				EA1930DE20E8B18E002621DB /* GraphicsLoaderImpl.h */,
+				EA1930DF20E8B18E002621DB /* BitmapInfomation.cpp */,
+				EA1930E020E8B18E002621DB /* sdl */,
+				EA1930EB20E8B18E002621DB /* tvpinputdefs.h */,
+				EA1930EC20E8B18E002621DB /* LayerManager.h */,
+				EA1930ED20E8B18E002621DB /* BitmapInfomation.h */,
+				EA1930EE20E8B18E002621DB /* WeightFunctor.cpp */,
+				EA1930EF20E8B18E002621DB /* ComplexRect.cpp */,
+				EA1930F020E8B18E002621DB /* CharacterData.cpp */,
+				EA1930F120E8B18E002621DB /* LayerBitmapImpl.cpp */,
+				EA1930F220E8B18E002621DB /* LayerBitmapIntf.cpp */,
+				EA1930F320E8B18E002621DB /* tvpfontstruc.h */,
+				EA1930F420E8B18E002621DB /* ResampleImageInternal.h */,
+				EA1930F520E8B18E002621DB /* FreeTypeFace.h */,
+				EA1930F620E8B18E002621DB /* BitmapBitsAlloc.h */,
+				EA1930F720E8B18E002621DB /* TransIntf.cpp */,
+				EA1930F820E8B18E002621DB /* argb.h */,
+				EA1930F920E8B18E002621DB /* tvpgl.c */,
+				EA1930FA20E8B18E002621DB /* RectItf.cpp */,
+				EA1930FB20E8B18E002621DB /* transhandler.h */,
+			);
+			name = visual;
+			path = ../../src/visual;
+			sourceTree = "<group>";
+		};
+		EA1930B620E8B18E002621DB /* video */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = video;
+			sourceTree = "<group>";
+		};
+		EA1930E020E8B18E002621DB /* sdl */ = {
+			isa = PBXGroup;
+			children = (
+				EA1930E120E8B18E002621DB /* DrawDevice.cpp */,
+				EA1930E220E8B18E002621DB /* blend_variation.h */,
+				EA1930E320E8B18E002621DB /* blend_util_func.h */,
+				EA1930E420E8B18E002621DB /* TVPColor.h */,
+				EA1930E520E8B18E002621DB /* BasicDrawDevice.cpp */,
+				EA1930E620E8B18E002621DB /* DrawDevice.h */,
+				EA1930E720E8B18E002621DB /* blend_function.cpp */,
+				EA1930E820E8B18E002621DB /* blend_functor_c.h */,
+				EA1930E920E8B18E002621DB /* tvpgl_mathutil.h */,
+				EA1930EA20E8B18E002621DB /* BasicDrawDevice.h */,
+			);
+			path = sdl;
+			sourceTree = "<group>";
+		};
+		EA1930FC20E8B18E002621DB /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				EA1930FD20E8B18E002621DB /* DebugIntf.cpp */,
+				EA1930FE20E8B18E002621DB /* DebugIntf.h */,
+			);
+			name = objects;
+			path = ../../src/objects;
+			sourceTree = "<group>";
+		};
+		EA1930FF20E8B18E002621DB /* tjs2 */ = {
+			isa = PBXGroup;
+			children = (
+				EA19310020E8B18E002621DB /* tjsDebug.cpp */,
+				EA19310120E8B18E002621DB /* tjsScriptBlock.h */,
+				EA19310220E8B18E002621DB /* tjsScriptBlock.cpp */,
+				EA19310320E8B18E002621DB /* tjsArray.h */,
+				EA19310420E8B18E002621DB /* tjsConstArrayData.cpp */,
+				EA19310520E8B18E002621DB /* tjsException.h */,
+				EA19310620E8B18E002621DB /* tjsVariantString.h */,
+				EA19310720E8B18E002621DB /* tjsBinarySerializer.h */,
+				EA19310820E8B18E002621DB /* tjspp.tab.hpp */,
+				EA19310920E8B18E002621DB /* tjsCompileControl.cpp */,
+				EA19310A20E8B18E002621DB /* tjsArray.cpp */,
+				EA19310B20E8B18E002621DB /* tjsInterCodeExec.h */,
+				EA19310C20E8B18E002621DB /* tjsConfig.h */,
+				EA19310D20E8B18E002621DB /* tjsNative.h */,
+				EA19310E20E8B18E002621DB /* tjsRegExp.cpp */,
+				EA19310F20E8B18E002621DB /* tjsDateParser.cpp */,
+				EA19311020E8B18E002621DB /* tjsDisassemble.cpp */,
+				EA19311120E8B18E002621DB /* tjsCompileControl.h */,
+				EA19311220E8B18E002621DB /* tjsGlobalStringMap.cpp */,
+				EA19311320E8B18E002621DB /* msg */,
+				EA19311C20E8B18E002621DB /* tjsLex.cpp */,
+				EA19311D20E8B18E002621DB /* tjsDateWordMap.cc */,
+				EA19311E20E8B18E002621DB /* tjsMT19937ar-cok.cpp */,
+				EA19311F20E8B18E002621DB /* tjs.tab.hpp */,
+				EA19312020E8B18E002621DB /* tjsMT19937ar-cok.h */,
+				EA19312120E8B18E002621DB /* tjsInterface.cpp */,
+				EA19312220E8B18E002621DB /* tjsObject.cpp */,
+				EA19312320E8B18E002621DB /* tjsOctPack.cpp */,
+				EA19312420E8B18E002621DB /* tjsLex.h */,
+				EA19312520E8B18E002621DB /* tjsVariant.h */,
+				EA19312620E8B18E002621DB /* tjsInterface.h */,
+				EA19312720E8B18E002621DB /* tjsDate.cpp */,
+				EA19312820E8B18E002621DB /* tjsObjectExtendable.h */,
+				EA19312920E8B18E002621DB /* tjsMath.cpp */,
+				EA19312A20E8B18E002621DB /* tjsVariantString.cpp */,
+				EA19312B20E8B18E002621DB /* tjsDateParser.h */,
+				EA19312C20E8B18E002621DB /* utils */,
+				EA19313220E8B18E002621DB /* tjsString.cpp */,
+				EA19313320E8B18E002621DB /* tjsByteCodeLoader.h */,
+				EA19313420E8B18E002621DB /* tjsErrorInc.h */,
+				EA19313520E8B18E002621DB /* tjsMath.h */,
+				EA19313620E8B18E002621DB /* tjsVariant.cpp */,
+				EA19313720E8B18E002621DB /* tjsdate.tab.hpp */,
+				EA19313820E8B18E002621DB /* tjsOctPack.h */,
+				EA19313920E8B18E002621DB /* tjs.tab.cpp */,
+				EA19313A20E8B18E002621DB /* tjsBinarySerializer.cpp */,
+				EA19313B20E8B18E002621DB /* tjsTypes.h */,
+				EA19313C20E8B18E002621DB /* tjsNative.cpp */,
+				EA19313D20E8B18E002621DB /* tjsDictionary.cpp */,
+				EA19313E20E8B18E002621DB /* tjsDate.h */,
+				EA19313F20E8B18E002621DB /* tjsErrorDefs.h */,
+				EA19314020E8B18E002621DB /* tjsDictionary.h */,
+				EA19314120E8B18E002621DB /* tjsInterCodeExec.cpp */,
+				EA19314220E8B18E002621DB /* tjsUtils.h */,
+				EA19314320E8B18E002621DB /* tjsInterCodeGen.h */,
+				EA19314420E8B18E002621DB /* tjsError.h */,
+				EA19314520E8B18E002621DB /* tjsObject.h */,
+				EA19314620E8B18E002621DB /* tjsUtils.cpp */,
+				EA19314720E8B18E002621DB /* tjsDebug.h */,
+				EA19314820E8B18E002621DB /* tjsRandomGenerator.h */,
+				EA19314920E8B18E002621DB /* tjsConfig.cpp */,
+				EA19314A20E8B18E002621DB /* tjsNamespace.cpp */,
+				EA19314B20E8B18E002621DB /* tjsdate.tab.cpp */,
+				EA19314C20E8B18E002621DB /* tjsNamespace.h */,
+				EA19314D20E8B18E002621DB /* tjsHashSearch.h */,
+				EA19314E20E8B18E002621DB /* tjsConstArrayData.h */,
+				EA19314F20E8B18E002621DB /* tjsByteCodeLoader.cpp */,
+				EA19315020E8B18E002621DB /* tjsScriptCache.cpp */,
+				EA19315120E8B18E002621DB /* tjsCommHead.h */,
+				EA19315220E8B18E002621DB /* tjsMessage.h */,
+				EA19315320E8B18E002621DB /* tjspp.tab.cpp */,
+				EA19316120E8B18F002621DB /* tjsObjectExtendable.cpp */,
+				EA19316220E8B18F002621DB /* tjs.cpp */,
+				EA19316320E8B18F002621DB /* tjsMessage.cpp */,
+				EA19316420E8B18F002621DB /* tjs.h */,
+				EA19316520E8B18F002621DB /* tjsScriptCache.h */,
+				EA19316620E8B18F002621DB /* tjsError.cpp */,
+				EA19316720E8B18F002621DB /* tjsString.h */,
+				EA19316820E8B18F002621DB /* tjsGlobalStringMap.h */,
+				EA19316920E8B18F002621DB /* base */,
+				EA19316C20E8B18F002621DB /* tjsException.cpp */,
+				EA19316D20E8B18F002621DB /* tjsInterCodeGen.cpp */,
+				EA19316E20E8B18F002621DB /* tjsRegExp.h */,
+				EA19316F20E8B18F002621DB /* tjsRandomGenerator.cpp */,
+			);
+			name = tjs2;
+			path = ../../src/tjs2;
+			sourceTree = "<group>";
+		};
+		EA19311320E8B18E002621DB /* msg */ = {
+			isa = PBXGroup;
+			children = (
+				EA19311420E8B18E002621DB /* string_table_resource.h */,
+				EA19311520E8B18E002621DB /* MsgIntfInc.h */,
+				EA19311620E8B18E002621DB /* MsgImpl.cpp */,
+				EA19311720E8B18E002621DB /* MsgIntf.cpp */,
+				EA19311820E8B18E002621DB /* string_table.cpp */,
+				EA19311920E8B18E002621DB /* MsgImpl.h */,
+				EA19311A20E8B18E002621DB /* MsgIntf.h */,
+				EA19311B20E8B18E002621DB /* MsgLoad.cpp */,
+			);
+			path = msg;
+			sourceTree = "<group>";
+		};
+		EA19312C20E8B18E002621DB /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				EA19312D20E8B18E002621DB /* uni_cp932.h */,
+				EA19312E20E8B18E002621DB /* ApplicationSpecialPath.h */,
+				EA19312F20E8B18E002621DB /* uni_cp932.cpp */,
+				EA19313020E8B18E002621DB /* cp932_uni.h */,
+				EA19313120E8B18E002621DB /* cp932_uni.cpp */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		EA19316920E8B18F002621DB /* base */ = {
+			isa = PBXGroup;
+			children = (
+				EA19316A20E8B18F002621DB /* CharacterSet.cpp */,
+				EA19316B20E8B18F002621DB /* CharacterSet.h */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		EA19317020E8B18F002621DB /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				EA19317120E8B18F002621DB /* Extension.cpp */,
+				EA19317220E8B18F002621DB /* Extension.h */,
+			);
+			name = extension;
+			path = ../../src/extension;
+			sourceTree = "<group>";
+		};
+		EA19317320E8B18F002621DB /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				EA19317420E8B18F002621DB /* ThreadImpl.cpp */,
+				EA19317520E8B18F002621DB /* ThreadIntf.cpp */,
+				EA19317620E8B18F002621DB /* utils.h */,
+				EA19317720E8B18F002621DB /* utils.cpp */,
+				EA19317820E8B18F002621DB /* ObjectList.h */,
+				EA19317920E8B18F002621DB /* Random.cpp */,
+				EA19317A20E8B18F002621DB /* md5.h */,
+				EA19317B20E8B18F002621DB /* FilePathUtil.h */,
+				EA19317C20E8B18F002621DB /* StringUtil.h */,
+				EA19317D20E8B18F002621DB /* TVPTimer.h */,
+				EA19317E20E8B18F002621DB /* TimerImpl.cpp */,
+				EA19317F20E8B18F002621DB /* TimerIntf.cpp */,
+				EA19318020E8B18F002621DB /* win_def.h */,
+				EA19318120E8B18F002621DB /* MiscUtility.cpp */,
+				EA19318220E8B18F002621DB /* md5.c */,
+				EA19318320E8B18F002621DB /* ThreadIntf.h */,
+				EA19318420E8B18F002621DB /* ThreadImpl.h */,
+				EA19318520E8B18F002621DB /* TimerImpl.h */,
+				EA19318620E8B18F002621DB /* TimerIntf.h */,
+				EA19318720E8B18F002621DB /* Exception.h */,
+				EA19318820E8B18F002621DB /* Random.h */,
+				EA19318920E8B18F002621DB /* TVPTimer.cpp */,
+			);
+			name = utils;
+			path = ../../src/utils;
+			sourceTree = "<group>";
+		};
+		EA19318A20E8B18F002621DB /* core */ = {
+			isa = PBXGroup;
+			children = (
+				EA19318B20E8B18F002621DB /* test.cpp */,
+				EA19318C20E8B18F002621DB /* stb_image.h */,
+				EA19318D20E8B18F002621DB /* main.c */,
+			);
+			name = core;
+			path = ../../src/core;
+			sourceTree = "<group>";
+		};
+		EA19318E20E8B18F002621DB /* sdl */ = {
+			isa = PBXGroup;
+			children = (
+				EA19318F20E8B18F002621DB /* ffvideo.cpp */,
+				EA19319020E8B18F002621DB /* SOIL.h */,
+				EA19319120E8B18F002621DB /* gltexture.cpp */,
+				EA19319220E8B18F002621DB /* safeQueue.hpp */,
+				EA19319320E8B18F002621DB /* load_bmp.cpp */,
+				EA19319420E8B18F002621DB /* alDevice.hpp */,
+				EA19319520E8B18F002621DB /* imgbuf.h */,
+				EA19319620E8B18F002621DB /* SDLWindow.cpp */,
+				EA19319720E8B18F002621DB /* sdlinit.cpp */,
+				EA19319820E8B18F002621DB /* GLDevice.cpp */,
+				EA19319920E8B18F002621DB /* sdlEvent.hpp */,
+				EA19319B20E8B18F002621DB /* sdlAudio.cpp */,
+				EA19319E20E8B18F002621DB /* alObjects.cpp */,
+				EA19319F20E8B18F002621DB /* sdlAudio.hpp */,
+				EA1931A020E8B18F002621DB /* GL */,
+				EA1931A520E8B18F002621DB /* shaders.hpp */,
+				EA1931A620E8B18F002621DB /* ffmpegDecode.cpp */,
+				EA1931A720E8B18F002621DB /* alObjects.hpp */,
+				EA1931A820E8B18F002621DB /* shader */,
+				EA1931AE20E8B18F002621DB /* ffvideo.hpp */,
+				EA1931B020E8B18F002621DB /* gltexture.hpp */,
+				EA1931B120E8B18F002621DB /* alDevice.cpp */,
+				EA1931B220E8B18F002621DB /* ffStream.hpp */,
+				EA1931B320E8B18F002621DB /* SDLWindow.hpp */,
+				EA1931B420E8B18F002621DB /* GLDevice.hpp */,
+				EA1931B520E8B18F002621DB /* sdlEvent.cpp */,
+			);
+			name = sdl;
+			path = ../../src/sdl;
+			sourceTree = "<group>";
+		};
+		EA1931A020E8B18F002621DB /* GL */ = {
+			isa = PBXGroup;
+			children = (
+				EA1931A120E8B18F002621DB /* glxew.h */,
+				EA1931A220E8B18F002621DB /* eglew.h */,
+				EA1931A320E8B18F002621DB /* wglew.h */,
+				EA1931A420E8B18F002621DB /* glew.h */,
+			);
+			path = GL;
+			sourceTree = "<group>";
+		};
+		EA1931A820E8B18F002621DB /* shader */ = {
+			isa = PBXGroup;
+			children = (
+				EA1931A920E8B18F002621DB /* simple_es_vs.glsl */,
+				EA1931AA20E8B18F002621DB /* simple_fs.glsl */,
+				EA1931AB20E8B18F002621DB /* simple_es_fs.glsl */,
+				EA1931AC20E8B18F002621DB /* gen_shaders.py */,
+				EA1931AD20E8B18F002621DB /* simple_vs.glsl */,
+			);
+			path = shader;
+			sourceTree = "<group>";
+		};
+		EA1931B620E8B18F002621DB /* movie */ = {
+			isa = PBXGroup;
+			children = (
+				EA1931B720E8B18F002621DB /* VideoOvlIntf.h */,
+				EA1931B820E8B18F002621DB /* VideoOvlImpl.h */,
+				EA1931B920E8B18F002621DB /* TVPVideoOverlay.h */,
+				EA1931BA20E8B18F002621DB /* VideoOvlIntf.cpp */,
+				EA1931BB20E8B18F002621DB /* VideoOvlImpl.cpp */,
+				EA1931BC20E8B18F002621DB /* FFVideoOverlay.cpp */,
+				EA1931BD20E8B18F002621DB /* voMode.h */,
+				EA1931BE20E8B18F002621DB /* krmovie.h */,
+				EA1931BF20E8B18F002621DB /* FFVideoOverlay.hpp */,
+				EA1931C020E8B18F002621DB /* TVPVideoOverlay.cpp */,
+			);
+			name = movie;
+			path = ../../src/movie;
+			sourceTree = "<group>";
+		};
+		EA1931C120E8B18F002621DB /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				EA1931C220E8B18F002621DB /* ncbind */,
+				EA19320220E8B18F002621DB /* layerExSave */,
+				EA19325C20E8B18F002621DB /* KAGParser */,
+				EA19329C20E8B190002621DB /* menu */,
+				EA1932E620E8B190002621DB /* tp_stub.h */,
+				EA1932E720E8B190002621DB /* tp_stub.cpp */,
+			);
+			name = plugins;
+			path = ../../src/plugins;
+			sourceTree = "<group>";
+		};
+		EA1931C220E8B18F002621DB /* ncbind */ = {
+			isa = PBXGroup;
+			children = (
+				EA1931C520E8B18F002621DB /* ncbind.hpp */,
+				EA1931C720E8B18F002621DB /* ncb_foreach.h */,
+				EA1931C920E8B18F002621DB /* ncb_invoke.hpp */,
+				EA19320120E8B18F002621DB /* ncbind.cpp */,
+			);
+			path = ncbind;
+			sourceTree = "<group>";
+		};
+		EA19320220E8B18F002621DB /* layerExSave */ = {
+			isa = PBXGroup;
+			children = (
+				EA19320920E8B18F002621DB /* utils.cpp */,
+				EA19320B20E8B18F002621DB /* savetlg5.hpp */,
+				EA19320C20E8B18F002621DB /* compress.hpp */,
+				EA19320D20E8B18F002621DB /* savepng.cpp */,
+				EA19321820E8B18F002621DB /* savepng.hpp */,
+				EA19321B20E8B18F002621DB /* LodePNG */,
+				EA19325520E8B18F002621DB /* utils.hpp */,
+				EA19325620E8B18F002621DB /* savetlg5.cpp */,
+				EA19325B20E8B18F002621DB /* Main.cpp */,
+			);
+			path = layerExSave;
+			sourceTree = "<group>";
+		};
+		EA19321B20E8B18F002621DB /* LodePNG */ = {
+			isa = PBXGroup;
+			children = (
+				EA19321C20E8B18F002621DB /* lodepng.h */,
+				EA19321D20E8B18F002621DB /* lodepng.cpp */,
+			);
+			path = LodePNG;
+			sourceTree = "<group>";
+		};
+		EA19325C20E8B18F002621DB /* KAGParser */ = {
+			isa = PBXGroup;
+			children = (
+				EA19325D20E8B18F002621DB /* KAGParser.h */,
+				EA19325F20E8B18F002621DB /* KAGParser.cpp */,
+				EA19326720E8B18F002621DB /* tjsHashSearch.h */,
+				EA19329B20E8B190002621DB /* Main.cpp */,
+			);
+			path = KAGParser;
+			sourceTree = "<group>";
+		};
+		EA19329C20E8B190002621DB /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				EA19329D20E8B190002621DB /* MenuItemIntf.h */,
+				EA19329F20E8B190002621DB /* WindowMenu.cpp */,
+				EA1932A020E8B190002621DB /* MenuItemIntf.cpp */,
+				EA1932A120E8B190002621DB /* ObjectList.h */,
+				EA1932A220E8B190002621DB /* WindowMenu.h */,
+				EA1932E220E8B190002621DB /* Main.cpp */,
+			);
+			path = menu;
+			sourceTree = "<group>";
+		};
+		EA1932E820E8B190002621DB /* base */ = {
+			isa = PBXGroup;
+			children = (
+				EA1932E920E8B190002621DB /* TextStream.cpp */,
+				EA1932EA20E8B190002621DB /* SystemImpl.cpp */,
+				EA1932EB20E8B190002621DB /* SystemIntf.cpp */,
+				EA1932EC20E8B190002621DB /* SystemImpl.h */,
+				EA1932ED20E8B190002621DB /* UtilStreams.cpp */,
+				EA1932EE20E8B190002621DB /* SystemIntf.h */,
+				EA1932EF20E8B190002621DB /* FuncStubs.h */,
+				EA1932F020E8B190002621DB /* StorageIntf.cpp */,
+				EA1932F120E8B190002621DB /* StorageImpl.cpp */,
+				EA1932F220E8B190002621DB /* XP3Archive.cpp */,
+				EA1932F320E8B190002621DB /* PluginIntf.h */,
+				EA1932F420E8B190002621DB /* PluginIntf.cpp */,
+				EA1932F520E8B190002621DB /* StaticPluginImpl.cpp */,
+				EA1932F620E8B190002621DB /* NativeEventQueue.cpp */,
+				EA1932F720E8B190002621DB /* NativeEventQueue.h */,
+				EA1932F820E8B190002621DB /* EventIntf.h */,
+				EA1932F920E8B190002621DB /* EventImpl.h */,
+				EA1932FA20E8B190002621DB /* BinaryStream.h */,
+				EA1932FB20E8B190002621DB /* ScriptMgnIntf.cpp */,
+				EA1932FC20E8B190002621DB /* EventIntf.cpp */,
+				EA1932FD20E8B190002621DB /* SysInitIntf.h */,
+				EA1932FE20E8B190002621DB /* EventImpl.cpp */,
+				EA1932FF20E8B190002621DB /* TextStream.h */,
+				EA19330020E8B190002621DB /* StorageImpl.h */,
+				EA19330120E8B190002621DB /* StorageIntf.h */,
+				EA19330220E8B190002621DB /* StaticPluginImpl.h */,
+				EA19330320E8B190002621DB /* XP3Archive.h */,
+				EA19330420E8B190002621DB /* ScriptMgnIntf.h */,
+				EA19330520E8B190002621DB /* SysInitIntf.cpp */,
+				EA19330620E8B190002621DB /* UtilStreams.h */,
+				EA19330720E8B190002621DB /* FuncStubs.cpp */,
+				EA19330820E8B190002621DB /* BinaryStream.cpp */,
+			);
+			name = base;
+			path = ../../src/base;
+			sourceTree = "<group>";
+		};
+		EA19330920E8B190002621DB /* environ */ = {
+			isa = PBXGroup;
+			children = (
+				EA19330A20E8B190002621DB /* TouchPoint.h */,
+				EA19330B20E8B190002621DB /* TVPWindow.h */,
+				EA19330C20E8B190002621DB /* TouchPoint.cpp */,
+			);
+			name = environ;
+			path = ../../src/environ;
+			sourceTree = "<group>";
+		};
+		EA19330D20E8B190002621DB /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				EA19330E20E8B190002621DB /* WaveLoopManager.h */,
+				EA19330F20E8B190002621DB /* PhaseVocoderFilter.cpp */,
+				EA19331020E8B190002621DB /* SoundBufferBaseIntf.cpp */,
+				EA19331120E8B190002621DB /* SoundBufferBaseImpl.cpp */,
+				EA19331220E8B190002621DB /* PhaseVocoderDSP.cpp */,
+				EA19331320E8B190002621DB /* WaveSegmentQueue.h */,
+				EA19331420E8B190002621DB /* WaveSegmentQueue.cpp */,
+				EA19331520E8B190002621DB /* SoundBufferBaseIntf.h */,
+				EA19331620E8B190002621DB /* SoundBufferBaseImpl.h */,
+				EA19331720E8B190002621DB /* RealFFT.cpp */,
+				EA19331820E8B190002621DB /* sdlWaveImpl.cpp */,
+				EA19331920E8B190002621DB /* RealFFT.h */,
+				EA19331A20E8B190002621DB /* PhaseVocoderFilter.h */,
+				EA19331B20E8B190002621DB /* WaveFormatConverter.cpp */,
+				EA19331C20E8B190002621DB /* WaveImpl.h */,
+				EA19331D20E8B190002621DB /* PhaseVocoderDSP.h */,
+				EA19331E20E8B190002621DB /* WaveIntf.h */,
+				EA19331F20E8B190002621DB /* MathAlgorithms.cpp */,
+				EA19332020E8B190002621DB /* MathAlgorithms.h */,
+				EA19332120E8B190002621DB /* WaveLoopManager.cpp */,
+				EA19332220E8B190002621DB /* RingBuffer.h */,
+				EA19332420E8B190002621DB /* WaveIntf.cpp */,
+			);
+			name = sound;
+			path = ../../src/sound;
 			sourceTree = "<group>";
 		};
 		EA2F80A520E66F49003378DF /* sdl */ = {
@@ -363,13 +1374,19 @@
 				EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */,
 				EA2F80F120E66F49003378DF /* simple_es_fs.glsl in Resources */,
 				EA2F80EF20E66F49003378DF /* simple_es_vs.glsl in Resources */,
+				EA19339520E8B190002621DB /* simple_es_vs.glsl in Resources */,
 				EA2F80F020E66F49003378DF /* simple_fs.glsl in Resources */,
+				EA19339720E8B190002621DB /* simple_es_fs.glsl in Resources */,
 				FD77A07D0E26BD8C00F39101 /* Icon.png in Resources */,
 				EAA36D1420E7C11D00A4BD78 /* a0001.ogg in Resources */,
 				FD77A07F0E26BDA900F39101 /* Default.png in Resources */,
 				EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */,
+				EA19339620E8B190002621DB /* simple_fs.glsl in Resources */,
+				EA19339820E8B190002621DB /* gen_shaders.py in Resources */,
+				EA1930AC20E87A6D002621DB /* 06_04_d.mpg in Resources */,
 				945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */,
 				EAA36D2E20E7DA8200A4BD78 /* 01_01_d.mpg in Resources */,
+				EA19339920E8B190002621DB /* simple_vs.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,17 +1397,158 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA19348120E8B191002621DB /* WaveSegmentQueue.cpp in Sources */,
+				EA19338D20E8B190002621DB /* sdlinit.cpp in Sources */,
+				EA19347C20E8B191002621DB /* TouchPoint.cpp in Sources */,
+				EA19338420E8B190002621DB /* MiscUtility.cpp in Sources */,
+				EA19335F20E8B190002621DB /* tjsNative.cpp in Sources */,
+				EA19337F20E8B190002621DB /* ThreadIntf.cpp in Sources */,
+				EA19337A20E8B190002621DB /* tjsException.cpp in Sources */,
+				EA19335E20E8B190002621DB /* tjsBinarySerializer.cpp in Sources */,
+				EA19333B20E8B190002621DB /* ComplexRect.cpp in Sources */,
+				EA19348A20E8B1B8002621DB /* Application.cpp in Sources */,
+				EA19333220E8B190002621DB /* FreeTypeFontRasterizer.cpp in Sources */,
+				EA19334B20E8B190002621DB /* tjsGlobalStringMap.cpp in Sources */,
+				EA19348820E8B191002621DB /* WaveIntf.cpp in Sources */,
+				EA19338820E8B190002621DB /* main.c in Sources */,
+				EA19339B20E8B190002621DB /* alDevice.cpp in Sources */,
+				EA19334C20E8B190002621DB /* MsgImpl.cpp in Sources */,
+				EA19348020E8B191002621DB /* PhaseVocoderDSP.cpp in Sources */,
+				EA19347E20E8B191002621DB /* SoundBufferBaseIntf.cpp in Sources */,
 				EAA36D1620E7C17C00A4BD78 /* ffvideo.cpp in Sources */,
+				EA19334820E8B190002621DB /* tjsRegExp.cpp in Sources */,
+				EA19337B20E8B190002621DB /* tjsInterCodeGen.cpp in Sources */,
+				EA19335D20E8B190002621DB /* tjs.tab.cpp in Sources */,
+				EA19333120E8B190002621DB /* FreeType.cpp in Sources */,
+				EA19335320E8B190002621DB /* tjsInterface.cpp in Sources */,
+				EA19335620E8B190002621DB /* tjsDate.cpp in Sources */,
+				EA19334620E8B190002621DB /* tjsCompileControl.cpp in Sources */,
+				EA19336720E8B190002621DB /* tjsScriptCache.cpp in Sources */,
+				EA19337720E8B190002621DB /* tjsMessage.cpp in Sources */,
+				EA19346920E8B191002621DB /* Main.cpp in Sources */,
+				EA19348520E8B191002621DB /* MathAlgorithms.cpp in Sources */,
+				EA19332D20E8B190002621DB /* LayerImpl.cpp in Sources */,
+				EA19332B20E8B190002621DB /* FontSystem.cpp in Sources */,
+				EA19348420E8B191002621DB /* WaveFormatConverter.cpp in Sources */,
+				EA19332920E8B190002621DB /* LoadPNG.cpp in Sources */,
+				EA19336220E8B190002621DB /* tjsUtils.cpp in Sources */,
+				EA19332520E8B190002621DB /* BitmapIntf.cpp in Sources */,
+				EA19333C20E8B190002621DB /* CharacterData.cpp in Sources */,
+				EA19347F20E8B191002621DB /* SoundBufferBaseImpl.cpp in Sources */,
+				EA19347120E8B191002621DB /* StorageImpl.cpp in Sources */,
+				EA19343A20E8B191002621DB /* MenuItemIntf.cpp in Sources */,
+				EA19333A20E8B190002621DB /* WeightFunctor.cpp in Sources */,
+				EA19347920E8B191002621DB /* SysInitIntf.cpp in Sources */,
+				EA19335B20E8B190002621DB /* tjsString.cpp in Sources */,
+				EA19333420E8B190002621DB /* LayerTreeOwnerImpl.cpp in Sources */,
+				EA19334520E8B190002621DB /* tjsConstArrayData.cpp in Sources */,
+				EA19334920E8B190002621DB /* tjsDateParser.cpp in Sources */,
+				EA19334320E8B190002621DB /* tjsDebug.cpp in Sources */,
+				EA19336120E8B190002621DB /* tjsInterCodeExec.cpp in Sources */,
+				EA1933A020E8B190002621DB /* TVPVideoOverlay.cpp in Sources */,
+				EA19346B20E8B191002621DB /* tp_stub.cpp in Sources */,
+				EA19338520E8B190002621DB /* md5.c in Sources */,
+				EA19339320E8B190002621DB /* alObjects.cpp in Sources */,
+				EA1933D320E8B191002621DB /* utils.cpp in Sources */,
+				EA19338E20E8B190002621DB /* GLDevice.cpp in Sources */,
+				EA19347A20E8B191002621DB /* FuncStubs.cpp in Sources */,
+				EA19335820E8B190002621DB /* tjsVariantString.cpp in Sources */,
 				EA2F80A320E66F2A003378DF /* main.c in Sources */,
+				EA19337D20E8B190002621DB /* Extension.cpp in Sources */,
+				EA19333D20E8B190002621DB /* LayerBitmapImpl.cpp in Sources */,
+				EA19334D20E8B190002621DB /* MsgIntf.cpp in Sources */,
+				EA19332C20E8B190002621DB /* BitmapBitsAlloc.cpp in Sources */,
+				EA19332E20E8B190002621DB /* LayerManager.cpp in Sources */,
+				EA19335920E8B190002621DB /* uni_cp932.cpp in Sources */,
+				EA19347B20E8B191002621DB /* BinaryStream.cpp in Sources */,
+				EA19332620E8B190002621DB /* ResampleImage.cpp in Sources */,
+				EA19338C20E8B190002621DB /* SDLWindow.cpp in Sources */,
+				EA19337820E8B190002621DB /* tjsError.cpp in Sources */,
+				EA19338120E8B190002621DB /* Random.cpp in Sources */,
 				EAA36D1720E7C18D00A4BD78 /* sdlAudio.cpp in Sources */,
+				EA19333920E8B190002621DB /* blend_function.cpp in Sources */,
+				EA19348D20E8C0A5002621DB /* main.cpp in Sources */,
+				EA19336520E8B190002621DB /* tjsdate.tab.cpp in Sources */,
+				EA19348220E8B191002621DB /* RealFFT.cpp in Sources */,
+				EA19337E20E8B190002621DB /* ThreadImpl.cpp in Sources */,
+				EA19339C20E8B190002621DB /* sdlEvent.cpp in Sources */,
+				EA19340B20E8B191002621DB /* Main.cpp in Sources */,
+				EA19346C20E8B191002621DB /* TextStream.cpp in Sources */,
+				EA19347720E8B191002621DB /* EventIntf.cpp in Sources */,
+				EA19333E20E8B190002621DB /* LayerBitmapIntf.cpp in Sources */,
+				EA19338220E8B190002621DB /* TimerImpl.cpp in Sources */,
+				EA19336320E8B190002621DB /* tjsConfig.cpp in Sources */,
+				EA19339420E8B190002621DB /* ffmpegDecode.cpp in Sources */,
+				EA19334E20E8B190002621DB /* string_table.cpp in Sources */,
+				EA19337920E8B190002621DB /* CharacterSet.cpp in Sources */,
+				EA19339F20E8B190002621DB /* FFVideoOverlay.cpp in Sources */,
+				EA19333F20E8B190002621DB /* TransIntf.cpp in Sources */,
+				EA19338620E8B190002621DB /* TVPTimer.cpp in Sources */,
+				EA19336420E8B190002621DB /* tjsNamespace.cpp in Sources */,
+				EA19348320E8B191002621DB /* sdlWaveImpl.cpp in Sources */,
+				EA19336820E8B190002621DB /* tjspp.tab.cpp in Sources */,
+				EA19347520E8B191002621DB /* NativeEventQueue.cpp in Sources */,
+				EA19333720E8B190002621DB /* DrawDevice.cpp in Sources */,
+				EA19335720E8B190002621DB /* tjsMath.cpp in Sources */,
+				EA19339E20E8B190002621DB /* VideoOvlImpl.cpp in Sources */,
+				EA19332720E8B190002621DB /* WindowImpl.cpp in Sources */,
+				EA19347420E8B191002621DB /* StaticPluginImpl.cpp in Sources */,
+				EA19335520E8B190002621DB /* tjsOctPack.cpp in Sources */,
+				EA19338A20E8B190002621DB /* gltexture.cpp in Sources */,
 				EA2F80FE20E685A2003378DF /* sdlinit.cpp in Sources */,
+				EA19346D20E8B191002621DB /* SystemImpl.cpp in Sources */,
+				EA19347820E8B191002621DB /* EventImpl.cpp in Sources */,
+				EA19338020E8B190002621DB /* utils.cpp in Sources */,
+				EA1933E020E8B191002621DB /* lodepng.cpp in Sources */,
+				EA19333820E8B190002621DB /* BasicDrawDevice.cpp in Sources */,
+				EA19338720E8B190002621DB /* test.cpp in Sources */,
+				EA19347620E8B191002621DB /* ScriptMgnIntf.cpp in Sources */,
+				EA19334F20E8B190002621DB /* MsgLoad.cpp in Sources */,
+				EA19334020E8B190002621DB /* tvpgl.c in Sources */,
+				EA19333520E8B190002621DB /* PrerenderedFont.cpp in Sources */,
+				EA19335420E8B190002621DB /* tjsObject.cpp in Sources */,
+				EA19332A20E8B190002621DB /* LayerIntf.cpp in Sources */,
 				EAA36D1920E7C1A500A4BD78 /* alDevice.cpp in Sources */,
 				EAA36D1520E7C17500A4BD78 /* ffmpegDecode.cpp in Sources */,
+				EA19334120E8B190002621DB /* RectItf.cpp in Sources */,
+				EA19334720E8B190002621DB /* tjsArray.cpp in Sources */,
+				EA19346F20E8B191002621DB /* UtilStreams.cpp in Sources */,
 				EA2F80A420E66F2D003378DF /* test.cpp in Sources */,
+				EA19339D20E8B190002621DB /* VideoOvlIntf.cpp in Sources */,
+				EA19348620E8B191002621DB /* WaveLoopManager.cpp in Sources */,
+				EA19347020E8B191002621DB /* StorageIntf.cpp in Sources */,
+				EA19336020E8B190002621DB /* tjsDictionary.cpp in Sources */,
+				EA19333320E8B190002621DB /* BitmapLayerTreeOwner.cpp in Sources */,
+				EA19333620E8B190002621DB /* BitmapInfomation.cpp in Sources */,
+				EA19335C20E8B190002621DB /* tjsVariant.cpp in Sources */,
+				EA1933D520E8B191002621DB /* savepng.cpp in Sources */,
+				EA19346E20E8B191002621DB /* SystemIntf.cpp in Sources */,
+				EA19337520E8B190002621DB /* tjsObjectExtendable.cpp in Sources */,
+				EA19338320E8B190002621DB /* TimerIntf.cpp in Sources */,
 				EA2F80FB20E66FE1003378DF /* gltexture.cpp in Sources */,
+				EA19347D20E8B191002621DB /* PhaseVocoderFilter.cpp in Sources */,
+				EA19332F20E8B190002621DB /* GraphicsLoaderImpl.cpp in Sources */,
+				EA19340D20E8B191002621DB /* KAGParser.cpp in Sources */,
 				EAA36D1820E7C19E00A4BD78 /* alObjects.cpp in Sources */,
 				EA2F80FC20E66FFF003378DF /* GLDevice.cpp in Sources */,
+				EA19343920E8B191002621DB /* WindowMenu.cpp in Sources */,
+				EA19335220E8B190002621DB /* tjsMT19937ar-cok.cpp in Sources */,
+				EA19343720E8B191002621DB /* Main.cpp in Sources */,
+				EA19332820E8B190002621DB /* WindowIntf.cpp in Sources */,
+				EA19334220E8B190002621DB /* DebugIntf.cpp in Sources */,
+				EA19335A20E8B190002621DB /* cp932_uni.cpp in Sources */,
+				EA19334A20E8B190002621DB /* tjsDisassemble.cpp in Sources */,
+				EA19338920E8B190002621DB /* ffvideo.cpp in Sources */,
+				EA19335020E8B190002621DB /* tjsLex.cpp in Sources */,
 				EAA36D1A20E7C1AB00A4BD78 /* sdlEvent.cpp in Sources */,
+				EA19336620E8B190002621DB /* tjsByteCodeLoader.cpp in Sources */,
+				EA19337620E8B190002621DB /* tjs.cpp in Sources */,
+				EA19339020E8B190002621DB /* sdlAudio.cpp in Sources */,
+				EA19347220E8B191002621DB /* XP3Archive.cpp in Sources */,
+				EA19333020E8B190002621DB /* GraphicsLoaderIntf.cpp in Sources */,
+				EA19337C20E8B190002621DB /* tjsRandomGenerator.cpp in Sources */,
+				EA19334420E8B190002621DB /* tjsScriptBlock.cpp in Sources */,
+				EA19347320E8B191002621DB /* PluginIntf.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +1559,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = QZCGQLBGFN;
@@ -420,8 +1580,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tony.mkrkr;
 				PRODUCT_NAME = mkrkr;
-				"SYSTEM_HEADER_SEARCH_PATHS[arch=*]" = /Users/tony/workspace/github/boost_1_67_0;
-				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include";
+				SYSTEM_HEADER_SEARCH_PATHS = "/Users/tony/workspace/github/mkrkr/src/ext_libs_src/freetype-2.9/include /Users/tony/workspace/github/boost_1_67_0\n/Users/tony/workspace/github/boost_1_67_0\n";
+				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/";
 			};
 			name = Debug;
 		};
@@ -429,6 +1589,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = QZCGQLBGFN;
@@ -446,8 +1608,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tony.mkrkr;
 				PRODUCT_NAME = mkrkr;
-				"SYSTEM_HEADER_SEARCH_PATHS[arch=*]" = /Users/tony/workspace/github/boost_1_67_0;
-				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include";
+				SYSTEM_HEADER_SEARCH_PATHS = "/Users/tony/workspace/github/mkrkr/src/ext_libs_src/freetype-2.9/include /Users/tony/workspace/github/boost_1_67_0\n/Users/tony/workspace/github/boost_1_67_0\n";
+				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/";
 			};
 			name = Release;
 		};
@@ -463,6 +1625,7 @@
 				OTHER_CFLAGS = "";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
+				SYSTEM_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = arm64;
 			};
 			name = Debug;
@@ -477,6 +1640,7 @@
 				OTHER_CFLAGS = "";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
+				SYSTEM_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = arm64;
 			};
 			name = Release;
