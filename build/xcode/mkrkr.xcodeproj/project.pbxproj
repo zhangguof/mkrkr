@@ -103,19 +103,12 @@
 		EA19338620E8B190002621DB /* TVPTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19318920E8B18F002621DB /* TVPTimer.cpp */; };
 		EA19338720E8B190002621DB /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19318B20E8B18F002621DB /* test.cpp */; };
 		EA19338820E8B190002621DB /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EA19318D20E8B18F002621DB /* main.c */; };
-		EA19338920E8B190002621DB /* ffvideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19318F20E8B18F002621DB /* ffvideo.cpp */; };
 		EA19338A20E8B190002621DB /* gltexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319120E8B18F002621DB /* gltexture.cpp */; };
 		EA19338C20E8B190002621DB /* SDLWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319620E8B18F002621DB /* SDLWindow.cpp */; };
 		EA19338D20E8B190002621DB /* sdlinit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319720E8B18F002621DB /* sdlinit.cpp */; };
 		EA19338E20E8B190002621DB /* GLDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319820E8B18F002621DB /* GLDevice.cpp */; };
-		EA19339020E8B190002621DB /* sdlAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319B20E8B18F002621DB /* sdlAudio.cpp */; };
 		EA19339320E8B190002621DB /* alObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319E20E8B18F002621DB /* alObjects.cpp */; };
 		EA19339420E8B190002621DB /* ffmpegDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931A620E8B18F002621DB /* ffmpegDecode.cpp */; };
-		EA19339520E8B190002621DB /* simple_es_vs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA1931A920E8B18F002621DB /* simple_es_vs.glsl */; };
-		EA19339620E8B190002621DB /* simple_fs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA1931AA20E8B18F002621DB /* simple_fs.glsl */; };
-		EA19339720E8B190002621DB /* simple_es_fs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA1931AB20E8B18F002621DB /* simple_es_fs.glsl */; };
-		EA19339820E8B190002621DB /* gen_shaders.py in Resources */ = {isa = PBXBuildFile; fileRef = EA1931AC20E8B18F002621DB /* gen_shaders.py */; };
-		EA19339920E8B190002621DB /* simple_vs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA1931AD20E8B18F002621DB /* simple_vs.glsl */; };
 		EA19339B20E8B190002621DB /* alDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931B120E8B18F002621DB /* alDevice.cpp */; };
 		EA19339C20E8B190002621DB /* sdlEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931B520E8B18F002621DB /* sdlEvent.cpp */; };
 		EA19339D20E8B190002621DB /* VideoOvlIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931BA20E8B18F002621DB /* VideoOvlIntf.cpp */; };
@@ -163,27 +156,18 @@
 		EA19348A20E8B1B8002621DB /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19348920E8B1B8002621DB /* Application.cpp */; };
 		EA19348D20E8C0A5002621DB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19348B20E8B280002621DB /* main.cpp */; };
 		EA1F246920E5F5C200BD563F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1F246820E5F5C100BD563F /* AVFoundation.framework */; };
-		EA2F80A320E66F2A003378DF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EAD4825C20E6005F0015AE5E /* main.c */; };
-		EA2F80A420E66F2D003378DF /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD4825B20E6005F0015AE5E /* test.cpp */; };
 		EA2F80EF20E66F49003378DF /* simple_es_vs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80C920E66F49003378DF /* simple_es_vs.glsl */; };
 		EA2F80F020E66F49003378DF /* simple_fs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CA20E66F49003378DF /* simple_fs.glsl */; };
 		EA2F80F120E66F49003378DF /* simple_es_fs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CB20E66F49003378DF /* simple_es_fs.glsl */; };
 		EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CC20E66F49003378DF /* gen_shaders.py */; };
 		EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CD20E66F49003378DF /* simple_vs.glsl */; };
-		EA2F80FB20E66FE1003378DF /* gltexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80A820E66F49003378DF /* gltexture.cpp */; };
-		EA2F80FC20E66FFF003378DF /* GLDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80B120E66F49003378DF /* GLDevice.cpp */; };
-		EA2F80FE20E685A2003378DF /* sdlinit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80B020E66F49003378DF /* sdlinit.cpp */; };
 		EAA36D0C20E7BF5100A4BD78 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0720E7BF5100A4BD78 /* libswresample.a */; };
 		EAA36D0D20E7BF5100A4BD78 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0820E7BF5100A4BD78 /* libavformat.a */; };
 		EAA36D0E20E7BF5100A4BD78 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0920E7BF5100A4BD78 /* libswscale.a */; };
 		EAA36D0F20E7BF5100A4BD78 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0A20E7BF5100A4BD78 /* libavutil.a */; };
 		EAA36D1420E7C11D00A4BD78 /* a0001.ogg in Resources */ = {isa = PBXBuildFile; fileRef = EAA36D1320E7C11D00A4BD78 /* a0001.ogg */; };
-		EAA36D1520E7C17500A4BD78 /* ffmpegDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80C620E66F49003378DF /* ffmpegDecode.cpp */; };
 		EAA36D1620E7C17C00A4BD78 /* ffvideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80A620E66F49003378DF /* ffvideo.cpp */; };
 		EAA36D1720E7C18D00A4BD78 /* sdlAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80B420E66F49003378DF /* sdlAudio.cpp */; };
-		EAA36D1820E7C19E00A4BD78 /* alObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80B920E66F49003378DF /* alObjects.cpp */; };
-		EAA36D1920E7C1A500A4BD78 /* alDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80D220E66F49003378DF /* alDevice.cpp */; };
-		EAA36D1A20E7C1AB00A4BD78 /* sdlEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80D920E66F49003378DF /* sdlEvent.cpp */; };
 		EAA36D1C20E7CA2600A4BD78 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D1B20E7CA2500A4BD78 /* Security.framework */; };
 		EAA36D1E20E7CA4F00A4BD78 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D1D20E7CA4F00A4BD78 /* VideoToolbox.framework */; };
 		EAA36D2020E7CA6A00A4BD78 /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D1F20E7CA6A00A4BD78 /* libbz2.1.0.tbd */; };
@@ -1339,7 +1323,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0930;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = QZCGQLBGFN;
@@ -1374,19 +1358,14 @@
 				EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */,
 				EA2F80F120E66F49003378DF /* simple_es_fs.glsl in Resources */,
 				EA2F80EF20E66F49003378DF /* simple_es_vs.glsl in Resources */,
-				EA19339520E8B190002621DB /* simple_es_vs.glsl in Resources */,
 				EA2F80F020E66F49003378DF /* simple_fs.glsl in Resources */,
-				EA19339720E8B190002621DB /* simple_es_fs.glsl in Resources */,
 				FD77A07D0E26BD8C00F39101 /* Icon.png in Resources */,
 				EAA36D1420E7C11D00A4BD78 /* a0001.ogg in Resources */,
 				FD77A07F0E26BDA900F39101 /* Default.png in Resources */,
 				EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */,
-				EA19339620E8B190002621DB /* simple_fs.glsl in Resources */,
-				EA19339820E8B190002621DB /* gen_shaders.py in Resources */,
 				EA1930AC20E87A6D002621DB /* 06_04_d.mpg in Resources */,
 				945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */,
 				EAA36D2E20E7DA8200A4BD78 /* 01_01_d.mpg in Resources */,
-				EA19339920E8B190002621DB /* simple_vs.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1453,7 +1432,6 @@
 				EA19338E20E8B190002621DB /* GLDevice.cpp in Sources */,
 				EA19347A20E8B191002621DB /* FuncStubs.cpp in Sources */,
 				EA19335820E8B190002621DB /* tjsVariantString.cpp in Sources */,
-				EA2F80A320E66F2A003378DF /* main.c in Sources */,
 				EA19337D20E8B190002621DB /* Extension.cpp in Sources */,
 				EA19333D20E8B190002621DB /* LayerBitmapImpl.cpp in Sources */,
 				EA19334D20E8B190002621DB /* MsgIntf.cpp in Sources */,
@@ -1495,7 +1473,6 @@
 				EA19347420E8B191002621DB /* StaticPluginImpl.cpp in Sources */,
 				EA19335520E8B190002621DB /* tjsOctPack.cpp in Sources */,
 				EA19338A20E8B190002621DB /* gltexture.cpp in Sources */,
-				EA2F80FE20E685A2003378DF /* sdlinit.cpp in Sources */,
 				EA19346D20E8B191002621DB /* SystemImpl.cpp in Sources */,
 				EA19347820E8B191002621DB /* EventImpl.cpp in Sources */,
 				EA19338020E8B190002621DB /* utils.cpp in Sources */,
@@ -1508,12 +1485,9 @@
 				EA19333520E8B190002621DB /* PrerenderedFont.cpp in Sources */,
 				EA19335420E8B190002621DB /* tjsObject.cpp in Sources */,
 				EA19332A20E8B190002621DB /* LayerIntf.cpp in Sources */,
-				EAA36D1920E7C1A500A4BD78 /* alDevice.cpp in Sources */,
-				EAA36D1520E7C17500A4BD78 /* ffmpegDecode.cpp in Sources */,
 				EA19334120E8B190002621DB /* RectItf.cpp in Sources */,
 				EA19334720E8B190002621DB /* tjsArray.cpp in Sources */,
 				EA19346F20E8B191002621DB /* UtilStreams.cpp in Sources */,
-				EA2F80A420E66F2D003378DF /* test.cpp in Sources */,
 				EA19339D20E8B190002621DB /* VideoOvlIntf.cpp in Sources */,
 				EA19348620E8B191002621DB /* WaveLoopManager.cpp in Sources */,
 				EA19347020E8B191002621DB /* StorageIntf.cpp in Sources */,
@@ -1525,12 +1499,9 @@
 				EA19346E20E8B191002621DB /* SystemIntf.cpp in Sources */,
 				EA19337520E8B190002621DB /* tjsObjectExtendable.cpp in Sources */,
 				EA19338320E8B190002621DB /* TimerIntf.cpp in Sources */,
-				EA2F80FB20E66FE1003378DF /* gltexture.cpp in Sources */,
 				EA19347D20E8B191002621DB /* PhaseVocoderFilter.cpp in Sources */,
 				EA19332F20E8B190002621DB /* GraphicsLoaderImpl.cpp in Sources */,
 				EA19340D20E8B191002621DB /* KAGParser.cpp in Sources */,
-				EAA36D1820E7C19E00A4BD78 /* alObjects.cpp in Sources */,
-				EA2F80FC20E66FFF003378DF /* GLDevice.cpp in Sources */,
 				EA19343920E8B191002621DB /* WindowMenu.cpp in Sources */,
 				EA19335220E8B190002621DB /* tjsMT19937ar-cok.cpp in Sources */,
 				EA19343720E8B191002621DB /* Main.cpp in Sources */,
@@ -1538,12 +1509,9 @@
 				EA19334220E8B190002621DB /* DebugIntf.cpp in Sources */,
 				EA19335A20E8B190002621DB /* cp932_uni.cpp in Sources */,
 				EA19334A20E8B190002621DB /* tjsDisassemble.cpp in Sources */,
-				EA19338920E8B190002621DB /* ffvideo.cpp in Sources */,
 				EA19335020E8B190002621DB /* tjsLex.cpp in Sources */,
-				EAA36D1A20E7C1AB00A4BD78 /* sdlEvent.cpp in Sources */,
 				EA19336620E8B190002621DB /* tjsByteCodeLoader.cpp in Sources */,
 				EA19337620E8B190002621DB /* tjs.cpp in Sources */,
-				EA19339020E8B190002621DB /* sdlAudio.cpp in Sources */,
 				EA19347220E8B191002621DB /* XP3Archive.cpp in Sources */,
 				EA19333020E8B190002621DB /* GraphicsLoaderIntf.cpp in Sources */,
 				EA19337C20E8B190002621DB /* tjsRandomGenerator.cpp in Sources */,
@@ -1561,6 +1529,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = QZCGQLBGFN;
@@ -1568,6 +1537,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					TVP_LOG_TO_COMMANDLINE_CONSOLE,
+					TVP_NO_CHECK_WIDE_CHAR_SIZE,
+					DEBUG,
+				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1591,6 +1565,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = QZCGQLBGFN;
@@ -1616,10 +1591,35 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = SDL_TEST;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
@@ -1633,9 +1633,33 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "";
 				PREBINDING = NO;
