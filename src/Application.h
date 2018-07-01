@@ -19,6 +19,7 @@ public:
 	bool StartApplication( int argc, char* argv[] );
 
 	void PrintConsole( const wchar_t* mes, unsigned long len, bool iserror = false );
+    void PrintConsole(const ttstr mes,bool iserror=false);
 	std::wstring GetTitle() const { return title_; }
 	void SetTitle( const std::wstring& caption );
 

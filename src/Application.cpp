@@ -33,6 +33,8 @@ const tjs_char* sel_data_path = NULL;
 bool tTVPApplication::StartApplication( int argc, char* argv[] )
 {
 	wprintf(L"StartApplication!\n");
+    SDL_Log("Start Application!!!!");
+	
 	_argc = argc;
 	for(int i= 0;i<argc;++i)
 	{
@@ -55,9 +57,16 @@ void tTVPApplication::PrintConsole( const wchar_t* mes, unsigned long len, bool 
 {
 	// wprintf(mes);
 	// std::wstring s(mes,len);
-	wprintf(TJS_W("%ls\n"),mes);
+//    printf("%ls\n"),mes);
 	// std::cout<<s;
+    fprintf(stderr, "%ls\n",mes);
 }
+
+void tTVPApplication::PrintConsole(const ttstr mes, bool iserror)
+{
+    fprintf(stderr, "%s\n",mes.AsNarrowStdString().c_str());
+}
+
 
 void tTVPApplication::RemoveWindow( SDLWindow* win ) {
 	std::vector<class SDLWindow*>::iterator it = std::remove( windows_list_.begin(), windows_list_.end(), win );
