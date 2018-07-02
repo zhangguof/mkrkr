@@ -63,8 +63,10 @@ public:
 		~Frame()
 		{
 			delete[] data;
+            SDL_Log("delete Frame data!");
 		}
 	};
+    std::vector<std::shared_ptr<Frame> > v;
 
 	FrameBuffer(int f_size)
 	{
@@ -78,7 +80,12 @@ public:
 		cur_pos = 0;
 		len = 0;
 	}
-	std::vector<std::shared_ptr<Frame> > v;
+    ~FrameBuffer()
+    {
+        v.clear();
+        SDL_Log("clear FrameBuffer!");
+    }
+
 	void push_frame(uint8_t* _data, int size)
 	{
 		if(frame_size == -1)
@@ -366,6 +373,18 @@ public:
 	uint8_t** frame_buf;
 	// tPtrDB pdb;
 	std::shared_ptr<FrameBuffer> pfb;
+    //copy buffer
+    uint8_t *decoded_data[4];
+    int decoded_linesize[4];
+    //using for flip img.
+    uint8_t *flip_buf[4];
+    int flip_linesize[4];
+    //vidoe scaling
+    AVPixelFormat src_pix_fmt;
+    int src_w, src_h;
+    
+    const AVPixelFormat dst_pix_fmt = AV_PIX_FMT_BGRA;
+    int dst_w, dst_h;
 
 	FFVDecoder(std::shared_ptr<FrameBuffer>& _p,AVCodecContext* ctx, SwsContext* _sws=NULL)
 	{
@@ -379,17 +398,70 @@ public:
 		printf("video timebase:%d/%d,tick:%d\n", pCodecCtx->time_base.num,
 		pCodecCtx->time_base.den,pCodecCtx->ticks_per_frame
 		);
+        src_w = dst_w = pCodecCtx->width;
+        src_h = dst_h = pCodecCtx->height;
+        src_pix_fmt   = pCodecCtx->pix_fmt;
+        
+        decoded_linesize[0] = flip_linesize[0] = 0;
+        decoded_data[0] = flip_buf[0] = nullptr;
+        init_sws_ctx();
 	}
 	~FFVDecoder()
 	{
 		if (frame_buf)
 			av_freep(&frame_buf[0]);
 		av_freep(&frame_buf);
+        free_buffer();
+        SDL_Log("release FFVDecoder!");
 	}
+    void init_sws_ctx()
+    {
+        // initialize SWS context for software scaling
+        if(sws_ctx==NULL)
+        {
+            sws_ctx = sws_getContext(pCodecCtx->width, pCodecCtx->height,pCodecCtx->pix_fmt,
+                                     dst_w,dst_h,dst_pix_fmt,
+                                     SWS_BILINEAR,NULL,NULL,NULL);
+            if(!sws_ctx){
+                fprintf(stderr,
+                        "Impossible to create scale context for the conversion "
+                        "fmt:%s s:%dx%d -> fmt:%s s:%dx%d\n",
+                        av_get_pix_fmt_name(pCodecCtx->pix_fmt), pCodecCtx->width, pCodecCtx->height,
+                        av_get_pix_fmt_name(dst_pix_fmt), dst_w, dst_h);
+                return;
+            }
+        }
+        alloc_buffer();
+    }
+    void alloc_buffer()
+    {
+        if(sws_ctx)
+        {
+            int ret1 = av_image_alloc(decoded_data,decoded_linesize,
+                           dst_w,dst_h,dst_pix_fmt,1);
+            int ret2 = av_image_alloc(flip_buf, flip_linesize,
+                           src_w,src_h,src_pix_fmt,1);
+            if(ret1<0 || ret2<0)
+            {
+                fprintf(stderr, "Could not allocate destination image\n");
+            }
+            SDL_Log("flip_buf:%d,%d",ret2,flip_linesize[0]);
+            
+        }
+    }
+    void free_buffer()
+    {
+        if(decoded_data[0])
+        {
+            av_freep(&decoded_data[0]);
+        }
+        if(flip_buf[0])
+        {
+            av_freep(&flip_buf[0]);
+        }
+    }
 	int decode_one_pkt(AVPacket& _pkt, bool turn_img=true);
 	int decode(uint8_t* video_buf, int buf_size);
-
-
 
 };
 

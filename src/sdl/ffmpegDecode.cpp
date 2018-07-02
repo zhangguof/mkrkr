@@ -594,6 +594,7 @@ ffStream::~ffStream()
     }
     if(swr)
     	swr_free(&swr);
+    SDL_Log("release ffStream!");
 }
 
 //=========ff decoder==================================
@@ -668,6 +669,36 @@ int FFDecoder::decode_one_pkt(AVPacket& _pkt)
 
 //ff video decoder
 
+//reversal image use of bmp.
+//        if(turn_img)
+//        {
+//            pFrame->data[0] += pFrame->linesize[0] * (pCodecCtx->height - 1);
+//            pFrame->linesize[0] *= -1;
+//            pFrame->data[1] += pFrame->linesize[1] * (pCodecCtx->height / 2 - 1);
+//            pFrame->linesize[1] *= -1;
+//            pFrame->data[2] += pFrame->linesize[2] * (pCodecCtx->height / 2 - 1);
+//            pFrame->linesize[2] *= -1;
+//        }
+
+static void vflip_yuv420(uint8_t* src_data[4],uint8_t* dst_data[4],
+                         int linesize[4],int height)
+{
+    for(int i=0;i<height;++i)
+    {
+        memcpy(dst_data[0] + i*linesize[0],
+               src_data[0] + (height-1-i)*linesize[0],linesize[0]);
+    }
+    height = height/2;
+    for(int i=0;i<height;++i)
+    {
+        memcpy(dst_data[1] + i*linesize[1],
+               src_data[1] + (height - 1 -i)*linesize[1],linesize[1]);
+        memcpy(dst_data[2] + i*linesize[2],
+               src_data[2] + (height - 1 -i)*linesize[2],linesize[2]);
+    }
+    
+}
+
 int FFVDecoder::decode_one_pkt(AVPacket& _pkt,bool turn_img)
 {
 	pkt = _pkt;
@@ -676,59 +707,23 @@ int FFVDecoder::decode_one_pkt(AVPacket& _pkt,bool turn_img)
 
 
 //use for scaling
-	uint8_t *dst_data[4];
-    int dst_linesize[4];
     // AVPixelFormat dst_pix_fmt = AV_PIX_FMT_RGB24;
     // AVPixelFormat dst_pix_fmt = AV_PIX_FMT_RGBA;
-    AVPixelFormat dst_pix_fmt = AV_PIX_FMT_BGRA;
-    int dst_w, dst_h;
-    int dst_bufsize;
+    
+//    AVPixelFormat dst_pix_fmt = AV_PIX_FMT_BGRA;
+//    int dst_w, dst_h;
+//    int dst_bufsize;
 
 	AVFrame* pFrame =av_frame_alloc();
-	// AVFrame* pFrameRGB=av_frame_alloc();
 	if(pFrame == NULL)
 	{
 		printf("frame alloc fail!\n");
 		return -1;
 	}
 
-	// int numBytes=avpicture_get_size(PIX_FMT_RGB24, pCodecCtx->width,
-	// 		      pCodecCtx->height);
-	// uint8_t* buffer=(uint8_t *)av_malloc(numBytes*sizeof(uint8_t));
-
-  // Assign appropriate parts of buffer to image planes in pFrameRGB
-  // Note that pFrameRGB is an AVFrame, but AVFrame is a superset
-  // of AVPicture
-  	// avpicture_fill((AVPicture *)pFrameRGB, buffer, PIX_FMT_RGB24,
-		 // pCodecCtx->width, pCodecCtx->height);
-	dst_w = pCodecCtx->width;
-	dst_h = pCodecCtx->height;
-	// printf("width:%d,height:%d\n", dst_w,dst_h);
   
-  // initialize SWS context for software scaling
-  	if(sws_ctx==NULL)
-  	{
-  		sws_ctx = sws_getContext(pCodecCtx->width, pCodecCtx->height,pCodecCtx->pix_fmt,
-		   dst_w,dst_h,dst_pix_fmt,
-		   SWS_BILINEAR,NULL,NULL,NULL);
-  		if(!sws_ctx){
-	        fprintf(stderr,
-	                "Impossible to create scale context for the conversion "
-	                "fmt:%s s:%dx%d -> fmt:%s s:%dx%d\n",
-	                av_get_pix_fmt_name(pCodecCtx->pix_fmt), pCodecCtx->width, pCodecCtx->height,
-	                av_get_pix_fmt_name(dst_pix_fmt), dst_w, dst_h);
-	        return -1;
-    	}
-  	}
   	int decoded_frame = 0;
   	int ret;
-  	if ((ret = av_image_alloc(dst_data, dst_linesize,
-                              dst_w, dst_h, dst_pix_fmt, 1)) < 0)
-  	{
-        fprintf(stderr, "Could not allocate destination image\n");
-        return -1;
-    }
-    dst_bufsize = ret;
 
     ret = avcodec_send_packet(pCodecCtx, &pkt);
     if(ret < 0)
@@ -756,50 +751,46 @@ int FFVDecoder::decode_one_pkt(AVPacket& _pkt,bool turn_img)
             return -1;
 	    }
 
-	    // printf("decoded frame %3d\n", pCodecCtx->frame_number);	      
-
 
 		// Convert the image from its native format to RGB
 		
-		//reversal image use of bmp.
+
+        uint8_t* src_data[4];
+//        int src_linesize[4];
         if(turn_img)
         {
-            pFrame->data[0] += pFrame->linesize[0] * (pCodecCtx->height - 1);
-            pFrame->linesize[0] *= -1;
-            pFrame->data[1] += pFrame->linesize[1] * (pCodecCtx->height / 2 - 1);
-            pFrame->linesize[1] *= -1;
-            pFrame->data[2] += pFrame->linesize[2] * (pCodecCtx->height / 2 - 1);
-            pFrame->linesize[2] *= -1;
+            vflip_yuv420((uint8_t **)pFrame->data,
+                     flip_buf,pFrame->linesize,src_h);
+            src_data[0] = flip_buf[0];
+            src_data[1] = flip_buf[1];
+            src_data[2] = flip_buf[2];
+            src_data[3] = flip_buf[3];
+            
+        }
+        else
+        {
+            src_data[0] = pFrame->data[0];
+            src_data[1] = pFrame->data[1];
+            src_data[2] = pFrame->data[2];
+            src_data[3] = pFrame->data[3];
         }
 
 
-		sws_scale(sws_ctx, (uint8_t const * const *)pFrame->data,
+		sws_scale(sws_ctx, src_data,
 				  pFrame->linesize, 0, pCodecCtx->height,
-				  dst_data, dst_linesize);
+				  decoded_data, decoded_linesize);
 		decoded_frame++;
 
 		// printf("video decode one:%d,frame_linesize:%d,dst_linesize:%d\n",dst_bufsize, pFrame->linesize[0],dst_linesize[0]);
-		pfb->push_frame(dst_data[0], dst_w * dst_h * 4);
-		// char fname[1024];
-		// sprintf(fname,"img%d.ppm",pCodecCtx->frame_number);
-		// FILE *dst_file = fopen(fname, "wb");
-	 //    if (!dst_file) {
-	 //        fprintf(stderr, "Could not open destination file %s\n", fname);
-	 //        return -1;
-	 //    }
-	 //      // Write header
-  // 		fprintf(dst_file, "P6\n%d %d\n255\n", dst_w, dst_h);
-	 //   	fwrite(dst_data[0], 1, dst_bufsize, dst_file);
+		pfb->push_frame(decoded_data[0], decoded_linesize[0]*dst_h);
 
 	}
-	// pdb->push(dst_data[0],dst_bufsize);
-	        /* write scaled image to file */
-	// std::string fname = "img";
+
 
 	// Free the packet that was allocated by av_read_frame
 	av_free_packet(&pkt);
 
-	av_freep(&dst_data[0]);
+//    av_freep(&dst_data[0]);
 	// sws_freeContext(sws_ctx);
   
   // Free the YUV frame
