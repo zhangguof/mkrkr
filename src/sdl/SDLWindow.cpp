@@ -4,6 +4,7 @@
 #include <string>
 #include <locale>
 
+#include "sdlinit.h"
 // g_sdl_win = NULL;
 
 extern int init_sdl();
@@ -17,8 +18,7 @@ LayerLeft(0), LayerTop(0),touch_points_(this)
 	title = cv.to_bytes(app->GetTitle());
 	NextSetWindowHandleToDrawDevice = true;
 	LastSentDrawDeviceDestRect.clear();
-	LayerWidth = w;
-	LayerHeight = h;
+
 
 	ZoomDenom = ActualZoomDenom = 1;
 	ZoomNumer = ActualZoomNumer = 1;
@@ -28,26 +28,43 @@ LayerLeft(0), LayerTop(0),touch_points_(this)
 
 	init_sdl();
 
-	win = SDL_CreateWindow(
-        title.c_str(),                  // window title
-        SDL_WINDOWPOS_UNDEFINED,           // initial x position
-        SDL_WINDOWPOS_UNDEFINED,           // initial y position
-        w,                               // width, in pixels
-        h,                               // height, in pixels
-        SDL_WINDOW_OPENGL|SDL_WINDOW_ALLOW_HIGHDPI                  // flags - see below
-    );
+    win = create_sdl_window(title.c_str(),w,h);
     if(!win)
     {
     	wprintf(TJS_W("create sdl win error!"));
  	    printf("win create error:%s\n",SDL_GetError());
 
     }
+    int _w,_h;
+    SDL_GetWindowSize(win, &_w, &_h); //dev true size.
+    if(w!=_w || h!=_h)
+    {
+        SDL_Log("win resize!(%d,%d)->(%d,%d)",w,h,_w,_h);
+        w = _w;
+        h = _h;
+    }
+        
 
     if(win)
     {
     	init_gl_context(win);
     }
-
+    ViewRect src = {0,0,w,h};
+    ViewRect dst = src;
+    if(g_scale_win)
+    {
+        scale_view(src, dst, g_scale_win);
+        SDL_Log("do scale win:(%d,%d,%d,%d)->(%d,%d,%d,%d)",
+                src.x,src.y,src.w,src.h,
+                dst.x,dst.y,dst.w,dst.h
+                );
+    }
+    
+    LayerLeft = dst.x;
+    LayerTop = dst.y;
+    LayerWidth = dst.w;
+    LayerHeight = dst.h;
+    
     width = w;
     height = h;
     TJSNativeInstance = ni;
