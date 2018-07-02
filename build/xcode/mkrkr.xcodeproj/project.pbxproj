@@ -154,14 +154,17 @@
 		EA19348820E8B191002621DB /* WaveIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19332420E8B190002621DB /* WaveIntf.cpp */; };
 		EA19348A20E8B1B8002621DB /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19348920E8B1B8002621DB /* Application.cpp */; };
 		EA19348D20E8C0A5002621DB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19348B20E8B280002621DB /* main.cpp */; };
-		EA1BFBE020E9251B0052101B /* data in Resources */ = {isa = PBXBuildFile; fileRef = EA1BFBDF20E9251B0052101B /* data */; };
 		EA1F246920E5F5C200BD563F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1F246820E5F5C100BD563F /* AVFoundation.framework */; };
 		EA2F80EF20E66F49003378DF /* simple_es_vs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80C920E66F49003378DF /* simple_es_vs.glsl */; };
 		EA2F80F020E66F49003378DF /* simple_fs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CA20E66F49003378DF /* simple_fs.glsl */; };
 		EA2F80F120E66F49003378DF /* simple_es_fs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CB20E66F49003378DF /* simple_es_fs.glsl */; };
 		EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CC20E66F49003378DF /* gen_shaders.py */; };
 		EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CD20E66F49003378DF /* simple_vs.glsl */; };
+		EA98923520EA8AA5001F7BE6 /* font in Resources */ = {isa = PBXBuildFile; fileRef = EA98923420EA8AA5001F7BE6 /* font */; };
 		EAA3548B20E93D5000B8AD31 /* path.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAA3548A20E93D5000B8AD31 /* path.mm */; };
+		EAA3549020EA65CF00B8AD31 /* voice.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EAA3548D20EA65CE00B8AD31 /* voice.xp3 */; };
+		EAA3549120EA65CF00B8AD31 /* video.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EAA3548E20EA65CF00B8AD31 /* video.xp3 */; };
+		EAA358EC20EA684B00B8AD31 /* data in Resources */ = {isa = PBXBuildFile; fileRef = EAA358EB20EA684A00B8AD31 /* data */; };
 		EAA36D0C20E7BF5100A4BD78 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0720E7BF5100A4BD78 /* libswresample.a */; };
 		EAA36D0D20E7BF5100A4BD78 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0820E7BF5100A4BD78 /* libavformat.a */; };
 		EAA36D0E20E7BF5100A4BD78 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0920E7BF5100A4BD78 /* libswscale.a */; };
@@ -527,7 +530,6 @@
 		EA19332420E8B190002621DB /* WaveIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaveIntf.cpp; sourceTree = "<group>"; };
 		EA19348920E8B1B8002621DB /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Application.cpp; path = ../../src/Application.cpp; sourceTree = "<group>"; };
 		EA19348B20E8B280002621DB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../main.cpp; sourceTree = "<group>"; };
-		EA1BFBDF20E9251B0052101B /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
 		EA1F246820E5F5C100BD563F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EA2F80A620E66F49003378DF /* ffvideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ffvideo.cpp; sourceTree = "<group>"; };
 		EA2F80A720E66F49003378DF /* SOIL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOIL.h; sourceTree = "<group>"; };
@@ -559,7 +561,12 @@
 		EA2F80D520E66F49003378DF /* SDLWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SDLWindow.hpp; sourceTree = "<group>"; };
 		EA2F80D820E66F49003378DF /* GLDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLDevice.hpp; sourceTree = "<group>"; };
 		EA2F80D920E66F49003378DF /* sdlEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlEvent.cpp; sourceTree = "<group>"; };
+		EA98923420EA8AA5001F7BE6 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
 		EAA3548A20E93D5000B8AD31 /* path.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = path.mm; sourceTree = "<group>"; };
+		EAA3548C20EA5C5D00B8AD31 /* sdlinit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sdlinit.h; sourceTree = "<group>"; };
+		EAA3548D20EA65CE00B8AD31 /* voice.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = voice.xp3; path = ../../repos/voice.xp3; sourceTree = "<group>"; };
+		EAA3548E20EA65CF00B8AD31 /* video.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = video.xp3; path = ../../repos/video.xp3; sourceTree = "<group>"; };
+		EAA358EB20EA684A00B8AD31 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
 		EAA36D0720E7BF5100A4BD78 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = ../../libs/ios/libswresample.a; sourceTree = "<group>"; };
 		EAA36D0820E7BF5100A4BD78 /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = ../../libs/ios/libavformat.a; sourceTree = "<group>"; };
 		EAA36D0920E7BF5100A4BD78 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswscale.a; path = ../../libs/ios/libswscale.a; sourceTree = "<group>"; };
@@ -679,8 +686,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EA1BFBDF20E9251B0052101B /* data */,
+				EA98923420EA8AA5001F7BE6 /* font */,
+				EAA3548E20EA65CF00B8AD31 /* video.xp3 */,
+				EAA3548D20EA65CE00B8AD31 /* voice.xp3 */,
 				EAFCB15520E6A026003A1736 /* test0.png */,
+				EAA358EB20EA684A00B8AD31 /* data */,
 				FD77A07E0E26BDA900F39101 /* Default.png */,
 				EAA36D1320E7C11D00A4BD78 /* a0001.ogg */,
 				FD77A07C0E26BD8C00F39101 /* Icon.png */,
@@ -1018,6 +1028,7 @@
 				EA19319120E8B18F002621DB /* gltexture.cpp */,
 				EA19319220E8B18F002621DB /* safeQueue.hpp */,
 				EA19319320E8B18F002621DB /* load_bmp.cpp */,
+				EAA3548C20EA5C5D00B8AD31 /* sdlinit.h */,
 				EA19319420E8B18F002621DB /* alDevice.hpp */,
 				EA19319520E8B18F002621DB /* imgbuf.h */,
 				EA19319620E8B18F002621DB /* SDLWindow.cpp */,
@@ -1363,14 +1374,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAFCB15620E6A027003A1736 /* test0.png in Resources */,
+				EAA3549120EA65CF00B8AD31 /* video.xp3 in Resources */,
 				EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */,
+				EAA358EC20EA684B00B8AD31 /* data in Resources */,
 				EA2F80F120E66F49003378DF /* simple_es_fs.glsl in Resources */,
-				EA1BFBE020E9251B0052101B /* data in Resources */,
 				EA2F80EF20E66F49003378DF /* simple_es_vs.glsl in Resources */,
+				EAA3549020EA65CF00B8AD31 /* voice.xp3 in Resources */,
 				EA2F80F020E66F49003378DF /* simple_fs.glsl in Resources */,
 				FD77A07D0E26BD8C00F39101 /* Icon.png in Resources */,
 				EAA36D1420E7C11D00A4BD78 /* a0001.ogg in Resources */,
 				FD77A07F0E26BDA900F39101 /* Default.png in Resources */,
+				EA98923520EA8AA5001F7BE6 /* font in Resources */,
 				EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */,
 				945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */,
 			);
@@ -1563,6 +1577,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tony.mkrkr;
 				PRODUCT_NAME = mkrkr;
 				SYSTEM_HEADER_SEARCH_PATHS = "/Users/tony/workspace/github/mkrkr/src/ext_libs_src/freetype-2.9/include /Users/tony/workspace/github/boost_1_67_0\n/Users/tony/workspace/github/boost_1_67_0\n";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/";
 			};
 			name = Debug;
@@ -1592,6 +1607,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tony.mkrkr;
 				PRODUCT_NAME = mkrkr;
 				SYSTEM_HEADER_SEARCH_PATHS = "/Users/tony/workspace/github/mkrkr/src/ext_libs_src/freetype-2.9/include /Users/tony/workspace/github/boost_1_67_0\n/Users/tony/workspace/github/boost_1_67_0\n";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/";
 			};
 			name = Release;

@@ -22,6 +22,7 @@
 #include "SysInitIntf.h"
 #include "XP3Archive.h"
 #include "utils.h"
+#include "SDL.h"
 // #include "TickCount.h"
 
 
@@ -805,7 +806,12 @@ public:
 		if(!TVPIsExistentStorageNoSearch(name))
 		{
 			// storage not found
-			TVPThrowExceptionMessage(TVPCannotFindStorage, name);
+            SDL_Log("Try search in lower case:%s",name.AsNarrowStdString().c_str());
+            if(!TVPIsExistentStorageNoSearch(name.AsLowerCase()))
+            {
+                TVPThrowExceptionMessage(TVPCannotFindStorage, name);
+            }
+            name = name.AsLowerCase();
 		}
 
 		// not exist in the cache
@@ -1203,6 +1209,8 @@ ttstr TVPGetPlacedPath(const ttstr & name)
 
 	ttstr * incache = TVPAutoPathCache.FindAndTouch(name);
 	if(incache) return *incache; // found in cache
+    incache = TVPAutoPathCache.FindAndTouch(name.AsLowerCase());
+    if(incache) return *incache;
 
 	tTJSCriticalSectionHolder cs_holder(TVPCreateStreamCS);
 
@@ -1215,6 +1223,13 @@ ttstr TVPGetPlacedPath(const ttstr & name)
 		TVPAutoPathCache.Add(name, normalized);
 		return normalized;
 	}
+    ttstr normalized2(TVPNormalizeStorageName(name.AsLowerCase()));
+    bool found2 = TVPIsExistentStorageNoSearchNoNormalize(normalized2);
+    if(found2)
+    {
+        TVPAutoPathCache.Add(name.AsLowerCase(),normalized2);
+        return normalized2;
+    }
 
 	// not found in current folder
 	// search through auto path table
@@ -1230,6 +1245,16 @@ ttstr TVPGetPlacedPath(const ttstr & name)
 		TVPAutoPathCache.Add(name, found);
 		return found;
 	}
+    
+    ttstr storagename2 = TVPExtractStorageName(normalized2);
+    TVPRebuildAutoPathTable();
+    result = TVPAutoPathTable.Find(storagename2);
+    if(result)
+    {
+        ttstr found = *result + storagename2;
+        TVPAutoPathCache.Add(name.AsLowerCase(),found);
+        return found;
+    }
 
 	// not found
 	TVPAutoPathCache.Add(name, ttstr());
@@ -1246,7 +1271,14 @@ ttstr TVPGetPlacedPath(const ttstr & name)
 ttstr TVPSearchPlacedPath(const ttstr & name)
 {
 	ttstr place = TVPGetPlacedPath(name);
-	if(place.IsEmpty()) TVPThrowExceptionMessage(TVPCannotFindStorage, name);
+    if(place.IsEmpty()) {
+        SDL_Log("try use lower case:%s",name.AsNarrowStdString().c_str());
+        place = TVPGetPlacedPath(name.AsLowerCase());
+        if(place.IsEmpty())
+        {
+            TVPThrowExceptionMessage(TVPCannotFindStorage, name);
+        }
+    }
 	return place;
 }
 //---------------------------------------------------------------------------
@@ -1283,7 +1315,8 @@ static tTJSBinaryStream * _TVPCreateStream(const ttstr & _name, tjs_uint32 flags
 	else
 		name = TVPGetPlacedPath(_name); // file must exist
 
-	if(name.IsEmpty()) TVPThrowExceptionMessage(TVPCannotOpenStorage, _name);
+	if(name.IsEmpty())
+        TVPThrowExceptionMessage(TVPCannotOpenStorage, _name);
 
 	// does name contain > ?
 	const tjs_char * sharp_pos = TJS_strchr(name.c_str(), TVPArchiveDelimiter);
