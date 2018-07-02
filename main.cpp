@@ -14,7 +14,9 @@
 #include "XP3Archive.h"
 #include "SysInitIntf.h"
 
-#include <locale.h> 
+#include <locale.h>
+#include "SDL.h"
+#include <boost/filesystem.hpp>
 
 
 
@@ -45,10 +47,11 @@ void xp3_filter(tTVPXP3ExtractionFilterInfo* info)
 }
 
 extern void TVPInitImportFuncs();
+extern void path_info();
 
 extern "C" int app_main(int argc, char* argv[])
 {
-	setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "");
 	// TVPSetCurrentDirectory(ExePath());
 	// char buf[1024];
 	// tTJSBinaryStream *st = TVPCreateStream(ttstr("README"),TJS_BS_READ);
@@ -64,6 +67,23 @@ extern "C" int app_main(int argc, char* argv[])
 	try
 	{
 		wprintf(L"start!!\n");
+//        boost::filesystem::path p(boost::filesystem::current_path().string() + "/data/startup.tjs");
+//        auto tt= boost::filesystem::exists(p);
+//        SDL_Log("exist??:%d",tt);
+//        char *base_path = SDL_GetPrefPath("tony", "com.tony.mkrkr");
+//        if(base_path)
+//        {
+//            SDL_Log("base path:%s",base_path);
+//        }
+       
+//        SDL_Log("cur path:%s",SDL_GetBasePath());
+//         std::string base = base_path;
+//        boost::filesystem::path pp(base+"DATA/startup.tjs");
+//        auto ret = boost::filesystem::exists(pp);
+//        SDL_Log("is exist:%s?%d",pp.c_str(),ret);
+//        path_info();
+        
+        
 		Application->StartApplication(argc,argv);
 		TVPSystemInit();
 		TVPInitializeStartupScript();
@@ -71,7 +91,7 @@ extern "C" int app_main(int argc, char* argv[])
 	}
 	catch(eTJSError &e)
 	{
-		Application->PrintConsole(e.GetMessage().c_str(),e.GetMessage().GetLen());
+		Application->PrintConsole(e.GetMessage(),e.GetMessage().GetLen());
 	}
 
 

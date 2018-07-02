@@ -33,7 +33,7 @@ const tjs_char* sel_data_path = NULL;
 bool tTVPApplication::StartApplication( int argc, char* argv[] )
 {
 	wprintf(L"StartApplication!\n");
-    SDL_Log("Start Application!!!!");
+    SDL_Log("Start Application:%s",ExePath().AsNarrowStdString().c_str());
 	
 	_argc = argc;
 	for(int i= 0;i<argc;++i)
