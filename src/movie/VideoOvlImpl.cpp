@@ -231,7 +231,9 @@ void tTJSNI_VideoOverlay::Close()
 	// release VideoOverlay object
 	if(VideoOverlay)
 	{
-		VideoOverlay->Release(), VideoOverlay = NULL;
+        VideoOverlay->Release();
+        delete VideoOverlay;
+        VideoOverlay = NULL;
 		g_curVideoOverlay = VideoOverlay;
 
 		// ::SetFocus(Window->GetWindowHandle());

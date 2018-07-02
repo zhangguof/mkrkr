@@ -59,6 +59,10 @@ public:
 
 
 	VideoPlayer();
+    ~VideoPlayer()
+    {
+        SDL_Log("release VideoPlayer!");
+    }
 	void play();
 	void stop()
 	{

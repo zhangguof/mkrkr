@@ -21,6 +21,10 @@ public:
 
 public:
 	FFVideoOverlay();
+    ~FFVideoOverlay()
+    {
+        SDL_Log("release FFVideoOverlay!");
+    }
 	void set_owner(void* eq)
 	{
 		event_queue = reinterpret_cast<NativeEventQueueImplement*> (eq);

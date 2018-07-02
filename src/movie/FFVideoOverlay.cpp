@@ -34,7 +34,7 @@ void FFVideoOverlay::open(tTJSBinaryStream *stream,
 	p_vplayer = std::make_shared<VideoPlayer>();
 	p_vplayer->open(p_ffstream);
 	stream_name = streamname;
-	printf("===FFVideoOverlay::open:%ls\n",stream_name.c_str());
+	SDL_Log("===FFVideoOverlay::open:%ls\n",stream_name.c_str());
 
 }
 

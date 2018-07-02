@@ -29,6 +29,7 @@ class iTVPVideoOverlay // this is not a COM object
 public:
 	virtual void  AddRef() = 0;
 	virtual void  Release() = 0;
+    virtual ~iTVPVideoOverlay(){}
 
 	virtual void  SetWindow(WHAND window) = 0;
 	virtual void  SetMessageDrainWindow(WHAND window) = 0;
@@ -114,6 +115,7 @@ public:
 	virtual void  GetSaturationStepSize( float *v ) = 0;
 	virtual void  GetSaturation( float *v ) = 0;
 	virtual void  SetSaturation( float v ) = 0;
+    
 
 	// virtual void update() = 0;
 };
