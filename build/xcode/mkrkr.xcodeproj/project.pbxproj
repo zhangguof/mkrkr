@@ -12,7 +12,6 @@
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */; };
-		EA1930AC20E87A6D002621DB /* 06_04_d.mpg in Resources */ = {isa = PBXBuildFile; fileRef = EA1930AB20E87A6C002621DB /* 06_04_d.mpg */; };
 		EA1930AE20E8AED0002621DB /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1930AD20E8AED0002621DB /* libpng.a */; };
 		EA1930B120E8B010002621DB /* libfreetyped.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1930AF20E8B00F002621DB /* libfreetyped.a */; };
 		EA1930B220E8B010002621DB /* libonig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1930B020E8B00F002621DB /* libonig.a */; };
@@ -155,12 +154,14 @@
 		EA19348820E8B191002621DB /* WaveIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19332420E8B190002621DB /* WaveIntf.cpp */; };
 		EA19348A20E8B1B8002621DB /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19348920E8B1B8002621DB /* Application.cpp */; };
 		EA19348D20E8C0A5002621DB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19348B20E8B280002621DB /* main.cpp */; };
+		EA1BFBE020E9251B0052101B /* data in Resources */ = {isa = PBXBuildFile; fileRef = EA1BFBDF20E9251B0052101B /* data */; };
 		EA1F246920E5F5C200BD563F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1F246820E5F5C100BD563F /* AVFoundation.framework */; };
 		EA2F80EF20E66F49003378DF /* simple_es_vs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80C920E66F49003378DF /* simple_es_vs.glsl */; };
 		EA2F80F020E66F49003378DF /* simple_fs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CA20E66F49003378DF /* simple_fs.glsl */; };
 		EA2F80F120E66F49003378DF /* simple_es_fs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CB20E66F49003378DF /* simple_es_fs.glsl */; };
 		EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CC20E66F49003378DF /* gen_shaders.py */; };
 		EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CD20E66F49003378DF /* simple_vs.glsl */; };
+		EAA3548B20E93D5000B8AD31 /* path.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAA3548A20E93D5000B8AD31 /* path.mm */; };
 		EAA36D0C20E7BF5100A4BD78 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0720E7BF5100A4BD78 /* libswresample.a */; };
 		EAA36D0D20E7BF5100A4BD78 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0820E7BF5100A4BD78 /* libavformat.a */; };
 		EAA36D0E20E7BF5100A4BD78 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0920E7BF5100A4BD78 /* libswscale.a */; };
@@ -177,7 +178,6 @@
 		EAA36D2820E7CB0000A4BD78 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D2720E7CB0000A4BD78 /* CoreVideo.framework */; };
 		EAA36D2A20E7CB1000A4BD78 /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D2920E7CB1000A4BD78 /* libiconv.2.4.0.tbd */; };
 		EAA36D2C20E7CC6600A4BD78 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D2B20E7CC6600A4BD78 /* OpenAL.framework */; };
-		EAA36D2E20E7DA8200A4BD78 /* 01_01_d.mpg in Resources */ = {isa = PBXBuildFile; fileRef = EAA36D2D20E7DA8200A4BD78 /* 01_01_d.mpg */; };
 		EAA36D2F20E8030A00A4BD78 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0B20E7BF5100A4BD78 /* libavcodec.a */; };
 		EAFCB15620E6A027003A1736 /* test0.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFCB15520E6A026003A1736 /* test0.png */; };
 		EAFCB15A20E6A32F003A1736 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15920E6A32F003A1736 /* libSDL2.a */; };
@@ -201,7 +201,6 @@
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		EA1930AB20E87A6C002621DB /* 06_04_d.mpg */ = {isa = PBXFileReference; lastKnownFileType = video.mpeg; name = 06_04_d.mpg; path = ../../data/video/06_04_d.mpg; sourceTree = "<group>"; };
 		EA1930AD20E8AED0002621DB /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = ../../libs/ios/libpng.a; sourceTree = "<group>"; };
 		EA1930AF20E8B00F002621DB /* libfreetyped.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetyped.a; path = ../../libs/ios/libfreetyped.a; sourceTree = "<group>"; };
 		EA1930B020E8B00F002621DB /* libonig.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libonig.a; path = ../../libs/ios/libonig.a; sourceTree = "<group>"; };
@@ -528,6 +527,7 @@
 		EA19332420E8B190002621DB /* WaveIntf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaveIntf.cpp; sourceTree = "<group>"; };
 		EA19348920E8B1B8002621DB /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Application.cpp; path = ../../src/Application.cpp; sourceTree = "<group>"; };
 		EA19348B20E8B280002621DB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../main.cpp; sourceTree = "<group>"; };
+		EA1BFBDF20E9251B0052101B /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
 		EA1F246820E5F5C100BD563F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EA2F80A620E66F49003378DF /* ffvideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ffvideo.cpp; sourceTree = "<group>"; };
 		EA2F80A720E66F49003378DF /* SOIL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOIL.h; sourceTree = "<group>"; };
@@ -559,6 +559,7 @@
 		EA2F80D520E66F49003378DF /* SDLWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SDLWindow.hpp; sourceTree = "<group>"; };
 		EA2F80D820E66F49003378DF /* GLDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLDevice.hpp; sourceTree = "<group>"; };
 		EA2F80D920E66F49003378DF /* sdlEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlEvent.cpp; sourceTree = "<group>"; };
+		EAA3548A20E93D5000B8AD31 /* path.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = path.mm; sourceTree = "<group>"; };
 		EAA36D0720E7BF5100A4BD78 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = ../../libs/ios/libswresample.a; sourceTree = "<group>"; };
 		EAA36D0820E7BF5100A4BD78 /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = ../../libs/ios/libavformat.a; sourceTree = "<group>"; };
 		EAA36D0920E7BF5100A4BD78 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswscale.a; path = ../../libs/ios/libswscale.a; sourceTree = "<group>"; };
@@ -574,7 +575,6 @@
 		EAA36D2720E7CB0000A4BD78 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		EAA36D2920E7CB1000A4BD78 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
 		EAA36D2B20E7CC6600A4BD78 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
-		EAA36D2D20E7DA8200A4BD78 /* 01_01_d.mpg */ = {isa = PBXFileReference; lastKnownFileType = video.mpeg; name = 01_01_d.mpg; path = ../../data1/01_01_d.mpg; sourceTree = "<group>"; };
 		EAD4825B20E6005F0015AE5E /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		EAD4825C20E6005F0015AE5E /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		EAFCB15520E6A026003A1736 /* test0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test0.png; path = ../../data1/bmp/test0.png; sourceTree = "<group>"; };
@@ -679,9 +679,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EA1BFBDF20E9251B0052101B /* data */,
 				EAFCB15520E6A026003A1736 /* test0.png */,
-				EAA36D2D20E7DA8200A4BD78 /* 01_01_d.mpg */,
-				EA1930AB20E87A6C002621DB /* 06_04_d.mpg */,
 				FD77A07E0E26BDA900F39101 /* Default.png */,
 				EAA36D1320E7C11D00A4BD78 /* a0001.ogg */,
 				FD77A07C0E26BD8C00F39101 /* Icon.png */,
@@ -1203,6 +1202,7 @@
 		EA19330920E8B190002621DB /* environ */ = {
 			isa = PBXGroup;
 			children = (
+				EAA3548920E93D5000B8AD31 /* ios */,
 				EA19330A20E8B190002621DB /* TouchPoint.h */,
 				EA19330B20E8B190002621DB /* TVPWindow.h */,
 				EA19330C20E8B190002621DB /* TouchPoint.cpp */,
@@ -1287,6 +1287,14 @@
 			path = shader;
 			sourceTree = "<group>";
 		};
+		EAA3548920E93D5000B8AD31 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				EAA3548A20E93D5000B8AD31 /* path.mm */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
 		EAD4825A20E6005F0015AE5E /* core */ = {
 			isa = PBXGroup;
 			children = (
@@ -1357,15 +1365,14 @@
 				EAFCB15620E6A027003A1736 /* test0.png in Resources */,
 				EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */,
 				EA2F80F120E66F49003378DF /* simple_es_fs.glsl in Resources */,
+				EA1BFBE020E9251B0052101B /* data in Resources */,
 				EA2F80EF20E66F49003378DF /* simple_es_vs.glsl in Resources */,
 				EA2F80F020E66F49003378DF /* simple_fs.glsl in Resources */,
 				FD77A07D0E26BD8C00F39101 /* Icon.png in Resources */,
 				EAA36D1420E7C11D00A4BD78 /* a0001.ogg in Resources */,
 				FD77A07F0E26BDA900F39101 /* Default.png in Resources */,
 				EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */,
-				EA1930AC20E87A6D002621DB /* 06_04_d.mpg in Resources */,
 				945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */,
-				EAA36D2E20E7DA8200A4BD78 /* 01_01_d.mpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1376,6 +1383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA3548B20E93D5000B8AD31 /* path.mm in Sources */,
 				EA19348120E8B191002621DB /* WaveSegmentQueue.cpp in Sources */,
 				EA19338D20E8B190002621DB /* sdlinit.cpp in Sources */,
 				EA19347C20E8B191002621DB /* TouchPoint.cpp in Sources */,

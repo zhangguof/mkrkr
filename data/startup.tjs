@@ -12,4 +12,197 @@ Plugins.link("plugin/menu.dll");       // メニューを使わないなら不�
 Plugins.link("plugin/KAGParser.dll");  // KAGを使わない(!)なら不要
 @endif
 
-Scripts.execStorage("system/Boot.tjs");
+//Scripts.execStorage("system/Boot.tjs");
+
+var dm = Debug.message;
+
+System.setArgument("-contfreq", 60);
+System.graphicCacheLimit = -1;
+// キャッシュが有効だと無意味なので画像キャッシュ切る
+
+class Bitmap2Layer extends Bitmap {
+	var target;
+	var tag;
+	function Bitmap2Layer(layer,filename) {
+		super.Bitmap();
+		this.target = layer;
+		this.tag = filename;
+	}
+	function onadd()
+	{
+		// setSize(target.width,target.height,true);
+		// target.copyFromBitmapToMainImage(this);
+		target.stretchCopy(0,0,target.width,target.height,
+		this,0,0,width,height);
+		dm(target.width,target.height,width,height);
+
+		// target.setSizeToImageSize();
+	}
+	function onLoaded(meta,async,error,message) {
+		Debug.message("Exit load async:"+async+", error:"+error+", message:"+message);
+		if( !error && isvalid(target) ) { // 非同期なので、既に無効化されいないことを確認する
+			target.copyFromBitmapToMainImage(this);
+			target.setSizeToImageSize();
+		}
+	}
+};
+
+var last_tick = 0;
+
+class MainWindow extends Window {
+	var base;
+	var block_layer;
+	var layermove;
+	var addval;
+	var bmps;
+	var fps_lay;
+	var img_layer;
+
+	function MainWindow( width, height ) {
+		super.Window();
+		setSize( width, height );
+		setInnerSize( width, height );
+		dm(width,height);
+
+		base = new Layer(this, null);
+		base.setSize(width,height);
+		// base.colorRect(0,0,width,height,0xffff0000,0xff);
+		
+		base.setSizeToImageSize();
+		base.name = "base";
+		base.visible = true;
+		add( base );
+		// base.loadImages("bgimage/背景／terop_b.png");
+		// base.loadImages("bgimage/背景／バーガーショップ.bmp");
+		// base.loadImages("bgimage/背景／ホテル室内.png");
+		// base.loadImages("bgimage/red.bmp");
+		
+
+
+		img_layer = new Layer(this,base);
+		img_layer.setSize(640,480);
+		img_layer.setSizeToImageSize();
+		img_layer.setPos(0,0);
+		img_layer.name = "img";
+		img_layer.colorRect(0,0,640,480,0xff0000,0xff);
+		// img_layer.loadImages("bgimage/背景／terop_a.png");
+		img_layer.visible = true;
+		add(img_layer);
+
+
+		// fps_lay = new Layer(this,base);
+		// fps_lay.setSize(150,50);
+		// fps_lay.setSizeToImageSize();
+		// fps_lay.setPos(width - fps_lay.width,0);
+		// fps_lay.name="fps";
+		// // fps_lay.colorRect(0,0,100,100,0x0000ff,0xff);
+		// fps_lay.visible = true;
+		// add(fps_lay);
+		// var font2 = new Font(fps_lay);
+		// font2.height = 30;
+
+		// var base_font = new Font(fps_lay);
+		// base_font.face = "font/NotoSansCJKsc-Black.otf";
+		// base_font.faceIsFileName = true;
+		// base_font.height = 30;
+
+
+		// block_layer = new Layer(this,base);
+		// block_layer.setSize(640,480);
+		// block_layer.setSizeToImageSize();
+		// block_layer.colorRect(0,0,block_layer.width,block_layer.height,0x00ff00,0xff);
+		// block_layer.visible = true;
+		// block_layer.loadImages("bgimage/背景／ホテル室内.png");
+		// add( block_layer );
+
+
+
+
+		// layermove = new Layer(this,base);
+		// layermove.setSize(400,60);
+		// layermove.setPos(0,height- layermove.height);
+		// layermove.setSizeToImageSize();
+		// layermove.colorRect(0,0,layermove.width,
+		// 					layermove.height,0xff0000,128);
+
+
+
+		// var font = new Font(layermove);
+		// font.face = "font/NotoSansCJKsc-Black.otf";
+		// font.faceIsFileName = true;
+		
+		// dm("font hegiht",font.height);
+
+		// layermove.drawText( 0, 0, "テスト文字列描画"+" size:"+font.height, 0xfffffff );
+		
+		// font.height = 30;
+		// layermove.drawText( 0, 20, "测试文字abcd"+" size:"+font.height, 0x0000ff);
+		// layermove.visible = true;
+		// add( layermove );
+		// dm("font:",layermove.font.face);
+
+		var i = 0;
+		
+		// var filename = "bmp/test"+i+".bmp";
+		// var filename =  "bgimage/red.bmp";
+		// var bmp = new Bitmap2Layer(img_layer,filename);
+		// bmp.load(filename);
+		// bmp.onadd();
+		// add(bmp);
+		// bmps = new Array();
+		// for( var i = 0; i < 2; i++ ) {
+		// 	var filename = "bmp/test"+i+".bmp";
+		// 	var bmp = new Bitmap2Layer(img_layer,filename);
+		// 	bmp.load(filename);
+		// 	bmp.onadd();
+		// 	dm(bmp);
+		// 	bmps.add(bmp);
+		// }
+		// add( bmps );
+
+		addval = 1;
+		// System.addContinuousHandler(onMoveImage);
+	}
+	function finalize() {
+		System.removeContinuousHandler(onMoveImage);
+		super.finalize();
+	}
+	function onMoveImage() {
+		layermove.left += addval;
+		if( addval > 0 ) {
+			if( layermove.left >= (this.width-layermove.width) ) {
+				addval = -1;
+			}
+		} else {
+			if( layermove.left <= 0 ) {
+				addval = 1;
+			}
+		}
+		// var cur_tick = System.getTickCount();
+		
+		// dm(base);
+		// base.colorRect(0,0,width,height,0x0000ff,0xff);
+		// fps_lay.colorRect(0,0,)
+
+		// fps_lay.fillRect(0,0,fps_lay.width,fps_lay.height,
+		// 0x00000000);
+		// fps_lay.drawText(0,0,"fps:"+int(1000/(cur_tick - last_tick)),0xfffffff);
+		// last_tick = cur_tick;
+
+	}
+};
+
+var win = new MainWindow(1024,768);
+win.visible = true;
+// Debug.message(MainWindow.BasicDrawDevice.recreate);
+var movie = new VideoOverlay(win);
+movie.mode = vomLayer;
+dm("=======",movie.mode);
+movie.layer1 = win.img_layer;
+movie.loop = true;
+// movie.setSegmentLoop(10,20);
+// dm("=======",movie.segmentLoopStartFrame,movie.segmentLoopEndFrame);
+
+movie.open("06_04.mpg");
+// movie.open('video/06_04.mpg');
+movie.play();
