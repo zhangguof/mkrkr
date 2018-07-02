@@ -1,4 +1,4 @@
-﻿//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 /*
 	TVP2 ( T Visual Presenter 2 )  A script authoring tool
 	Copyright (C) 2000 W.Dee <dee@kikyou.info> and contributors
@@ -90,13 +90,14 @@ void TJS_INTF_METHOD tTVPFileMedia::NormalizePathName(ttstr &name)
 {
 	// normalize path name
 	// make all characters small
-	tjs_char *p = name.Independ();
-	while(*p)
-	{
-		if(*p >= TJS_W('A') && *p <= TJS_W('Z'))
-			*p += TJS_W('a') - TJS_W('A');
-		p++;
-	}
+    //fix in ios???
+//    tjs_char *p = name.Independ();
+//    while(*p)
+//    {
+//        if(*p >= TJS_W('A') && *p <= TJS_W('Z'))
+//            *p += TJS_W('a') - TJS_W('A');
+//        p++;
+//    }
 }
 //---------------------------------------------------------------------------
 bool TJS_INTF_METHOD tTVPFileMedia::CheckExistentStorage(const ttstr &name)
