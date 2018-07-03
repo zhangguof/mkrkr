@@ -48,10 +48,13 @@ void xp3_filter(tTVPXP3ExtractionFilterInfo* info)
 
 extern void TVPInitImportFuncs();
 extern void path_info();
+extern void init_locale();
 
 extern "C" int app_main(int argc, char* argv[])
 {
-    setlocale(LC_ALL, "");
+//    setlocale(LC_ALL, "");
+//    setlocale(LC_CTYPE,"UTF-8");
+    init_locale();
 	// TVPSetCurrentDirectory(ExePath());
 	// char buf[1024];
 	// tTJSBinaryStream *st = TVPCreateStream(ttstr("README"),TJS_BS_READ);
@@ -81,7 +84,7 @@ extern "C" int app_main(int argc, char* argv[])
 //        boost::filesystem::path pp(base+"DATA/startup.tjs");
 //        auto ret = boost::filesystem::exists(pp);
 //        SDL_Log("is exist:%s?%d",pp.c_str(),ret);
-//        path_info();
+        path_info();
         
         
 		Application->StartApplication(argc,argv);

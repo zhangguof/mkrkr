@@ -7,6 +7,8 @@
 #include "WindowImpl.h"
 #include "FontSystem.h"
 
+#include "wchar.h"
+
 //absolute path,"/" at last.
 ttstr ExePath() {
 	auto cur_path = boost::filesystem::current_path();
@@ -30,8 +32,10 @@ int _argc;
 ttstr _argv[max_arg_cnt];
 
 const tjs_char* sel_data_path = NULL;
+
 bool tTVPApplication::StartApplication( int argc, char* argv[] )
 {
+    
 	wprintf(L"StartApplication!\n");
     SDL_Log("Start Application:%s",ExePath().AsNarrowStdString().c_str());
 	
@@ -50,6 +54,7 @@ bool tTVPApplication::StartApplication( int argc, char* argv[] )
 			break;
 		}
 	}
+    return true;
 
 }
 
