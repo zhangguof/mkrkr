@@ -391,12 +391,22 @@ bool TVPRemoveFolder(const ttstr &name)
 //---------------------------------------------------------------------------
 // TVPGetAppPath
 //---------------------------------------------------------------------------
+//get from ios
+extern ttstr GetAppPath();
 ttstr TVPGetAppPath()
 {
-	static ttstr exepath(TVPExtractStoragePath(TVPNormalizeStorageName(ExePath())));
-	return exepath;
+	static ttstr datapath =
+            TVPExtractStoragePath(TVPNormalizeStorageName(GetAppPath()));
+	return datapath;
 }
 //---------------------------------------------------------------------------
+//TVPGetExePath
+ttstr TVPGetExePath()
+{
+    static ttstr exepath =
+            TVPExtractStoragePath(TVPNormalizeStorageName(ExePath()));
+    return exepath;
+}
 
 //---------------------------------------------------------------------------
 // TVPOpenStream

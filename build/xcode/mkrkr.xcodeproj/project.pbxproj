@@ -161,15 +161,15 @@
 		EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CC20E66F49003378DF /* gen_shaders.py */; };
 		EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CD20E66F49003378DF /* simple_vs.glsl */; };
 		EA98923520EA8AA5001F7BE6 /* font in Resources */ = {isa = PBXBuildFile; fileRef = EA98923420EA8AA5001F7BE6 /* font */; };
+		EA98923720EB5CA8001F7BE6 /* UTF-8 in Resources */ = {isa = PBXBuildFile; fileRef = EA98923620EB5CA7001F7BE6 /* UTF-8 */; };
+		EA98923920EB7317001F7BE6 /* data.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA98923820EB7317001F7BE6 /* data.xp3 */; };
 		EAA3548B20E93D5000B8AD31 /* path.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAA3548A20E93D5000B8AD31 /* path.mm */; };
 		EAA3549020EA65CF00B8AD31 /* voice.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EAA3548D20EA65CE00B8AD31 /* voice.xp3 */; };
 		EAA3549120EA65CF00B8AD31 /* video.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EAA3548E20EA65CF00B8AD31 /* video.xp3 */; };
-		EAA358EC20EA684B00B8AD31 /* data in Resources */ = {isa = PBXBuildFile; fileRef = EAA358EB20EA684A00B8AD31 /* data */; };
 		EAA36D0C20E7BF5100A4BD78 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0720E7BF5100A4BD78 /* libswresample.a */; };
 		EAA36D0D20E7BF5100A4BD78 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0820E7BF5100A4BD78 /* libavformat.a */; };
 		EAA36D0E20E7BF5100A4BD78 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0920E7BF5100A4BD78 /* libswscale.a */; };
 		EAA36D0F20E7BF5100A4BD78 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0A20E7BF5100A4BD78 /* libavutil.a */; };
-		EAA36D1420E7C11D00A4BD78 /* a0001.ogg in Resources */ = {isa = PBXBuildFile; fileRef = EAA36D1320E7C11D00A4BD78 /* a0001.ogg */; };
 		EAA36D1620E7C17C00A4BD78 /* ffvideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80A620E66F49003378DF /* ffvideo.cpp */; };
 		EAA36D1720E7C18D00A4BD78 /* sdlAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80B420E66F49003378DF /* sdlAudio.cpp */; };
 		EAA36D1C20E7CA2600A4BD78 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D1B20E7CA2500A4BD78 /* Security.framework */; };
@@ -423,11 +423,6 @@
 		EA1931A520E8B18F002621DB /* shaders.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = shaders.hpp; sourceTree = "<group>"; };
 		EA1931A620E8B18F002621DB /* ffmpegDecode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ffmpegDecode.cpp; sourceTree = "<group>"; };
 		EA1931A720E8B18F002621DB /* alObjects.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alObjects.hpp; sourceTree = "<group>"; };
-		EA1931A920E8B18F002621DB /* simple_es_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simple_es_vs.glsl; sourceTree = "<group>"; };
-		EA1931AA20E8B18F002621DB /* simple_fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simple_fs.glsl; sourceTree = "<group>"; };
-		EA1931AB20E8B18F002621DB /* simple_es_fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simple_es_fs.glsl; sourceTree = "<group>"; };
-		EA1931AC20E8B18F002621DB /* gen_shaders.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = gen_shaders.py; sourceTree = "<group>"; };
-		EA1931AD20E8B18F002621DB /* simple_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simple_vs.glsl; sourceTree = "<group>"; };
 		EA1931AE20E8B18F002621DB /* ffvideo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ffvideo.hpp; sourceTree = "<group>"; };
 		EA1931B020E8B18F002621DB /* gltexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = gltexture.hpp; sourceTree = "<group>"; };
 		EA1931B120E8B18F002621DB /* alDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alDevice.cpp; sourceTree = "<group>"; };
@@ -562,17 +557,17 @@
 		EA2F80D820E66F49003378DF /* GLDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLDevice.hpp; sourceTree = "<group>"; };
 		EA2F80D920E66F49003378DF /* sdlEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlEvent.cpp; sourceTree = "<group>"; };
 		EA98923420EA8AA5001F7BE6 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
+		EA98923620EB5CA7001F7BE6 /* UTF-8 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "UTF-8"; sourceTree = "<group>"; };
+		EA98923820EB7317001F7BE6 /* data.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.xp3; path = ../../repos/data.xp3; sourceTree = "<group>"; };
 		EAA3548A20E93D5000B8AD31 /* path.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = path.mm; sourceTree = "<group>"; };
 		EAA3548C20EA5C5D00B8AD31 /* sdlinit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sdlinit.h; sourceTree = "<group>"; };
 		EAA3548D20EA65CE00B8AD31 /* voice.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = voice.xp3; path = ../../repos/voice.xp3; sourceTree = "<group>"; };
 		EAA3548E20EA65CF00B8AD31 /* video.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = video.xp3; path = ../../repos/video.xp3; sourceTree = "<group>"; };
-		EAA358EB20EA684A00B8AD31 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
 		EAA36D0720E7BF5100A4BD78 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = ../../libs/ios/libswresample.a; sourceTree = "<group>"; };
 		EAA36D0820E7BF5100A4BD78 /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = ../../libs/ios/libavformat.a; sourceTree = "<group>"; };
 		EAA36D0920E7BF5100A4BD78 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswscale.a; path = ../../libs/ios/libswscale.a; sourceTree = "<group>"; };
 		EAA36D0A20E7BF5100A4BD78 /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = ../../libs/ios/libavutil.a; sourceTree = "<group>"; };
 		EAA36D0B20E7BF5100A4BD78 /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = ../../libs/ios/libavcodec.a; sourceTree = "<group>"; };
-		EAA36D1320E7C11D00A4BD78 /* a0001.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = a0001.ogg; path = ../../data1/a0001.ogg; sourceTree = "<group>"; };
 		EAA36D1B20E7CA2500A4BD78 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EAA36D1D20E7CA4F00A4BD78 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		EAA36D1F20E7CA6A00A4BD78 /* libbz2.1.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.1.0.tbd; path = usr/lib/libbz2.1.0.tbd; sourceTree = SDKROOT; };
@@ -686,13 +681,13 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EA98923820EB7317001F7BE6 /* data.xp3 */,
+				EA98923620EB5CA7001F7BE6 /* UTF-8 */,
 				EA98923420EA8AA5001F7BE6 /* font */,
 				EAA3548E20EA65CF00B8AD31 /* video.xp3 */,
 				EAA3548D20EA65CE00B8AD31 /* voice.xp3 */,
 				EAFCB15520E6A026003A1736 /* test0.png */,
-				EAA358EB20EA684A00B8AD31 /* data */,
 				FD77A07E0E26BDA900F39101 /* Default.png */,
-				EAA36D1320E7C11D00A4BD78 /* a0001.ogg */,
 				FD77A07C0E26BD8C00F39101 /* Icon.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 			);
@@ -1042,7 +1037,6 @@
 				EA1931A520E8B18F002621DB /* shaders.hpp */,
 				EA1931A620E8B18F002621DB /* ffmpegDecode.cpp */,
 				EA1931A720E8B18F002621DB /* alObjects.hpp */,
-				EA1931A820E8B18F002621DB /* shader */,
 				EA1931AE20E8B18F002621DB /* ffvideo.hpp */,
 				EA1931B020E8B18F002621DB /* gltexture.hpp */,
 				EA1931B120E8B18F002621DB /* alDevice.cpp */,
@@ -1064,18 +1058,6 @@
 				EA1931A420E8B18F002621DB /* glew.h */,
 			);
 			path = GL;
-			sourceTree = "<group>";
-		};
-		EA1931A820E8B18F002621DB /* shader */ = {
-			isa = PBXGroup;
-			children = (
-				EA1931A920E8B18F002621DB /* simple_es_vs.glsl */,
-				EA1931AA20E8B18F002621DB /* simple_fs.glsl */,
-				EA1931AB20E8B18F002621DB /* simple_es_fs.glsl */,
-				EA1931AC20E8B18F002621DB /* gen_shaders.py */,
-				EA1931AD20E8B18F002621DB /* simple_vs.glsl */,
-			);
-			path = shader;
 			sourceTree = "<group>";
 		};
 		EA1931B620E8B18F002621DB /* movie */ = {
@@ -1374,15 +1356,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAFCB15620E6A027003A1736 /* test0.png in Resources */,
+				EA98923920EB7317001F7BE6 /* data.xp3 in Resources */,
 				EAA3549120EA65CF00B8AD31 /* video.xp3 in Resources */,
 				EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */,
-				EAA358EC20EA684B00B8AD31 /* data in Resources */,
+				EA98923720EB5CA8001F7BE6 /* UTF-8 in Resources */,
 				EA2F80F120E66F49003378DF /* simple_es_fs.glsl in Resources */,
 				EA2F80EF20E66F49003378DF /* simple_es_vs.glsl in Resources */,
 				EAA3549020EA65CF00B8AD31 /* voice.xp3 in Resources */,
 				EA2F80F020E66F49003378DF /* simple_fs.glsl in Resources */,
 				FD77A07D0E26BD8C00F39101 /* Icon.png in Resources */,
-				EAA36D1420E7C11D00A4BD78 /* a0001.ogg in Resources */,
 				FD77A07F0E26BDA900F39101 /* Default.png in Resources */,
 				EA98923520EA8AA5001F7BE6 /* font in Resources */,
 				EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */,

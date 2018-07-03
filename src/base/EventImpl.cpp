@@ -1,4 +1,4 @@
-﻿//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 /*
 	TVP2 ( T Visual Presenter 2 )  A script authoring tool
 	Copyright (C) 2000 W.Dee <dee@kikyou.info> and contributors
@@ -23,6 +23,7 @@
 #include "Application.h"
 // #include "NativeEventQueue.h"
 // #include "UserEvent.h"
+#include "SDL.h"
 
 //---------------------------------------------------------------------------
 // TVPInvokeEvents
@@ -111,7 +112,8 @@ bool TVPGetBreathing()
 //---------------------------------------------------------------------------
 void TVPSetSystemEventDisabledState(bool en)
 {
-	assert(false);//"NotImplent"
+//    assert(false);//"NotImplent"
+    SDL_Log("!!!!NotImplent:TVPSetSystemEventDisabledState:%d",en);
 	// TVPSystemControl->SetEventEnabled( !en );
 	// if(!en) TVPDeliverAllEvents();
 }

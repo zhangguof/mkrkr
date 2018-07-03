@@ -8,6 +8,8 @@ const char* ios_get_data_path()
     return [docPath UTF8String];
 }
 
+void list_path();
+
 void path_info()
 {
 	NSLog(@"%@",NSHomeDirectory());
@@ -32,7 +34,20 @@ void path_info()
 //    paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
 //    NSString *libPath = [paths objectAtIndex:0];
 //    NSLog(@"%@",libPath);
+//    list_path();
 
+}
+
+void list_path()
+{
+    NSString* resources = [ [ NSBundle mainBundle ] resourcePath ];
+    NSString* path = [resources stringByAppendingString:@"/data/sound/sse"];
+    NSLog(@"list:%@",path);
+    NSURL *folderURL = [NSURL fileURLWithPath:path];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError __autoreleasing *error = nil;
+    NSArray *folderContents = [fileManager contentsOfDirectoryAtURL:folderURL includingPropertiesForKeys:nil options:0 error:&error];
+    NSLog(@"返回文件夹内容的URL:%@",folderContents);
 }
 
 void init_locale()

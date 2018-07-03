@@ -28,4 +28,6 @@ extern void TVPExecThreadTask(TVP_THREAD_TASK_FUNC func, TVP_THREAD_PARAM param)
 
 void Sleep(uint32_t ms);
 
+ttstr GetAppPath();
+
 #endif

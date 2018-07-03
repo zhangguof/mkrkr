@@ -301,23 +301,24 @@ TJS_BEGIN_NATIVE_PROP_DECL(versionInformation)
 }
 TJS_END_NATIVE_STATIC_PROP_DECL(versionInformation)
 //----------------------------------------------------------------------
-// TJS_BEGIN_NATIVE_PROP_DECL(eventDisabled)
-// {
-// 	TJS_BEGIN_NATIVE_PROP_GETTER
-// 	{
-// 		*result = TVPGetSystemEventDisabledState();
-// 		return TJS_S_OK;
-// 	}
-// 	TJS_END_NATIVE_PROP_GETTER
+ TJS_BEGIN_NATIVE_PROP_DECL(eventDisabled)
+ {
+     TJS_BEGIN_NATIVE_PROP_GETTER
+     {
+//         *result = TVPGetSystemEventDisabledState();
+         *result = false;
+         return TJS_S_OK;
+     }
+     TJS_END_NATIVE_PROP_GETTER
 
-// 	TJS_BEGIN_NATIVE_PROP_SETTER
-// 	{
-// 		TVPSetSystemEventDisabledState(param->operator bool());
-// 		return TJS_S_OK;
-// 	}
-// 	TJS_END_NATIVE_PROP_SETTER
-// }
-// TJS_END_NATIVE_STATIC_PROP_DECL(eventDisabled)
+     TJS_BEGIN_NATIVE_PROP_SETTER
+     {
+         TVPSetSystemEventDisabledState(param->operator bool());
+         return TJS_S_OK;
+     }
+     TJS_END_NATIVE_PROP_SETTER
+ }
+ TJS_END_NATIVE_STATIC_PROP_DECL(eventDisabled)
 //----------------------------------------------------------------------
 TJS_BEGIN_NATIVE_PROP_DECL(graphicCacheLimit)
 {

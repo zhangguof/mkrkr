@@ -64,12 +64,14 @@ void tTVPApplication::PrintConsole( const wchar_t* mes, unsigned long len, bool 
 	// std::wstring s(mes,len);
 //    printf("%ls\n"),mes);
 	// std::cout<<s;
-    fprintf(stderr, "%ls\n",mes);
+//    fprintf(stderr, "%ls\n",mes);
+    wprintf(TJS_W("%ls\n"),mes);
 }
 
 void tTVPApplication::PrintConsole(const ttstr mes, bool iserror)
 {
-    fprintf(stderr, "%s\n",mes.AsNarrowStdString().c_str());
+//    fprintf(stderr, "%s\n",mes.AsNarrowStdString().c_str());
+    wprintf(TJS_W("%ls\n"),mes.c_str());
 }
 
 

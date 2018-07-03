@@ -186,3 +186,21 @@ void Sleep(uint32_t ms)
 {
 	SDL_Delay(ms);
 }
+
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+extern const char* ios_get_data_path();
+#endif
+
+ttstr GetAppPath()
+{
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+    static ttstr path = ios_get_data_path();
+#else
+    static ttstr path = ExePath();
+#endif
+    if(path.GetLastChar()!=TJS_W('/'))
+        path += TJS_W('/');
+    SDL_Log("GetAppPath:%s",path.AsNarrowStdString().c_str());
+    
+    return path;
+}

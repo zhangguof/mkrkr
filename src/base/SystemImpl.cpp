@@ -1,4 +1,4 @@
-﻿//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 /*
 	TVP2 ( T Visual Presenter 2 )  A script authoring tool
 	Copyright (C) 2000 W.Dee <dee@kikyou.info> and contributors
@@ -32,6 +32,7 @@
 #include "DebugIntf.h"
 #include "utils.h"
 // #include "VersionFormUnit.h"
+#include "SDL.h"
 
 //---------------------------------------------------------------------------
 static ttstr TVPAppTitle;
@@ -476,7 +477,7 @@ ttstr TVPGetPersonalPath()
 	// This usually refers "My Documents".
 	// If this is not exist, returns application data path, then exe path.
 	// for windows vista, this refers application data path.
-	ttstr path;
+//    ttstr path;
 	// path = TVPGetSpecialFolderPath(CSIDL_PERSONAL);
 	// if(path.IsEmpty())
 	// 	path = TVPGetSpecialFolderPath(CSIDL_APPDATA);
@@ -487,8 +488,12 @@ ttstr TVPGetPersonalPath()
 	// 	if(path.GetLastChar() != TJS_W('/')) path += TJS_W('/');
 	// 	return path;
 	// }
-
-	return TVPGetAppPath();
+//    path = SDL_GetPrefPath("tony", "com.tony.mkrkr");
+//    if(path.GetLastChar()!=TJS_W('/'))
+//        path += TJS_W('/');
+//    return path;
+    return TVPGetAppPath();
+    
 }
 //---------------------------------------------------------------------------
 
@@ -951,7 +956,7 @@ TJS_BEGIN_NATIVE_PROP_DECL(exePath)
 {
 	TJS_BEGIN_NATIVE_PROP_GETTER
 	{
-		*result = TVPGetAppPath();
+		*result = TVPGetExePath();
 		return TJS_S_OK;
 	}
 	TJS_END_NATIVE_PROP_GETTER
