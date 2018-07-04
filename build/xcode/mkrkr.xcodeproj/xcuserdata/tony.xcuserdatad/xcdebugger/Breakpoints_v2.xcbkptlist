@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../src/base/StorageIntf.cpp"
-            timestampString = "552317319.8830481"
+            timestampString = "552319249.677126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1340"
@@ -64,22 +64,6 @@
             startingLineNumber = "7971"
             endingLineNumber = "7971"
             landmarkName = "tTJSNC_Layer::tTJSNC_Layer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../src/sdl/SDLWindow.cpp"
-            timestampString = "552301990.766358"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
-            landmarkName = "SDLWindow::trans_point_frome_win(int &amp;x,int &amp;y)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../src/base/StorageIntf.cpp"
-            timestampString = "552317319.88331"
+            timestampString = "552319249.677788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1390"

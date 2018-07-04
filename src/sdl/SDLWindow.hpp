@@ -32,6 +32,7 @@ private:
 	int width;
 	int height;
 	int left;
+    int top;
 
 	unsigned long LastRecheckInputStateSent;
 
@@ -315,6 +316,8 @@ public:
 	virtual bool OnCloseQuery() { return true; }
 	virtual void OnFocus(HWND hFocusLostWnd) {}
 	virtual void OnFocusLost(HWND hFocusingWnd) {}
+    
+    void trans_point_frome_win(int &x,int &y);
 	virtual void OnMouseDown( int button, int shift, int x, int y );
 	virtual void OnMouseUp( int button, int shift, int x, int y );
 	virtual void OnMouseMove( int shift, int x, int y );

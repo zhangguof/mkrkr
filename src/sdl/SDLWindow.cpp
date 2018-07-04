@@ -67,6 +67,7 @@ LayerLeft(0), LayerTop(0),touch_points_(this)
     
     width = w;
     height = h;
+    left = top = 0;
     TJSNativeInstance = ni;
     app->AddWindow(this);
     SetVisibleFromScript(true);
@@ -291,6 +292,26 @@ tTVPMouseButton TVP_TMouseButton_To_tTVPMouseButton(int button) {
 tjs_uint32 TVP_TShiftState_To_uint32(int b)
 {
 	return 0;
+}
+
+void SDLWindow::trans_point_frome_win(int &x,int &y)
+{
+    int _x = x;
+    int _y = y;
+    if(width != LayerWidth || LayerLeft != left)
+    {
+        float rate = LayerWidth * 1.0 / width;
+        x = LayerLeft + int((x - left) * rate);
+    }
+    if(height != LayerHeight || LayerTop != top)
+    {
+        float rate = LayerHeight * 1.0 / height;
+        y = LayerTop + int((y - top) * rate);
+    }
+    if(_x!=x || _y!=y)
+    {
+        SDL_Log("trans mouse point:(%d,%d)->(%d,%d)",_x,_y,x,y);
+    }
 }
 
 void SDLWindow::OnMouseDown( int button, int shift, int x, int y )

@@ -250,6 +250,9 @@ void process_input_event(SDL_Event& e)
     {
         int x = 0, y = 0;
         SDL_GetMouseState( &x, &y );
+
+        win->trans_point_frome_win(x, y);
+
         if(e.button.button == SDL_BUTTON_LEFT)
         {
             printf("mouse click Left up:x:%d,y:%d\n", x,y);                 
@@ -275,6 +278,8 @@ void process_input_event(SDL_Event& e)
     {
     	int x = 0, y = 0;
         SDL_GetMouseState( &x, &y );
+        win->trans_point_frome_win(x, y);
+        
         if(e.button.button == SDL_BUTTON_LEFT)
         {
             printf("mouse click Left down:x:%d,y:%d\n", x,y);
