@@ -27,3 +27,5 @@ krkr
 unpack
 font
 data
+*.pyc
+*.xp3

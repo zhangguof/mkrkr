@@ -7,7 +7,7 @@
 #include <mach/error.h>
 
 #include "tjsCommHead.h"
-#include "ScriptMgnIntf.h"
+// #include "ScriptMgnIntf.h"
 #include "Application.h"
 #include "XP3Archive.h"
 #include <boost/filesystem.hpp>
@@ -19,7 +19,7 @@
 class tTVPTextReadStream;
 
 extern void TVPLoadMessage();
-extern void TVPSystemInit(void);
+// extern void TVPSystemInit(void);
 extern iTJSTextReadStream * TVPCreateTextStreamForReadWithStream(const ttstr & name,
 	const ttstr & modestr, tTJSBinaryStream* s);
 
