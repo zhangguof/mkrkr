@@ -8,6 +8,7 @@
 #include "FontSystem.h"
 
 #include "wchar.h"
+#include "sdlinit.h"
 
 //absolute path,"/" at last.
 ttstr ExePath() {

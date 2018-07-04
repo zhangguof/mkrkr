@@ -17,6 +17,7 @@
 // #include <d3d9.h>
 // #include <mmsystem.h>
 #include <algorithm>
+#include "sdlinit.h"
 
 //---------------------------------------------------------------------------
 // オプション
@@ -256,7 +257,7 @@ void TJS_INTF_METHOD tTVPBasicDrawDevice::NotifyLayerResize(iTVPLayerManager * m
 	CreateTexture();
 }
 //---------------------------------------------------------------------------
-static unsigned int last_time = 0;//time_now();
+//static unsigned int last_time = 0;//time_now();
 void TJS_INTF_METHOD tTVPBasicDrawDevice::Show()
 {
 	// TVPAddLog(TJS_W("in tTVPBasicDrawDevice::Show"));
@@ -267,9 +268,9 @@ void TJS_INTF_METHOD tTVPBasicDrawDevice::Show()
 	if(!ShouldShow) return;
 
 	ShouldShow = false;
-	unsigned int now = time_now();
-	gldevice->render(now - last_time);
-	last_time = now;
+//    unsigned int now = time_now();
+	gldevice->render(time_now());
+//    last_time = now;
 
 	// // HRESULT hr = D3D_OK;
 	// RECT client;

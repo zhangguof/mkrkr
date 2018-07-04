@@ -33,9 +33,8 @@
 #include <utility>
 #include <vector>
 
-//#include <SOIL.h>
-// #include "imgbuf.h"
 #include "gltexture.hpp"
+#include "updateMgr.hpp"
 
 
 
@@ -50,25 +49,7 @@ const int WIN_HEIGHT = 480;
 extern const char* VERTEX_SHADER_FILE;
 extern const char* FRAG_SHADER_FILE;
 
-// class ImgBuf
-// {
 
-// 	int w,h;
-// 	void* buf;
-// 	bool is_rgba;
-// 	unsigned int format;
-// 	ImgBuf(void* buffer,int width, int height,
-// 	bool _rgba,unsigned int _format):
-// 	buf(buffer),w(width),h(height),is_rgba(_rgba),format(_format)
-// 	{}
-// }
-
-
-class UpdateObj
-{
-public:
-    virtual void update(unsigned int value)=0;
-};
 
 class SHADER
 {
@@ -128,60 +109,14 @@ public:
     // void update_texture(void* img_buf,int w,int h,bool is_rgba=false);
 
     void init_render();
-    void update(unsigned int interval);
-    void render(unsigned int interval);
+    void update(unsigned int cur_tick);
+    void render(unsigned int cur_tick);
     void before_draw();
     void after_draw();
 
     void release();
 };
 
-
-typedef void (*UpdateFunc)(unsigned int interval);
-typedef void (UpdateObj::*ObjUpdateFunc)(unsigned int interval);
-//typedef std::pair<UpdateObj*,ObjUpdateFunc> UpdatePair;
-
-class CBMgr
-{
-    std::vector<UpdateFunc> v;
-    //std::vector<UpdatePair> v2;
-    std::vector<UpdateObj*> v2;
-
-public:
-    void add_callback(UpdateFunc f)
-    {
-        v.push_back(f);
-    }
-    void add_callback2(UpdateObj* p)
-    {
-        v2.push_back(p);
-    }
-    void update(unsigned int interval)
-    {
-        for (auto i = v.begin(); i != v.end(); ++i)
-        {
-            (*i)(interval);
-        }
-
-        for (auto i = v2.begin(); i != v2.end(); ++i)
-        {
-            // auto ptr_obj = i->first;
-            // auto f = i->second;
-            // (ptr_obj->*f)(interval);
-            (*i)->update(interval);
-        }
-
-    }
-};
-
-
-int  init_sdl();
-int init_gl_context(SDL_Window* win);
-extern "C" void sdl_loop();
-void regist_update(UpdateFunc f);
-void regist_objupdate(UpdateObj* p);
-
-unsigned int time_now();
 
 Device* create_gl_device(int w, int h);
 

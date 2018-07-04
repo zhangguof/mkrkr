@@ -268,7 +268,7 @@ void Device::after_draw()
     }
 }
 
-void Device::render(unsigned int interval)
+void Device::render(unsigned int cur_tick)
 {
 	before_draw();
 	if(cur_texture)
@@ -279,9 +279,9 @@ void Device::render(unsigned int interval)
     after_draw();
 }
 
-void Device::update(unsigned int interval)
+void Device::update(unsigned int cur_tick)
 {
-    render(interval);
+    render(cur_tick);
 }
 
 

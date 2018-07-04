@@ -182,6 +182,7 @@
 		EAA36D2A20E7CB1000A4BD78 /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D2920E7CB1000A4BD78 /* libiconv.2.4.0.tbd */; };
 		EAA36D2C20E7CC6600A4BD78 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D2B20E7CC6600A4BD78 /* OpenAL.framework */; };
 		EAA36D2F20E8030A00A4BD78 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0B20E7BF5100A4BD78 /* libavcodec.a */; };
+		EAA534F120ECD84A005F0CB4 /* updateMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAA534EF20ECD84A005F0CB4 /* updateMgr.cpp */; };
 		EAFCB15620E6A027003A1736 /* test0.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFCB15520E6A026003A1736 /* test0.png */; };
 		EAFCB15A20E6A32F003A1736 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15920E6A32F003A1736 /* libSDL2.a */; };
 		EAFCB15C20E6A3B3003A1736 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15B20E6A3B2003A1736 /* Metal.framework */; };
@@ -403,7 +404,6 @@
 		EA19318C20E8B18F002621DB /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		EA19318D20E8B18F002621DB /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		EA19318F20E8B18F002621DB /* ffvideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ffvideo.cpp; sourceTree = "<group>"; };
-		EA19319020E8B18F002621DB /* SOIL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOIL.h; sourceTree = "<group>"; };
 		EA19319120E8B18F002621DB /* gltexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gltexture.cpp; sourceTree = "<group>"; };
 		EA19319220E8B18F002621DB /* safeQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = safeQueue.hpp; sourceTree = "<group>"; };
 		EA19319320E8B18F002621DB /* load_bmp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = load_bmp.cpp; sourceTree = "<group>"; };
@@ -577,6 +577,8 @@
 		EAA36D2720E7CB0000A4BD78 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		EAA36D2920E7CB1000A4BD78 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
 		EAA36D2B20E7CC6600A4BD78 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		EAA534EF20ECD84A005F0CB4 /* updateMgr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = updateMgr.cpp; sourceTree = "<group>"; };
+		EAA534F020ECD84A005F0CB4 /* updateMgr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = updateMgr.hpp; sourceTree = "<group>"; };
 		EAD4825B20E6005F0015AE5E /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		EAD4825C20E6005F0015AE5E /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		EAFCB15520E6A026003A1736 /* test0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test0.png; path = ../../data1/bmp/test0.png; sourceTree = "<group>"; };
@@ -1010,6 +1012,8 @@
 				EA19318B20E8B18F002621DB /* test.cpp */,
 				EA19318C20E8B18F002621DB /* stb_image.h */,
 				EA19318D20E8B18F002621DB /* main.c */,
+				EAA534EF20ECD84A005F0CB4 /* updateMgr.cpp */,
+				EAA534F020ECD84A005F0CB4 /* updateMgr.hpp */,
 			);
 			name = core;
 			path = ../../src/core;
@@ -1019,7 +1023,6 @@
 			isa = PBXGroup;
 			children = (
 				EA19318F20E8B18F002621DB /* ffvideo.cpp */,
-				EA19319020E8B18F002621DB /* SOIL.h */,
 				EA19319120E8B18F002621DB /* gltexture.cpp */,
 				EA19319220E8B18F002621DB /* safeQueue.hpp */,
 				EA19319320E8B18F002621DB /* load_bmp.cpp */,
@@ -1467,6 +1470,7 @@
 				EA19333F20E8B190002621DB /* TransIntf.cpp in Sources */,
 				EA19338620E8B190002621DB /* TVPTimer.cpp in Sources */,
 				EA19336420E8B190002621DB /* tjsNamespace.cpp in Sources */,
+				EAA534F120ECD84A005F0CB4 /* updateMgr.cpp in Sources */,
 				EA19348320E8B191002621DB /* sdlWaveImpl.cpp in Sources */,
 				EA19336820E8B190002621DB /* tjspp.tab.cpp in Sources */,
 				EA19347520E8B191002621DB /* NativeEventQueue.cpp in Sources */,
@@ -1561,6 +1565,7 @@
 				SYSTEM_HEADER_SEARCH_PATHS = "/Users/tony/workspace/github/mkrkr/src/ext_libs_src/freetype-2.9/include /Users/tony/workspace/github/boost_1_67_0\n/Users/tony/workspace/github/boost_1_67_0\n";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/";
+				WARNING_CFLAGS = "-Wno-comma";
 			};
 			name = Debug;
 		};
@@ -1591,6 +1596,7 @@
 				SYSTEM_HEADER_SEARCH_PATHS = "/Users/tony/workspace/github/mkrkr/src/ext_libs_src/freetype-2.9/include /Users/tony/workspace/github/boost_1_67_0\n/Users/tony/workspace/github/boost_1_67_0\n";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/";
+				WARNING_CFLAGS = "-Wno-comma";
 			};
 			name = Release;
 		};
