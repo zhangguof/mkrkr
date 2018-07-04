@@ -98,92 +98,92 @@ typedef std::shared_ptr<BaseAudioDevice> tPtrBaseDevice;
 
 
 
-class pcmBuffer:
-public std::enable_shared_from_this<pcmBuffer>
-{
-public:
-	DataBuffer db;
-	uint32_t len;
-	int pos;
-	bool is_enable;
-	bool is_loop;
-	tDevPtr pDev;
-	AudioFormat format;
-
-
-	pcmBuffer(){
-		_init();
-	}
-	
-	pcmBuffer(uint8_t* _buf,uint32_t _len)
-	{
-		_init();
-		db.push(_buf,_len);
-		len = _len;
-	}
-	void _init()
-	{
-		len = 0;
-		pos = 0;
-		is_enable = false;
-		is_loop = false;
-		pDev = nullptr;
-	}
-	void read_from_ffstream(ffStream& fs);
-	void enable();
-	void disable();
-	void set_loop(bool s){is_loop = s;}
-	int get_data(uint8_t** _data, int _len);
-	void set_dev(tDevPtr p_dev);
-	void reset()
-	{
-		db.seek(0);
-	}
-	void play(bool _loop);
-	void stop();
-	int SetFormat(const AudioFormat* fm);
-	int GetFormat(AudioFormat* fm);
-
-
-};
-
-class audioDevice:
-public std::enable_shared_from_this<audioDevice>
-{
-public:
-	
-
-	SDL_AudioSpec want_spec;
-	SDL_AudioSpec get_spec;
-	bool is_playing;
-	int nplaying;
-	bool is_init_spec;
-	// uint8_t* data;
-	std::vector<tPcmPtr > pcms;
-	SDL_AudioDeviceID dev;
-	int init_spec(int freq,uint8_t channels);
-	static void SDLCALL
-	audio_cb(void* userdata, Uint8* stream,int len);
-	
-
-	audioDevice()
-	{
-		pcms.clear();
-		nplaying = 0;
-		is_playing = false;
-		is_init_spec = false;
-	}
-	void dump_info();
-	void play();
-	void on_enable(tPcmPtr pcm);
-	void on_disable(tPcmPtr pcm);
-	void disable_all();
-	void stop();
-	void add_pcm(tPcmPtr& pcm);
-	void rm_pcm(tPcmPtr& pcm);
-	void create_pcm_buffer(tPcmPtr& pcm);
-
-};
+//class pcmBuffer:
+//public std::enable_shared_from_this<pcmBuffer>
+//{
+//public:
+//    DataBuffer db;
+//    uint32_t len;
+//    int pos;
+//    bool is_enable;
+//    bool is_loop;
+//    tDevPtr pDev;
+//    AudioFormat format;
+//
+//
+//    pcmBuffer(){
+//        _init();
+//    }
+//
+//    pcmBuffer(uint8_t* _buf,uint32_t _len)
+//    {
+//        _init();
+//        db.push(_buf,_len);
+//        len = _len;
+//    }
+//    void _init()
+//    {
+//        len = 0;
+//        pos = 0;
+//        is_enable = false;
+//        is_loop = false;
+//        pDev = nullptr;
+//    }
+//    void read_from_ffstream(ffStream& fs);
+//    void enable();
+//    void disable();
+//    void set_loop(bool s){is_loop = s;}
+//    int get_data(uint8_t** _data, int _len);
+//    void set_dev(tDevPtr p_dev);
+//    void reset()
+//    {
+//        db.seek(0);
+//    }
+//    void play(bool _loop);
+//    void stop();
+//    int SetFormat(const AudioFormat* fm);
+//    int GetFormat(AudioFormat* fm);
+//
+//
+//};
+//
+//class audioDevice:
+//public std::enable_shared_from_this<audioDevice>
+//{
+//public:
+//
+//
+//    SDL_AudioSpec want_spec;
+//    SDL_AudioSpec get_spec;
+//    bool is_playing;
+//    int nplaying;
+//    bool is_init_spec;
+//    // uint8_t* data;
+//    std::vector<tPcmPtr > pcms;
+//    SDL_AudioDeviceID dev;
+//    int init_spec(int freq,uint8_t channels);
+//    static void SDLCALL
+//    audio_cb(void* userdata, Uint8* stream,int len);
+//
+//
+//    audioDevice()
+//    {
+//        pcms.clear();
+//        nplaying = 0;
+//        is_playing = false;
+//        is_init_spec = false;
+//    }
+//    void dump_info();
+//    void play();
+//    void on_enable(tPcmPtr pcm);
+//    void on_disable(tPcmPtr pcm);
+//    void disable_all();
+//    void stop();
+//    void add_pcm(tPcmPtr& pcm);
+//    void rm_pcm(tPcmPtr& pcm);
+//    void create_pcm_buffer(tPcmPtr& pcm);
+//
+//};
 
 
 

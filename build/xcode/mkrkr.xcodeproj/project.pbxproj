@@ -166,7 +166,6 @@
 		EAA36D0E20E7BF5100A4BD78 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0920E7BF5100A4BD78 /* libswscale.a */; };
 		EAA36D0F20E7BF5100A4BD78 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0A20E7BF5100A4BD78 /* libavutil.a */; };
 		EAA36D1620E7C17C00A4BD78 /* ffvideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80A620E66F49003378DF /* ffvideo.cpp */; };
-		EAA36D1720E7C18D00A4BD78 /* sdlAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80B420E66F49003378DF /* sdlAudio.cpp */; };
 		EAA36D1C20E7CA2600A4BD78 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D1B20E7CA2500A4BD78 /* Security.framework */; };
 		EAA36D1E20E7CA4F00A4BD78 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D1D20E7CA4F00A4BD78 /* VideoToolbox.framework */; };
 		EAA36D2020E7CA6A00A4BD78 /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D1F20E7CA6A00A4BD78 /* libbz2.1.0.tbd */; };
@@ -183,6 +182,7 @@
 		EAAE679020ECE1300056DFFB /* alDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80D220E66F49003378DF /* alDevice.cpp */; };
 		EAAE679120ECE1300056DFFB /* gltexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80A820E66F49003378DF /* gltexture.cpp */; };
 		EAAE679220ECE1540056DFFB /* GLDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80B120E66F49003378DF /* GLDevice.cpp */; };
+		EAAE679320ECE2DF0056DFFB /* baseAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319B20E8B18F002621DB /* baseAudio.cpp */; };
 		EAFCB15620E6A027003A1736 /* test0.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFCB15520E6A026003A1736 /* test0.png */; };
 		EAFCB15A20E6A32F003A1736 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15920E6A32F003A1736 /* libSDL2.a */; };
 		EAFCB15C20E6A3B3003A1736 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15B20E6A3B2003A1736 /* Metal.framework */; };
@@ -406,8 +406,8 @@
 		EA19319620E8B18F002621DB /* SDLWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SDLWindow.cpp; sourceTree = "<group>"; };
 		EA19319720E8B18F002621DB /* sdlinit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlinit.cpp; sourceTree = "<group>"; };
 		EA19319920E8B18F002621DB /* sdlEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sdlEvent.hpp; sourceTree = "<group>"; };
-		EA19319B20E8B18F002621DB /* sdlAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlAudio.cpp; sourceTree = "<group>"; };
-		EA19319F20E8B18F002621DB /* sdlAudio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sdlAudio.hpp; sourceTree = "<group>"; };
+		EA19319B20E8B18F002621DB /* baseAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = baseAudio.cpp; sourceTree = "<group>"; };
+		EA19319F20E8B18F002621DB /* baseAudio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = baseAudio.hpp; sourceTree = "<group>"; };
 		EA1931A120E8B18F002621DB /* glxew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glxew.h; sourceTree = "<group>"; };
 		EA1931A220E8B18F002621DB /* eglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eglew.h; sourceTree = "<group>"; };
 		EA1931A320E8B18F002621DB /* wglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wglew.h; sourceTree = "<group>"; };
@@ -513,16 +513,9 @@
 		EA2F80A620E66F49003378DF /* ffvideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ffvideo.cpp; sourceTree = "<group>"; };
 		EA2F80A820E66F49003378DF /* gltexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gltexture.cpp; sourceTree = "<group>"; };
 		EA2F80A920E66F49003378DF /* safeQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = safeQueue.hpp; sourceTree = "<group>"; };
-		EA2F80AA20E66F49003378DF /* load_bmp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = load_bmp.cpp; sourceTree = "<group>"; };
 		EA2F80AB20E66F49003378DF /* alDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alDevice.hpp; sourceTree = "<group>"; };
-		EA2F80AD20E66F49003378DF /* SDLWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SDLWindow.cpp; sourceTree = "<group>"; };
-		EA2F80B020E66F49003378DF /* sdlinit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlinit.cpp; sourceTree = "<group>"; };
 		EA2F80B120E66F49003378DF /* GLDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLDevice.cpp; sourceTree = "<group>"; };
-		EA2F80B220E66F49003378DF /* sdlEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sdlEvent.hpp; sourceTree = "<group>"; };
-		EA2F80B420E66F49003378DF /* sdlAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlAudio.cpp; sourceTree = "<group>"; };
-		EA2F80B620E66F49003378DF /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		EA2F80B920E66F49003378DF /* alObjects.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alObjects.cpp; sourceTree = "<group>"; };
-		EA2F80BB20E66F49003378DF /* sdlAudio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sdlAudio.hpp; sourceTree = "<group>"; };
 		EA2F80C420E66F49003378DF /* shaders.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = shaders.hpp; sourceTree = "<group>"; };
 		EA2F80C620E66F49003378DF /* ffmpegDecode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ffmpegDecode.cpp; sourceTree = "<group>"; };
 		EA2F80C720E66F49003378DF /* alObjects.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alObjects.hpp; sourceTree = "<group>"; };
@@ -535,9 +528,7 @@
 		EA2F80D020E66F49003378DF /* gltexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = gltexture.hpp; sourceTree = "<group>"; };
 		EA2F80D220E66F49003378DF /* alDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alDevice.cpp; sourceTree = "<group>"; };
 		EA2F80D320E66F49003378DF /* ffStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ffStream.hpp; sourceTree = "<group>"; };
-		EA2F80D520E66F49003378DF /* SDLWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SDLWindow.hpp; sourceTree = "<group>"; };
 		EA2F80D820E66F49003378DF /* GLDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLDevice.hpp; sourceTree = "<group>"; };
-		EA2F80D920E66F49003378DF /* sdlEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlEvent.cpp; sourceTree = "<group>"; };
 		EA98923420EA8AA5001F7BE6 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
 		EA98923620EB5CA7001F7BE6 /* UTF-8 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "UTF-8"; sourceTree = "<group>"; };
 		EA98923820EB7317001F7BE6 /* data.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.xp3; path = ../../repos/data.xp3; sourceTree = "<group>"; };
@@ -654,7 +645,6 @@
 				EA1930FF20E8B18E002621DB /* tjs2 */,
 				EA19317320E8B18F002621DB /* utils */,
 				EA1930B320E8B18E002621DB /* visual */,
-				EA2F80A520E66F49003378DF /* sdl */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -1007,6 +997,8 @@
 				EA2F80D820E66F49003378DF /* GLDevice.hpp */,
 				EA2F80D220E66F49003378DF /* alDevice.cpp */,
 				EA2F80C420E66F49003378DF /* shaders.hpp */,
+				EA19319B20E8B18F002621DB /* baseAudio.cpp */,
+				EA19319F20E8B18F002621DB /* baseAudio.hpp */,
 				EA1931A020E8B18F002621DB /* GL */,
 				EA2F80C820E66F49003378DF /* shader */,
 			);
@@ -1021,8 +1013,6 @@
 				EA19319620E8B18F002621DB /* SDLWindow.cpp */,
 				EA19319720E8B18F002621DB /* sdlinit.cpp */,
 				EA19319920E8B18F002621DB /* sdlEvent.hpp */,
-				EA19319B20E8B18F002621DB /* sdlAudio.cpp */,
-				EA19319F20E8B18F002621DB /* sdlAudio.hpp */,
 				EA1931B320E8B18F002621DB /* SDLWindow.hpp */,
 				EA1931B520E8B18F002621DB /* sdlEvent.cpp */,
 			);
@@ -1215,23 +1205,6 @@
 			path = ../../src/sound;
 			sourceTree = "<group>";
 		};
-		EA2F80A520E66F49003378DF /* sdl */ = {
-			isa = PBXGroup;
-			children = (
-				EA2F80AA20E66F49003378DF /* load_bmp.cpp */,
-				EA2F80AD20E66F49003378DF /* SDLWindow.cpp */,
-				EA2F80B020E66F49003378DF /* sdlinit.cpp */,
-				EA2F80B220E66F49003378DF /* sdlEvent.hpp */,
-				EA2F80B420E66F49003378DF /* sdlAudio.cpp */,
-				EA2F80B620E66F49003378DF /* test.cpp */,
-				EA2F80BB20E66F49003378DF /* sdlAudio.hpp */,
-				EA2F80D520E66F49003378DF /* SDLWindow.hpp */,
-				EA2F80D920E66F49003378DF /* sdlEvent.cpp */,
-			);
-			name = sdl;
-			path = ../../src/sdl;
-			sourceTree = "<group>";
-		};
 		EA2F80C820E66F49003378DF /* shader */ = {
 			isa = PBXGroup;
 			children = (
@@ -1399,7 +1372,6 @@
 				EA19337820E8B190002621DB /* tjsError.cpp in Sources */,
 				EA19338120E8B190002621DB /* Random.cpp in Sources */,
 				EAAE679220ECE1540056DFFB /* GLDevice.cpp in Sources */,
-				EAA36D1720E7C18D00A4BD78 /* sdlAudio.cpp in Sources */,
 				EA19333920E8B190002621DB /* blend_function.cpp in Sources */,
 				EA19348D20E8C0A5002621DB /* main.cpp in Sources */,
 				EA19336520E8B190002621DB /* tjsdate.tab.cpp in Sources */,
@@ -1408,6 +1380,7 @@
 				EA19339C20E8B190002621DB /* sdlEvent.cpp in Sources */,
 				EA19340B20E8B191002621DB /* Main.cpp in Sources */,
 				EAAE679120ECE1300056DFFB /* gltexture.cpp in Sources */,
+				EAAE679320ECE2DF0056DFFB /* baseAudio.cpp in Sources */,
 				EA19346C20E8B191002621DB /* TextStream.cpp in Sources */,
 				EA19347720E8B191002621DB /* EventIntf.cpp in Sources */,
 				EA19333E20E8B190002621DB /* LayerBitmapIntf.cpp in Sources */,

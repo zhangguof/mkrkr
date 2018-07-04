@@ -17,7 +17,8 @@
 
 // class audioDevice;
 
-
+//not use.
+/*
 
 //implent
 void pcmBuffer::enable()
@@ -198,7 +199,7 @@ int audioDevice::init_spec(int freq,uint8_t channels)
 	want_spec.callback = audioDevice::audio_cb;
 	want_spec.userdata = this;
 
-    /* Initialize call back variables */ 
+    // Initialize call back variables
     // dev = SDL_OpenAudioDevice(NULL,0,&want_spec, &get_spec,
     // 	  SDL_AUDIO_ALLOW_FORMAT_CHANGE);
     // if (dev == 0) 
@@ -323,8 +324,8 @@ waveInfo::waveInfo(std::string fname)
 	// spec.format = AUDIO_F32SYS;
 
 
-    /* Initialize call back variables */  
-    if (SDL_OpenAudio(&spec, NULL) < 0) {  
+    //Initialize call back variables
+    if (SDL_OpenAudio(&spec, NULL) < 0) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't open audio: %s\n", SDL_GetError());  
         SDL_FreeWAV(data);  
     }  
@@ -342,12 +343,12 @@ waveInfo::audio_cb(void* userdata, Uint8* stream,int len)
     Uint8 *waveptr;  
     int waveleft;  
     // printf("callback len:%d\n",len);  
-    /* Set up the pointers */  
-    waveptr = _this->data + _this->pos;  
+   //  Set up the pointers
+    waveptr = _this->data + _this->pos;
     waveleft = _this->len - _this->pos;  
   
-    /* Go! */  
-    if (waveleft <= len) {  
+     //Go!
+    if (waveleft <= len) {
         SDL_memcpy(stream, waveptr, waveleft);  
         // SDL_PauseAudio(1);
         _this->stop(); 
@@ -391,17 +392,17 @@ int play_wav()
 {
     // char filename[4096]="a0001.wav";  
   
-    /* Enable standard application logging */  
-    SDL_LogSetPriority(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO);  
+     //Enable standard application logging
+    SDL_LogSetPriority(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO);
   
-    /* Load the SDL library */  
-    if (SDL_Init(SDL_INIT_AUDIO) < 0) {  
+     //Load the SDL library
+    if (SDL_Init(SDL_INIT_AUDIO) < 0) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't initialize SDL: %s\n", SDL_GetError());  
         return -1;  
     }  
   
-    /* Show the list of available drivers */  
-    SDL_Log("Available audio drivers:");  
+     //Show the list of available drivers
+    SDL_Log("Available audio drivers:");
     for (int i = 0; i < SDL_GetNumAudioDrivers(); ++i) {  
         SDL_Log("%i: %s", i, SDL_GetAudioDriver(i));  
     } 
@@ -482,11 +483,13 @@ int play_wav()
     while ((SDL_GetAudioStatus() == SDL_AUDIO_PLAYING))//获取音频状态  
         SDL_Delay(1000);  
   
-    /* Clean up on signal */  
-    SDL_CloseAudio();//关掉音频进程以及音频设备  
+     //Clean up on signal
+    SDL_CloseAudio();//关掉音频进程以及音频设备
     // SDL_FreeWAV(wave.sound);//释放数据由SDL_LoadWAV申请的  
     SDL_Quit();  
     // printf("=========over==========\n");  
     // system("pause");  
     return 0;
 }
+
+*/ //not use
