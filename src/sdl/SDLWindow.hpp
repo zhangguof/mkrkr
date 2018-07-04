@@ -41,6 +41,12 @@ private:
 	int LayerTop;
 	int LayerWidth;
 	int LayerHeight;
+    //use in moblie scale win
+    int innerLayerLeft;
+    int innerLayerTop;
+    int innerLayerWidth;
+    int innerLayerHeight;
+    
 	int ZoomDenom; // Zooming factor denominator (setting)
 	int ZoomNumer; // Zooming factor numerator (setting)
 	int ActualZoomDenom; // Zooming factor denominator (actual)

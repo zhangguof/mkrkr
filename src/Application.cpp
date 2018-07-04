@@ -55,6 +55,8 @@ bool tTVPApplication::StartApplication( int argc, char* argv[] )
 			break;
 		}
 	}
+    set_scale_mode(MODE_4_3);//4:3
+    
     return true;
 
 }
@@ -87,69 +89,7 @@ void tTVPApplication::SetTitle( const std::wstring& caption ) {
 	title_ = caption;
 }
 
-// onLoaded( dic, is_async, is_error, error_mes ); エラーは
-// sync ( main thead )
-// void LoadRequest( iTJSDispatch2 *owner, tTJSNI_Bitmap* bmp, const ttstr &name ) {
-// 	//tTVPBaseBitmap* dest = new tTVPBaseBitmap( 32, 32, 32 );
-// 	tTVPBaseBitmap dest( TVPGetInitialBitmap() );
-// 	iTJSDispatch2* metainfo = NULL;
-// 	ttstr nname = TVPNormalizeStorageName(name);
-// 	if( TVPCheckImageCache(nname,&dest,glmNormal,0,0,TVP_clNone,&metainfo) ) {
-// 		// キャッシュ内に発見、即座に読込みを完了する
-// 		bmp->CopyFrom( &dest );
-// 		bmp->SetLoading( false );
 
-// 		tTJSVariant param[4];
-// 		param[0] = tTJSVariant(metainfo,metainfo);
-// 		if( metainfo ) metainfo->Release();
-// 		param[1] = 0; // false
-// 		param[2] = 0; // false
-// 		param[3] = TJS_W(""); // error_mes
-// 		static ttstr eventname(TJS_W("onLoaded"));
-// 		TVPPostEvent(owner, owner, eventname, 0, TVP_EPT_IMMEDIATE, 4, param);
-// 		return;
-// 	}
-// 	if( TVPIsExistentStorage(name) == false ) {
-// 		TVPThrowExceptionMessage(TVPCannotFindStorage, name);
-// 	}
-// 	ttstr ext = TVPExtractStorageExt(name);
-// 	if(ext == TJS_W("")) {
-// 		TVPThrowExceptionMessage(TJS_W("Filename extension not found/%1"), name);
-// 	}
-
-// 	PushLoadQueue( owner, bmp, nname );
-// }
-
-// tTJSCriticalSectionHolder cs_holder(TVPCreateStreamCS);
-//	tTJSBinaryStream* stream = TVPCreateStream(nname, TJS_BS_READ);
-// TVPCreateStream はロックされているので、非同期で実行可能
-// void PushLoadQueue( iTJSDispatch2 *owner, tTJSNI_Bitmap *bmp, const ttstr &nname ) {
-// 	tTVPImageLoadCommand* cmd = new tTVPImageLoadCommand();
-// 	cmd->owner_ = owner;
-// 	owner->AddRef();
-// 	cmd->bmp_ = bmp;
-// 	cmd->path_ = nname;
-// 	cmd->dest_ = new tTVPTmpBitmapImage();
-// 	cmd->result_.Clear();
-// 	{
-// 		// キューをロックしてプッシュ
-// 		tTJSCriticalSectionHolder cs(CommandQueueCS);
-// 		CommandQueue.push(cmd);
-// 	}
-// 	// 追加したことをイベントで通知
-// 	PushCommandQueueEvent.Set();
-// }
-
-// void tTVPApplication::LoadImageRequest( class iTJSDispatch2 *owner, class tTJSNI_Bitmap* bmp, const ttstr &name ) {
-// 		LoadRequest( owner, bmp, name );
-// }
-
-// void tTVPApplication::RemoveWindow( TTVPWindowForm* win ) {
-// 	std::vector<class TTVPWindowForm*>::iterator it = std::remove( windows_list_.begin(), windows_list_.end(), win );
-// 	if( it != windows_list_.end() ) {
-// 		windows_list_.erase( it, windows_list_.end() );
-// 	}
-// }
 extern tTJSNI_Window * TVPMainWindow;
 extern void TVPDeliverAllEvents(); // called from (indirectly) the OS
 extern bool TVPProcessContinuousHandlerEventFlag;
@@ -215,7 +155,6 @@ static void update(unsigned int cur_tick)
 	//render update
 	if(TVPMainWindow)
 		TVPMainWindow->UpdateContent();
-	// wprintf(TJS_W("=====:%d\n"),interval);
 	fps_tick = cur_tick;
 
 
@@ -234,14 +173,12 @@ extern void VideoPlayer_Loop(uint32_t cur_tick);
 
 void tTVPApplication::Run()
 {
-	// while(sdl_loop());
-	// pre_run();
+
 	init_fps();
 //    regist_update(al_loop); //not use!
 	regist_update(update);
 	regist_update(VideoPlayer_Loop);
 	
-	// if(TVPMainWindow)
-	// 	TVPMainWindow->UpdateContent();
+
 	sdl_loop();
 }

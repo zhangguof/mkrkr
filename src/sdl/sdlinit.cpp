@@ -27,27 +27,26 @@ static int check_info(SDL_Window* win);
 //1 4:3
 //2 16:9
 
-int g_scale_win = 0;
+winScaleMode g_scale_win = AUTO;
 struct ScaleArg
 {
     double rate;
     int mode;
 } g_scale_modes[]= {{0.0f,0},{4.0/3.0,1},{16.0/9.0,2}};
 
-void set_scale_mode(int mode)
+void set_scale_mode(winScaleMode mode)
 {
-    assert(mode>=0 && mode<=2);
     g_scale_win = mode;
 }
 
 //src: devcie bound
 //dst: glview arg
 //rate = w/h
-void scale_view(ViewRect& src,ViewRect& dst,int mode)
+void scale_view(ViewRect& src,ViewRect& dst,winScaleMode mode)
 {
     //device width:height 568:320 16:9
-    if(mode == 0) return;
-    assert(mode==1 || mode==2);
+    if(mode == AUTO) return;
+//    assert(mode== || mode==2);
     dst = src;
     double rate = g_scale_modes[mode].rate;
     if(fabs(1.0*src.w/src.h - rate)<0.01)
@@ -55,7 +54,7 @@ void scale_view(ViewRect& src,ViewRect& dst,int mode)
         SDL_Log("scale view in same rate:%lf",rate);
         return;
     }
-    if(mode == 1)
+    if(mode == MODE_4_3)
     {
  
         //left right clip
@@ -65,7 +64,7 @@ void scale_view(ViewRect& src,ViewRect& dst,int mode)
         dst.w = int(src.h * rate);
         dst.h = src.h;
     }
-    else if(mode == 2)
+    else if(mode == MODE_16_9)
     {
         //top bottom clip
         dst.x = src.x;
@@ -100,7 +99,7 @@ int init_gles_context(SDL_Window* win)
     ViewRect src = {0,0,w,h};
     ViewRect dst = src;
 //    set_scale_mode(1);//4:3
-    if(g_scale_win > 0)
+    if(g_scale_win != AUTO)
     {
         scale_view(src, dst, g_scale_win);
     }

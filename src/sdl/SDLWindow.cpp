@@ -60,10 +60,10 @@ LayerLeft(0), LayerTop(0),touch_points_(this)
                 );
     }
     
-    LayerLeft = dst.x;
-    LayerTop = dst.y;
-    LayerWidth = dst.w;
-    LayerHeight = dst.h;
+    innerLayerLeft = dst.x;
+    innerLayerTop = dst.y;
+    innerLayerWidth = dst.w;
+    innerLayerHeight = dst.h;
     
     width = w;
     height = h;
@@ -298,15 +298,21 @@ void SDLWindow::trans_point_frome_win(int &x,int &y)
 {
     int _x = x;
     int _y = y;
+    
     if(width != LayerWidth || LayerLeft != left)
     {
-        float rate = LayerWidth * 1.0 / width;
-        x = LayerLeft + int((x - left) * rate);
+//        float rate = innerLayerWidth * 1.0 / width;
+//        x = innerLayerLeft + int((x - left) * rate);
+        float rate = LayerWidth * 1.0 / innerLayerWidth;
+        x = (int)((x - left) - innerLayerLeft) * rate;
+        
     }
     if(height != LayerHeight || LayerTop != top)
     {
-        float rate = LayerHeight * 1.0 / height;
-        y = LayerTop + int((y - top) * rate);
+//        float rate = innerLayerHeight * 1.0 / height;
+//        y = innerLayerTop + int((y - top) * rate);
+        float rate = LayerHeight * 1.0 / innerLayerHeight;
+        y = (int)((y - top) - innerLayerTop)*rate;
     }
     if(_x!=x || _y!=y)
     {

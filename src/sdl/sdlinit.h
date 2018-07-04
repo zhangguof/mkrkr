@@ -13,10 +13,20 @@ struct ViewRect
     int x,y;
     int w,h;
 };
-extern int g_scale_win;
 
-void scale_view(ViewRect& src,ViewRect& dst,int mode);
-void set_scale_mode(int mode);
+enum winScaleMode
+{
+    AUTO,
+    MODE_4_3,
+    MODE_16_9
+};
+
+extern winScaleMode g_scale_win;
+
+void scale_view(ViewRect& src,ViewRect& dst,winScaleMode mode);
+
+
+void set_scale_mode(winScaleMode mode);
 
 SDL_Window* create_sdl_window(const char* title,int w,int h);
 
