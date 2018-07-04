@@ -63,7 +63,7 @@ public:
 		~Frame()
 		{
 			delete[] data;
-            SDL_Log("delete Frame data!");
+//            SDL_Log("delete Frame data!");
 		}
 	};
     std::vector<std::shared_ptr<Frame> > v;

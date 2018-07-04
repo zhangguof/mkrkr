@@ -80,7 +80,7 @@ public:
 	}
 	void open(std::string s,bool turn_img=true);
 	void open(std::shared_ptr<ffStream>& fs);
-	int update();
+	int update(uint32_t cur);
 
 	void swap_buf(uint8_t* buf,int size);
 	void set_video_buffer(uint8_t* buff1,uint8_t* buff2,int size)

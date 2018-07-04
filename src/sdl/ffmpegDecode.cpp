@@ -193,7 +193,7 @@ int ffStream::open_audio_stream()
 	{
 	  return -1; // Couldn't find stream information
 	}
-	av_dump_format(pFormatCtx, 0, fname.c_str(), 0);
+//    av_dump_format(pFormatCtx, 0, fname.c_str(), 0);
 
 	// AVCodecContext *aCodecCtxOrig;
 	for(int i=0; i<pFormatCtx->nb_streams; i++)
@@ -554,8 +554,8 @@ int ffStream::video_decode_nframe(int nframe)
 			break;
 		}
 	}
-	printf("video decode %d frame\n", cnt);
-	printf("cur_frame:%d\n", vCodecCtx->frame_number);
+//    printf("video decode %d frame\n", cnt);
+//    printf("cur_frame:%d\n", vCodecCtx->frame_number);
 	return cnt;
 }
 

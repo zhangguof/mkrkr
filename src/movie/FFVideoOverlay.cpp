@@ -218,10 +218,10 @@ void FFVideoOverlay::push_statechange_event(tTVPVideoStatus vs_s)
 }
 
 
-void FFVideoOverlay::update(uint32_t interval)
+void FFVideoOverlay::update(uint32_t cur_tick)
 {
 	// printf("===FFVideoOverlay::update\n");
-	int ret  =  p_vplayer->update();
+	int ret  =  p_vplayer->update(cur_tick);
 	// printf("===FFVideoOverlay:update:%d\n",ret);
 	if(ret)
 	{
@@ -251,10 +251,10 @@ void FFVideoOverlay::update(uint32_t interval)
 
 iTVPVideoOverlay* g_curVideoOverlay = nullptr;
 
-void VideoPlayer_Loop(uint32_t interval)
+void VideoPlayer_Loop(uint32_t cur_tick)
 {
 	if(g_curVideoOverlay)
-		((FFVideoOverlay*)g_curVideoOverlay)->update(interval);
+		((FFVideoOverlay*)g_curVideoOverlay)->update(cur_tick);
 }
 
 // static bool regist_vidoe_update  = false;

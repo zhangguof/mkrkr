@@ -26,12 +26,12 @@ uint32_t one_frame_time = 1000 / 29.97;
 
 VideoPlayer* vp=nullptr;
 
-static void render(uint32_t interval)
+static void render(uint32_t cur_tick)
 {
     if(vp)
-        vp->update();
+        vp->update(cur_tick);
 	if(g_dev)
-		g_dev->render(interval);
+		g_dev->render(cur_tick);
 }
 
 

@@ -302,7 +302,7 @@ void AudioPlayer::play()
 		assert(status == stoped || status == paused || status == init);
 		status = playing;
 		p_src->play();
-		p_src->dump_all_prop();
+//        p_src->dump_all_prop();
 	}
 }
 
@@ -536,7 +536,7 @@ tPtrAuDev get_al_dev()
 	return ALAuidoDevice::get_inst();
 }
 
-void al_loop(uint32_t interval)
+void al_loop(uint32_t cur_tick)
 {
 	static auto pd = get_al_dev();
 	uint32_t t = pd->update();

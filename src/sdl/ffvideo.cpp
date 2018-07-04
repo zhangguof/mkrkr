@@ -62,13 +62,13 @@ void VideoPlayer::play()
 	// 	next_update_tick = time_now();
 	// next_update_tick = time_now();
 	status = Playing;
-	update();
+	update(time_now());
 }
-int VideoPlayer::update()
+int VideoPlayer::update(uint32_t cur)
 {
 	if(status != Playing)
 		return 0;
-	uint32_t cur = time_now();
+//    uint32_t cur = time_now();
 	// printf("(VideoPlayer:update):%d,%d\n",cur,next_update_tick);
 	if(cur >= next_update_tick)
 	{

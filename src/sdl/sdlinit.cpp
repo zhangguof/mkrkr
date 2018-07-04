@@ -304,51 +304,72 @@ void process_input_event(SDL_Event& e)
 }
 #endif
 
+void sdl_event_update(bool &quit)
+{
+    SDL_Event e;
+    while( SDL_PollEvent( &e ) != 0 )
+    {
+        //User requests quit
+        if( e.type == SDL_QUIT )
+        {
+            quit = true;
+            return;
+        }
+#ifndef SDL_TEST
+        else if( e.type == SDL_MOUSEBUTTONUP || e.type == SDL_MOUSEBUTTONDOWN)
+        {
+            //Handle keypress with current mouse position
+            process_input_event(e);
+        }
+        else if( e.type == SDL_USEREVENT)
+        {
+            process_use_envet(e.user);
+        }
+#endif
+    }
+}
 
-
+const double g_fps = 60.0f;
+const double g_event_fps = 20.0f;
+uint32_t frame_pre_time = uint32_t(1000.0/g_fps);
+uint32_t event_pre_time = uint32_t(1000.0/g_event_fps);
 
 extern "C" void sdl_loop()
 {
-    unsigned int last_time = 0;
-    unsigned int now;
-    unsigned int interval;
+    uint32_t last_time = 0;
+    uint32_t last_event_time = 0;
+    uint32_t now;
+    uint32_t sleep_time = 0;
+//    unsigned int interval;
     bool quit = false;
-    SDL_Event e;
+//    SDL_Event e;
 
     while( !quit )
     {
+        sleep_time = 0;
         now = time_now();
         //Handle events on queue
-        while( SDL_PollEvent( &e ) != 0 )
+        if(now - last_event_time > event_pre_time)
         {
-            //User requests quit
-            if( e.type == SDL_QUIT )
-            {
-                quit = true;
-                return;
-            }
-            #ifndef SDL_TEST
-            else if( e.type == SDL_MOUSEBUTTONUP || e.type == SDL_MOUSEBUTTONDOWN)
-            {
-            	 //Handle keypress with current mouse position
-            	process_input_event(e);
-            }
-            else if( e.type == SDL_USEREVENT)
-            {
-            	process_use_envet(e.user);
-            }
-            #endif
+            sdl_event_update(quit);
+            last_event_time = now;
         }
-        interval = now - last_time;
 
-        //Render quad
+//        interval = now - last_time;
         //render();
         if(cb_mgr)
-        	cb_mgr->update(interval);
+        	cb_mgr->update(now);
         
-        // //Update screen
-        // SDL_GL_SwapWindow( gWindow );
+
         last_time = now;
+        uint32_t cost_time = time_now() - now;
+        if(cost_time < frame_pre_time)
+        {
+            sleep_time = frame_pre_time - cost_time;
+//            printf("sleep:%u\n",sleep_time);
+        }
+        
+        SDL_Delay(sleep_time);
     }
 
 }
@@ -371,7 +392,7 @@ void regist_objupdate(UpdateObj* p)
     cb_mgr->add_callback2(p);
 }
 
-inline unsigned int time_now()
+unsigned int time_now()
 {
     return SDL_GetTicks();
 }
