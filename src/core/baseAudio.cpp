@@ -5,7 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <memory>
-#include "sdlAudio.hpp"
+#include "baseAudio.hpp"
 
 #define AVCODEC_MAX_AUDIO_FRAME_SIZE (4096*2)
 

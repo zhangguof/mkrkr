@@ -2,7 +2,7 @@
 #define _AL_DEVICE_H_
 #include "SDL.h"
 #include "ffStream.hpp"
-#include "sdlAudio.hpp"
+#include "baseAudio.hpp"
 
 
 #include <map>

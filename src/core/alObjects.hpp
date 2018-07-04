@@ -2,7 +2,7 @@
 #define _AL_OBJECTS_H_
 #include "SDL.h"
 #include "ffStream.hpp"
-#include "sdlAudio.hpp"
+#include "baseAudio.hpp"
 
 #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 #include <OpenAL/OpenAL.h>

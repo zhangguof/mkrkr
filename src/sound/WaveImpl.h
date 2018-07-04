@@ -22,7 +22,7 @@
 #include "WaveLoopManager.h"
 #include "win_def.h"
 #include "SDL.h"
-#include "sdlAudio.hpp"
+#include "baseAudio.hpp"
 #include "alDevice.hpp"
 
 /*[*/
