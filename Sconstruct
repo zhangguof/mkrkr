@@ -25,7 +25,8 @@ frameworks = ['CoreAudio','OpenGL',
 
 #path
 
-cpp_path = ['./','src',
+cpp_path = ['./',
+			'src',
 			'src/objects','src/utils',
 			'src/base','src/visual',
 			'src/visual/sdl',
@@ -34,13 +35,15 @@ cpp_path = ['./','src',
 			'src/extension',
 			'src/sdl',
 			'src/movie',
+			'src/core',
 ]
 
 refuse_files = set([
 	"test.cpp",
 	"un_pack_xp3.cpp",
 	"src/sdl/test.cpp",
-	'src/sound/WaveImpl.cpp'
+	'src/sound/WaveImpl.cpp',
+	'src/core/test.cpp'
 	])
 include_path = list(cpp_path)
 include_path.extend([
@@ -154,10 +157,6 @@ def build_main_in_darwin():
 	'png16','iconv','lzma',
 	'avformat','avcodec','avutil','swscale','swresample',
 	'openal',
-	#plugins
-	# 'kagparser',
-	#'menu',
-	#'layerexsave','ncbind'
 	]
 	lib_path = ['./libs',]
 	env.Program(target=target, source=cpp_src,

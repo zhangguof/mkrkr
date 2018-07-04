@@ -2,7 +2,7 @@
 #define _GL_TEXTURE_H_
 
 #include "SDL.h"
-#include "SDL_opengl.h"
+
 #include <assert.h>
 #include <string.h>
 
@@ -13,6 +13,7 @@
 #else
 #include "GL/glew.h"
 #endif
+#include "SDL_opengl.h"
 
 
 

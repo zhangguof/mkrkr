@@ -120,7 +120,14 @@ int init_gles_context(SDL_Window* win)
 
 }
 
-#if TARGET_IPHONE_OS
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+#pragma message("using OpenGLES context!")
+int init_gl_context(SDL_Window* win)
+{
+    return init_gles_context(win);
+}
+#else
+#pragma message("using OpenGL context!")
 int init_gl_context(SDL_Window* win)
 {
     SDL_GL_SetAttribute( SDL_GL_CONTEXT_MAJOR_VERSION, 3 );
@@ -149,11 +156,7 @@ int init_gl_context(SDL_Window* win)
     
     return 1;
 }
-#else
-int init_gl_context(SDL_Window* win)
-{
-    return init_gles_context(win);
-}
+
 #endif
 
 

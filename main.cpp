@@ -47,8 +47,17 @@ void xp3_filter(tTVPXP3ExtractionFilterInfo* info)
 }
 
 extern void TVPInitImportFuncs();
+
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 extern void path_info();
 extern void init_locale();
+#else
+void path_info(){}
+void init_locale()
+{
+    setlocale(LC_CTYPE,"UTF-8");
+}
+#endif
 
 extern "C" int app_main(int argc, char* argv[])
 {
@@ -100,3 +109,5 @@ extern "C" int app_main(int argc, char* argv[])
 
 	return 0;
 }
+
+

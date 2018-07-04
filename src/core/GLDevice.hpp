@@ -1,10 +1,7 @@
 #ifndef _H_DEVICE_
 #define _H_DEVICE_
 
-
-
 #include "SDL.h"
-#include "SDL_opengl.h"
 
 #if TARGET_OS_IPHONE||TARGET_IPHONE_SIMULATOR
 #include "SDL_opengles2.h"
@@ -13,6 +10,11 @@
 #else
 #include "GL/glew.h"
 #endif
+
+
+#include "SDL_opengl.h"
+
+
 
 #include <stdlib.h>
 #include <stdio.h>

@@ -20,7 +20,7 @@ Device* g_dev = nullptr;
 // extern Device* g_dev;
 GLTexture* img_tex1;
 std::shared_ptr<FrameBuffer> pbf;
-float fps = 29.97;
+static float fps = 29.97;
 uint32_t one_frame_time = 1000 / 29.97;
 
 
