@@ -183,6 +183,11 @@
 		EAA36D2C20E7CC6600A4BD78 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D2B20E7CC6600A4BD78 /* OpenAL.framework */; };
 		EAA36D2F20E8030A00A4BD78 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0B20E7BF5100A4BD78 /* libavcodec.a */; };
 		EAA534F120ECD84A005F0CB4 /* updateMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAA534EF20ECD84A005F0CB4 /* updateMgr.cpp */; };
+		EAAE678E20ECE0D20056DFFB /* alObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80B920E66F49003378DF /* alObjects.cpp */; };
+		EAAE678F20ECE0EB0056DFFB /* ffmpegDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80C620E66F49003378DF /* ffmpegDecode.cpp */; };
+		EAAE679020ECE1300056DFFB /* alDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80D220E66F49003378DF /* alDevice.cpp */; };
+		EAAE679120ECE1300056DFFB /* gltexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80A820E66F49003378DF /* gltexture.cpp */; };
+		EAAE679220ECE1540056DFFB /* GLDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80B120E66F49003378DF /* GLDevice.cpp */; };
 		EAFCB15620E6A027003A1736 /* test0.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFCB15520E6A026003A1736 /* test0.png */; };
 		EAFCB15A20E6A32F003A1736 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15920E6A32F003A1736 /* libSDL2.a */; };
 		EAFCB15C20E6A3B3003A1736 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15B20E6A3B2003A1736 /* Metal.framework */; };
@@ -527,12 +532,10 @@
 		EA19348B20E8B280002621DB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../main.cpp; sourceTree = "<group>"; };
 		EA1F246820E5F5C100BD563F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EA2F80A620E66F49003378DF /* ffvideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ffvideo.cpp; sourceTree = "<group>"; };
-		EA2F80A720E66F49003378DF /* SOIL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOIL.h; sourceTree = "<group>"; };
 		EA2F80A820E66F49003378DF /* gltexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gltexture.cpp; sourceTree = "<group>"; };
 		EA2F80A920E66F49003378DF /* safeQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = safeQueue.hpp; sourceTree = "<group>"; };
 		EA2F80AA20E66F49003378DF /* load_bmp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = load_bmp.cpp; sourceTree = "<group>"; };
 		EA2F80AB20E66F49003378DF /* alDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alDevice.hpp; sourceTree = "<group>"; };
-		EA2F80AC20E66F49003378DF /* imgbuf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imgbuf.h; sourceTree = "<group>"; };
 		EA2F80AD20E66F49003378DF /* SDLWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SDLWindow.cpp; sourceTree = "<group>"; };
 		EA2F80B020E66F49003378DF /* sdlinit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlinit.cpp; sourceTree = "<group>"; };
 		EA2F80B120E66F49003378DF /* GLDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLDevice.cpp; sourceTree = "<group>"; };
@@ -579,8 +582,6 @@
 		EAA36D2B20E7CC6600A4BD78 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		EAA534EF20ECD84A005F0CB4 /* updateMgr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = updateMgr.cpp; sourceTree = "<group>"; };
 		EAA534F020ECD84A005F0CB4 /* updateMgr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = updateMgr.hpp; sourceTree = "<group>"; };
-		EAD4825B20E6005F0015AE5E /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
-		EAD4825C20E6005F0015AE5E /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		EAFCB15520E6A026003A1736 /* test0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test0.png; path = ../../data1/bmp/test0.png; sourceTree = "<group>"; };
 		EAFCB15920E6A32F003A1736 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../libs/ios/libSDL2.a; sourceTree = "<group>"; };
 		EAFCB15B20E6A3B2003A1736 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -675,7 +676,6 @@
 				EA19317320E8B18F002621DB /* utils */,
 				EA1930B320E8B18E002621DB /* visual */,
 				EA2F80A520E66F49003378DF /* sdl */,
-				EAD4825A20E6005F0015AE5E /* core */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -1014,6 +1014,21 @@
 				EA19318D20E8B18F002621DB /* main.c */,
 				EAA534EF20ECD84A005F0CB4 /* updateMgr.cpp */,
 				EAA534F020ECD84A005F0CB4 /* updateMgr.hpp */,
+				EA2F80B920E66F49003378DF /* alObjects.cpp */,
+				EA2F80C720E66F49003378DF /* alObjects.hpp */,
+				EA2F80C620E66F49003378DF /* ffmpegDecode.cpp */,
+				EA2F80D320E66F49003378DF /* ffStream.hpp */,
+				EA2F80A620E66F49003378DF /* ffvideo.cpp */,
+				EA2F80CE20E66F49003378DF /* ffvideo.hpp */,
+				EA2F80A820E66F49003378DF /* gltexture.cpp */,
+				EA2F80A920E66F49003378DF /* safeQueue.hpp */,
+				EA2F80AB20E66F49003378DF /* alDevice.hpp */,
+				EA2F80D020E66F49003378DF /* gltexture.hpp */,
+				EA2F80B120E66F49003378DF /* GLDevice.cpp */,
+				EA2F80D820E66F49003378DF /* GLDevice.hpp */,
+				EA2F80D220E66F49003378DF /* alDevice.cpp */,
+				EA2F80C420E66F49003378DF /* shaders.hpp */,
+				EA2F80C820E66F49003378DF /* shader */,
 			);
 			name = core;
 			path = ../../src/core;
@@ -1240,31 +1255,14 @@
 		EA2F80A520E66F49003378DF /* sdl */ = {
 			isa = PBXGroup;
 			children = (
-				EA2F80A620E66F49003378DF /* ffvideo.cpp */,
-				EA2F80A720E66F49003378DF /* SOIL.h */,
-				EA2F80A820E66F49003378DF /* gltexture.cpp */,
-				EA2F80A920E66F49003378DF /* safeQueue.hpp */,
 				EA2F80AA20E66F49003378DF /* load_bmp.cpp */,
-				EA2F80AB20E66F49003378DF /* alDevice.hpp */,
-				EA2F80AC20E66F49003378DF /* imgbuf.h */,
 				EA2F80AD20E66F49003378DF /* SDLWindow.cpp */,
 				EA2F80B020E66F49003378DF /* sdlinit.cpp */,
-				EA2F80B120E66F49003378DF /* GLDevice.cpp */,
 				EA2F80B220E66F49003378DF /* sdlEvent.hpp */,
 				EA2F80B420E66F49003378DF /* sdlAudio.cpp */,
 				EA2F80B620E66F49003378DF /* test.cpp */,
-				EA2F80B920E66F49003378DF /* alObjects.cpp */,
 				EA2F80BB20E66F49003378DF /* sdlAudio.hpp */,
-				EA2F80C420E66F49003378DF /* shaders.hpp */,
-				EA2F80C620E66F49003378DF /* ffmpegDecode.cpp */,
-				EA2F80C720E66F49003378DF /* alObjects.hpp */,
-				EA2F80C820E66F49003378DF /* shader */,
-				EA2F80CE20E66F49003378DF /* ffvideo.hpp */,
-				EA2F80D020E66F49003378DF /* gltexture.hpp */,
-				EA2F80D220E66F49003378DF /* alDevice.cpp */,
-				EA2F80D320E66F49003378DF /* ffStream.hpp */,
 				EA2F80D520E66F49003378DF /* SDLWindow.hpp */,
-				EA2F80D820E66F49003378DF /* GLDevice.hpp */,
 				EA2F80D920E66F49003378DF /* sdlEvent.cpp */,
 			);
 			name = sdl;
@@ -1289,16 +1287,6 @@
 				EAA3548A20E93D5000B8AD31 /* path.mm */,
 			);
 			path = ios;
-			sourceTree = "<group>";
-		};
-		EAD4825A20E6005F0015AE5E /* core */ = {
-			isa = PBXGroup;
-			children = (
-				EAD4825B20E6005F0015AE5E /* test.cpp */,
-				EAD4825C20E6005F0015AE5E /* main.c */,
-			);
-			name = core;
-			path = ../../src/core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1450,6 +1438,7 @@
 				EA19338C20E8B190002621DB /* SDLWindow.cpp in Sources */,
 				EA19337820E8B190002621DB /* tjsError.cpp in Sources */,
 				EA19338120E8B190002621DB /* Random.cpp in Sources */,
+				EAAE679220ECE1540056DFFB /* GLDevice.cpp in Sources */,
 				EAA36D1720E7C18D00A4BD78 /* sdlAudio.cpp in Sources */,
 				EA19333920E8B190002621DB /* blend_function.cpp in Sources */,
 				EA19348D20E8C0A5002621DB /* main.cpp in Sources */,
@@ -1458,6 +1447,7 @@
 				EA19337E20E8B190002621DB /* ThreadImpl.cpp in Sources */,
 				EA19339C20E8B190002621DB /* sdlEvent.cpp in Sources */,
 				EA19340B20E8B191002621DB /* Main.cpp in Sources */,
+				EAAE679120ECE1300056DFFB /* gltexture.cpp in Sources */,
 				EA19346C20E8B191002621DB /* TextStream.cpp in Sources */,
 				EA19347720E8B191002621DB /* EventIntf.cpp in Sources */,
 				EA19333E20E8B190002621DB /* LayerBitmapIntf.cpp in Sources */,
@@ -1469,6 +1459,7 @@
 				EA19339F20E8B190002621DB /* FFVideoOverlay.cpp in Sources */,
 				EA19333F20E8B190002621DB /* TransIntf.cpp in Sources */,
 				EA19338620E8B190002621DB /* TVPTimer.cpp in Sources */,
+				EAAE678F20ECE0EB0056DFFB /* ffmpegDecode.cpp in Sources */,
 				EA19336420E8B190002621DB /* tjsNamespace.cpp in Sources */,
 				EAA534F120ECD84A005F0CB4 /* updateMgr.cpp in Sources */,
 				EA19348320E8B191002621DB /* sdlWaveImpl.cpp in Sources */,
@@ -1477,6 +1468,7 @@
 				EA19333720E8B190002621DB /* DrawDevice.cpp in Sources */,
 				EA19335720E8B190002621DB /* tjsMath.cpp in Sources */,
 				EA19339E20E8B190002621DB /* VideoOvlImpl.cpp in Sources */,
+				EAAE679020ECE1300056DFFB /* alDevice.cpp in Sources */,
 				EA19332720E8B190002621DB /* WindowImpl.cpp in Sources */,
 				EA19347420E8B191002621DB /* StaticPluginImpl.cpp in Sources */,
 				EA19335520E8B190002621DB /* tjsOctPack.cpp in Sources */,
@@ -1515,6 +1507,7 @@
 				EA19343720E8B191002621DB /* Main.cpp in Sources */,
 				EA19332820E8B190002621DB /* WindowIntf.cpp in Sources */,
 				EA19334220E8B190002621DB /* DebugIntf.cpp in Sources */,
+				EAAE678E20ECE0D20056DFFB /* alObjects.cpp in Sources */,
 				EA19335A20E8B190002621DB /* cp932_uni.cpp in Sources */,
 				EA19334A20E8B190002621DB /* tjsDisassemble.cpp in Sources */,
 				EA19335020E8B190002621DB /* tjsLex.cpp in Sources */,
