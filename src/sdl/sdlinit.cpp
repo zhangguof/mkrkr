@@ -415,10 +415,5 @@ extern "C" void init_sdl_test(int w,int h)
         h,                               // height, in pixels
         SDL_WINDOW_OPENGL|SDL_WINDOW_ALLOW_HIGHDPI                  // flags - see below
     );
-	#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
-		init_gles_context(win);
-	#else
-		init_gl_context(win);
-	#endif
-
+    init_gl_context(win);
 }

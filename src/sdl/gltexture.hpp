@@ -1,18 +1,20 @@
 #ifndef _GL_TEXTURE_H_
 #define _GL_TEXTURE_H_
 
-//#if TARGET_OS_IPHONE||TARGET_IPHONE_SIMULATOR
-#include "SDL_opengles2.h"
-#include <OpenGLES/ES3/gl.h>
-#include <OpenGLES/ES3/glext.h>
-//#else
-//#include "GL/glew.h"
-//#endif
-
 #include "SDL.h"
 #include "SDL_opengl.h"
 #include <assert.h>
 #include <string.h>
+
+#if TARGET_OS_IPHONE||TARGET_IPHONE_SIMULATOR
+#include "SDL_opengles2.h"
+#include <OpenGLES/ES3/gl.h>
+#include <OpenGLES/ES3/glext.h>
+#else
+#include "GL/glew.h"
+#endif
+
+
 
 //GLAPI void GLAPIENTRY glTexImage2D 
 //(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void *pixels);

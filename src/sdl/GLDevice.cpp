@@ -3,10 +3,12 @@
 #include "shaders.hpp"
 
 #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
-////do something
+
+#pragma message("using opengl es sharder!!")
 const char* defalut_vs_shader = simple_es_vs_shader;
 const char* defalut_fs_shader = simple_es_fs_shader;
 #else
+#pragma message("using openGL shader!!")
 const char* defalut_vs_shader = simple_vs_shader;
 const char* defalut_fs_shader = simple_fs_shader;
 

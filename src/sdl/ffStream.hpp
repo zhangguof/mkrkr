@@ -203,7 +203,6 @@ public:
 	//read all;
 	int read(uint8_t** data)
 	{
-		int read_len = len - rpos;
 		*data = get_data() + rpos;
 		rpos = len;
 		return len;

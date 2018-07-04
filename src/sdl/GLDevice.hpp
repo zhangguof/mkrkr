@@ -3,17 +3,16 @@
 
 
 
+#include "SDL.h"
+#include "SDL_opengl.h"
 
-//#if TARGET_OS_IPHONE||TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_IPHONE||TARGET_IPHONE_SIMULATOR
 #include "SDL_opengles2.h"
 #include <OpenGLES/ES3/gl.h>
 #include <OpenGLES/ES3/glext.h>
-//#else
-//#include "GL/glew.h"
-//#endif
-
-#include "SDL.h"
-#include "SDL_opengl.h"
+#else
+#include "GL/glew.h"
+#endif
 
 #include <stdlib.h>
 #include <stdio.h>
