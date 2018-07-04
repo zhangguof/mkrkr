@@ -86,7 +86,7 @@ public:
 
 	TJS_METHOD_DEF(void, SetString, (const tjs_char *ref, tjs_int maxlen = -1))
 	{
-		if(LongString) TJSVS_free(LongString), LongString = NULL;
+        if(LongString) static_cast<void>(TJSVS_free(LongString)), LongString = NULL;
 		tjs_int len;
 		if(maxlen != -1)
 			len = TJSGetShorterStrLen(ref, maxlen);
@@ -144,7 +144,7 @@ public:
 
 	TJS_METHOD_DEF(void, ResetString, (const tjs_char *ref))
 	{
-		if(LongString) TJSVS_free(LongString), LongString = NULL;
+        if(LongString) static_cast<void>(TJSVS_free(LongString)), LongString = NULL;
 		SetString(ref);
 	}
 

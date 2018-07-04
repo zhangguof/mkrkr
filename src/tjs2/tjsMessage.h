@@ -58,13 +58,13 @@ public:
 	~tTJSMessageHolder()
 	{
 		if(Name) TJSUnregisterMessageMap(Name);
-		if(AssignedMessage) delete [] AssignedMessage, AssignedMessage = NULL;
+        if(AssignedMessage) static_cast<void>(delete [] AssignedMessage), AssignedMessage = NULL;
 		TJSReleaseMessageMapper();
 	}
 
 	void AssignMessage(const tjs_char *msg)
 	{
-		if(AssignedMessage) delete [] AssignedMessage, AssignedMessage = NULL;
+        if(AssignedMessage) static_cast<void>(delete [] AssignedMessage), AssignedMessage = NULL;
 		AssignedMessage = new tjs_char[TJS_strlen(msg) + 1];
 		TJS_strcpy(AssignedMessage, msg);
 	}

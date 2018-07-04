@@ -417,7 +417,7 @@ public:
 
 		void _SetName(const tjs_char * name)
 		{
-			if(Name) Name->Release(), Name = NULL;
+            if(Name) static_cast<void>(Name->Release()), Name = NULL;
 			if(!name) TJS_eTJSError(TJSIDExpected);
 			if(!name[0]) TJS_eTJSError(TJSIDExpected);
 			Name = TJSAllocVariantString(name);
@@ -450,7 +450,7 @@ public:
 
 		void PostClear()
 		{
-			if(Name) Name->Release(), Name = NULL;
+            if(Name) static_cast<void>(Name->Release()), Name = NULL;
 			((tTJSVariant*)(&Value))->~tTJSVariant();
 			memset(&Value, 0, sizeof(Value));
 			SymFlags &= ~TJS_SYMBOL_USING;

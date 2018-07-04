@@ -186,10 +186,10 @@ void event_update()
 }
 
 
-static void update(unsigned int interval)
+static void update(unsigned int cur_tick)
 {
 	// TVPAddLog(TJS_W("render_update!!!"));
-	unsigned int cur_tick = time_now();
+//    unsigned int cur_tick = time_now();
 	
 	if(cur_tick - last_tick >= Event_interval)
 	{
@@ -228,15 +228,15 @@ static void update(unsigned int interval)
 // 	TVPInializeFontRasterizers();
 // 	TVPFontSystem->AddFont(TJS_W("font/NotoSansCJKsc-Black.otf"));
 // }
-extern void al_loop(uint32_t interval);
-extern void VideoPlayer_Loop(uint32_t interval);
+extern void al_loop(uint32_t cur_tick);
+extern void VideoPlayer_Loop(uint32_t cur_tick);
 
 void tTVPApplication::Run()
 {
 	// while(sdl_loop());
 	// pre_run();
 	init_fps();
-	regist_update(al_loop);
+//    regist_update(al_loop); //not use!
 	regist_update(update);
 	regist_update(VideoPlayer_Loop);
 	

@@ -156,7 +156,7 @@ public:
 			if(rhs && rhs[0])
 				Ptr->ResetString(rhs);
 			else
-				Ptr->Release(), Ptr = NULL;
+                static_cast<void>(Ptr->Release()), Ptr = NULL;
 		}
 		else
 		{
@@ -327,7 +327,7 @@ public:
 
 	TJS_METHOD_DEF(void, Clear, ())
 	{
-		if(Ptr) Ptr->Release(), Ptr = NULL;
+        if(Ptr) static_cast<void>(Ptr->Release()), Ptr = NULL;
 	}
 
 	TJS_METHOD_DEF(tjs_char *, AllocBuffer, (tjs_uint len))
