@@ -102,13 +102,8 @@
 		EA19338620E8B190002621DB /* TVPTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19318920E8B18F002621DB /* TVPTimer.cpp */; };
 		EA19338720E8B190002621DB /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19318B20E8B18F002621DB /* test.cpp */; };
 		EA19338820E8B190002621DB /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EA19318D20E8B18F002621DB /* main.c */; };
-		EA19338A20E8B190002621DB /* gltexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319120E8B18F002621DB /* gltexture.cpp */; };
 		EA19338C20E8B190002621DB /* SDLWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319620E8B18F002621DB /* SDLWindow.cpp */; };
 		EA19338D20E8B190002621DB /* sdlinit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319720E8B18F002621DB /* sdlinit.cpp */; };
-		EA19338E20E8B190002621DB /* GLDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319820E8B18F002621DB /* GLDevice.cpp */; };
-		EA19339320E8B190002621DB /* alObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319E20E8B18F002621DB /* alObjects.cpp */; };
-		EA19339420E8B190002621DB /* ffmpegDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931A620E8B18F002621DB /* ffmpegDecode.cpp */; };
-		EA19339B20E8B190002621DB /* alDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931B120E8B18F002621DB /* alDevice.cpp */; };
 		EA19339C20E8B190002621DB /* sdlEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931B520E8B18F002621DB /* sdlEvent.cpp */; };
 		EA19339D20E8B190002621DB /* VideoOvlIntf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931BA20E8B18F002621DB /* VideoOvlIntf.cpp */; };
 		EA19339E20E8B190002621DB /* VideoOvlImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1931BB20E8B18F002621DB /* VideoOvlImpl.cpp */; };
@@ -408,32 +403,16 @@
 		EA19318B20E8B18F002621DB /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		EA19318C20E8B18F002621DB /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		EA19318D20E8B18F002621DB /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		EA19318F20E8B18F002621DB /* ffvideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ffvideo.cpp; sourceTree = "<group>"; };
-		EA19319120E8B18F002621DB /* gltexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gltexture.cpp; sourceTree = "<group>"; };
-		EA19319220E8B18F002621DB /* safeQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = safeQueue.hpp; sourceTree = "<group>"; };
-		EA19319320E8B18F002621DB /* load_bmp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = load_bmp.cpp; sourceTree = "<group>"; };
-		EA19319420E8B18F002621DB /* alDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alDevice.hpp; sourceTree = "<group>"; };
-		EA19319520E8B18F002621DB /* imgbuf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imgbuf.h; sourceTree = "<group>"; };
 		EA19319620E8B18F002621DB /* SDLWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SDLWindow.cpp; sourceTree = "<group>"; };
 		EA19319720E8B18F002621DB /* sdlinit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlinit.cpp; sourceTree = "<group>"; };
-		EA19319820E8B18F002621DB /* GLDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLDevice.cpp; sourceTree = "<group>"; };
 		EA19319920E8B18F002621DB /* sdlEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sdlEvent.hpp; sourceTree = "<group>"; };
 		EA19319B20E8B18F002621DB /* sdlAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlAudio.cpp; sourceTree = "<group>"; };
-		EA19319E20E8B18F002621DB /* alObjects.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alObjects.cpp; sourceTree = "<group>"; };
 		EA19319F20E8B18F002621DB /* sdlAudio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sdlAudio.hpp; sourceTree = "<group>"; };
 		EA1931A120E8B18F002621DB /* glxew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glxew.h; sourceTree = "<group>"; };
 		EA1931A220E8B18F002621DB /* eglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eglew.h; sourceTree = "<group>"; };
 		EA1931A320E8B18F002621DB /* wglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wglew.h; sourceTree = "<group>"; };
 		EA1931A420E8B18F002621DB /* glew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glew.h; sourceTree = "<group>"; };
-		EA1931A520E8B18F002621DB /* shaders.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = shaders.hpp; sourceTree = "<group>"; };
-		EA1931A620E8B18F002621DB /* ffmpegDecode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ffmpegDecode.cpp; sourceTree = "<group>"; };
-		EA1931A720E8B18F002621DB /* alObjects.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alObjects.hpp; sourceTree = "<group>"; };
-		EA1931AE20E8B18F002621DB /* ffvideo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ffvideo.hpp; sourceTree = "<group>"; };
-		EA1931B020E8B18F002621DB /* gltexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = gltexture.hpp; sourceTree = "<group>"; };
-		EA1931B120E8B18F002621DB /* alDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alDevice.cpp; sourceTree = "<group>"; };
-		EA1931B220E8B18F002621DB /* ffStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ffStream.hpp; sourceTree = "<group>"; };
 		EA1931B320E8B18F002621DB /* SDLWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SDLWindow.hpp; sourceTree = "<group>"; };
-		EA1931B420E8B18F002621DB /* GLDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLDevice.hpp; sourceTree = "<group>"; };
 		EA1931B520E8B18F002621DB /* sdlEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdlEvent.cpp; sourceTree = "<group>"; };
 		EA1931B720E8B18F002621DB /* VideoOvlIntf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoOvlIntf.h; sourceTree = "<group>"; };
 		EA1931B820E8B18F002621DB /* VideoOvlImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoOvlImpl.h; sourceTree = "<group>"; };
@@ -1028,6 +1007,7 @@
 				EA2F80D820E66F49003378DF /* GLDevice.hpp */,
 				EA2F80D220E66F49003378DF /* alDevice.cpp */,
 				EA2F80C420E66F49003378DF /* shaders.hpp */,
+				EA1931A020E8B18F002621DB /* GL */,
 				EA2F80C820E66F49003378DF /* shader */,
 			);
 			name = core;
@@ -1037,30 +1017,13 @@
 		EA19318E20E8B18F002621DB /* sdl */ = {
 			isa = PBXGroup;
 			children = (
-				EA19318F20E8B18F002621DB /* ffvideo.cpp */,
-				EA19319120E8B18F002621DB /* gltexture.cpp */,
-				EA19319220E8B18F002621DB /* safeQueue.hpp */,
-				EA19319320E8B18F002621DB /* load_bmp.cpp */,
 				EAA3548C20EA5C5D00B8AD31 /* sdlinit.h */,
-				EA19319420E8B18F002621DB /* alDevice.hpp */,
-				EA19319520E8B18F002621DB /* imgbuf.h */,
 				EA19319620E8B18F002621DB /* SDLWindow.cpp */,
 				EA19319720E8B18F002621DB /* sdlinit.cpp */,
-				EA19319820E8B18F002621DB /* GLDevice.cpp */,
 				EA19319920E8B18F002621DB /* sdlEvent.hpp */,
 				EA19319B20E8B18F002621DB /* sdlAudio.cpp */,
-				EA19319E20E8B18F002621DB /* alObjects.cpp */,
 				EA19319F20E8B18F002621DB /* sdlAudio.hpp */,
-				EA1931A020E8B18F002621DB /* GL */,
-				EA1931A520E8B18F002621DB /* shaders.hpp */,
-				EA1931A620E8B18F002621DB /* ffmpegDecode.cpp */,
-				EA1931A720E8B18F002621DB /* alObjects.hpp */,
-				EA1931AE20E8B18F002621DB /* ffvideo.hpp */,
-				EA1931B020E8B18F002621DB /* gltexture.hpp */,
-				EA1931B120E8B18F002621DB /* alDevice.cpp */,
-				EA1931B220E8B18F002621DB /* ffStream.hpp */,
 				EA1931B320E8B18F002621DB /* SDLWindow.hpp */,
-				EA1931B420E8B18F002621DB /* GLDevice.hpp */,
 				EA1931B520E8B18F002621DB /* sdlEvent.cpp */,
 			);
 			name = sdl;
@@ -1385,7 +1348,6 @@
 				EA19334B20E8B190002621DB /* tjsGlobalStringMap.cpp in Sources */,
 				EA19348820E8B191002621DB /* WaveIntf.cpp in Sources */,
 				EA19338820E8B190002621DB /* main.c in Sources */,
-				EA19339B20E8B190002621DB /* alDevice.cpp in Sources */,
 				EA19334C20E8B190002621DB /* MsgImpl.cpp in Sources */,
 				EA19348020E8B191002621DB /* PhaseVocoderDSP.cpp in Sources */,
 				EA19347E20E8B191002621DB /* SoundBufferBaseIntf.cpp in Sources */,
@@ -1422,9 +1384,7 @@
 				EA1933A020E8B190002621DB /* TVPVideoOverlay.cpp in Sources */,
 				EA19346B20E8B191002621DB /* tp_stub.cpp in Sources */,
 				EA19338520E8B190002621DB /* md5.c in Sources */,
-				EA19339320E8B190002621DB /* alObjects.cpp in Sources */,
 				EA1933D320E8B191002621DB /* utils.cpp in Sources */,
-				EA19338E20E8B190002621DB /* GLDevice.cpp in Sources */,
 				EA19347A20E8B191002621DB /* FuncStubs.cpp in Sources */,
 				EA19335820E8B190002621DB /* tjsVariantString.cpp in Sources */,
 				EA19337D20E8B190002621DB /* Extension.cpp in Sources */,
@@ -1453,7 +1413,6 @@
 				EA19333E20E8B190002621DB /* LayerBitmapIntf.cpp in Sources */,
 				EA19338220E8B190002621DB /* TimerImpl.cpp in Sources */,
 				EA19336320E8B190002621DB /* tjsConfig.cpp in Sources */,
-				EA19339420E8B190002621DB /* ffmpegDecode.cpp in Sources */,
 				EA19334E20E8B190002621DB /* string_table.cpp in Sources */,
 				EA19337920E8B190002621DB /* CharacterSet.cpp in Sources */,
 				EA19339F20E8B190002621DB /* FFVideoOverlay.cpp in Sources */,
@@ -1472,7 +1431,6 @@
 				EA19332720E8B190002621DB /* WindowImpl.cpp in Sources */,
 				EA19347420E8B191002621DB /* StaticPluginImpl.cpp in Sources */,
 				EA19335520E8B190002621DB /* tjsOctPack.cpp in Sources */,
-				EA19338A20E8B190002621DB /* gltexture.cpp in Sources */,
 				EA19346D20E8B191002621DB /* SystemImpl.cpp in Sources */,
 				EA19347820E8B191002621DB /* EventImpl.cpp in Sources */,
 				EA19338020E8B190002621DB /* utils.cpp in Sources */,
