@@ -262,6 +262,11 @@ void do_unpack(ttstr data_file,ttstr dst_dir)
 }
 
 
+const int max_arg_cnt = 20;
+int _argc;
+// tjs_char ** _wargv;
+ttstr _argv[max_arg_cnt];
+
 int main(int argc,char* argv[])
 {
 	setlocale(LC_CTYPE, "UTF-8");
@@ -272,6 +277,26 @@ int main(int argc,char* argv[])
 	{
 		ttstr fname = L"../repos/data.xp3";
 		ttstr dst_dir = L"../repos/data1";
+		_argc = argc;
+		for(int i= 0;i<argc;++i)
+		{
+			_argv[i] = argv[i];
+			// TVPAddLog(_argv[i]);
+		}
+		for(int i=0;i<argc;++i)
+		{
+			if(_argv[i] == TJS_W("-data") && i+1<argc)
+			{
+				fname = _argv[i+1];
+				continue;
+			}
+			if(_argv[i] == TJS_W("-out") && i+1<argc)
+			{
+				dst_dir = _argv[i+1];
+				continue;
+			}
+		}
+		wprintf(L"src_data:%ls,dst_dir:%ls\n",fname.c_str(),dst_dir.c_str());
 		
 		// tTVPXP3Archive* xp3_arc = new tTVPXP3Archive(fname);
 		// unpack_arc_idx(xp3_arc,dst_dir,497);
