@@ -18,8 +18,11 @@ extern void TVPLoadMessage();
 extern void TVPSetXP3ArchiveExtractionFilter(tTVPXP3ArchiveExtractionFilter filter);
 extern bool TVPCheckExistentLocalFile(const ttstr &name);
 
-
-void xp3_filter(tTVPXP3ExtractionFilterInfo* info)
+#ifdef WIN32
+void _stdcall xp3_filter(tTVPXP3ExtractionFilterInfo* info)
+#else
+void  xp3_filter(tTVPXP3ExtractionFilterInfo* info)
+#endif
 {
 	// assert(info->SizeOfSelf == 0x18);
 	tjs_uint8 * buff = (tjs_uint8*) (info->Buffer);
