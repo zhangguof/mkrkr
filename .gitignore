@@ -29,3 +29,17 @@ font
 data
 *.pyc
 *.xp3
+*.pdb
+*.tlog
+*.opensdf
+build/vs2012/tjs2/tjs2.sdf
+*.obj
+*.log
+*.lastbuildstate
+*.idb
+*.lib
+thirdparty/zlib-1.2.11/
+*.gz
+*.exe
+*.exp
+*.ilk

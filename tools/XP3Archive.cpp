@@ -18,6 +18,7 @@
 //#include <zlib/zlib.h>
 #include <zlib.h>
 #include <algorithm>
+#include <time.h>
 
 
 //log

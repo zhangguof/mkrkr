@@ -125,6 +125,19 @@ public:
 };
 //---------------------------------------------------------------------------
 
+//open file
+
+FILE* open_file(ttstr filename, const char*  mode)
+{
+	FILE * Handle = NULL;
+#ifdef WIN32
+	ttstr _mode = mode;
+	Handle = ::_wfopen(filename.c_str(),_mode.c_str());
+#else
+	Handle = ::fopen(filename.AsNarrowStdString().c_str(),mode);
+#endif
+	return Handle;
+}
 
 //---------------------------------------------------------------------------
 // tTVPLocalFileStream
@@ -149,15 +162,14 @@ tTVPLocalFileStream::tTVPLocalFileStream(const ttstr &localname,
 		mode = "r+";
 		break;
 	}
-	Handle = ::fopen(localname.AsNarrowStdString().c_str(),mode);
+	Handle = open_file(localname,mode);
 	if(Handle == NULL)
 	{
 		if(access == TJS_BS_WRITE)
 		{
 			if(TVPCreateFolders(TVPLocalExtractFilePath(localname)))
 			{
-				Handle = ::fopen(localname.AsNarrowStdString().c_str(),mode);
-
+				Handle = open_file(localname,mode);
 			}
 		}
 	}

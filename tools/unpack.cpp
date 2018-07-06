@@ -9,6 +9,7 @@
 #include <vector>
 #include <codecvt>
 #include <locale.h>
+#include <string>
 
 #include "tjsCommHead.h"
 #include "XP3Archive.h"
@@ -178,7 +179,7 @@ int unpack_arc_idx(tTVPXP3Archive* xp3_arc,ttstr dst_dir,int idx,bool is_bin = f
 		{
 			wprintf(L"try to read as Bin file:%ls\n",filename.c_str());
 			// s->Seek(0,TJS_BS_SEEK_SET);
-			if(s) delete s;
+			//if(s) delete s;
 			s = (tTVPXP3ArchiveStream*)xp3_arc->CreateStreamByIndex(idx);
 			int r = write_bin_file(dst_path,s);
 			// s = NULL;
@@ -189,7 +190,7 @@ int unpack_arc_idx(tTVPXP3Archive* xp3_arc,ttstr dst_dir,int idx,bool is_bin = f
 		ttstr buffer;
 		text_stream->Read(buffer,0);
 		assert(text_stream);
-		delete text_stream
+		delete text_stream;
 
 		std::string new_s = wstring_to_utf8(buffer.AsStdString());
 		int r = write_file(dst_dir + TJS_W("/") + xp3_arc->GetName(idx),
@@ -305,8 +306,8 @@ int main(int argc,char* argv[])
 		}
 		wprintf(L"src_data:%ls,dst_dir:%ls\n",fname.c_str(),dst_dir.c_str());
 		
-		// tTVPXP3Archive* xp3_arc = new tTVPXP3Archive(fname);
-		// unpack_arc_idx(xp3_arc,dst_dir,497);
+		 //ttvpxp3archive* xp3_arc = new ttvpxp3archive(fname);
+		 //unpack_arc_idx(xp3_arc,dst_dir,512);
 		do_unpack(fname,dst_dir);
 	}
 	catch(eTJSError &e)
