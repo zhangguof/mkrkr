@@ -202,6 +202,7 @@ int unpack_arc_idx(tTVPXP3Archive* xp3_arc,ttstr dst_dir,int idx,bool is_bin = f
 	// int r = write_file(dst_dir + TJS_W("/") + xp3_arc->GetName(idx),
 	// 				   buf,size);
 	int r = write_bin_file(dst_dir+TJS_W("/")+ xp3_arc->GetName(idx),s);
+	delete s;
 
 	return r;
 }
@@ -306,8 +307,8 @@ int main(int argc,char* argv[])
 		}
 		wprintf(L"src_data:%ls,dst_dir:%ls\n",fname.c_str(),dst_dir.c_str());
 		
-		 //ttvpxp3archive* xp3_arc = new ttvpxp3archive(fname);
-		 //unpack_arc_idx(xp3_arc,dst_dir,512);
+		 //tTVPXP3Archive* xp3_arc = new tTVPXP3Archive(fname);
+		 //unpack_arc_idx(xp3_arc,dst_dir,513);
 		do_unpack(fname,dst_dir);
 	}
 	catch(eTJSError &e)

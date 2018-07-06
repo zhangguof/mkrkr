@@ -170,6 +170,10 @@ tTVPLocalFileStream::tTVPLocalFileStream(const ttstr &localname,
 			if(TVPCreateFolders(TVPLocalExtractFilePath(localname)))
 			{
 				Handle = open_file(localname,mode);
+				if(!Handle)
+				{
+					printf("open file error!:%d:%s\n",errno,strerror(errno));
+				}
 			}
 		}
 	}
@@ -182,7 +186,9 @@ tTVPLocalFileStream::~tTVPLocalFileStream()
 {
 
 	if(Handle)
+	{
 		::fclose(Handle);
+	}
 }
 //---------------------------------------------------------------------------
 tjs_uint64 TJS_INTF_METHOD tTVPLocalFileStream::Seek(tjs_int64 offset, tjs_int whence)
