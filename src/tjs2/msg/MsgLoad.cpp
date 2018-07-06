@@ -1,4 +1,4 @@
-// generated from gentext.pl Messages.xlsx
+﻿// generated from gentext.pl Messages.xlsx
 #include "tjsCommHead.h"
 #include "tjsError.h"
 #include "MsgIntf.h"

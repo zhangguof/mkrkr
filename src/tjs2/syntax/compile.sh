@@ -1,4 +1,4 @@
-#!/bin/sh
+﻿#!/bin/sh
 alias copy=cp
 echo tjs.y :
 perl CR.pl tjs.y

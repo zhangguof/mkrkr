@@ -1,4 +1,4 @@
-// generated from gentext.pl Messages.xlsx
+﻿// generated from gentext.pl Messages.xlsx
 #ifndef __STRING_TABLE_RESOURCE_H__
 #define __STRING_TABLE_RESOURCE_H__
 #include <string>

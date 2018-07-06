@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------
 /*
 	TJS2 Script Engine
 	Copyright (C) 2000 W.Dee <dee@kikyou.info> and contributors
@@ -2237,7 +2237,7 @@ void tTJSInterCodeContext::TypeOfMemberIndirect(tTJSVariant *ra,
 #define TJS_PASS_ARGS_PREPARED_ARRAY_COUNT 20
 
 #define TJS_BEGIN_FUNC_CALL_ARGS(_code)                                   \
-	tTJSVariant ** pass_args;                                             \
+	tTJSVariant ** pass_args=NULL;                                             \
 	tTJSVariant *pass_args_p[TJS_PASS_ARGS_PREPARED_ARRAY_COUNT];         \
 	tTJSVariant * pass_args_v = NULL;                                     \
 	tjs_int code_size;                                                    \

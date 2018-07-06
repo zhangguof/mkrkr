@@ -1,4 +1,4 @@
-open(FH, $ARGV[0]);
+﻿open(FH, $ARGV[0]);
 
 binmode FH;
 

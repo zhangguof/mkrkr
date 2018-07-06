@@ -1,4 +1,4 @@
-// generated from gentext.pl Messages.xlsx
+﻿// generated from gentext.pl Messages.xlsx
 #ifndef __MSG_INTF_INC_H__
 #define __MSG_INTF_INC_H__
 TVP_MSG_DECL_NULL(TVPVersionInformation)

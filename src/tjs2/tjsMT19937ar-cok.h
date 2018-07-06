@@ -1,4 +1,4 @@
-#ifndef tjsMT19937ar_cok_H
+﻿#ifndef tjsMT19937ar_cok_H
 #define tjsMT19937ar_cok_H
 
 /*

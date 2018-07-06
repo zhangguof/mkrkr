@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------
 /*
 	TJS2 Script Engine
 	Copyright (C) 2000 W.Dee <dee@kikyou.info> and contributors
@@ -76,8 +76,11 @@
 #include "tjsConfig.h"
 #include "tjs.h"
 
+
+#ifndef __WIN32__
 #define MAX_PATH 260
 #define _MAX_PATH MAX_PATH
+#endif
 
 //---------------------------------------------------------------------------
 #endif

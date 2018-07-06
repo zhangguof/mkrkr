@@ -1,4 +1,4 @@
-$input_file = "dp_wordtable.txt";
+﻿$input_file = "dp_wordtable.txt";
 
 open FH, $input_file or die;
 

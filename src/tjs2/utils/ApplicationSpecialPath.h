@@ -1,4 +1,4 @@
-#ifndef __APPLICATION_SPECIAL_PATH_H__
+﻿#ifndef __APPLICATION_SPECIAL_PATH_H__
 #define __APPLICATION_SPECIAL_PATH_H__
 #include <string>
 

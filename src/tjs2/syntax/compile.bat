@@ -1,4 +1,4 @@
-echo tjs.y :
+﻿echo tjs.y :
 perl CR.pl tjs.y
 bison -dv -o tjs.tab.cpp tjs.y
 perl postbison.pl tjs.tab.cpp

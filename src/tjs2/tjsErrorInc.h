@@ -1,4 +1,4 @@
-// generated from gentext.pl Messages.xlsx
+﻿// generated from gentext.pl Messages.xlsx
 #ifndef __TJS_ERROR_INC_H__
 #define __TJS_ERROR_INC_H__
 TJS_MSG_DECL_NULL(TJSInternalError)

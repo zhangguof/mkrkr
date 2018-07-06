@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------
 /*
 	TJS2 Script Engine
 	Copyright (C) 2000 W.Dee <dee@kikyou.info> and contributors
@@ -309,7 +309,7 @@ TJS_BEGIN_NATIVE_METHOD_DECL(/* func. name */load)
 		sp = p;
 		lines = 0;
 
-		tTJSVariantString *vs;
+		tTJSVariantString *vs=NULL;
 
 		try
 		{
