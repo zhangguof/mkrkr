@@ -5,5 +5,6 @@
     </LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerCommand>F:\\BaiduYunDownload\\魔法使之夜\\魔法使之夜.exe</LocalDebuggerCommand>
+    <LocalDebuggerWorkingDirectory>F:\\BaiduYunDownload\\魔法使之夜\\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
 </Project>

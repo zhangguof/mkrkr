@@ -68,16 +68,16 @@ EXPORT(HRESULT) V2Unlink()
 	return S_OK;
 }
 
-void export_file(ttstr name,ttstr dst_path)
-{
-	ttstr place(TVPGetPlacedPath(name));
-	MessageBox(NULL,place.c_str(),L"place",MB_OK);
-	iTJSTextReadStream * stream = TVPCreateTextStreamForRead(place, "");
-	ttstr buffer; 
-	stream->Read(buffer, 0);
-	//write_file("test.tjs",(uint8_t*)buffer.c_str(),buffer.length()*2);
-	write_file(dst_path+L"/"+name,buffer,true);
-}
+//void export_file(ttstr name,ttstr dst_path)
+//{
+//	ttstr place(TVPGetPlacedPath(name));
+//	MessageBox(NULL,place.c_str(),L"place",MB_OK);
+//	iTJSTextReadStream * stream = TVPCreateTextStreamForRead(place, "");
+//	ttstr buffer; 
+//	stream->Read(buffer, 0);
+//	//write_file("test.tjs",(uint8_t*)buffer.c_str(),buffer.length()*2);
+//	write_file(dst_path+L"/"+name,buffer,true);
+//}
 
 extern int unpack_main();
 extern bool onV2Link()
