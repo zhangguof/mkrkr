@@ -43,3 +43,4 @@ thirdparty/zlib-1.2.11/
 *.exe
 *.exp
 *.ilk
+*.dll

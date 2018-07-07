@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------
 /*
 	TVP2 ( T Visual Presenter 2 )  A script authoring tool
 	Copyright (C) 2000 W.Dee <dee@kikyou.info> and contributors
@@ -11,12 +11,12 @@
 
 #ifndef XP3ArchiveH
 #define XP3ArchiveH
+#include <windows.h>
 
 #include "Archive.hpp"
 
 extern tTJSBinaryStream * TVPCreateStream(const ttstr & name, tjs_uint32 flags = 0);
-TJS_EXP_FUNC_DEF(void, TVPAddLog, (const ttstr &line));
-
+extern void TVPAddLog(const ttstr &line);
 
 //---------------------------------------------------------------------------
 // archive delimiter
@@ -78,53 +78,6 @@ public:
 	}
 };
 //---------------------------------------------------------------------------
-
-
-
-
-/*[*/
-//---------------------------------------------------------------------------
-// Extraction filter related
-//---------------------------------------------------------------------------
-#pragma pack(push, 4)
-struct tTVPXP3ExtractionFilterInfo
-{
-	const tjs_uint SizeOfSelf; // structure size of tTVPXP3ExtractionFilterInfo itself
-	const tjs_uint64 Offset; // offset of the buffer data in uncompressed stream position
-	void * Buffer; // target data buffer
-	const tjs_uint BufferSize; // buffer size in bytes pointed by "Buffer"
-	const tjs_uint32 FileHash; // hash value of the file (since inteface v2)
-
-	tTVPXP3ExtractionFilterInfo(tjs_uint64 offset, void *buffer,
-		tjs_uint buffersize, tjs_uint32 filehash) :
-			Offset(offset), Buffer(buffer), BufferSize(buffersize),
-			FileHash(filehash),
-			SizeOfSelf(sizeof(tTVPXP3ExtractionFilterInfo)) {;}
-};
-#pragma pack(pop)
-
-#ifndef TVP_tTVPXP3ArchiveExtractionFilter_CONVENTION
-	#ifdef _WIN32
-		#define	TVP_tTVPXP3ArchiveExtractionFilter_CONVENTION _stdcall
-	#else
-		#define TVP_tTVPXP3ArchiveExtractionFilter_CONVENTION
-	#endif
-#endif
-	// TVP_tTVPXP3ArchiveExtractionFilter_CONV is _stdcall on win32 platforms,
-	// for backward application compatibility.
-
-typedef void (TVP_tTVPXP3ArchiveExtractionFilter_CONVENTION *
-	tTVPXP3ArchiveExtractionFilter)(tTVPXP3ExtractionFilterInfo *info);
-
-
-/*]*/
-//---------------------------------------------------------------------------
-TJS_EXP_FUNC_DEF(void, TVPSetXP3ArchiveExtractionFilter, (tTVPXP3ArchiveExtractionFilter filter));
-//---------------------------------------------------------------------------
-
-
-
-
 
 //---------------------------------------------------------------------------
 // tTVPXP3Archive  : XP3 ( TVP's native archive format ) Implmentation
