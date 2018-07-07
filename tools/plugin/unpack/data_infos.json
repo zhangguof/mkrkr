@@ -1,0 +1,13 @@
+{
+	"xp3_files":[
+	["dtcn.xp3",0,"dtcn"],
+	["data.xp3",1,"data"],
+	["bgm.xp3",1,"bgm"],
+	["fg.xp3",1,"fg"],
+	["image.xp3",1,"image"],
+	["rule.xp3",1,"rule"],
+	["sound.xp3",1,"sound"],
+	["bg.xp3",1,"bg"],
+	["patchCN.xp3",0,"patchCN"]
+	]
+}
