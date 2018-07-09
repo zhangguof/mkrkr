@@ -183,6 +183,7 @@
 		EAAE679120ECE1300056DFFB /* gltexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80A820E66F49003378DF /* gltexture.cpp */; };
 		EAAE679220ECE1540056DFFB /* GLDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80B120E66F49003378DF /* GLDevice.cpp */; };
 		EAAE679320ECE2DF0056DFFB /* baseAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319B20E8B18F002621DB /* baseAudio.cpp */; };
+		EABF97A020F24C33001D12EE /* stringutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EABF979F20F24C33001D12EE /* stringutils.cpp */; };
 		EAFCB15620E6A027003A1736 /* test0.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFCB15520E6A026003A1736 /* test0.png */; };
 		EAFCB15A20E6A32F003A1736 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15920E6A32F003A1736 /* libSDL2.a */; };
 		EAFCB15C20E6A3B3003A1736 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15B20E6A3B2003A1736 /* Metal.framework */; };
@@ -552,6 +553,7 @@
 		EAA36D2B20E7CC6600A4BD78 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		EAA534EF20ECD84A005F0CB4 /* updateMgr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = updateMgr.cpp; sourceTree = "<group>"; };
 		EAA534F020ECD84A005F0CB4 /* updateMgr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = updateMgr.hpp; sourceTree = "<group>"; };
+		EABF979F20F24C33001D12EE /* stringutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stringutils.cpp; sourceTree = "<group>"; };
 		EAFCB15520E6A026003A1736 /* test0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test0.png; path = ../../data1/bmp/test0.png; sourceTree = "<group>"; };
 		EAFCB15920E6A32F003A1736 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../libs/ios/libSDL2.a; sourceTree = "<group>"; };
 		EAFCB15B20E6A3B2003A1736 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -800,6 +802,7 @@
 		EA1930FC20E8B18E002621DB /* objects */ = {
 			isa = PBXGroup;
 			children = (
+				EABF979F20F24C33001D12EE /* stringutils.cpp */,
 				EA1930FD20E8B18E002621DB /* DebugIntf.cpp */,
 				EA1930FE20E8B18E002621DB /* DebugIntf.h */,
 			);
@@ -1346,6 +1349,7 @@
 				EA19347F20E8B191002621DB /* SoundBufferBaseImpl.cpp in Sources */,
 				EA19347120E8B191002621DB /* StorageImpl.cpp in Sources */,
 				EA19343A20E8B191002621DB /* MenuItemIntf.cpp in Sources */,
+				EABF97A020F24C33001D12EE /* stringutils.cpp in Sources */,
 				EA19333A20E8B190002621DB /* WeightFunctor.cpp in Sources */,
 				EA19347920E8B191002621DB /* SysInitIntf.cpp in Sources */,
 				EA19335B20E8B190002621DB /* tjsString.cpp in Sources */,
