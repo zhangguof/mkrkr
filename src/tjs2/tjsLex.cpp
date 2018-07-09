@@ -1551,7 +1551,9 @@ re_match:
 
 	if(!TJS_iswalpha(*Current) && *Current!=TJS_W('_'))
 	{
-		ttstr str(TJSInvalidChar);
+		ttstr str(Block->GetName());
+		str += TJS_W("::");
+		str += TJSInvalidChar;
 		str.Replace(TJS_W("%1"), ttstr(*Current).EscapeC());
 		TJS_eTJSError(str);
 	}
@@ -1566,6 +1568,8 @@ re_match:
 	if(nch == 0)
 	{
 		ttstr str(TJSInvalidChar);
+		str += TJS_W("::");
+		str += Block->GetName();
 		str.Replace(TJS_W("%1"), ttstr(*Current).EscapeC());
 		TJS_eTJSError(str);
 	}
