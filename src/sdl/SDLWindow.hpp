@@ -98,7 +98,7 @@ public:
 
 	// void SetSize(int w, int h);
 
-	bool GetFullScreenMode(){return false;}
+	bool GetFullScreenMode(){return true;}
 
 	SIZE		window_client_size_;
 	SIZE		min_size_;
@@ -250,7 +250,10 @@ public:
 
 	void SetDefaultMouseCursor(){}
 	void SetMouseCursor(int h){}
-	void GetCursorPos(int &x,int &y){}
+	void GetCursorPos(int &x,int &y){
+		x = LastMouseMovedPos.x;
+		y = LastMouseMovedPos.y;
+	}
 	void SetCursorPos(int x, int y){}
 
 	void SetHintText(iTJSDispatch2* sender,  const ttstr &text ){}
@@ -313,6 +316,31 @@ public:
 
 	int GetDisplayOrientation() { UpdateOrientation(); return DisplayOrientation; }
 	int GetDisplayRotate() { UpdateOrientation(); return DisplayRotate; }
+
+public:
+
+	//USE_OBSOLETE_FUNCTIONS
+
+#ifdef USE_OBSOLETE_FUNCTIONS
+	void BeginMove() {}
+#endif
+
+#ifdef USE_OBSOLETE_FUNCTIONS
+	void SetLayerLeft(tjs_int l) {LayerLeft = l;}
+	tjs_int GetLayerLeft() const{return LayerLeft;}
+	void SetLayerTop(tjs_int t) {LayerTop =t;}
+	tjs_int GetLayerTop() const {return LayerTop;}
+	void SetLayerPosition(tjs_int l, tjs_int t) {LayerLeft = l;LayerTop = t;}
+bool InnerSunKen;
+	void SetInnerSunken(bool b) {InnerSunKen = b;}
+	bool GetInnerSunken() const {return InnerSunKen;}
+#endif
+
+#ifdef USE_OBSOLETE_FUNCTIONS
+bool ScrollBars;
+	void SetShowScrollBars(bool b) {ScrollBars = b;}
+	bool GetShowScrollBars() const {return ScrollBars;}
+#endif
 
 
 	// メッセージハンドラ

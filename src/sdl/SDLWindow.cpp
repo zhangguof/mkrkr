@@ -333,6 +333,7 @@ void SDLWindow::OnMouseDown( int button, int shift, int x, int y )
 		tTVPMouseButton b = TVP_TMouseButton_To_tTVPMouseButton(button);
 		TVPPostInputEvent( new tTVPOnMouseDownInputEvent(TJSNativeInstance, x, y, b, s));
 	}
+	OnMouseMove(shift,x,y);
 }
 void SDLWindow::OnMouseUp( int button, int shift, int x, int y )
 {
@@ -343,6 +344,7 @@ void SDLWindow::OnMouseUp( int button, int shift, int x, int y )
 		tTVPMouseButton b = TVP_TMouseButton_To_tTVPMouseButton(button);
 		TVPPostInputEvent( new tTVPOnMouseUpInputEvent(TJSNativeInstance, x, y, b, s));
 	}
+
 }
 void SDLWindow::OnMouseMove( int shift, int x, int y )
 {
