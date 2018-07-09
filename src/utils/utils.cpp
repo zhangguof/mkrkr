@@ -88,9 +88,12 @@ void TVPMainWindowClosed()
 }
 
 extern ttstr ExePath();
+const tjs_char* default_font_name = TJS_W("font/AdobeHeitiStd-Regular.otf");
 
 ttstr TVPGetDefaultFontName() {
-	ttstr name(TJS_W("font/NotoSansCJKsc-Thin.otf"));
+	// ttstr name(TJS_W("font/NotoSansCJKsc-Thin.otf"));
+	// const tjs_char* font_name = "font/AdobeHeitiStd-Regular.otf";
+	ttstr name = default_font_name;
 	name = ttstr(TJS_W("file://./")) + ExePath() + name;
 	// wprintf(TJS_W("%ls\n"),name.c_str());
 	return name;
@@ -179,7 +182,8 @@ ttstr TVPGetAboutString(void)
 
 void TVPGetAllFontList( std::vector<std::wstring>& list )
 {
-	list.push_back(TJS_W("font/NotoSansCJKsc-Black.otf"));
+	// list.push_back(TJS_W("font/NotoSansCJKsc-Black.otf"));
+	list.push_back(default_font_name);
 }
 
 void Sleep(uint32_t ms)
