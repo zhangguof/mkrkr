@@ -79,12 +79,12 @@ public:
 			// TJS_W(".jif"), TVPLoadJPEG, TVPLoadHeaderJPG, TVPSaveAsJPG, TVPAcceptSaveAsJPG, NULL));
 		Handlers.push_back(tTVPGraphicHandlerType(
 			TJS_W(".png"), TVPLoadPNG, TVPLoadHeaderPNG, TVPSaveAsPNG, TVPAcceptSaveAsPNG, NULL));
-		// Handlers.push_back(tTVPGraphicHandlerType(
-		// 	TJS_W(".tlg"), TVPLoadTLG, TVPLoadHeaderTLG, TVPSaveAsTLG, TVPAcceptSaveAsTLG, NULL));
-		// Handlers.push_back(tTVPGraphicHandlerType(
-		// 	TJS_W(".tlg5"), TVPLoadTLG, TVPLoadHeaderTLG, TVPSaveAsTLG, TVPAcceptSaveAsTLG, NULL));
-		// Handlers.push_back(tTVPGraphicHandlerType(
-		// 	TJS_W(".tlg6"), TVPLoadTLG, TVPLoadHeaderTLG, TVPSaveAsTLG, TVPAcceptSaveAsTLG, NULL));
+		Handlers.push_back(tTVPGraphicHandlerType(
+			TJS_W(".tlg"), TVPLoadTLG, TVPLoadHeaderTLG, TVPSaveAsTLG, TVPAcceptSaveAsTLG, NULL));
+		Handlers.push_back(tTVPGraphicHandlerType(
+			TJS_W(".tlg5"), TVPLoadTLG, TVPLoadHeaderTLG, TVPSaveAsTLG, TVPAcceptSaveAsTLG, NULL));
+		Handlers.push_back(tTVPGraphicHandlerType(
+			TJS_W(".tlg6"), TVPLoadTLG, TVPLoadHeaderTLG, TVPSaveAsTLG, TVPAcceptSaveAsTLG, NULL));
 		// Handlers.push_back(tTVPGraphicHandlerType(
 			// TJS_W(".jxr"), TVPLoadJXR, TVPLoadHeaderJXR, TVPSaveAsJXR, TVPAcceptSaveAsJXR, NULL));
 		ReCreateHash();
@@ -1676,6 +1676,8 @@ void TVPLoadGraphic(tTVPBaseBitmap *dest, const ttstr &name, tjs_int32 keyidx,
 {
 	// loading with cache management
 	ttstr nname = TVPNormalizeStorageName(name);
+	// ttstr place(TVPSearchPlacedPath(name));
+	// ttstr nname = place;
 	tjs_uint32 hash;
 	tTVPGraphicsSearchData searchdata;
 
