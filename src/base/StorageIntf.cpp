@@ -1078,6 +1078,46 @@ void TVPRemoveAutoPath(const ttstr &name)
 
 	TVPClearAutoPathCache();
 }
+//===============================================
+//like ホ ゙---> ボ(\u30db \u3099) ->\u30dc
+void fix_jp_path(ttstr& name)
+{
+	tjs_char* p = name.Independ();
+	tjs_char* pbuf = p;
+	while(*p)
+	{
+		if(*p == 0x3099 || *p == 0x309a)
+		{
+			*(pbuf-1) = *(pbuf-1)+(*p-0x3098);
+			++p;
+		}
+		else
+		{
+			if(pbuf!=p)
+				*pbuf++ = *p++;
+			else
+			{
+				++pbuf;
+				++p;
+			}
+		}
+	}
+	*pbuf = 0;
+	name.FixLen();
+}
+void printf_file_name(const tjs_char* name)
+{
+	const tjs_char* p = name;
+	ttstr out;
+	ttstr tmp;
+	while(*p)
+	{
+		tmp.printf(TJS_W("0x%08x"),tjs_uint32(*p));
+		out = out + tmp + TJS_W(",");
+		p++;
+	}
+	printf("%ls\n",out.c_str());
+}
 //---------------------------------------------------------------------------
 static tjs_uint TVPRebuildAutoPathTable()
 {
@@ -1167,8 +1207,12 @@ static tjs_uint TVPRebuildAutoPathTable()
 			for(std::vector<ttstr>::iterator i = lister.list.begin();
 				i != lister.list.end(); i++)
 			{
-				TVPAutoPathTable.Add(*i, path);
-                 TVPAddLog(ttstr(TJS_W("add file==:"))+ *i);
+				ttstr _name= *i;
+				// printf_file_name(_name.c_str());
+				fix_jp_path(_name);
+				TVPAutoPathTable.Add(_name, path);
+                 TVPAddLog(ttstr(TJS_W("add file==:"))+ _name);
+                 // printf_file_name(_name.c_str());
 				count ++;
 			}
 		}
