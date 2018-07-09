@@ -53,6 +53,7 @@
 #include "Extension.h"
 
 #include "MsgImpl.h"
+#include "stringutils.h"
 
 //---------------------------------------------------------------------------
 // Script system initialization script
@@ -506,6 +507,11 @@ void TVPInitScriptEngine()
 		&val, global);
 
 	/* classes */
+	iTJSDispatch2* string_utils_class = NULL;
+    REGISTER_OBJECT(StringUtils,(string_utils_class = TVPCreateNativeClass_StringUtils()));
+    // string_utils_class->PropGet(TJS_MEMBERENSURE|TJS_IGNOREPROP, TJS_W("test"), NULL, &val,string_utils_class);
+    // global->PropSet(TJS_MEMBERENSURE|TJS_IGNOREPROP, TJS_W("test"), NULL, &val, global);
+    
 	REGISTER_OBJECT(Debug, TVPCreateNativeClass_Debug());
 	REGISTER_OBJECT(Font, TVPCreateNativeClass_Font());//TODO
 	REGISTER_OBJECT(Layer, TVPCreateNativeClass_Layer());
