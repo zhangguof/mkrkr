@@ -61,7 +61,7 @@ public:
 
 #ifndef TVP_NO_CHECK_WIDE_CHAR_SIZE
 		if(sizeof(tjs_char)  != 2)
-			TVPThrowExceptionMessage( TVPTheHostIsNotA16BitUnicodeSystem );
+			TVPThrowExceptionMePssage( TVPTheHostIsNotA16BitUnicodeSystem );
 #endif
 
 		Stream = NULL;
@@ -101,8 +101,17 @@ public:
 		{
 			tjs_uint8 mark[4] = {0,0,0,0}; //fix for utf32
 			Stream->Read(mark, 4);
-			if(mark[0] == 0xff && mark[1] == 0xfe && mark[2]==0x0 && mark[3] == 0x0)
+			if(mark[0] == 0xff && mark[1] == 0xfe)
 			{
+				if(mark[2]!=0x0 || mark[3] != 0x0) //utf16
+				{
+					fix16 = true;
+					Stream->SetPosition(ofs+2);
+				}
+				else
+				{
+					fix16 = false;
+				}
 				// unicode
 				DirectLoad = true;
 			}
