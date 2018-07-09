@@ -393,7 +393,7 @@ EXPORT(HRESULT) layerExSave_V2Link(iTVPFunctionExporter *exporter)
 	NCB_LOG_W("layerExSave_V2Link");
 
 	// AutoRegisterで登録されたクラス等を登録する
-	ncbAutoRegister::AllRegist();
+	// ncbAutoRegister::AllRegist();
 
 	// この時点での TVPPluginGlobalRefCount の値を
 	GlobalRefCountAtInit = TVPPluginGlobalRefCount;
@@ -429,7 +429,7 @@ EXPORT(HRESULT) layerExSave_V2Unlink()
 	*/
 
 	// AutoRegisterで登録されたクラス等を削除する
-	ncbAutoRegister::AllUnregist();
+	// ncbAutoRegister::AllUnregist();
 
 	// スタブの使用終了(必ず記述する)
 	TVPUninitImportStub();
@@ -442,8 +442,8 @@ EXPORT(HRESULT) layerExSave_V2Unlink()
 // static変数の実体
 
 // auto register 先頭ポインタ
-ncbAutoRegister::ThisClassT const*
-ncbAutoRegister::_top[ncbAutoRegister::LINE_COUNT] = NCB_INNER_AUTOREGISTER_LINES_INSTANCE;
+// ncbAutoRegister::ThisClassT const*
+// ncbAutoRegister::_top[ncbAutoRegister::LINE_COUNT] = NCB_INNER_AUTOREGISTER_LINES_INSTANCE;
 
 
 

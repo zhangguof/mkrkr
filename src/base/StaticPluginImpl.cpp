@@ -49,14 +49,17 @@
 // import table
 //---------------------------------------------------------------------------
 extern "C"{
+extern  HRESULT ncbind_V2Link(iTVPFunctionExporter *exporter);
 extern	HRESULT KAGParser_V2Link(iTVPFunctionExporter *exporter);
 extern  HRESULT menu_V2Link(iTVPFunctionExporter *exporter);
 extern  HRESULT layerExSave_V2Link(iTVPFunctionExporter *exporter);
+extern  HRESULT fstat_V2Link(iTVPFunctionExporter *exporter);
 
 }
 
 static tTJSHashTable<ttstr, void *> TVPImportFuncs;
 static bool TVPImportFuncsInit = false;
+static bool init_ncbind = false; //first load it.
 void TVPAddImportFunction(const char *name, void *ptr)
 {
 	TVPImportFuncs.Add(name, ptr);
@@ -68,9 +71,11 @@ void TVPAddImportFunction(const tjs_char *name, void *ptr)
 
 void TVPImportFunctions()
 {
+	TVPAddImportFunction("ncbind_V2Link",(void*)ncbind_V2Link);
 	TVPAddImportFunction("KAGParser_V2Link",(void*)KAGParser_V2Link);
 	TVPAddImportFunction("menu_V2Link",(void*)menu_V2Link);
 	TVPAddImportFunction("layerExSave_V2Link",(void*)layerExSave_V2Link);
+	TVPAddImportFunction("fstat_V2Link",(void*)fstat_V2Link);
 }
 
 void TVPInitImportFuncs()
@@ -343,6 +348,11 @@ struct tTVPStaticPlugin
 //---------------------------------------------------------------------------
 tTVPStaticPlugin::tTVPStaticPlugin(const ttstr & name)
 {
+	if(!init_ncbind)
+	{
+		ncbind_V2Link(TVPGetFunctionExporter());
+		init_ncbind = true;
+	}
 	Name = name;
 
 	// Instance = NULL;
