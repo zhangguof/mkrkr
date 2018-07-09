@@ -376,7 +376,7 @@ void CompressPNG::encodeToFile(iTJSDispatch2 *layer, const tjs_char *filename, i
 			}
 		}
 		if (lodepng::encode(png, data, width, height, state) == 0) {
-			IStream *out = TVPCreateStream(filename, TJS_BS_WRITE);
+			IStream *out = TVPCreateIStream(filename, TJS_BS_WRITE);
 			if (!out) {
 				ttstr msg = filename;
 				msg += L":can't open";
@@ -384,12 +384,12 @@ void CompressPNG::encodeToFile(iTJSDispatch2 *layer, const tjs_char *filename, i
 			}
 			try {
 				ULONG s;
-				out->Write(&png[0], png.size());
+				out->Write(&png[0], png.size(),&s);
 			} catch (...) {
-				// out->Release();
+				out->Release();
 				throw;
 			}
-			// out->Release();
+			out->Release();
 		}
 	}
 }

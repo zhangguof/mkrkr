@@ -4,8 +4,8 @@
 #include "utils.hpp"
 #include "win_def.h"
 // #include "tjs.h"
-typedef TJS::tTJSBinaryStream IStream;
-extern TJS::tTJSBinaryStream * TVPCreateStream(const ttstr & _name, tjs_uint32 flags);
+// typedef TJS::tTJSBinaryStream IStream;
+// extern TJS::tTJSBinaryStream * TVPCreateStream(const ttstr & _name, tjs_uint32 flags);
 
 #include <vector>
 
@@ -139,7 +139,7 @@ public:
 	 */
 	void store(IStream *out) {
 		ULONG s;
-		out->Write(&data[0], size);
+		out->Write(&data[0], size,&s);
 	}
 
 	/**
@@ -169,7 +169,7 @@ public:
 
 		// 圧縮がキャンセルされていなければファイル保存
 		if (!canceled) {
-			IStream *out = TVPCreateStream(filename, TJS_BS_WRITE);
+			IStream *out = TVPCreateIStream(filename, TJS_BS_WRITE);
 			if (!out) {
 				ttstr msg = filename;
 				msg += L":can't open";
@@ -179,10 +179,10 @@ public:
 				// 格納
 				store(out);
 			} catch (...) {
-				// out->Release();
+				out->Release();
 				throw;
 			}
-			// out->Release();
+			out->Release();
 		}
 
 		return canceled;

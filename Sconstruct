@@ -83,6 +83,21 @@ plugin_infos = {
 	},
 	"fstat":{
 		"path":['src/plugins/fstat'],
+	},
+	"layerExAreaAverage":{
+		"path":['src/plugins/layerExAreaAverage'],
+	},
+	# "layerExDraw":{
+	# 	"path":['src/plugins/layerExDraw'],
+	# },
+	"layerExImage":{
+		"path":['src/plugins/layerExImage'],
+	},
+	"json":{
+		"path":['src/plugins/json'],
+	},
+	"saveStruct":{
+		"path":["src/plugins/saveStruct"],
 	}
 }
 

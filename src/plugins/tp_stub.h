@@ -17,6 +17,8 @@
 #include "TextStream.h"
 #include "EventIntf.h"
 #include "MsgImpl.h"
+#include "StorageImpl.h"
+#include "CharacterSet.h"
 
 extern iTJSDispatch2 * TVPGetScriptDispatch();
 

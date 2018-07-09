@@ -47,6 +47,10 @@ include_path = list([
 
 plugin_infos = {
 	"base":{"path":['src/plugins/'],},
+	"ncbind":{
+		"path":['src/plugins/ncbind'],
+		"refuse_files":['src/plugins/ncbind/testbind.cpp'],
+			 },
 	"layerexsave":{
 		"path":['src/plugins/layerexsave',
 				'src/plugins/layerexsave/LodePNG'],
@@ -58,8 +62,10 @@ plugin_infos = {
 	},
 	"menu":{
 		"path":['src/plugins/menu'],
-
 	},
+	"fstat":{
+		"path":['src/plugins/fstat'],
+	}
 }
 
 def search_cpp_src(paths,root_path=""):

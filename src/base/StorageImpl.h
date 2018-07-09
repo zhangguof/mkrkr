@@ -15,6 +15,7 @@
 #include "UtilStreams.h"
 #include <stdio.h>
 #include <boost/filesystem.hpp>
+#include "win_def.h"
 
 // #include <objidl.h> // for IStream
 
@@ -99,5 +100,74 @@ public:
 	const ttstr & GetLocalName() const;
 };
 //---------------------------------------------------------------------------
+
+
+
+//---------------------------------------------------------------------------
+// tTVPIStreamAdapter
+//---------------------------------------------------------------------------
+/*
+	this class provides COM's IStream adapter for tTJSBinaryStream
+*/
+class tTVPIStreamAdapter : public IStream
+{
+private:
+	tTJSBinaryStream *Stream;
+	ULONG RefCount;
+
+public:
+	tTVPIStreamAdapter(tTJSBinaryStream *ref);
+	/*
+		the stream passed by argument here is freed by this instance'
+		destruction.
+	*/
+
+	~tTVPIStreamAdapter();
+
+
+	// // IUnknown
+	// HRESULT STDMETHODCALLTYPE QueryInterface(REFIID riid,
+	// 	void **ppvObject);
+	ULONG STDMETHODCALLTYPE AddRef(void);
+	ULONG STDMETHODCALLTYPE Release(void);
+
+	// ISequentialStream
+	HRESULT STDMETHODCALLTYPE Read(void *pv, ULONG cb, ULONG *pcbRead);
+	HRESULT STDMETHODCALLTYPE Write(const void *pv, ULONG cb,
+		ULONG *pcbWritten);
+
+	// IStream
+	HRESULT STDMETHODCALLTYPE Seek(LARGE_INTEGER dlibMove,
+		DWORD dwOrigin, ULARGE_INTEGER *plibNewPosition);
+	HRESULT STDMETHODCALLTYPE SetSize(ULARGE_INTEGER libNewSize);
+	HRESULT STDMETHODCALLTYPE CopyTo(IStream *pstm, ULARGE_INTEGER cb,
+		ULARGE_INTEGER *pcbRead, ULARGE_INTEGER *pcbWritten);
+	HRESULT STDMETHODCALLTYPE Commit(DWORD grfCommitFlags);
+	HRESULT STDMETHODCALLTYPE Revert(void);
+	HRESULT STDMETHODCALLTYPE LockRegion(ULARGE_INTEGER libOffset,
+		ULARGE_INTEGER cb, DWORD dwLockType);
+	HRESULT STDMETHODCALLTYPE UnlockRegion(ULARGE_INTEGER libOffset,
+		ULARGE_INTEGER cb, DWORD dwLockType);
+	// HRESULT STDMETHODCALLTYPE Stat(STATSTG *pstatstg, DWORD grfStatFlag);
+	HRESULT STDMETHODCALLTYPE Clone(IStream **ppstm);
+
+	void ClearStream() {
+		Stream = NULL;
+	}
+};
+//---------------------------------------------------------------------------
+
+
+
+
+//---------------------------------------------------------------------------
+// IStream creator
+//---------------------------------------------------------------------------
+TJS_EXP_FUNC_DEF(IStream *, TVPCreateIStream, (const ttstr &name, tjs_uint32 flags));
+//---------------------------------------------------------------------------
+
+
+
+
 
 #endif

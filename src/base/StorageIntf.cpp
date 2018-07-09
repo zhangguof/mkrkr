@@ -1211,7 +1211,7 @@ static tjs_uint TVPRebuildAutoPathTable()
 				// printf_file_name(_name.c_str());
 				fix_jp_path(_name);
 				TVPAutoPathTable.Add(_name, path);
-                 TVPAddLog(ttstr(TJS_W("add file==:"))+ _name);
+                 // TVPAddLog(ttstr(TJS_W("add file==:"))+ _name);
                  // printf_file_name(_name.c_str());
 				count ++;
 			}

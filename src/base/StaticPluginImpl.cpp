@@ -54,7 +54,7 @@ extern	HRESULT KAGParser_V2Link(iTVPFunctionExporter *exporter);
 extern  HRESULT menu_V2Link(iTVPFunctionExporter *exporter);
 extern  HRESULT layerExSave_V2Link(iTVPFunctionExporter *exporter);
 extern  HRESULT fstat_V2Link(iTVPFunctionExporter *exporter);
-
+extern  HRESULT json_V2Link(iTVPFunctionExporter *exporter);
 }
 
 static tTJSHashTable<ttstr, void *> TVPImportFuncs;
@@ -76,6 +76,7 @@ void TVPImportFunctions()
 	TVPAddImportFunction("menu_V2Link",(void*)menu_V2Link);
 	TVPAddImportFunction("layerExSave_V2Link",(void*)layerExSave_V2Link);
 	TVPAddImportFunction("fstat_V2Link",(void*)fstat_V2Link);
+	TVPAddImportFunction("json_V2Link",(void*)json_V2Link);
 }
 
 void TVPInitImportFuncs()

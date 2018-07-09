@@ -48,4 +48,10 @@ def change(src_path):
 
 if __name__=="__main__":
 	# change(src_path)
-	decode(src_path)
+	import sys
+	argv = sys.argv
+	src = src_path
+	if len(argv) > 1:
+		src = argv[1]
+	print "decode:",src
+	decode(src)

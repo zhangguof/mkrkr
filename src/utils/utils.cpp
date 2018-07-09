@@ -2,6 +2,7 @@
 #include "tjs.h"
 #include <time.h>
 #include "SDL.h"
+#include "CharacterSet.h"
 
 FILE* wfopen(const wchar_t* filename, const wchar_t* mode)  
 {  
@@ -207,4 +208,31 @@ ttstr GetAppPath()
     SDL_Log("GetAppPath:%s",path.AsNarrowStdString().c_str());
     
     return path;
+}
+
+// int MultiByteToWideChar(
+//   UINT                              CodePage,
+//   DWORD                             dwFlags,
+//   _In_NLS_string_(cbMultiByte)LPCCH lpMultiByteStr,
+//   int                               cbMultiByte,
+//   LPWSTR                            lpWideCharStr,
+//   int                               cchWideChar
+// );
+int MultiByteToWideChar(uint32_t CodePage,int dwFlags,const char* lpMultiByteStr,
+						int cbMultiByte,wchar_t* lpWideCharStr,int cchWideChar)
+{
+	assert(CodePage == CP_UTF8);
+	int r = 0;
+	r = TVPUtf8ToWideCharString(lpMultiByteStr,lpWideCharStr);
+	return r;
+}
+
+// __int64 _wcstoi64(
+//    const wchar_t *strSource,
+//    wchar_t **endptr,
+//    int base
+// );
+int64_t _wcstoi64(const wchar_t* strSource, wchar_t **endptr,int base)
+{
+	return std::wcstoll(strSource,endptr,base);
 }

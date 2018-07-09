@@ -200,6 +200,7 @@ typedef struct tagBITMAPINFO {
 #define S_OK ((HRESULT)0L)
 #define S_FALSE ((HRESULT)1L)
 #define E_FAIL (-1)
+#define E_NOTIMPL (0x80004001)
 
 
 typedef struct tagSIZE
@@ -217,5 +218,50 @@ typedef struct tagPOINT
 } POINT;
 
 #define ZeroMemory(a,b) memset((a),0,(b));
+
+typedef enum tagSTREAM_SEEK {
+  STREAM_SEEK_SET  ,
+  STREAM_SEEK_CUR  ,
+  STREAM_SEEK_END
+} STREAM_SEEK;
+
+#define STDMETHODCALLTYPE
+#define LARGE_INTEGER int64_t
+#define ULARGE_INTEGER uint64_t
+
+typedef enum tagSTGC {
+  STGC_DEFAULT                             ,
+  STGC_OVERWRITE                           ,
+  STGC_ONLYIFCURRENT                       ,
+  STGC_DANGEROUSLYCOMMITMERELYTODISKCACHE  ,
+  STGC_CONSOLIDATE
+} STGC;
+
+//fake IStream
+class IStream
+{
+public:
+	virtual ULONG STDMETHODCALLTYPE AddRef(void) = 0;
+	virtual ULONG STDMETHODCALLTYPE Release(void) = 0;
+
+	// ISequentialStream
+	virtual HRESULT STDMETHODCALLTYPE Read(void *pv, ULONG cb, ULONG *pcbRead) = 0;
+	virtual HRESULT STDMETHODCALLTYPE Write(const void *pv, ULONG cb,ULONG *pcbWritten) = 0;
+
+	// IStream
+	virtual HRESULT STDMETHODCALLTYPE Seek(LARGE_INTEGER dlibMove,
+			DWORD dwOrigin, ULARGE_INTEGER *plibNewPosition) = 0;
+	virtual HRESULT STDMETHODCALLTYPE SetSize(ULARGE_INTEGER libNewSize) = 0;
+	virtual HRESULT STDMETHODCALLTYPE CopyTo(IStream *pstm, ULARGE_INTEGER cb,
+		 	ULARGE_INTEGER *pcbRead, ULARGE_INTEGER *pcbWritten) = 0;
+	virtual HRESULT STDMETHODCALLTYPE Commit(DWORD grfCommitFlags) = 0;
+	virtual HRESULT STDMETHODCALLTYPE Revert(void) = 0;
+	virtual HRESULT STDMETHODCALLTYPE LockRegion(ULARGE_INTEGER libOffset,
+	    	ULARGE_INTEGER cb, DWORD dwLockType) = 0;
+	virtual HRESULT STDMETHODCALLTYPE UnlockRegion(ULARGE_INTEGER libOffset,
+		 	ULARGE_INTEGER cb, DWORD dwLockType) = 0;
+	// virtual HRESULT STDMETHODCALLTYPE Stat(STATSTG *pstatstg, DWORD grfStatFlag) = 0;
+	virtual HRESULT STDMETHODCALLTYPE Clone(IStream **ppstm) = 0;
+};
 
 #endif

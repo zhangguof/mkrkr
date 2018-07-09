@@ -818,17 +818,17 @@ tjs_uint64 TJS_INTF_METHOD tTVPLocalFileStream::GetSize()
 /*
 	this class provides adapter for COM's IStream
 */
-// tTVPIStreamAdapter::tTVPIStreamAdapter(tTJSBinaryStream *ref)
-// {
-// 	Stream = ref;
-// 	RefCount = 1;
-// }
-// //---------------------------------------------------------------------------
-// tTVPIStreamAdapter::~tTVPIStreamAdapter()
-// {
-// 	delete Stream;
-// }
-// //---------------------------------------------------------------------------
+tTVPIStreamAdapter::tTVPIStreamAdapter(tTJSBinaryStream *ref)
+{
+	Stream = ref;
+	RefCount = 1;
+}
+//---------------------------------------------------------------------------
+tTVPIStreamAdapter::~tTVPIStreamAdapter()
+{
+	delete Stream;
+}
+//---------------------------------------------------------------------------
 // HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::QueryInterface(REFIID riid,
 // 		void **ppvObject)
 // {
@@ -849,128 +849,128 @@ tjs_uint64 TJS_INTF_METHOD tTVPLocalFileStream::GetSize()
 // 	}
 // 	return E_NOINTERFACE;
 // }
-// //---------------------------------------------------------------------------
-// ULONG STDMETHODCALLTYPE tTVPIStreamAdapter::AddRef(void)
-// {
-// 	return ++ RefCount;
-// }
-// //---------------------------------------------------------------------------
-// ULONG STDMETHODCALLTYPE tTVPIStreamAdapter::Release(void)
-// {
-// 	if(RefCount == 1)
-// 	{
-// 		delete this;
-// 		return 0;
-// 	}
-// 	else
-// 	{
-// 		return --RefCount;
-// 	}
-// }
-// //---------------------------------------------------------------------------
-// HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::Read(void *pv, ULONG cb, ULONG *pcbRead)
-// {
-// 	try
-// 	{
-// 		ULONG read;
-// 		read = Stream->Read(pv, cb);
-// 		if(pcbRead) *pcbRead = read;
-// 	}
-// 	catch(...)
-// 	{
-// 		return E_FAIL;
-// 	}
-// 	return S_OK;
-// }
-// //---------------------------------------------------------------------------
-// HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::Write(const void *pv, ULONG cb,
-// 		ULONG *pcbWritten)
-// {
-// 	try
-// 	{
-// 		ULONG written;
-// 		written = Stream->Write(pv, cb);
-// 		if(pcbWritten) *pcbWritten = written;
-// 	}
-// 	catch(...)
-// 	{
-// 		return E_FAIL;
-// 	}
-// 	return S_OK;
-// }
-// //---------------------------------------------------------------------------
-// HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::Seek(LARGE_INTEGER dlibMove,
-// 	DWORD dwOrigin, ULARGE_INTEGER *plibNewPosition)
-// {
-// 	try
-// 	{
-// 		switch(dwOrigin)
-// 		{
-// 		case STREAM_SEEK_SET:
-// 			if(plibNewPosition)
-// 				(*plibNewPosition).QuadPart =
-// 					Stream->Seek(dlibMove.QuadPart, TJS_BS_SEEK_SET);
-// 			else
-// 					Stream->Seek(dlibMove.QuadPart, TJS_BS_SEEK_SET);
-// 			break;
-// 		case STREAM_SEEK_CUR:
-// 			if(plibNewPosition)
-// 				(*plibNewPosition).QuadPart =
-// 					Stream->Seek(dlibMove.QuadPart, TJS_BS_SEEK_CUR);
-// 			else
-// 					Stream->Seek(dlibMove.QuadPart, TJS_BS_SEEK_CUR);
-// 			break;
-// 		case STREAM_SEEK_END:
-// 			if(plibNewPosition)
-// 				(*plibNewPosition).QuadPart =
-// 					Stream->Seek(dlibMove.QuadPart, TJS_BS_SEEK_END);
-// 			else
-// 					Stream->Seek(dlibMove.QuadPart, TJS_BS_SEEK_END);
-// 			break;
-// 		default:
-// 			return E_FAIL;
-// 		}
-// 	}
-// 	catch(...)
-// 	{
-// 		return E_FAIL;
-// 	}
-// 	return S_OK;
-// }
-// //---------------------------------------------------------------------------
-// HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::SetSize(ULARGE_INTEGER libNewSize)
-// {
-// 	return E_NOTIMPL;
-// }
-// //---------------------------------------------------------------------------
-// HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::CopyTo(IStream *pstm, ULARGE_INTEGER cb,
-// 	ULARGE_INTEGER *pcbRead, ULARGE_INTEGER *pcbWritten)
-// {
-// 	return E_NOTIMPL;
-// }
-// //---------------------------------------------------------------------------
-// HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::Commit(DWORD grfCommitFlags)
-// {
-// 	return E_NOTIMPL;
-// }
-// //---------------------------------------------------------------------------
-// HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::Revert(void)
-// {
-// 	return E_NOTIMPL;
-// }
-// //---------------------------------------------------------------------------
-// HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::LockRegion(ULARGE_INTEGER libOffset,
-// 	ULARGE_INTEGER cb, DWORD dwLockType)
-// {
-// 	return E_NOTIMPL;
-// }
-// //---------------------------------------------------------------------------
-// HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::UnlockRegion(ULARGE_INTEGER libOffset,
-// 	ULARGE_INTEGER cb, DWORD dwLockType)
-// {
-// 	return E_NOTIMPL;
-// }
-// //---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+ULONG STDMETHODCALLTYPE tTVPIStreamAdapter::AddRef(void)
+{
+	return ++ RefCount;
+}
+//---------------------------------------------------------------------------
+ULONG STDMETHODCALLTYPE tTVPIStreamAdapter::Release(void)
+{
+	if(RefCount == 1)
+	{
+		delete this;
+		return 0;
+	}
+	else
+	{
+		return --RefCount;
+	}
+}
+//---------------------------------------------------------------------------
+HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::Read(void *pv, ULONG cb, ULONG *pcbRead)
+{
+	try
+	{
+		ULONG read;
+		read = Stream->Read(pv, cb);
+		if(pcbRead) *pcbRead = read;
+	}
+	catch(...)
+	{
+		return E_FAIL;
+	}
+	return S_OK;
+}
+//---------------------------------------------------------------------------
+HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::Write(const void *pv, ULONG cb,
+		ULONG *pcbWritten)
+{
+	try
+	{
+		ULONG written;
+		written = Stream->Write(pv, cb);
+		if(pcbWritten) *pcbWritten = written;
+	}
+	catch(...)
+	{
+		return E_FAIL;
+	}
+	return S_OK;
+}
+//---------------------------------------------------------------------------
+HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::Seek(LARGE_INTEGER dlibMove,
+	DWORD dwOrigin, ULARGE_INTEGER *plibNewPosition)
+{
+	try
+	{
+		switch(dwOrigin)
+		{
+		case STREAM_SEEK_SET:
+			if(plibNewPosition)
+				(*plibNewPosition) =
+					Stream->Seek(dlibMove, TJS_BS_SEEK_SET);
+			else
+					Stream->Seek(dlibMove, TJS_BS_SEEK_SET);
+			break;
+		case STREAM_SEEK_CUR:
+			if(plibNewPosition)
+				(*plibNewPosition) =
+					Stream->Seek(dlibMove, TJS_BS_SEEK_CUR);
+			else
+					Stream->Seek(dlibMove, TJS_BS_SEEK_CUR);
+			break;
+		case STREAM_SEEK_END:
+			if(plibNewPosition)
+				(*plibNewPosition) =
+					Stream->Seek(dlibMove, TJS_BS_SEEK_END);
+			else
+					Stream->Seek(dlibMove, TJS_BS_SEEK_END);
+			break;
+		default:
+			return E_FAIL;
+		}
+	}
+	catch(...)
+	{
+		return E_FAIL;
+	}
+	return S_OK;
+}
+//---------------------------------------------------------------------------
+HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::SetSize(ULARGE_INTEGER libNewSize)
+{
+	return E_NOTIMPL;
+}
+//---------------------------------------------------------------------------
+HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::CopyTo(IStream *pstm, ULARGE_INTEGER cb,
+	ULARGE_INTEGER *pcbRead, ULARGE_INTEGER *pcbWritten)
+{
+	return E_NOTIMPL;
+}
+//---------------------------------------------------------------------------
+HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::Commit(DWORD grfCommitFlags)
+{
+	return E_NOTIMPL;
+}
+//---------------------------------------------------------------------------
+HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::Revert(void)
+{
+	return E_NOTIMPL;
+}
+//---------------------------------------------------------------------------
+HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::LockRegion(ULARGE_INTEGER libOffset,
+	ULARGE_INTEGER cb, DWORD dwLockType)
+{
+	return E_NOTIMPL;
+}
+//---------------------------------------------------------------------------
+HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::UnlockRegion(ULARGE_INTEGER libOffset,
+	ULARGE_INTEGER cb, DWORD dwLockType)
+{
+	return E_NOTIMPL;
+}
+//---------------------------------------------------------------------------
 // HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::Stat(STATSTG *pstatstg, DWORD grfStatFlag)
 // {
 // 	// This method imcompletely fills the target structure, because some
@@ -1020,39 +1020,39 @@ tjs_uint64 TJS_INTF_METHOD tTVPLocalFileStream::GetSize()
 
 // 	return S_OK;
 // }
-// //---------------------------------------------------------------------------
-// HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::Clone(IStream **ppstm)
-// {
-// 	return E_NOTIMPL;
-// }
-// //---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+HRESULT STDMETHODCALLTYPE tTVPIStreamAdapter::Clone(IStream **ppstm)
+{
+	return E_NOTIMPL;
+}
+//---------------------------------------------------------------------------
 
 
 
 
 
 // //---------------------------------------------------------------------------
-// // IStream creator
-// //---------------------------------------------------------------------------
-// IStream * TVPCreateIStream(const ttstr &name, tjs_uint32 flags)
-// {
-// 	// convert tTJSBinaryStream to IStream thru TStream
+// IStream creator
+//---------------------------------------------------------------------------
+IStream * TVPCreateIStream(const ttstr &name, tjs_uint32 flags)
+{
+	// convert tTJSBinaryStream to IStream thru TStream
 
-// 	tTJSBinaryStream *stream0 = NULL;
-// 	try
-// 	{
-// 		stream0 = TVPCreateStream(name, flags);
-// 	}
-// 	catch(...)
-// 	{
-// 		if(stream0) delete stream0;
-// 		return NULL;
-// 	}
+	tTJSBinaryStream *stream0 = NULL;
+	try
+	{
+		stream0 = TVPCreateStream(name, flags);
+	}
+	catch(...)
+	{
+		if(stream0) delete stream0;
+		return NULL;
+	}
 
-// 	IStream *istream = new tTVPIStreamAdapter(stream0);
+	IStream *istream = new tTVPIStreamAdapter(stream0);
 
-// 	return istream;
-// }
+	return istream;
+}
 // //---------------------------------------------------------------------------
 
 

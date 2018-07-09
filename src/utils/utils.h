@@ -29,5 +29,12 @@ extern void TVPExecThreadTask(TVP_THREAD_TASK_FUNC func, TVP_THREAD_PARAM param)
 void Sleep(uint32_t ms);
 
 ttstr GetAppPath();
+extern int MultiByteToWideChar(uint32_t CodePage,int dwFlags,const char* lpMultiByteStr,
+						int cbMultiByte,wchar_t* lpWideCharStr,int cchWideChar);
+
+#define CP_UTF8 (65001)
+#define CP_ACP  (CP_UTF8)
+
+extern int64_t _wcstoi64(const wchar_t* strSource, wchar_t **endptr,int base);
 
 #endif
