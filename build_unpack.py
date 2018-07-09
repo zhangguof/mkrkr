@@ -19,12 +19,16 @@ frameworks = scons_base.frameworks
 cpp_path = scons_base.cpp_path
 
 refuse_files = scons_base.refuse_files
+refuse_files.add("src/core/main.c")
+refuse_files.add("main.cpp")
 
-include_path = scons_base.include_path
+
 
 #src files.
 
-cpp_src = scons_base.cpp_src
+cpp_src = scons_base.get_cpp_src()
+print cpp_src
+include_path = scons_base.get_include_paths()
 
 
 env = Environment(TARGET_ARCH=arch_target,CPPDEFINES=[])

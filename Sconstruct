@@ -65,6 +65,10 @@ include_path.extend([
 
 plugin_infos = {
 	"base":{"path":['src/plugins/'],},
+	"ncbind":{
+		"path":['src/plugins/ncbind'],
+		"refuse_files":['src/plugins/ncbind/testbind.cpp'],
+			 },
 	"layerexsave":{
 		"path":['src/plugins/layerexsave',
 				'src/plugins/layerexsave/LodePNG'],
@@ -76,8 +80,10 @@ plugin_infos = {
 	},
 	"menu":{
 		"path":['src/plugins/menu'],
-
 	},
+	"fstat":{
+		"path":['src/plugins/fstat'],
+	}
 }
 
 def search_cpp_src(paths):
@@ -149,6 +155,7 @@ def build_main_in_darwin():
 	cc_flags = " -std=c++0x -g " \
 			   "-DTVP_LOG_TO_COMMANDLINE_CONSOLE " \
 			   "-DTVP_NO_CHECK_WIDE_CHAR_SIZE " \
+			   "-DUSE_OBSOLETE_FUNCTIONS" \
 			   "-DDEBUG "
 	libs = ['tjs2','onig','z',
 	'boost_filesystem','boost_system',

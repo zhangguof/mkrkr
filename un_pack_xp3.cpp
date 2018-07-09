@@ -8,7 +8,6 @@
 
 #include "tjsCommHead.h"
 // #include "ScriptMgnIntf.h"
-#include "Application.h"
 #include "XP3Archive.h"
 #include <boost/filesystem.hpp>
 #include <vector>
@@ -23,7 +22,9 @@ extern void TVPLoadMessage();
 extern iTJSTextReadStream * TVPCreateTextStreamForReadWithStream(const ttstr & name,
 	const ttstr & modestr, tTJSBinaryStream* s);
 
-const char* script_str= "Debug.message(\"in startup.tjs test!\");";
+extern void TVPSetCurrentDirectory(const ttstr & name);
+extern ttstr ExePath();
+// const char* script_str= "Debug.message(\"in startup.tjs test!\");";
 
 void xp3_filter(tTVPXP3ExtractionFilterInfo* info)
 {
@@ -85,7 +86,28 @@ std::string wstring_to_utf8 (const std::wstring& str)
 {  
     std::wstring_convert<std::codecvt_utf8<wchar_t>> myconv;  
     return myconv.to_bytes(str);  
-}  
+} 
+
+void get_file_list(ttstr data_file)
+{
+	tTVPXP3Archive* xp3_arc = new tTVPXP3Archive(data_file);
+	std::vector<char> buf;
+	buf.resize(1024);
+	int count = xp3_arc->GetCount();
+	wprintf(L"xp3 data file count:%d\n",count);
+	int fail_count = 0;
+	for(int idx = 1; idx < count; ++idx)
+	{
+		ttstr filename= xp3_arc->GetName(idx);
+		tTVPXP3ArchiveStream* s = (tTVPXP3ArchiveStream*) xp3_arc->CreateStreamByIndex(idx);
+		int size = s->GetSize();
+		wprintf(L"idx:%d,name:%ls,org_size:%d,hash:%0x\n",idx,
+				filename.c_str(),size,xp3_arc->GetFileHash(idx));
+				// char* buf = new char(s->GetSize()+1);
+	}
+	delete xp3_arc;
+
+} 
 
 void un_pack(ttstr data_file,ttstr dst_dir)
 {
@@ -134,14 +156,12 @@ void un_pack(ttstr data_file,ttstr dst_dir)
 			fail_count++;
 	}
 	wprintf(L"unpack ok,fail_count:%d\n",fail_count);
-
-
 }
 
 int main(int argc, char* argv[])
 {
 	setlocale(LC_ALL, "");
-	Application = new tTVPApplication;
+	// Application = new tTVPApplication;
 	//Application->PrintConsole("1哈哈哈!\n",7);
 	TVPLoadMessage();
 	TVPSetXP3ArchiveExtractionFilter(xp3_filter);
@@ -164,6 +184,7 @@ int main(int argc, char* argv[])
 		// TVPSystemInit();
 		TVPSetCurrentDirectory(ExePath());
 		// un_pack(TJS_W("video.xp3"),"voice");
+		get_file_list(file_name.c_str());
 		un_pack(file_name.c_str(),out.c_str());
 		// tTVPXP3Archive* xp3_arc = new tTVPXP3Archive(TJS_W("data.xp3"));
 		// for(int idx=0;idx<2;idx++)
@@ -179,8 +200,8 @@ int main(int argc, char* argv[])
 	}
 	catch(eTJSError &e)
 	{
-		// printf("error:%s\n",e.GetMessage().AsNarrowStdString().c_str());
-		Application->PrintConsole(e.GetMessage().c_str(),e.GetMessage().GetLen());
+		printf("error:%s\n",e.GetMessage().AsNarrowStdString().c_str());
+		// Application->PrintConsole(e.GetMessage().c_str(),e.GetMessage().GetLen());
 	}
 
 

@@ -22,16 +22,18 @@ cpp_path = ['./',
 
 refuse_files = set([
 	"test.cpp",
-	"un_pack_xp3.cpp",
+	# "un_pack_xp3.cpp",
 	"src/sdl/test.cpp",
 	'src/sound/WaveImpl.cpp',
 	'src/core/test.cpp'
 	])
 
-include_path = list(cpp_path)
-include_path.extend([
+# include_path = list(cpp_path)
+include_path = list([
 	'src/tjs2',
-	'src/tjs2/base','src/tjs2/msg','src/tjs2/utils',
+	'src/tjs2/base',
+	'src/tjs2/msg',
+	'src/tjs2/utils',
 	'../boost_1_67_0/',
 	'src/ext_libs_src/',
 	'../sdl/SDL2-2.0.8/include',
@@ -41,7 +43,6 @@ include_path.extend([
 	'src/ext_libs_src/openal-soft-1.18.2/include',
 	'src/ext_libs_src/freealut-1.1.0/include',
 	"src/plugins/KAGParser",
-
 	])
 
 plugin_infos = {
@@ -61,14 +62,16 @@ plugin_infos = {
 	},
 }
 
-def search_cpp_src(paths):
+def search_cpp_src(paths,root_path=""):
 	cpp_srcs = []
-	for root_path in paths:
-		for root,_,files in os.walk(root_path):
+	for cpp_path in paths:
+		if(root_path):
+			cpp_path = os.path.join(root_path,cpp_path)
+		for root,_,files in os.walk(cpp_path):
 			for fname in files:
 				if fname.endswith(".cpp") or fname.endswith(".c"):
 					fpath = os.path.join(root,fname)
-					base_path = os.path.relpath(fpath,".")
+					base_path = os.path.relpath(fpath,root_path)
 					if base_path in refuse_files:
 						continue
 					cpp_srcs.append(fpath)
@@ -88,7 +91,16 @@ def search_plugins(infos,out_cpp_path,out_include_path,out_refuse_files):
 
 
 
+def get_cpp_src(root_path=""):
+	search_plugins(plugin_infos,cpp_path,include_path,refuse_files)
+	cpp_src = search_cpp_src(cpp_path,root_path)
+	return cpp_src
 
-search_plugins(plugin_infos,cpp_path,include_path,refuse_files)
+def get_include_paths(root_path=""):
+	include_path.extend(cpp_path)
+	paths = include_path
+	if(root_path):
+		paths = [os.path.join(root_path,p) for p in include_path]
+	print "include----",paths
+	return paths
 
-cpp_src = search_cpp_src(cpp_path)

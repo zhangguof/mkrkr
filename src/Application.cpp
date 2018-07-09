@@ -55,7 +55,7 @@ bool tTVPApplication::StartApplication( int argc, char* argv[] )
 			break;
 		}
 	}
-    set_scale_mode(MODE_4_3);//4:3
+    // set_scale_mode(MODE_4_3);//4:3
     
     return true;
 

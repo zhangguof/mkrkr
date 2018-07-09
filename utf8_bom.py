@@ -1,6 +1,6 @@
 #-*- coding:utf-8 -*-
 import chardet
-src_path = "src/plugins/ncbind"
+src_path = "data/"
 
 import codecs
 import os
@@ -9,7 +9,10 @@ def decode(src_path):
 	for root,_,files in os.walk(src_path):
 		for fname in files:
 			fpath = os.path.join(root,fname)
+			new_s = ""
 			if not (fname.endswith(".hpp") or fname.endswith(".cpp") or
+			   fname.endswith(".tjs") or fname.endswith(".txt") or 
+			   fname.endswith(".ks") or fname.endswith(".ttd") or
 			   fname.endswith(".h")):
 				continue
 			with open(fpath,"rb") as f:
