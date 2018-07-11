@@ -25,7 +25,8 @@ refuse_files = set([
 	# "un_pack_xp3.cpp",
 	"src/sdl/test.cpp",
 	'src/sound/WaveImpl.cpp',
-	'src/core/test.cpp'
+	'src/core/test.cpp',
+	"src/visual/LoadJPEG.cpp"
 	])
 
 # include_path = list(cpp_path)
@@ -43,10 +44,14 @@ include_path = list([
 	'src/ext_libs_src/openal-soft-1.18.2/include',
 	'src/ext_libs_src/freealut-1.1.0/include',
 	"src/plugins/KAGParser",
+	"src/objects/tween",
 	])
 
 plugin_infos = {
-	"base":{"path":['src/plugins/'],},
+	"base":{
+		"path":['src/plugins/'],
+		"include":['src/plugins/layerEx'],
+		},
 	"ncbind":{
 		"path":['src/plugins/ncbind'],
 		"refuse_files":['src/plugins/ncbind/testbind.cpp'],
@@ -65,6 +70,21 @@ plugin_infos = {
 	},
 	"fstat":{
 		"path":['src/plugins/fstat'],
+	},
+	"layerExAreaAverage":{
+		"path":['src/plugins/layerExAreaAverage'],
+	},
+	# "layerExDraw":{
+	# 	"path":['src/plugins/layerExDraw'],
+	# },
+	"layerExImage":{
+		"path":['src/plugins/layerExImage'],
+	},
+	"json":{
+		"path":['src/plugins/json'],
+	},
+	"saveStruct":{
+		"path":["src/plugins/saveStruct"],
 	}
 }
 

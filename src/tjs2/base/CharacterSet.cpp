@@ -12,6 +12,7 @@
 
 #include "CharacterSet.h"
 #include "MsgIntf.h"
+#include "shift_jis_tables.h"
 
 //---------------------------------------------------------------------------
 static tjs_int inline TVPWideCharToUtf8(tjs_char in, char * out)
@@ -259,4 +260,32 @@ tjs_int TVPUtf8ToWideCharString(const char * in, tjs_uint length, tjs_char *out)
 	return count;
 }
 //---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+tjs_int TVPShiftJISoWideCharString(const char * in, tjs_uint length, tjs_char *out)
+{
+	// convert input utf-8 string to output wide string
+	int count = 0;
+	const char *end = in + length;
+	while(*in && in < end)
+	{
+		tjs_char c;
+		if(out)
+		{
+			if(!get_shiftjis_code(in, &c))
+				return -1; // invalid character found
+			*out++ = c;
+		}
+		else
+		{
+			if(!get_shiftjis_code(in, NULL))
+				return -1; // invalid character found
+		}
+		count ++;
+	}
+	return count;
+}
+
+
+//---------------------------------------------------------------------------
+
 
