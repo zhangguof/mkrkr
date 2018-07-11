@@ -17,6 +17,7 @@
 #include "tjsDictionary.h"
 
 #include <stdlib.h>
+#include "CharacterSet.h"
 
 /*
 	TLG5:
@@ -528,10 +529,22 @@ void TVPLoadTLG(void* formatdata, void *callbackdata, tTVPGraphicSizeCallback si
 							tagp++;
 
 							// insert into name-value pairs ... TODO: utf-8 decode
-							metainfopushcallback(callbackdata, ttstr(name), ttstr(value));
+							tjs_char* new_name_buf = new tjs_char[namelen+1];
+							int r = TVPShiftJISoWideCharString(name,namelen,new_name_buf);
+							assert(r>=0);
+							new_name_buf[r]=0;
+
+							tjs_char* new_value_buf = new tjs_char[valuelen+1];
+							r = TVPShiftJISoWideCharString(value,valuelen,new_value_buf);
+							assert(r>=0);
+							new_value_buf[r]=0;
+
+							metainfopushcallback(callbackdata, ttstr(new_name_buf), ttstr(new_value_buf));
 
 							delete [] name, name = NULL;
 							delete [] value, value = NULL;
+							delete [] new_name_buf;
+							delete [] new_value_buf;
 						}
 					}
 				}

@@ -25,6 +25,8 @@ refuse_files.add("un_pack_xp3.cpp")
 refuse_files.add("test/test_thread.cpp");
 refuse_files.add("test/test_timer.cpp");
 refuse_files.add("test/test_tjs_script.cpp");
+refuse_files.add("test/test_opencv.cpp");
+refuse_files.add("src/visual/LoadJPEG.cpp");
 
 print "====",cpp_path
 
@@ -51,7 +53,7 @@ include_path = scons_base.get_include_paths(root_path)
 # 				"../../boost_1_67_0/",
 # 				]
 include_path.append("../thirdparty/include");
-print "==src==",cpp_src
+print "==include_path==",include_path
 
 
 

@@ -46,3 +46,5 @@ thirdparty/zlib-1.2.11/
 *.dll
 *.ksd
 savecheck
+src/objects/tween
+src/plugins/layerExMovie
