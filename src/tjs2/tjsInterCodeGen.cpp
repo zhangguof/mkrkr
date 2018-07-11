@@ -82,8 +82,10 @@ int _yyerror(const tjs_char * msg, void *pm, tjs_int pos)
 	}
 	else */if(!TJS_strncmp(msg, TJS_W("syntax error"), 11))
 	{
+		ttstr name(sb->GetName());
+		name += TJS_W(":::");
 		str = TJSSyntaxError;
-		str.Replace(TJS_W("%1"), ttstr(msg), false);
+		str.Replace(TJS_W("%1"), name+ttstr(msg), false);
 	}
 	else
 	{

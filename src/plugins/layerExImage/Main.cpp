@@ -38,6 +38,8 @@ NCB_ATTACH_CLASS_WITH_HOOK(layerExImage, Layer) {
 	NCB_METHOD(noise);
 	NCB_METHOD(generateWhiteNoise);
 	NCB_METHOD(gaussianBlur);
+	NCB_METHOD(doContrast);
+	NCB_METHOD(drawNoise);
 }
 
 void init()

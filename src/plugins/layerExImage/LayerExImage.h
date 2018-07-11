@@ -27,6 +27,12 @@ public:
 	 */
 	void light(int brightness, int contrast);
 
+	//contrast = -127 ~ 127
+	// Out = Average + (In – Average) * ( 1 + percent)
+	//Average = 127
+	//out = 127 + (in - 127)*(1+percent)
+	void doContrast(int contrast);
+
 	/**
 	 * 色相と彩度を適応
 	 * @param hue 色相
@@ -59,6 +65,20 @@ public:
 	 * @param radius ぼかし度合い
 	 */
 	void gaussianBlur(float radius);
+
+	//	[ "monocro",		1,		[ 0, 1 ],					"モノクロで表示" ],
+	// [ "under",			0,		[ 0, 255 ],					"ノイズ最小値" ],
+	// [ "upper",			255,	[ 0, 255 ],					"ノイズ最大値" ],
+	// [ "type",			ltOpaque,[ 0, 255 ],				"合成タイプ" ],
+	// [ "absolute",		100000,	[ 0, 100000 ],				"前後位置" ],
+	// [ "opacity",		255,	[ 0, 255 ],					"不透明度" ],
+	// [ "interval",		50,		[ 0, 10000 ],				"最小描画間隔" ],
+	// [ "time",			0,		[ 0, 100000 ],				"継続時間(0なら永遠)" ],
+	// [ "status",			"stop",	[ "play", "pause", "stop" ],"実行中かどうか" ]
+	// (m, d, p, seed, 0, 0, width, height, holdalpha);
+	void drawNoise(bool monocro, int under, int upper, uint32_t seed,
+				   int x,int y,int width,int height,bool holdalpha=false);
+
 };
 
 #endif

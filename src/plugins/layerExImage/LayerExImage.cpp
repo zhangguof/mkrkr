@@ -60,6 +60,21 @@ layerExImage::light(int brightness, int contrast)
 	lut(cTable);
 	redraw();
 }
+//contrast = -127 ~ 127
+// Out = Average + (In – Average) * ( 1 + percent)
+//Average = 127
+//out = 127 + (in - 127)*(1+percent)
+void layerExImage::doContrast(int contrast)
+{
+	float c = (127 + contrast)/127.0f;
+	BYTE cTable[256];
+	for (int i=0;i<256;i++)	{
+		int out = int(127 + (i-127)*(1+c));
+		cTable[i] = (BYTE)max(0,min(255,out));
+	}
+	lut(cTable);
+	redraw();
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -361,6 +376,64 @@ layerExImage::noise(int level)
 	}
 	redraw();
 }
+//under~upper 0~255
+//square?
+void layerExImage::drawNoise(bool monocro, int under, int upper, uint32_t seed,
+				   			int _x,int _y,int width,int height,bool holdalpha)
+{
+// #define RAND(a,b) max(0,min(255,(rand()%(b-a+1)+a)))
+#define RAND(a,b) (rand()%(2) == 0)?(a):(b)
+
+	srand(seed);
+	// int r = rand()%(upper - under + 1) + under;
+	// r = max(0,min(255,r));
+	BYTE *src = (BYTE*)_buffer;
+	width = min(width,_width);
+	height = min(height,_height);
+	if(monocro)
+	{
+		for (int y=_y; y<height; y++)
+		{
+			BYTE *p = src;
+			for (int x=_x; x<width; x++){
+				int n = RAND(under,upper);
+				*p++ = (BYTE)max(0,min(255,(int)(n))); //B
+				*p++ = (BYTE)max(0,min(255,(int)(n))); //G
+				*p++ = (BYTE)max(0,min(255,(int)(n))); //R
+				if(holdalpha)
+					p++; //A
+				else
+					*p++ = 255;
+			}
+			src += _pitch;
+		}
+	}
+	else
+	{
+		for (int y=_y; y<height; y++)
+		{
+			BYTE *p = src;
+			for (int x=_x; x<width; x++){
+				int n = RAND(under,upper);
+				*p++ = (BYTE)max(0,min(255,(int)(n)));
+				n = RAND(under,upper);
+				*p++ = (BYTE)max(0,min(255,(int)(n)));
+				n = RAND(under,upper);
+				*p++ = (BYTE)max(0,min(255,(int)(n)));
+				if(holdalpha)
+					p++; //A
+				else
+					*p++ = 255;
+			}
+			src += _pitch;
+		}
+
+	}
+	redraw();
+
+#undef RAND
+}
+
 
 /**
  * ノイズ生成（元の画像を無視してグレースケールのホワイトノイズを描画／α情報は維持）
