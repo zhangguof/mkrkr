@@ -66,10 +66,13 @@ layerExImage::light(int brightness, int contrast)
 //out = 127 + (in - 127)*(1+percent)
 void layerExImage::doContrast(int contrast)
 {
+	if(contrast>127) contrast = 127;
+	if(contrast<-127) contrast = -127;
 	float c = (127 + contrast)/127.0f;
 	BYTE cTable[256];
 	for (int i=0;i<256;i++)	{
-		int out = int(127 + (i-127)*(1+c));
+		// int out = int(127 + (i-127)*(1+c));
+		int out = int(127 + (i-127)*c);
 		cTable[i] = (BYTE)max(0,min(255,out));
 	}
 	lut(cTable);
