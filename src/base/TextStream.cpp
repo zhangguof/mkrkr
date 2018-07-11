@@ -183,7 +183,11 @@ public:
 						Stream->ReadBuffer(nbuf, size);
 						nbuf[size] = 0; // terminater
 						BufferLen = TVPUtf8ToWideCharString((const char*)nbuf, NULL);
-						if(BufferLen == (size_t)-1) TVPThrowExceptionMessage(TJSNarrowToWideConversionError);
+						if(BufferLen == (size_t)-1)
+						{
+							ttstr msg = name + TJS_W(":::") + TJSNarrowToWideConversionError;
+							TVPThrowExceptionMessage(msg.c_str());
+						}
 						Buffer = new tjs_char [ BufferLen +1];
 						TVPUtf8ToWideCharString((const char*)nbuf, Buffer);
 					}
@@ -218,7 +222,10 @@ public:
 							TVPUtf8ToWideCharString((const char*)nbuf, Buffer);
 						} else if( encoding == TJS_W("Shift_JIS") ) {
 							BufferLen = TJS_narrowtowidelen((tjs_nchar*)nbuf);
-							if(BufferLen == (size_t)-1) TVPThrowExceptionMessage(TJSNarrowToWideConversionError);
+							if(BufferLen == (size_t)-1){
+								ttstr msg = name + TJS_W(":::") + TJSNarrowToWideConversionError;
+								TVPThrowExceptionMessage(msg.c_str());
+							}
 							Buffer = new tjs_char [ BufferLen +1];
 							TJS_narrowtowide(Buffer, (tjs_nchar*)nbuf, BufferLen);
 						} else {
