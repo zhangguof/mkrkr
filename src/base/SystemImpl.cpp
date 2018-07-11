@@ -517,7 +517,7 @@ ttstr TVPGetAppDataPath()
 	// 	return path;
 	// }
 
-	return TVPGetAppPath();
+	return TVPGetAppPath()+TJS_W("appData");
 }
 //---------------------------------------------------------------------------
 
@@ -535,7 +535,7 @@ ttstr TVPGetSavedGamesPath()
 	// 	path = ppszPath;
 	// 	::CoTaskMemFree( ppszPath );
 	// }
-	path = path + TJS_W("/savedata") ;
+	path = path + TJS_W("savedata") ;
 	return path;
 }
 //---------------------------------------------------------------------------
@@ -995,7 +995,7 @@ TJS_BEGIN_NATIVE_PROP_DECL(dataPath)
 {
 	TJS_BEGIN_NATIVE_PROP_GETTER
 	{
-		*result = TVPDataPath;
+		*result = TVPGetAppDataPath();
 		return TJS_S_OK;
 	}
 	TJS_END_NATIVE_PROP_GETTER

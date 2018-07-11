@@ -394,7 +394,7 @@ public:
 	 */
 	static bool deleteFile(const tjs_char *file) {
 		bool r = false;
-		ttstr filename(TVPGetLocallyAccessibleName(TVPGetPlacedPath(file)));
+		ttstr filename(TVPGetLocallyAccessibleName(file));
 		if (filename.length()) {
 			r	= TVPRemoveFile(filename);
 			if (r == false) {
