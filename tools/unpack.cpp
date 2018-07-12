@@ -282,6 +282,7 @@ int main(int argc,char* argv[])
 	TVPLoadMessage();
 	TVPSetXP3ArchiveExtractionFilter(xp3_filter);
 	// get_file_list(TJS_W("../repos/data.xp3"));
+	// return 0;
 	try
 	{
 		ttstr fname = L"../repos/data.xp3";
