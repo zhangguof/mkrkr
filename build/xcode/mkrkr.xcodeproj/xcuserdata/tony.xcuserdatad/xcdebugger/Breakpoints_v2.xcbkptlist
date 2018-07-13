@@ -122,12 +122,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../src/sdl/SDLWindow.cpp"
-            timestampString = "552404516.788588"
+            timestampString = "553165602.866385"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
-            landmarkName = "SDLWindow::trans_point_frome_win(int &amp;x,int &amp;y)"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "SDLWindow::SDLWindow(int w, int h, tTVPApplication* app, tTJSNI_Window* ni)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../src/sdl/sdlinit.cpp"
+            timestampString = "553165602.868461"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
+            landmarkName = "process_input_event(SDL_Event&amp; e)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../src/sdl/SDLWindow.cpp"
+            timestampString = "553165602.86891"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "SDLWindow::SDLWindow(int w, int h, tTVPApplication* app, tTJSNI_Window* ni)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,12 +170,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../src/sdl/SDLWindow.cpp"
-            timestampString = "552404516.788743"
+            timestampString = "553165689.261555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "SDLWindow::SDLWindow(int w, int h, tTVPApplication* app, tTJSNI_Window* ni)"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
+            landmarkName = "SDLWindow::OnMouseClick( int button, int shift, int x, int y )"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

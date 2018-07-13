@@ -237,6 +237,59 @@ SDL_Window* create_sdl_window(const char* title,int w,int h)
     return win;
 }
 
+//simula right click in ios.
+
+static long long finger1 = 0;
+static long long finger2 = 0;
+static int finger_cnt = 0;
+static bool right_click_down = false;
+bool handle_finger(SDL_TouchFingerEvent& e)
+{
+    //handle 2 finger
+    if(e.type == SDL_FINGERDOWN)
+    {
+        if(finger1 && finger2)
+            return false;
+        if(!finger1){
+            finger1 = e.fingerId;
+            finger_cnt++;
+            
+        }
+        else if(!finger2)
+        {
+            finger2 = e.fingerId;
+            finger_cnt++;
+        }
+        if(finger_cnt==2)
+        {
+            right_click_down = true;
+//            printf("handle right click down!:%f,%f",e.x,e.y);
+            return true;
+        }
+    }
+    else if(e.type == SDL_FINGERUP)
+    {
+        if(finger1!=e.fingerId && finger2!=e.fingerId)
+            return false;
+        if(finger1 == e.fingerId)
+        {
+            finger1 = 0;
+            finger_cnt--;
+        }
+        else if(finger2 == e.fingerId)
+        {
+            finger2 = 0;
+            finger_cnt--;
+        }
+        if(right_click_down && finger_cnt==0)
+        {
+            right_click_down = false;
+//            printf("handle right up :%f,%f\n",e.x,e.y);
+            return true;
+        }
+    }
+    return false;
+}
 
 
 
@@ -303,6 +356,38 @@ void process_input_event(SDL_Event& e)
             }
         }             
     }
+    else if(e.type == SDL_FINGERDOWN)
+    {
+        bool r = handle_finger(e.tfinger);
+        if(r)
+        {
+            int x,y;
+            x = win->GetWidth() * e.tfinger.x;
+            y = win->GetHeight() * e.tfinger.y;
+            win->trans_point_frome_win(x, y);
+            win->OnMouseDown(mbRight, 0, x, y);
+            printf("==handle touch! right click down!,%d,%d\n",x,y);
+        }
+    }
+    else if(e.type == SDL_FINGERUP)
+    {
+        bool r = handle_finger(e.tfinger);
+        if(r)
+        {
+            int x,y;
+            x = win->GetWidth() * e.tfinger.x;
+            y = win->GetHeight() * e.tfinger.y;
+            win->trans_point_frome_win(x, y);
+            win->OnMouseClick(mbRight,0,x,y);
+            win->OnMouseUp(mbRight,0,x,y);
+            printf("==handle touch! right click up!,%d,%d\n",x,y);
+        }
+        
+    }
+//    else if(e.type == SDL_FINGERMOTION)
+//    {
+//        printf("touch event SDL_FINGERMOTION!!!%f,%f\n",e.tfinger.x,e.tfinger.y);
+//    }
 }
 #endif
 
@@ -318,7 +403,12 @@ void sdl_event_update(bool &quit)
             return;
         }
 #ifndef SDL_TEST
-        else if( e.type == SDL_MOUSEBUTTONUP || e.type == SDL_MOUSEBUTTONDOWN)
+        else if( e.type == SDL_MOUSEBUTTONUP ||
+                 e.type == SDL_MOUSEBUTTONDOWN||
+                e.type == SDL_FINGERUP||
+                e.type == SDL_FINGERDOWN
+//                e.type == SDL_FINGERMOTION
+                )
         {
             //Handle keypress with current mouse position
             process_input_event(e);
