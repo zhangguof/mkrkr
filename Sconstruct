@@ -2,7 +2,7 @@ import os
 from itertools import chain
 
 arch_target = "x86"
-target = 'krkr'
+target = 'bin/krkr'
 
 src_path  = "src"
 

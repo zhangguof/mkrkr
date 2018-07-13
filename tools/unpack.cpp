@@ -40,7 +40,7 @@ void  xp3_filter(tTVPXP3ExtractionFilterInfo* info)
 
 
 
-void get_file_list(ttstr data_file)
+void get_file_list(ttstr data_file,int start_idx=1)
 {
 	tTVPXP3Archive* xp3_arc = new tTVPXP3Archive(data_file);
 	std::vector<char> buf;
@@ -48,7 +48,7 @@ void get_file_list(ttstr data_file)
 	int count = xp3_arc->GetCount();
 	wprintf(L"xp3 data file count:%d\n",count);
 	int fail_count = 0;
-	for(int idx = 1; idx < count; ++idx)
+	for(int idx = start_idx; idx < count; ++idx)
 	{
 		ttstr filename= xp3_arc->GetName(idx);
 		tTVPXP3ArchiveStream* s = (tTVPXP3ArchiveStream*) xp3_arc->CreateStreamByIndex(idx);
@@ -207,7 +207,7 @@ int unpack_arc_idx(tTVPXP3Archive* xp3_arc,ttstr dst_dir,int idx,bool is_bin = f
 	return r;
 }
 
-void do_unpack(ttstr data_file,ttstr dst_dir)
+void do_unpack(ttstr data_file,ttstr dst_dir,int start_idx=1)
 {
 	tTVPXP3Archive* xp3_arc = new tTVPXP3Archive(data_file);
 	std::vector<char> buf;
@@ -215,7 +215,7 @@ void do_unpack(ttstr data_file,ttstr dst_dir)
 	int count = xp3_arc->GetCount();
 	wprintf(L"xp3 data file count:%d\n",count);
 	int fail_count = 0;
-	for(int idx = 1; idx < count; ++idx)
+	for(int idx = start_idx; idx < count; ++idx)
 	{
 		ttstr filename= xp3_arc->GetName(idx);
 		// ttstr dst_path = dst_dir + L"/" + filename;
@@ -280,7 +280,7 @@ int main(int argc,char* argv[])
 {
 	setlocale(LC_CTYPE, "UTF-8");
 	TVPLoadMessage();
-	TVPSetXP3ArchiveExtractionFilter(xp3_filter);
+	// TVPSetXP3ArchiveExtractionFilter(xp3_filter);
 	// get_file_list(TJS_W("../repos/data.xp3"));
 	// return 0;
 	try
@@ -288,6 +288,8 @@ int main(int argc,char* argv[])
 		ttstr fname = L"../repos/data.xp3";
 		ttstr dst_dir = L"../repos/data1";
 		_argc = argc;
+		int start_idx = 1;
+		int is_skip = 0;
 		for(int i= 0;i<argc;++i)
 		{
 			_argv[i] = argv[i];
@@ -305,12 +307,31 @@ int main(int argc,char* argv[])
 				dst_dir = _argv[i+1];
 				continue;
 			}
+			if(_argv[i] == TJS_W("-idx") && i+1<argc)
+			{
+				sscanf(argv[i+1],"%d",&start_idx);
+				continue;
+			}
+			if(_argv[i] == TJS_W("-skip") && i+1<argc)
+			{
+				sscanf(argv[i+1],"%d",&is_skip);
+				continue;
+			}
 		}
-		wprintf(L"src_data:%ls,dst_dir:%ls\n",fname.c_str(),dst_dir.c_str());
+		wprintf(L"src_data:%ls,dst_dir:%ls:start_idx:%d,is_skip:%d\n",
+		fname.c_str(),dst_dir.c_str(),start_idx,is_skip);
+		if(is_skip)
+		{
+			get_file_list(fname,start_idx);
+		}
+		else
+		{
+			 //tTVPXP3Archive* xp3_arc = new tTVPXP3Archive(fname);
+		 	//unpack_arc_idx(xp3_arc,dst_dir,513);
+			do_unpack(fname,dst_dir,start_idx);
+		}
 		
-		 //tTVPXP3Archive* xp3_arc = new tTVPXP3Archive(fname);
-		 //unpack_arc_idx(xp3_arc,dst_dir,513);
-		do_unpack(fname,dst_dir);
+
 	}
 	catch(eTJSError &e)
 	{
