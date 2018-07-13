@@ -5,7 +5,7 @@
 #include <cmath>
 #include <time.h>
 #include "TweenImpl.hpp"
-#include "tweeny.h"
+//#include "tweeny.h"
 #include "cinder/Easing.h"
 
 /* Runs the tween with the designated easing */

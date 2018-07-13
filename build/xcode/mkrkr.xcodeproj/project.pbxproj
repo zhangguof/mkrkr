@@ -155,12 +155,33 @@
 		EA2F80F120E66F49003378DF /* simple_es_fs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CB20E66F49003378DF /* simple_es_fs.glsl */; };
 		EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CC20E66F49003378DF /* gen_shaders.py */; };
 		EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CD20E66F49003378DF /* simple_vs.glsl */; };
+		EA5291BA20F87771006AD89C /* patchcn.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291B620F8775E006AD89C /* patchcn.xp3 */; };
+		EA5291C320F87799006AD89C /* bg.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291BC20F87798006AD89C /* bg.xp3 */; };
+		EA5291C420F87799006AD89C /* rule.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291BD20F87798006AD89C /* rule.xp3 */; };
+		EA5291C520F87799006AD89C /* bgm.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291BE20F87798006AD89C /* bgm.xp3 */; };
+		EA5291C620F87799006AD89C /* fg.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291BF20F87798006AD89C /* fg.xp3 */; };
+		EA5291C720F87799006AD89C /* sound.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291C020F87799006AD89C /* sound.xp3 */; };
+		EA5291C820F87799006AD89C /* data.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291C120F87799006AD89C /* data.xp3 */; };
+		EA5291C920F87799006AD89C /* image.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291C220F87799006AD89C /* image.xp3 */; };
+		EA5291CB20F877B8006AD89C /* data in Resources */ = {isa = PBXBuildFile; fileRef = EA5291CA20F877B8006AD89C /* data */; };
+		EA5291D420F8787D006AD89C /* ease.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5291D120F8787C006AD89C /* ease.cpp */; };
+		EA5291D520F8787D006AD89C /* Tween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5291D220F8787C006AD89C /* Tween.cpp */; };
+		EA5291D620F8787D006AD89C /* TweenImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5291D320F8787D006AD89C /* TweenImpl.cpp */; };
+		EA52922120F87917006AD89C /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5291EB20F87916006AD89C /* Main.cpp */; };
+		EA52922720F87917006AD89C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5291F220F87916006AD89C /* main.cpp */; };
+		EA52922E20F87917006AD89C /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5291FA20F87916006AD89C /* Main.cpp */; };
+		EA52923120F87917006AD89C /* LayerExImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5291FF20F87916006AD89C /* LayerExImage.cpp */; };
+		EA52923620F87917006AD89C /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA52920420F87916006AD89C /* Main.cpp */; };
+		EA52923D20F87917006AD89C /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA52920C20F87917006AD89C /* Main.cpp */; };
+		EA52924A20F87C5F006AD89C /* LoadTLG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA52924720F87C5E006AD89C /* LoadTLG.cpp */; };
+		EA52924B20F87C5F006AD89C /* SaveTLG5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA52924820F87C5F006AD89C /* SaveTLG5.cpp */; };
+		EA52924C20F87C5F006AD89C /* SaveTLG6.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA52924920F87C5F006AD89C /* SaveTLG6.cpp */; };
+		EA52924F20F87C7A006AD89C /* shift_jis_decode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA52924D20F87C7A006AD89C /* shift_jis_decode.cpp */; };
+		EA52925020F87C7A006AD89C /* shift_jis_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA52924E20F87C7A006AD89C /* shift_jis_tables.cpp */; };
+		EA52925120F87CB8006AD89C /* ncbind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19320120E8B18F002621DB /* ncbind.cpp */; };
 		EA98923520EA8AA5001F7BE6 /* font in Resources */ = {isa = PBXBuildFile; fileRef = EA98923420EA8AA5001F7BE6 /* font */; };
 		EA98923720EB5CA8001F7BE6 /* UTF-8 in Resources */ = {isa = PBXBuildFile; fileRef = EA98923620EB5CA7001F7BE6 /* UTF-8 */; };
-		EA98923920EB7317001F7BE6 /* data.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA98923820EB7317001F7BE6 /* data.xp3 */; };
 		EAA3548B20E93D5000B8AD31 /* path.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAA3548A20E93D5000B8AD31 /* path.mm */; };
-		EAA3549020EA65CF00B8AD31 /* voice.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EAA3548D20EA65CE00B8AD31 /* voice.xp3 */; };
-		EAA3549120EA65CF00B8AD31 /* video.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EAA3548E20EA65CF00B8AD31 /* video.xp3 */; };
 		EAA36D0C20E7BF5100A4BD78 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0720E7BF5100A4BD78 /* libswresample.a */; };
 		EAA36D0D20E7BF5100A4BD78 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0820E7BF5100A4BD78 /* libavformat.a */; };
 		EAA36D0E20E7BF5100A4BD78 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0920E7BF5100A4BD78 /* libswscale.a */; };
@@ -530,13 +551,34 @@
 		EA2F80D220E66F49003378DF /* alDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alDevice.cpp; sourceTree = "<group>"; };
 		EA2F80D320E66F49003378DF /* ffStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ffStream.hpp; sourceTree = "<group>"; };
 		EA2F80D820E66F49003378DF /* GLDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLDevice.hpp; sourceTree = "<group>"; };
+		EA5291B620F8775E006AD89C /* patchcn.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = patchcn.xp3; path = ../../bin/patchcn.xp3; sourceTree = "<group>"; };
+		EA5291BC20F87798006AD89C /* bg.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = bg.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/bg.xp3; sourceTree = "<group>"; };
+		EA5291BD20F87798006AD89C /* rule.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = rule.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/rule.xp3; sourceTree = "<group>"; };
+		EA5291BE20F87798006AD89C /* bgm.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = bgm.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/bgm.xp3; sourceTree = "<group>"; };
+		EA5291BF20F87798006AD89C /* fg.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = fg.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/fg.xp3; sourceTree = "<group>"; };
+		EA5291C020F87799006AD89C /* sound.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sound.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/sound.xp3; sourceTree = "<group>"; };
+		EA5291C120F87799006AD89C /* data.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/data.xp3; sourceTree = "<group>"; };
+		EA5291C220F87799006AD89C /* image.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = image.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/image.xp3; sourceTree = "<group>"; };
+		EA5291CA20F877B8006AD89C /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../data; sourceTree = "<group>"; };
+		EA5291D020F8787C006AD89C /* TweenImpl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TweenImpl.hpp; sourceTree = "<group>"; };
+		EA5291D120F8787C006AD89C /* ease.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ease.cpp; sourceTree = "<group>"; };
+		EA5291D220F8787C006AD89C /* Tween.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tween.cpp; sourceTree = "<group>"; };
+		EA5291D320F8787D006AD89C /* TweenImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TweenImpl.cpp; sourceTree = "<group>"; };
+		EA5291EB20F87916006AD89C /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		EA5291F220F87916006AD89C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EA5291FA20F87916006AD89C /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		EA5291FF20F87916006AD89C /* LayerExImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayerExImage.cpp; sourceTree = "<group>"; };
+		EA52920420F87916006AD89C /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		EA52920C20F87917006AD89C /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		EA52924720F87C5E006AD89C /* LoadTLG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadTLG.cpp; sourceTree = "<group>"; };
+		EA52924820F87C5F006AD89C /* SaveTLG5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SaveTLG5.cpp; sourceTree = "<group>"; };
+		EA52924920F87C5F006AD89C /* SaveTLG6.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SaveTLG6.cpp; sourceTree = "<group>"; };
+		EA52924D20F87C7A006AD89C /* shift_jis_decode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shift_jis_decode.cpp; sourceTree = "<group>"; };
+		EA52924E20F87C7A006AD89C /* shift_jis_tables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shift_jis_tables.cpp; sourceTree = "<group>"; };
 		EA98923420EA8AA5001F7BE6 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
 		EA98923620EB5CA7001F7BE6 /* UTF-8 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "UTF-8"; sourceTree = "<group>"; };
-		EA98923820EB7317001F7BE6 /* data.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.xp3; path = ../../repos/data.xp3; sourceTree = "<group>"; };
 		EAA3548A20E93D5000B8AD31 /* path.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = path.mm; sourceTree = "<group>"; };
 		EAA3548C20EA5C5D00B8AD31 /* sdlinit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sdlinit.h; sourceTree = "<group>"; };
-		EAA3548D20EA65CE00B8AD31 /* voice.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = voice.xp3; path = ../../repos/voice.xp3; sourceTree = "<group>"; };
-		EAA3548E20EA65CF00B8AD31 /* video.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = video.xp3; path = ../../repos/video.xp3; sourceTree = "<group>"; };
 		EAA36D0720E7BF5100A4BD78 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = ../../libs/ios/libswresample.a; sourceTree = "<group>"; };
 		EAA36D0820E7BF5100A4BD78 /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = ../../libs/ios/libavformat.a; sourceTree = "<group>"; };
 		EAA36D0920E7BF5100A4BD78 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswscale.a; path = ../../libs/ios/libswscale.a; sourceTree = "<group>"; };
@@ -654,11 +696,17 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EA98923820EB7317001F7BE6 /* data.xp3 */,
+				EA5291CA20F877B8006AD89C /* data */,
+				EA5291BC20F87798006AD89C /* bg.xp3 */,
+				EA5291BE20F87798006AD89C /* bgm.xp3 */,
+				EA5291C120F87799006AD89C /* data.xp3 */,
+				EA5291BF20F87798006AD89C /* fg.xp3 */,
+				EA5291C220F87799006AD89C /* image.xp3 */,
+				EA5291BD20F87798006AD89C /* rule.xp3 */,
+				EA5291C020F87799006AD89C /* sound.xp3 */,
+				EA5291B620F8775E006AD89C /* patchcn.xp3 */,
 				EA98923620EB5CA7001F7BE6 /* UTF-8 */,
 				EA98923420EA8AA5001F7BE6 /* font */,
-				EAA3548E20EA65CF00B8AD31 /* video.xp3 */,
-				EAA3548D20EA65CE00B8AD31 /* voice.xp3 */,
 				EAFCB15520E6A026003A1736 /* test0.png */,
 				FD77A07E0E26BDA900F39101 /* Default.png */,
 				FD77A07C0E26BD8C00F39101 /* Icon.png */,
@@ -708,6 +756,9 @@
 		EA1930B320E8B18E002621DB /* visual */ = {
 			isa = PBXGroup;
 			children = (
+				EA52924720F87C5E006AD89C /* LoadTLG.cpp */,
+				EA52924820F87C5F006AD89C /* SaveTLG5.cpp */,
+				EA52924920F87C5F006AD89C /* SaveTLG6.cpp */,
 				EA1930B420E8B18E002621DB /* BitmapIntf.cpp */,
 				EA1930B520E8B18E002621DB /* ResampleImage.cpp */,
 				EA1930B620E8B18E002621DB /* video */,
@@ -802,6 +853,10 @@
 		EA1930FC20E8B18E002621DB /* objects */ = {
 			isa = PBXGroup;
 			children = (
+				EA5291D120F8787C006AD89C /* ease.cpp */,
+				EA5291D220F8787C006AD89C /* Tween.cpp */,
+				EA5291D320F8787D006AD89C /* TweenImpl.cpp */,
+				EA5291D020F8787C006AD89C /* TweenImpl.hpp */,
 				EABF979F20F24C33001D12EE /* stringutils.cpp */,
 				EA1930FD20E8B18E002621DB /* DebugIntf.cpp */,
 				EA1930FE20E8B18E002621DB /* DebugIntf.h */,
@@ -932,6 +987,8 @@
 		EA19316920E8B18F002621DB /* base */ = {
 			isa = PBXGroup;
 			children = (
+				EA52924D20F87C7A006AD89C /* shift_jis_decode.cpp */,
+				EA52924E20F87C7A006AD89C /* shift_jis_tables.cpp */,
 				EA19316A20E8B18F002621DB /* CharacterSet.cpp */,
 				EA19316B20E8B18F002621DB /* CharacterSet.h */,
 			);
@@ -1055,6 +1112,11 @@
 		EA1931C120E8B18F002621DB /* plugins */ = {
 			isa = PBXGroup;
 			children = (
+				EA5291F320F87916006AD89C /* fstat */,
+				EA5291E320F87916006AD89C /* json */,
+				EA5291EC20F87916006AD89C /* layerExAreaAverage */,
+				EA5291FB20F87916006AD89C /* layerExImage */,
+				EA52920620F87917006AD89C /* saveStruct */,
 				EA1931C220E8B18F002621DB /* ncbind */,
 				EA19320220E8B18F002621DB /* layerExSave */,
 				EA19325C20E8B18F002621DB /* KAGParser */,
@@ -1220,6 +1282,47 @@
 			path = shader;
 			sourceTree = "<group>";
 		};
+		EA5291E320F87916006AD89C /* json */ = {
+			isa = PBXGroup;
+			children = (
+				EA5291EB20F87916006AD89C /* Main.cpp */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		EA5291EC20F87916006AD89C /* layerExAreaAverage */ = {
+			isa = PBXGroup;
+			children = (
+				EA5291F220F87916006AD89C /* main.cpp */,
+			);
+			path = layerExAreaAverage;
+			sourceTree = "<group>";
+		};
+		EA5291F320F87916006AD89C /* fstat */ = {
+			isa = PBXGroup;
+			children = (
+				EA5291FA20F87916006AD89C /* Main.cpp */,
+			);
+			path = fstat;
+			sourceTree = "<group>";
+		};
+		EA5291FB20F87916006AD89C /* layerExImage */ = {
+			isa = PBXGroup;
+			children = (
+				EA5291FF20F87916006AD89C /* LayerExImage.cpp */,
+				EA52920420F87916006AD89C /* Main.cpp */,
+			);
+			path = layerExImage;
+			sourceTree = "<group>";
+		};
+		EA52920620F87917006AD89C /* saveStruct */ = {
+			isa = PBXGroup;
+			children = (
+				EA52920C20F87917006AD89C /* Main.cpp */,
+			);
+			path = saveStruct;
+			sourceTree = "<group>";
+		};
 		EAA3548920E93D5000B8AD31 /* ios */ = {
 			isa = PBXGroup;
 			children = (
@@ -1285,17 +1388,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA5291C520F87799006AD89C /* bgm.xp3 in Resources */,
+				EA5291C320F87799006AD89C /* bg.xp3 in Resources */,
 				EAFCB15620E6A027003A1736 /* test0.png in Resources */,
-				EA98923920EB7317001F7BE6 /* data.xp3 in Resources */,
-				EAA3549120EA65CF00B8AD31 /* video.xp3 in Resources */,
+				EA5291BA20F87771006AD89C /* patchcn.xp3 in Resources */,
 				EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */,
 				EA98923720EB5CA8001F7BE6 /* UTF-8 in Resources */,
 				EA2F80F120E66F49003378DF /* simple_es_fs.glsl in Resources */,
 				EA2F80EF20E66F49003378DF /* simple_es_vs.glsl in Resources */,
-				EAA3549020EA65CF00B8AD31 /* voice.xp3 in Resources */,
 				EA2F80F020E66F49003378DF /* simple_fs.glsl in Resources */,
+				EA5291C820F87799006AD89C /* data.xp3 in Resources */,
 				FD77A07D0E26BD8C00F39101 /* Icon.png in Resources */,
+				EA5291C420F87799006AD89C /* rule.xp3 in Resources */,
 				FD77A07F0E26BDA900F39101 /* Default.png in Resources */,
+				EA5291C920F87799006AD89C /* image.xp3 in Resources */,
+				EA5291CB20F877B8006AD89C /* data in Resources */,
+				EA5291C620F87799006AD89C /* fg.xp3 in Resources */,
+				EA5291C720F87799006AD89C /* sound.xp3 in Resources */,
 				EA98923520EA8AA5001F7BE6 /* font in Resources */,
 				EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */,
 				945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */,
@@ -1323,6 +1432,7 @@
 				EA19333220E8B190002621DB /* FreeTypeFontRasterizer.cpp in Sources */,
 				EA19334B20E8B190002621DB /* tjsGlobalStringMap.cpp in Sources */,
 				EA19348820E8B191002621DB /* WaveIntf.cpp in Sources */,
+				EA52925020F87C7A006AD89C /* shift_jis_tables.cpp in Sources */,
 				EA19338820E8B190002621DB /* main.c in Sources */,
 				EA19334C20E8B190002621DB /* MsgImpl.cpp in Sources */,
 				EA19348020E8B191002621DB /* PhaseVocoderDSP.cpp in Sources */,
@@ -1333,11 +1443,14 @@
 				EA19335D20E8B190002621DB /* tjs.tab.cpp in Sources */,
 				EA19333120E8B190002621DB /* FreeType.cpp in Sources */,
 				EA19335320E8B190002621DB /* tjsInterface.cpp in Sources */,
+				EA52922E20F87917006AD89C /* Main.cpp in Sources */,
 				EA19335620E8B190002621DB /* tjsDate.cpp in Sources */,
 				EA19334620E8B190002621DB /* tjsCompileControl.cpp in Sources */,
+				EA52923D20F87917006AD89C /* Main.cpp in Sources */,
 				EA19336720E8B190002621DB /* tjsScriptCache.cpp in Sources */,
 				EA19337720E8B190002621DB /* tjsMessage.cpp in Sources */,
 				EA19346920E8B191002621DB /* Main.cpp in Sources */,
+				EA52923620F87917006AD89C /* Main.cpp in Sources */,
 				EA19348520E8B191002621DB /* MathAlgorithms.cpp in Sources */,
 				EA19332D20E8B190002621DB /* LayerImpl.cpp in Sources */,
 				EA19332B20E8B190002621DB /* FontSystem.cpp in Sources */,
@@ -1353,6 +1466,7 @@
 				EA19333A20E8B190002621DB /* WeightFunctor.cpp in Sources */,
 				EA19347920E8B191002621DB /* SysInitIntf.cpp in Sources */,
 				EA19335B20E8B190002621DB /* tjsString.cpp in Sources */,
+				EA52925120F87CB8006AD89C /* ncbind.cpp in Sources */,
 				EA19333420E8B190002621DB /* LayerTreeOwnerImpl.cpp in Sources */,
 				EA19334520E8B190002621DB /* tjsConstArrayData.cpp in Sources */,
 				EA19334920E8B190002621DB /* tjsDateParser.cpp in Sources */,
@@ -1362,6 +1476,7 @@
 				EA19346B20E8B191002621DB /* tp_stub.cpp in Sources */,
 				EA19338520E8B190002621DB /* md5.c in Sources */,
 				EA1933D320E8B191002621DB /* utils.cpp in Sources */,
+				EA5291D520F8787D006AD89C /* Tween.cpp in Sources */,
 				EA19347A20E8B191002621DB /* FuncStubs.cpp in Sources */,
 				EA19335820E8B190002621DB /* tjsVariantString.cpp in Sources */,
 				EA19337D20E8B190002621DB /* Extension.cpp in Sources */,
@@ -1372,6 +1487,7 @@
 				EA19335920E8B190002621DB /* uni_cp932.cpp in Sources */,
 				EA19347B20E8B191002621DB /* BinaryStream.cpp in Sources */,
 				EA19332620E8B190002621DB /* ResampleImage.cpp in Sources */,
+				EA52924B20F87C5F006AD89C /* SaveTLG5.cpp in Sources */,
 				EA19338C20E8B190002621DB /* SDLWindow.cpp in Sources */,
 				EA19337820E8B190002621DB /* tjsError.cpp in Sources */,
 				EA19338120E8B190002621DB /* Random.cpp in Sources */,
@@ -1390,6 +1506,7 @@
 				EA19333E20E8B190002621DB /* LayerBitmapIntf.cpp in Sources */,
 				EA19338220E8B190002621DB /* TimerImpl.cpp in Sources */,
 				EA19336320E8B190002621DB /* tjsConfig.cpp in Sources */,
+				EA5291D620F8787D006AD89C /* TweenImpl.cpp in Sources */,
 				EA19334E20E8B190002621DB /* string_table.cpp in Sources */,
 				EA19337920E8B190002621DB /* CharacterSet.cpp in Sources */,
 				EA19339F20E8B190002621DB /* FFVideoOverlay.cpp in Sources */,
@@ -1404,11 +1521,13 @@
 				EA19333720E8B190002621DB /* DrawDevice.cpp in Sources */,
 				EA19335720E8B190002621DB /* tjsMath.cpp in Sources */,
 				EA19339E20E8B190002621DB /* VideoOvlImpl.cpp in Sources */,
+				EA52922720F87917006AD89C /* main.cpp in Sources */,
 				EAAE679020ECE1300056DFFB /* alDevice.cpp in Sources */,
 				EA19332720E8B190002621DB /* WindowImpl.cpp in Sources */,
 				EA19347420E8B191002621DB /* StaticPluginImpl.cpp in Sources */,
 				EA19335520E8B190002621DB /* tjsOctPack.cpp in Sources */,
 				EA19346D20E8B191002621DB /* SystemImpl.cpp in Sources */,
+				EA52922120F87917006AD89C /* Main.cpp in Sources */,
 				EA19347820E8B191002621DB /* EventImpl.cpp in Sources */,
 				EA19338020E8B190002621DB /* utils.cpp in Sources */,
 				EA1933E020E8B191002621DB /* lodepng.cpp in Sources */,
@@ -1427,6 +1546,7 @@
 				EA19348620E8B191002621DB /* WaveLoopManager.cpp in Sources */,
 				EA19347020E8B191002621DB /* StorageIntf.cpp in Sources */,
 				EA19336020E8B190002621DB /* tjsDictionary.cpp in Sources */,
+				EA52923120F87917006AD89C /* LayerExImage.cpp in Sources */,
 				EA19333320E8B190002621DB /* BitmapLayerTreeOwner.cpp in Sources */,
 				EA19333620E8B190002621DB /* BitmapInfomation.cpp in Sources */,
 				EA19335C20E8B190002621DB /* tjsVariant.cpp in Sources */,
@@ -1436,10 +1556,12 @@
 				EA19338320E8B190002621DB /* TimerIntf.cpp in Sources */,
 				EA19347D20E8B191002621DB /* PhaseVocoderFilter.cpp in Sources */,
 				EA19332F20E8B190002621DB /* GraphicsLoaderImpl.cpp in Sources */,
+				EA52924A20F87C5F006AD89C /* LoadTLG.cpp in Sources */,
 				EA19340D20E8B191002621DB /* KAGParser.cpp in Sources */,
 				EA19343920E8B191002621DB /* WindowMenu.cpp in Sources */,
 				EA19335220E8B190002621DB /* tjsMT19937ar-cok.cpp in Sources */,
 				EA19343720E8B191002621DB /* Main.cpp in Sources */,
+				EA52924C20F87C5F006AD89C /* SaveTLG6.cpp in Sources */,
 				EA19332820E8B190002621DB /* WindowIntf.cpp in Sources */,
 				EA19334220E8B190002621DB /* DebugIntf.cpp in Sources */,
 				EAAE678E20ECE0D20056DFFB /* alObjects.cpp in Sources */,
@@ -1447,11 +1569,13 @@
 				EA19334A20E8B190002621DB /* tjsDisassemble.cpp in Sources */,
 				EA19335020E8B190002621DB /* tjsLex.cpp in Sources */,
 				EA19336620E8B190002621DB /* tjsByteCodeLoader.cpp in Sources */,
+				EA52924F20F87C7A006AD89C /* shift_jis_decode.cpp in Sources */,
 				EA19337620E8B190002621DB /* tjs.cpp in Sources */,
 				EA19347220E8B191002621DB /* XP3Archive.cpp in Sources */,
 				EA19333020E8B190002621DB /* GraphicsLoaderIntf.cpp in Sources */,
 				EA19337C20E8B190002621DB /* tjsRandomGenerator.cpp in Sources */,
 				EA19334420E8B190002621DB /* tjsScriptBlock.cpp in Sources */,
+				EA5291D420F8787D006AD89C /* ease.cpp in Sources */,
 				EA19347320E8B191002621DB /* PluginIntf.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1477,6 +1601,7 @@
 					TVP_LOG_TO_COMMANDLINE_CONSOLE,
 					TVP_NO_CHECK_WIDE_CHAR_SIZE,
 					DEBUG,
+					USE_OBSOLETE_FUNCTIONS,
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1492,7 +1617,7 @@
 				PRODUCT_NAME = mkrkr;
 				SYSTEM_HEADER_SEARCH_PATHS = "/Users/tony/workspace/github/mkrkr/src/ext_libs_src/freetype-2.9/include /Users/tony/workspace/github/boost_1_67_0\n/Users/tony/workspace/github/boost_1_67_0\n";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/";
+				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/ ../../src/objects";
 				WARNING_CFLAGS = "-Wno-comma";
 			};
 			name = Debug;
@@ -1523,7 +1648,7 @@
 				PRODUCT_NAME = mkrkr;
 				SYSTEM_HEADER_SEARCH_PATHS = "/Users/tony/workspace/github/mkrkr/src/ext_libs_src/freetype-2.9/include /Users/tony/workspace/github/boost_1_67_0\n/Users/tony/workspace/github/boost_1_67_0\n";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/";
+				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/ ../../src/objects";
 				WARNING_CFLAGS = "-Wno-comma";
 			};
 			name = Release;

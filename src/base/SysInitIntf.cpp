@@ -70,6 +70,22 @@ void sel_project_dir()
 			nosel = true;
 		}
 	}
+    
+    // check "data" directory
+    if(!forcedataxp3 && !nosel)
+    {
+        wchar_t tmp[MAX_PATH];
+        TJS_strcpy(tmp, ExePath().c_str());
+        TJS_strcat(tmp, TJS_W("data"));
+        if(TVPCheckExistentLocalFolder(ttstr(tmp)))
+        {
+            TJS_strcat(tmp, TJS_W("/"));
+            TJS_strcpy(buf, tmp);
+            TVPProjectDirSelected = true;
+            bufset = true;
+            nosel = true;
+        }
+    }
 
 	// check "data.xp3" archive
  	if(!nosel)
@@ -115,21 +131,7 @@ void sel_project_dir()
 	// }
 
 
-	// check "data" directory
-	if(!forcedataxp3 && !nosel)
-	{
-		wchar_t tmp[MAX_PATH];
-		TJS_strcpy(tmp, ExePath().c_str());
-		TJS_strcat(tmp, TJS_W("data"));
-		if(TVPCheckExistentLocalFolder(ttstr(tmp)))
-		{
-			TJS_strcat(tmp, TJS_W("/"));
-			TJS_strcpy(buf, tmp);
-			TVPProjectDirSelected = true;
-			bufset = true;
-			nosel = true;
-		}
-	}
+
 
 	// decide a directory to execute or to show folder selection
 	if(!bufset)
