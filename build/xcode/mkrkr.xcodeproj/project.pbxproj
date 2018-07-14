@@ -101,7 +101,6 @@
 		EA19338420E8B190002621DB /* MiscUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19318120E8B18F002621DB /* MiscUtility.cpp */; };
 		EA19338520E8B190002621DB /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = EA19318220E8B18F002621DB /* md5.c */; };
 		EA19338620E8B190002621DB /* TVPTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19318920E8B18F002621DB /* TVPTimer.cpp */; };
-		EA19338720E8B190002621DB /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19318B20E8B18F002621DB /* test.cpp */; };
 		EA19338820E8B190002621DB /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EA19318D20E8B18F002621DB /* main.c */; };
 		EA19338C20E8B190002621DB /* SDLWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319620E8B18F002621DB /* SDLWindow.cpp */; };
 		EA19338D20E8B190002621DB /* sdlinit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319720E8B18F002621DB /* sdlinit.cpp */; };
@@ -1536,7 +1535,6 @@
 				EA19338020E8B190002621DB /* utils.cpp in Sources */,
 				EA1933E020E8B191002621DB /* lodepng.cpp in Sources */,
 				EA19333820E8B190002621DB /* BasicDrawDevice.cpp in Sources */,
-				EA19338720E8B190002621DB /* test.cpp in Sources */,
 				EA19347620E8B191002621DB /* ScriptMgnIntf.cpp in Sources */,
 				EA19334F20E8B190002621DB /* MsgLoad.cpp in Sources */,
 				EA19334020E8B190002621DB /* tvpgl.c in Sources */,

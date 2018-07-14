@@ -111,15 +111,16 @@ static void test_img()
 {
     GLTexture* tex = new GLTexture();
     g_dev->set_texture(tex);
-    //    tex->set_format(GL_RGBA);
+    tex->set_format(GL_RGBA);
     
     //    uint8_t* buf = fill_color(0x0000FF,w,h);//blue?
     int width, height, nrChannels;
-    unsigned char *data = stbi_load("test0.png", &width, &height, &nrChannels, 0);
+    unsigned char *data = stbi_load("test/lena2.png", &width, &height, &nrChannels, 0);
     SDL_Log("load img test0.png,w:%d,h:%d,c:%d",
             width,height,nrChannels);
     
     tex->set_buf(data,width,height);
+
     //    free(buf);
     stbi_image_free(data);
 }
@@ -190,7 +191,7 @@ extern "C" int init_core_test(int argc,char *argv[])
 	g_dev = create_gl_device(w, h);
 	g_dev->init_render();
     
-//    test_img();
+   	test_img();
     SDL_SetHint(SDL_HINT_VIDEO_HIGHDPI_DISABLED, "0");
     
     check_info();
@@ -200,15 +201,86 @@ extern "C" int init_core_test(int argc,char *argv[])
 //voice test
     // std::string fname = "a0001.ogg";
     // auto ps = std::make_shared<ffStream>(fname);
-    al_test_play();
+    // al_test_play();
     
  //video play test
     SDL_Log("start video test!");
-    test_ff_video_play();
+    // test_ff_video_play();
 
     
 
 	regist_update(render);
+
     return 0;
 
+}
+
+const double g_fps = 60.0f;
+const double g_event_fps = 20.0f;
+static uint32_t frame_pre_time = uint32_t(1000.0/g_fps);
+static uint32_t event_pre_time = uint32_t(1000.0/g_event_fps);
+
+extern CBMgr* cb_mgr;
+
+static void sdl_event_update(bool &quit)
+{
+    SDL_Event e;
+    while( SDL_PollEvent( &e ) != 0 )
+    {
+        //User requests quit
+        if( e.type == SDL_QUIT )
+        {
+            quit = true;
+            return;
+        }
+    }
+}
+
+static void sdl_loop()
+{
+    uint32_t last_time = 0;
+    uint32_t last_event_time = 0;
+    uint32_t now;
+    uint32_t sleep_time = 0;
+//    unsigned int interval;
+    bool quit = false;
+//    SDL_Event e;
+
+    while( !quit )
+    {
+        sleep_time = 0;
+        now = time_now();
+        //Handle events on queue'
+        if(now - last_event_time > event_pre_time)
+        {
+            sdl_event_update(quit);
+            last_event_time = now;
+        }
+
+//        interval = now - last_time;
+        //render();
+        if(cb_mgr)
+        	cb_mgr->update(now);
+        
+
+        last_time = now;
+        uint32_t cost_time = time_now() - now;
+        if(cost_time < frame_pre_time)
+        {
+            sleep_time = frame_pre_time - cost_time;
+//            printf("sleep:%u\n",sleep_time);
+        }
+        
+        SDL_Delay(sleep_time);
+    }
+
+}
+
+// extern "C" void sdl_loop();
+extern "C" int app_main(int argc, char *argv[])
+{
+	init_core_test(argc,argv);
+	sdl_loop();
+
+	return 0;
 }

@@ -35,6 +35,8 @@ public:
 	int format_size, type_size;
 	int pitch; //row size?
 	bool is_bind;
+	bool has_init_prams;
+	bool is_dirty;
 
 	GLTexture();
 	GLTexture(int w,int h);
@@ -57,6 +59,8 @@ public:
 			pixels = NULL;
 			new_buf(); 
 		}
+		has_init_prams = false;
+		is_dirty = true;
 	}
 	~GLTexture()
 	{
@@ -76,12 +80,14 @@ public:
 		if(pixels) return;
 		// pixels =  new GLubyte[buf_size];
 		pixels = malloc(buf_size);
+		is_dirty = true;
 
 	}
 	void copybuf(void *src)
 	{
 		assert(pixels && src && buf_size!=0);
 		memcpy(pixels,src,buf_size);
+		is_dirty = true;
 	}
 	void set_buf(void *b,int w,int h)
 	{
@@ -123,6 +129,15 @@ public:
 		assert(is_bind);
 		glBindTexture(GL_TEXTURE_2D,0);
 		is_bind = false;
+	}
+	void lock()
+	{
+		//ready to modify buffer;
+		is_dirty = true;
+	}
+	void unlock()
+	{
+		
 	}
 
 };

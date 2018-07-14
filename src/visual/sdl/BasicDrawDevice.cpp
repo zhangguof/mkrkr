@@ -385,12 +385,14 @@ void TJS_INTF_METHOD tTVPBasicDrawDevice::NotifyBitmapCompleted(iTVPLayerManager
 			src_p += bitmapinfo->bmiHeader.biWidth * 4 * (bitmapinfo->bmiHeader.biHeight - 1);
 		}
 
+		Texture->lock();
 		for(; src_y < src_y_limit; src_y ++, dest_y ++)
 		{
 			const void *srcp = src_p + src_pitch * src_y + src_x * 4;
 			void *destp = (tjs_uint8*)TextureBuffer + TexturePitch * dest_y + dest_x * 4;
 			memcpy(destp, srcp, width_bytes);
 		}
+		Texture->unlock();
 	}
 }
 //---------------------------------------------------------------------------
