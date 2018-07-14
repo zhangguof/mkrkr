@@ -50,7 +50,7 @@ def add_end(src_path):
 		for fname in files:
 			fpath = os.path.join(root,fname)
 			new_s = ""
-			if not fname.endswith(".ks"):
+			if not (fname.endswith(".ks") or fname.endswith(".tjs")):
 				continue
 			with open(fpath,"rb") as f:
 				s = f.read()
@@ -62,7 +62,7 @@ def add_end(src_path):
 			if new_s:
 				with open(fpath,"wb") as f:
 					f.write(new_s)
-					print "do decode:%s:(%s->%s)"%(fpath,en['encoding'],'utf-8')
+					print "do add_end:%s:(%s)"%(fpath,en['encoding'])
 				new_s = ""
 
 

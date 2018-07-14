@@ -67,6 +67,8 @@ LayerLeft(0), LayerTop(0),touch_points_(this)
     
     width = w;
     height = h;
+    FullScreenDestRect.set_width(width);
+    FullScreenDestRect.set_height(height);
     left = top = 0;
     TJSNativeInstance = ni;
     app->AddWindow(this);

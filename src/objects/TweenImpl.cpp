@@ -190,7 +190,9 @@ double TJS_INTF_METHOD tTJSNI_Tween::calc(int t,int now,
 
 {
 	auto f = get_ease_func(t);
-	return f(now,start,end,duration);
+	double ret =  f(now,start,end,duration);
+	// printf("==tween calc:%d,%d,%f,%f,%d=%lf\n",t,now,start,end,duration,ret);
+	return ret;
 	// if(t==0 || t==1)
 	// {
 	// 	return do_ease_liner(now,start,end,duration);

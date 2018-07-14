@@ -40,12 +40,12 @@ tTVPLocalTempStorageHolder::tTVPLocalTempStorageHolder(const ttstr & name)
 		// which the file is to be in, so we create a temporary folder and
 		// store the file in it.
 
-		// LocalFolder = TVPGetTemporaryName();
+         LocalFolder = TVPGetTemporaryName();
 		//TODO
-		LocalFolder = TJS_W(".");
+//        LocalFolder = TJS_W(".");
 		LocalName = LocalFolder + TJS_W("/") + TVPExtractStorageName(name);
 		//TODO
-		// TVPCreateFolders(LocalFolder); // create temporary folder
+         TVPCreateFolders(LocalFolder); // create temporary folder
 		FolderMustBeDeleted = true;
 		FileMustBeDeleted = true;
 
