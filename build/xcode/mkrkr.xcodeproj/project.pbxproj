@@ -12,6 +12,7 @@
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */; };
+		EA01B75520FA369700DA6D10 /* dtcn.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA01B75420FA369700DA6D10 /* dtcn.xp3 */; };
 		EA1930AE20E8AED0002621DB /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1930AD20E8AED0002621DB /* libpng.a */; };
 		EA1930B120E8B010002621DB /* libfreetyped.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1930AF20E8B00F002621DB /* libfreetyped.a */; };
 		EA1930B220E8B010002621DB /* libonig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1930B020E8B00F002621DB /* libonig.a */; };
@@ -227,6 +228,7 @@
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		EA01B75420FA369700DA6D10 /* dtcn.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = dtcn.xp3; path = ../../bin/dtcn.xp3; sourceTree = "<group>"; };
 		EA1930AD20E8AED0002621DB /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = ../../libs/ios/libpng.a; sourceTree = "<group>"; };
 		EA1930AF20E8B00F002621DB /* libfreetyped.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetyped.a; path = ../../libs/ios/libfreetyped.a; sourceTree = "<group>"; };
 		EA1930B020E8B00F002621DB /* libonig.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libonig.a; path = ../../libs/ios/libonig.a; sourceTree = "<group>"; };
@@ -698,6 +700,7 @@
 			children = (
 				EA5291CA20F877B8006AD89C /* data */,
 				EA5291BC20F87798006AD89C /* bg.xp3 */,
+				EA01B75420FA369700DA6D10 /* dtcn.xp3 */,
 				EA5291BE20F87798006AD89C /* bgm.xp3 */,
 				EA5291C120F87799006AD89C /* data.xp3 */,
 				EA5291BF20F87798006AD89C /* fg.xp3 */,
@@ -1391,6 +1394,7 @@
 				EA5291C520F87799006AD89C /* bgm.xp3 in Resources */,
 				EA5291C320F87799006AD89C /* bg.xp3 in Resources */,
 				EAFCB15620E6A027003A1736 /* test0.png in Resources */,
+				EA01B75520FA369700DA6D10 /* dtcn.xp3 in Resources */,
 				EA5291BA20F87771006AD89C /* patchcn.xp3 in Resources */,
 				EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */,
 				EA98923720EB5CA8001F7BE6 /* UTF-8 in Resources */,
