@@ -49,3 +49,4 @@ savecheck
 src/objects/tween
 src/plugins/layerExMovie
 *.xcuserstate
+*.xcuserdatad
