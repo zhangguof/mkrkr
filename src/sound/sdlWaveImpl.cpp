@@ -1847,7 +1847,7 @@ void tTJSNI_WaveSoundBuffer::TryCreateSoundBuffer(bool use3d)
 	// compute buffer bytes
 	AccessUnitSamples = Format.nSamplesPerSec / TVP_WSB_ACCESS_FREQ; // freq/8
 	AccessUnitBytes = AccessUnitSamples * Format.nBlockAlign; //
-//    SDL_Log("===AccessUnitSamples:%d,AccessUnitBytes:%d",AccessUnitSamples,AccessUnitBytes);
+	SDL_Log("===AccessUnitSamples:%d,AccessUnitBytes:%d",AccessUnitSamples,AccessUnitBytes);
 
 //L1 buffer 1000ms len, split 8 part？
 //one unit is 125ms?
