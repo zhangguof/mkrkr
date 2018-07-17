@@ -10,9 +10,6 @@ shader_infos = [
 
 	("simple_es_vs.glsl","simple_es_vs_shader"),
 	("simple_es_fs.glsl","simple_es_fs_shader"),
-
-	("object2d_vs.glsl","object2d_vs_sharder"),
-	("object2d_fs.glsl","object2d_fs_sharder"),
 ]
 
 template = '''
@@ -35,7 +32,7 @@ def main():
 	for info in shader_infos:
 		file_name, var_name = info
 		read_s = read_shader_file(file_name)
-		new_s = 'const char* const %s="%s";'%(var_name,read_s)
+		new_s = 'const char* %s="%s";'%(var_name,read_s)
 		shaders.append(new_s)
 
 	# vs_str = read_shader_file(vs_shader)

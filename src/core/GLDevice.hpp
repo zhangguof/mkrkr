@@ -36,10 +36,6 @@
 
 #include "gltexture.hpp"
 #include "updateMgr.hpp"
-#include <map>
-#include "glm/glm.hpp"
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 
 
 
@@ -58,49 +54,11 @@ extern const char* FRAG_SHADER_FILE;
 
 class SHADER
 {
-public:
     GLuint shader_id;
     const char* vet_file_path;
     const char* frag_file_path;
-    const char* vet_buf;
-    const char* frag_buf;
-    // std::map<std::string, GLint> uniform_mat;
 public:
-	// void add_uniform_mat(std::string name)
-	// {
-	// 	uniform_mat[name] = 0;
-	// }
-	void set_mat(std::string name,glm::mat4& m4)
-	{
-		GLint loc =glGetUniformLocation(shader_id, name.c_str());
-		assert(loc !=-1);
-
-		glUniformMatrix4fv(loc, 1, GL_FALSE, 
-							   glm::value_ptr(m4));
-	}
-
-	// void get_uniform_loc(std::string name)
-	// {
-	// 	if(shader_id)
-	// 	{
-	// 		GLint loc =glGetUniformLocation(shader_id, name.c_str());
-	// 		assert(loc!=-1);
-	// 		uniform_mat[name] = loc;
-	// 		printf("get uiniform loc:%d\n",loc);
-	// 	}
-	// }
-	// void init_all_uniform()
-	// {
-	// 	for(auto item:uniform_mat)
-	// 	{
-	// 		get_uniform_loc(item.first);
-	// 		printf("init uniform_mat:%s\n",item.first.c_str());
-	// 	}
-	// }
-
-
-	SHADER(const char* _vet_buf , 
-           const char* _frag_buf );
+    SHADER(const char* vet_file, const char* frag_file);
     SHADER();
     void read_shader_file(const char *fname,char *buf);
     void init_shader();
@@ -118,7 +76,6 @@ class VAOMGR
 public:
     VAOMGR(int n);
     void gen_vao_vbo(GLfloat vertices[],size_t size,int pos_loc=0,int tex_loc=1);
-	void gen_vao_with_pos_color(GLfloat vertices[],size_t size);
 
     void bind();
     void ubind();

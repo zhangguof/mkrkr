@@ -25,16 +25,11 @@ const char* VERTEX_SHADER_FILE = "sdl/shader/simple_vs.glsl";
 const char* FRAG_SHADER_FILE = "sdl/shader/simple_fs.glsl";
 const int MAX_SHADER_BUFFER = 2048;
 
-SHADER::SHADER(const char* _vet_buf , 
-               const char* _frag_buf )
+SHADER::SHADER(const char* vet_file , 
+               const char* frag_file )
 {
-    // vet_file_path = vet_file;
-    // frag_file_path = frag_file;
-    vet_file_path = NULL;
-    frag_file_path = NULL;
-    vet_buf = _vet_buf;
-    frag_buf = _frag_buf;
-
+    vet_file_path = vet_file;
+    frag_file_path = frag_file;
     shader_id = 0;
     init_shader();
 }
@@ -42,7 +37,6 @@ SHADER::SHADER()
 {
     vet_file_path = NULL;
     frag_file_path = NULL;
-    vet_buf = frag_buf = NULL;
     shader_id = 0;
     init_shader();
 }
@@ -65,18 +59,16 @@ void SHADER::init_shader()
 	if(shader_id) return;
     char shader_src_buf[MAX_SHADER_BUFFER];
     const char *buf = shader_src_buf;
-    printf("init_shader!!\n");
+    
     //vertex shader
     //"shader/vertextShader.glsl"
-    // if(!vet_file_path || defalut_vs_shader)
-    if(!vet_buf && defalut_vs_shader)
+    if(!vet_file_path || defalut_vs_shader)
     {
     	buf = defalut_vs_shader;
     }
     else
     {
-    	// read_shader_file(vet_file_path,shader_src_buf);
-    	buf = vet_buf;
+    	read_shader_file(vet_file_path,shader_src_buf);
     }
     GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader,1,&buf,NULL);
@@ -92,18 +84,15 @@ void SHADER::init_shader()
         return;
         
     }
-    // printf("build vertex shader:\n%s\n",buf);
     //fragment shader
     //read_shader_file("shader/fragmentShader.glsl", shader_src_buf);
-    // if(!frag_file_path || defalut_fs_shader)
-    if(!frag_buf && defalut_fs_shader)
+    if(!frag_file_path || defalut_fs_shader)
     {
     	buf = defalut_fs_shader;
     }
     else
     {
-    	// read_shader_file(frag_file_path, shader_src_buf);
-    	buf = frag_buf;
+    	read_shader_file(frag_file_path, shader_src_buf);
     }
     GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader,1,(const char* const*) &buf,NULL);
@@ -116,7 +105,6 @@ void SHADER::init_shader()
         return;
         
     }
-    // printf("build frag shader:%s\n",buf);
     
     
     GLuint shaderProgram = glCreateProgram();
@@ -138,7 +126,6 @@ void SHADER::init_shader()
     glDeleteShader(fragmentShader);
     
     shader_id = shaderProgram;
-    // printf("make shader success:%d!\n",shader_id);
 }
 void SHADER::use()
 {
@@ -177,32 +164,7 @@ void VAOMGR::gen_vao_vbo(GLfloat vertices[],size_t size,int pos_loc,int tex_loc)
     glBindBuffer(GL_ARRAY_BUFFER,0);
     glBindVertexArray(0);
 
-
 }
-
-void VAOMGR::gen_vao_with_pos_color(GLfloat vertices[],size_t size)
-{
-	glGenVertexArrays(1,&vao);
-    glGenBuffers(1, &vbo);
-
-    glBindVertexArray(vao);
-
-    
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER,size, vertices, GL_STATIC_DRAW);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6*sizeof(GLfloat),(GLvoid *)0);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6*sizeof(GLfloat),
-                          (GLvoid *)(3*sizeof(GL_FLOAT)));
-    glEnableVertexAttribArray(1);
-
-    glBindBuffer(GL_ARRAY_BUFFER,0);
-    glBindVertexArray(0);
-    // printf("gen vao!!\n");
-}
-
-
 void VAOMGR::bind()
 {
     glBindVertexArray(vao);
@@ -213,6 +175,7 @@ void VAOMGR::ubind()
 }
 void VAOMGR::draw()
 {
+    
     glDrawArrays(GL_TRIANGLES, 0, num);
 }
 VAOMGR::~VAOMGR()
@@ -313,7 +276,7 @@ void Device::render(unsigned int cur_tick)
 	if(cur_texture)
 		update_texture();
     vao->draw();
-   // printf("Device render!!!!\n");
+//    printf("render!!!!\n");
     
     after_draw();
 }
