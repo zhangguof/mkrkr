@@ -6,8 +6,6 @@
 #include "stringutils.h"
 
 #include "ScriptMgnIntf.h"
-#include "tjsArray.h"
-#include "MsgIntf.h"
 
 static bool inline TJS_iswspace(tjs_char ch)
 {
@@ -52,119 +50,6 @@ static bool IsNumber(ttstr _str)
 //---------------------------------------------------------------------------
 
 
-//change from script
-
-
-//    for(var i=0; i<keys.count; i++)
-//    {
-//        //        keys[i]        = keys[i].split(",");
-//        var    key    = keys[i], j = 0;
-//        var    array = keys[i] = [];
-//        while(1)
-//        {
-//            var    pos_c    = key.indexOf(",");
-//            var    pos_b    = key.indexOf("(");
-//            //            dm("key = "+key+" / comma = "+pos_c+" / bracket = "+pos_b);
-//            if(pos_c < 0)
-//            {
-//                array[j]    += key;
-//                break;
-//            }
-//            else if(pos_b < 0 || pos_c < pos_b)
-//            {
-//                array[j]+= key.substr(0, pos_c);
-//                key        = key.substr(pos_c + 1);
-//                j++;
-//            }
-//            else
-//            {
-//                pos_b    = key.indexOf(")");
-//                //                dm("bracket = "+pos_b);
-//                array[j]+= key.substr(0, pos_b+1);
-//                key        = key.substr(pos_b + 1);
-//            }
-//        }
-//        keys[i][0]    = +keys[i][0];
-//    }
-//    return keys;
-//}
-
-static void parseKeyFrame(const ttstr& framekeys,tTJSVariant* result)
-{
-    printf("test in parseKeyFrame!:%ls\n",framekeys.c_str());
-    
-    //    if(keyframe[0] != "(")
-    //        throw new Exception("キーフレームが解析できません。: "+keyframe);
-    //    var    keys    = [];
-    //    var    pos    = keyframe.indexOf(")(");
-    //    while(pos >= 0)
-    //    {
-    //        keys.add(keyframe.substr(0, pos));
-    //        keyframe    = keyframe.substr(pos+2);
-    //        pos    = keyframe.indexOf(")(");
-    //    }
-    //    if(keyframe[keyframe.length - 1] != ")")
-    //        throw new Exception("キーフレームの最後が不正です: "+keyframe);
-    //    keys.add(keyframe.substr(0, keyframe.length - 1));
-    if(framekeys.GetLastChar()!=TJS_W(')'))
-    {
-       ttstr msg = TJS_W("キーフレームの最後が不正です: ");
-       msg += framekeys;
-       TVPThrowExceptionMessage(msg.c_str());
-       return;
-    }
-    const tjs_char* p = framekeys.c_str();
-    int len = framekeys.length();
-    const tjs_char* e = p+len;
-    
-    
-    if(*p!=TJS_W('('))
-    {
-       ttstr msg = TJS_W("キーフレームが解析できません。: ");
-       msg += framekeys;
-       TVPThrowExceptionMessage(msg.c_str());
-       return;
-    }
-    p++;
-    
-    
-    std::vector<ttstr> keys;
-    
-    
-    
-    const tjs_char* spos = TJS_strstr(p,TJS_W(")("));
-    while(spos)
-    {
-        keys.push_back(ttstr(p,spos-p));
-        p = spos + 2;
-        spos = TJS_strstr(p,TJS_W(")("));
-    }
-    keys.push_back(ttstr(p,e-p-1));
-    
-    printf("has push %d key\n",keys.size());
-    
-    
-    iTJSDispatch2 *array = TJSCreateArrayObject();
-    tTJSVariant tmp(array, array);
-    array->Release();
-    
-    
-    
-    int cnt = 0;
-    for(int i=0;i<keys.size();++i)
-    {
-        tTJSVariant t = keys[i];
-        array->PropSetByNum(TJS_MEMBERENSURE, cnt++,
-                            &t, array);
-    }
-
-//    array->PropSetByNum(TJS_MEMBERENSURE, cnt++, &tTJSVariant(12), array);
-    
-    if(result)
-        *result = tmp;
-}
-
-
 static void RegistToGlobal(iTJSDispatch2* _this,const tjs_char* name);
 
 
@@ -207,29 +92,6 @@ TJS_BEGIN_NATIVE_METHOD_DECL(/*func. name*/isNumber)
 }
 TJS_END_NATIVE_STATIC_METHOD_DECL(/*func. name*/isNumber)
 
-//---------------------------------------------------------------------------
-    
-TJS_BEGIN_NATIVE_METHOD_DECL(/*func. name*/parseKeyFrame)
-    {
-        if(numparams<1) return TJS_E_BADPARAMCOUNT;
-//        *result = IsNumber(*param[0]);
-        
-        if(param[0]->Type() == tvtObject)
-        {
-            iTJSDispatch2 *obj = param[0]->AsObject();
-            if(obj && obj->IsInstanceOf(TJS_IGNOREPROP,NULL,NULL,L"Array",obj) == TJS_S_TRUE)
-            {
-                if(result)
-                    *result = *param[0];
-                return TJS_S_OK;
-            }
-        }
-        parseKeyFrame(*param[0],result);
-        
-        return TJS_S_OK;
-    }
-TJS_END_NATIVE_STATIC_METHOD_DECL(/*func. name*/parseKeyFrame)
-    
 //---------------------------------------------------------------------------
 
 //-- properies
