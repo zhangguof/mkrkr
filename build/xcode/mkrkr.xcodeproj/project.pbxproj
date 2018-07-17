@@ -13,6 +13,7 @@
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */; };
 		EA01B75520FA369700DA6D10 /* dtcn.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA01B75420FA369700DA6D10 /* dtcn.xp3 */; };
+		EA05774120FE1C1300C63DB0 /* savetlg5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19325620E8B18F002621DB /* savetlg5.cpp */; };
 		EA1930AE20E8AED0002621DB /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1930AD20E8AED0002621DB /* libpng.a */; };
 		EA1930B120E8B010002621DB /* libfreetyped.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1930AF20E8B00F002621DB /* libfreetyped.a */; };
 		EA1930B220E8B010002621DB /* libonig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1930B020E8B00F002621DB /* libonig.a */; };
@@ -228,6 +229,7 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		EA01B75420FA369700DA6D10 /* dtcn.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = dtcn.xp3; path = ../../bin/dtcn.xp3; sourceTree = "<group>"; };
+		EA05774220FE1D6F00C63DB0 /* SaveTLG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveTLG.h; sourceTree = "<group>"; };
 		EA1930AD20E8AED0002621DB /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = ../../libs/ios/libpng.a; sourceTree = "<group>"; };
 		EA1930AF20E8B00F002621DB /* libfreetyped.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetyped.a; path = ../../libs/ios/libfreetyped.a; sourceTree = "<group>"; };
 		EA1930B020E8B00F002621DB /* libonig.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libonig.a; path = ../../libs/ios/libonig.a; sourceTree = "<group>"; };
@@ -761,6 +763,7 @@
 				EA52924720F87C5E006AD89C /* LoadTLG.cpp */,
 				EA52924820F87C5F006AD89C /* SaveTLG5.cpp */,
 				EA52924920F87C5F006AD89C /* SaveTLG6.cpp */,
+				EA05774220FE1D6F00C63DB0 /* SaveTLG.h */,
 				EA1930B420E8B18E002621DB /* BitmapIntf.cpp */,
 				EA1930B520E8B18E002621DB /* ResampleImage.cpp */,
 				EA1930B620E8B18E002621DB /* video */,
@@ -1537,6 +1540,7 @@
 				EA19333820E8B190002621DB /* BasicDrawDevice.cpp in Sources */,
 				EA19347620E8B191002621DB /* ScriptMgnIntf.cpp in Sources */,
 				EA19334F20E8B190002621DB /* MsgLoad.cpp in Sources */,
+				EA05774120FE1C1300C63DB0 /* savetlg5.cpp in Sources */,
 				EA19334020E8B190002621DB /* tvpgl.c in Sources */,
 				EA19333520E8B190002621DB /* PrerenderedFont.cpp in Sources */,
 				EA19335420E8B190002621DB /* tjsObject.cpp in Sources */,

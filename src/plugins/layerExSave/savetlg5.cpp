@@ -1,7 +1,8 @@
 #include "ncbind/ncbind.hpp"
 #include "savetlg5.hpp"
 
-#include <tlg5/slide.h>
+//#include <tlg5/slide.h>
+#include "SaveTLG.h"
 #define BLOCK_HEIGHT 4
 //---------------------------------------------------------------------------
 // 圧縮処理用

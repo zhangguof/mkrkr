@@ -48,3 +48,4 @@ thirdparty/zlib-1.2.11/
 savecheck
 src/objects/tween
 src/plugins/layerExMovie
+*.xcuserstate

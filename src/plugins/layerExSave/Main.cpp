@@ -305,7 +305,7 @@ SaveInfo::progress(int percent)
 		// 	notify->postMessage(WM_SAVE_TLG_PROGRESS, (WPARAM)this);
 		// 	Sleep(0);
 		// }
-		printf("SaveInfo:progress==:%d\n",percent);
+//        printf("SaveInfo:progress==:%d\n",percent);
 	}
 	return canceled;
 }
@@ -325,8 +325,9 @@ SaveInfo::start()
 	if (ext == TJS_W(".png")) {
 		CompressAndSave<CompressPNG >::saveLayerImage(lay, fn, nfo, progressFunc, (void*)this);
 	} else {
-		assert(false);
-		// CompressAndSave<CompressTLG5>::saveLayerImage(lay, fn, nfo, progressFunc, (void*)this);
+//        assert(false);
+        printf("save in TLG image!!\n");
+         CompressAndSave<CompressTLG5>::saveLayerImage(lay, fn, nfo, progressFunc, (void*)this);
 	}
 	// 完了通知
 	if (notify) {
