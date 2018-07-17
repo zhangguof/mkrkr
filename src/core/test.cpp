@@ -177,7 +177,7 @@ int check_info()
 
 extern "C" int init_core_test(int argc,char *argv[])
 {
-    init_ffmpeg();
+    // init_ffmpeg();
     
 	int w = win_width;
 	int h = win_height;
@@ -189,9 +189,9 @@ extern "C" int init_core_test(int argc,char *argv[])
 	init_sdl_test(w, h);
     
 	g_dev = create_gl_device(w, h);
-	g_dev->init_render();
+	// g_dev->init_render();
     
-   	test_img();
+   	// test_img();
     SDL_SetHint(SDL_HINT_VIDEO_HIGHDPI_DISABLED, "0");
     
     check_info();
@@ -209,7 +209,7 @@ extern "C" int init_core_test(int argc,char *argv[])
 
     
 
-	regist_update(render);
+	// regist_update(render);
 
     return 0;
 
@@ -275,11 +275,12 @@ static void sdl_loop()
     }
 
 }
-
+extern void test_object_2d_draw();
 // extern "C" void sdl_loop();
 extern "C" int app_main(int argc, char *argv[])
 {
 	init_core_test(argc,argv);
+	test_object_2d_draw();
 	sdl_loop();
 
 	return 0;
