@@ -18,6 +18,7 @@ cpp_path = ['./',
 			'src/sdl',
 			'src/movie',
 			'src/core',
+			'src/core/draw2d',
 ]
 
 refuse_files = set([
@@ -26,6 +27,7 @@ refuse_files = set([
 	"src/sdl/test.cpp",
 	'src/sound/WaveImpl.cpp',
 	'src/core/test.cpp',
+	'src/sdl/load_bmp.cpp',
 	"src/visual/LoadJPEG.cpp"
 	])
 

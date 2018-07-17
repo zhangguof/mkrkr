@@ -305,7 +305,7 @@ static int ThreadLoop(void* p)
     if (threadInfo->readyToExit)
       break;
   	while(threadInfo->status == Stop)
-  		Sleep(200);
+  		Sleep(10);
     (threadInfo->lpStartAddress)(threadInfo->lpParameter);
     // InterlockedDecrement(&TVPRunningThreadCount);
     TVPRunningThreadCount--;
@@ -318,12 +318,14 @@ static int ThreadLoop(void* p)
   return 1;
 }
 //---------------------------------------------------------------------------
+// static uint32_t start_time = 0;
 void TVPBeginThreadTask(tjs_int taskNum)
 {
   TVPThreadTaskNum = taskNum;
   TVPThreadTaskCount = 0;
   tjs_int extraThreadNum = TVPGetThreadNum() - 1;
-
+  // printf("==begin thread task,taskNum:%d,extraThreadNum:%d\n",taskNum,extraThreadNum);
+  // start_time = SDL_GetTicks();
 //ensure list size == thread_num -1?
   while ( static_cast<tjs_int>(TVPThreadList.size()) < extraThreadNum) 
   {
@@ -373,8 +375,10 @@ void TVPEndThreadTask(void)
     // Sleep(0);
     while(TVPRunningThreadCount.load() != 0)
     {
-    	Sleep(500);
+    	Sleep(0);
     }
+    // printf("==end thread task,cost:%d ms\n",SDL_GetTicks()-start_time);
+    // start_time = 0;
 }
 
 //---------------------------------------------------------------------------
