@@ -784,6 +784,35 @@ public:
 	bool GetImageModified() const { return ImageModified; }
 	void SetImageModified(bool b) { ImageModified = b; }
 
+//from krkr2
+	void PileRect(tjs_int dx, tjs_int dy, tTJSNI_BaseLayer *src,
+      const tTVPRect &rect, tjs_int opacity = 255);
+	void BlendRect(tjs_int dx, tjs_int dy, tTJSNI_BaseLayer *src,
+		const tTVPRect &rect, tjs_int opacity = 255);
+
+	void StretchPile(const tTVPRect &destrect, tTJSNI_BaseLayer *src,
+      const tTVPRect &srcrect, tjs_int opacity = 255,
+         tTVPBBStretchType type = stNearest);
+ 
+    void StretchBlend(const tTVPRect &destrect, tTJSNI_BaseLayer *src,
+      const tTVPRect &srcrect, tjs_int opacity = 255,
+         tTVPBBStretchType type = stNearest);
+
+	void AffinePile(const t2DAffineMatrix &matrix, tTJSNI_BaseLayer *src,
+		const tTVPRect &srcrect, tjs_int opacity = 255,
+		tTVPBBStretchType type = stNearest);
+
+	void AffinePile(const tTVPPointD *points, tTJSNI_BaseLayer *src,
+		const tTVPRect &srcrect, tjs_int opacity = 255,
+		tTVPBBStretchType type = stNearest);
+
+	void AffineBlend(const t2DAffineMatrix &matrix, tTJSNI_BaseLayer *src,
+		const tTVPRect &srcrect, tjs_int opacity = 255,
+		tTVPBBStretchType type = stNearest);
+
+	void AffineBlend(const tTVPPointD *points, tTJSNI_BaseLayer *src,
+		const tTVPRect &srcrect, tjs_int opacity = 255,
+		tTVPBBStretchType type = stNearest);
 
 	//------------------------------------------- interface to font object --
 
