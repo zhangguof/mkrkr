@@ -15,7 +15,20 @@ enum {
 	orientLandscape,
 };
 
+enum {
+	 ssShift = TVP_SS_SHIFT,
+	 ssAlt = TVP_SS_ALT,
+	 ssCtrl = TVP_SS_CTRL,
+	 ssLeft = TVP_SS_LEFT,
+	 ssRight = TVP_SS_RIGHT,
+	 ssMiddle = TVP_SS_MIDDLE,
+	 ssDouble = TVP_SS_DOUBLE,
+	 ssRepeat = TVP_SS_REPEAT,
+};
+
+
 // enum tTVPWMRRegMode { wrmRegister=0, wrmUnregister=1 };
+typedef unsigned long TShiftState;
 
 typedef SDL_Window* WHAND;
 // extern WHAND g_sdl_win;
@@ -94,7 +107,8 @@ public:
 	void InternalSetPaintBoxSize(){SetDrawDeviceDestRect();}
 	void SetDrawDeviceDestRect();
 
-	void InternalKeyDown(WORD key, tjs_uint32 shift){}
+	void InternalKeyDown(WORD key, tjs_uint32 shift);
+	void InternalKeyUp(WORD key, tjs_uint32 shift);
 
 	// void SetSize(int w, int h);
 
@@ -358,9 +372,9 @@ bool ScrollBars;
 	virtual void OnMouseDoubleClick( int button, int x, int y ) ;
 	virtual void OnMouseClick( int button, int shift, int x, int y );
 	virtual void OnMouseWheel( int delta, int shift, int x, int y ){}
-	virtual void OnKeyUp( WORD vk, int shift ){}
-	virtual void OnKeyDown( WORD vk, int shift, int repeat, bool prevkeystate ){}
-	virtual void OnKeyPress( WORD vk, int repeat, bool prevkeystate, bool convertkey ){}
+	virtual void OnKeyUp( WORD vk, int shift );
+	virtual void OnKeyDown( WORD vk, int shift, int repeat, bool prevkeystate );
+	virtual void OnKeyPress( WORD vk, int repeat, bool prevkeystate, bool convertkey );
 	virtual void OnMove( int x, int y ) {}
 	virtual void OnResize( UINT_PTR state, int w, int h ) {}
 	// virtual void OnDropFile( HDROP hDrop ) {}

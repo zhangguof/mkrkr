@@ -78,7 +78,7 @@ plugin_infos = {
 		"path":['src/plugins/layerexsave',
 				'src/plugins/layerexsave/LodePNG'],
 		"include":['src/plugins','src/plugins/ncbind'],
-		'refuse_files':['src/plugins/layerexsave/savetlg5.cpp',]
+		# 'refuse_files':['src/plugins/layerexsave/savetlg5.cpp',]
 	},
 	"kagparser":{
 		"path":['src/plugins/KAGParser'],

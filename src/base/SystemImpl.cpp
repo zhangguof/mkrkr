@@ -64,6 +64,20 @@ static void TVPShowSimpleMessageBox(const ttstr & text, const ttstr & caption)
 //---------------------------------------------------------------------------
 bool TVPGetAsyncKeyState(tjs_uint keycode, bool getcurrent)
 {
+    auto mod = SDL_GetModState();
+    if(keycode == VK_SHIFT)
+    {
+        return mod & KMOD_SHIFT;
+    }
+    if(keycode == VK_CONTROL)
+    {
+        printf("get ctrl state:0x%0x,%d\n",mod,mod&KMOD_CTRL);
+        return mod & KMOD_CTRL;
+    }
+    if(keycode == VK_MENU)
+    {
+        return mod & KMOD_ALT;
+    }
 	// get keyboard state asynchronously.
 	// return current key state if getcurrent is true.
 	// otherwise, return whether the key is pushed during previous call of

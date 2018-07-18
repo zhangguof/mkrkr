@@ -291,9 +291,19 @@ bool SDLWindow::GetOrientation( int& orientation, int& rotate ) const {
 tTVPMouseButton TVP_TMouseButton_To_tTVPMouseButton(int button) {
 	return (tTVPMouseButton)button;
 }
-tjs_uint32 TVP_TShiftState_To_uint32(int b)
+tjs_uint32 TVP_TShiftState_To_uint32(TShiftState state)
 {
-	return 0;
+	tjs_uint32 result = 0;
+	if( state & KMOD_SHIFT ) {
+		result |= ssShift;
+	}
+	if( state & KMOD_CTRL ) {
+		result |= ssCtrl;
+	}
+	if( state & KMOD_ALT ) {
+		result |= ssAlt;
+	}
+	return result;
 }
 
 void SDLWindow::trans_point_frome_win(int &x,int &y)
@@ -318,7 +328,7 @@ void SDLWindow::trans_point_frome_win(int &x,int &y)
     }
     if(_x!=x || _y!=y)
     {
-        SDL_Log("trans mouse point:(%d,%d)->(%d,%d)",_x,_y,x,y);
+//        SDL_Log("trans mouse point:(%d,%d)->(%d,%d)",_x,_y,x,y);
     }
 }
 
@@ -379,6 +389,122 @@ void SDLWindow::OnMouseClick( int button, int shift, int x, int y )
 		// fire click event
 	if( TJSNativeInstance ) {
 		TVPPostInputEvent( new tTVPOnClickInputEvent(TJSNativeInstance, LastMouseDownX, LastMouseDownY));
+	}
+}
+
+void SDLWindow::OnKeyUp( WORD vk, int shift ){
+	tjs_uint32 s = TVP_TShiftState_To_uint32(shift);
+//    s |= GetMouseButtonState();
+	InternalKeyUp(vk, s );
+}
+void SDLWindow::OnKeyDown( WORD vk, int shift, int repeat, bool prevkeystate ){
+	if(TJSNativeInstance) {
+		tjs_uint32 s = TVP_TShiftState_To_uint32( shift );
+//        s |= GetMouseButtonState();
+		if( prevkeystate && repeat > 0 ) s |= TVP_SS_REPEAT;
+		InternalKeyDown( vk, s );
+	}
+}
+void SDLWindow::OnKeyPress( WORD vk, int repeat, bool prevkeystate, bool convertkey ){
+	// if( TJSNativeInstance && vk ) {
+	// 	if(UseMouseKey && (vk == 0x1b || vk == 13 || vk == 32)) return;
+	// 	// UNICODE なのでそのまま渡してしまう
+	// 	TVPPostInputEvent(new tTVPOnKeyPressInputEvent(TJSNativeInstance, vk));
+	// }
+}
+
+void SDLWindow::InternalKeyUp(WORD key, tjs_uint32 shift) {
+	// DWORD tick = GetTickCount();
+	// TVPPushEnvironNoise(&tick, sizeof(tick));
+	// TVPPushEnvironNoise(&key, sizeof(key));
+	// TVPPushEnvironNoise(&shift, sizeof(shift));
+	if( TJSNativeInstance ) {
+		// if( UseMouseKey /*&& PaintBox*/ ) {
+		// 	if( key == VK_RETURN || key == VK_SPACE || key == VK_ESCAPE || key == VK_PAD1 || key == VK_PAD2) {
+		// 		POINT p;
+		// 		::GetCursorPos(&p);
+		// 		::ScreenToClient( GetHandle(), &p );
+		// 		if( p.x >= 0 && p.y >= 0 && p.x < GetInnerWidth() && p.y < GetInnerHeight() ) {
+		// 			if( key == VK_RETURN || key == VK_SPACE || key == VK_PAD1 ) {
+		// 				OnMouseClick( mbLeft, 0, p.x, p.y );
+		// 				MouseLeftButtonEmulatedPushed = false;
+		// 				OnMouseUp( mbLeft, 0, p.x, p.y );
+		// 			}
+
+		// 			if( key == VK_ESCAPE || key == VK_PAD2 ) {
+		// 				MouseRightButtonEmulatedPushed = false;
+		// 				OnMouseUp( mbRight, 0, p.x, p.y );
+		// 			}
+		// 		}
+		// 		return;
+		// 	}
+		// }
+
+		TVPPostInputEvent(new tTVPOnKeyUpInputEvent(TJSNativeInstance, key, shift));
+	}
+}
+
+void SDLWindow::InternalKeyDown(WORD key, tjs_uint32 shift) {
+	// DWORD tick = GetTickCount();
+	// TVPPushEnvironNoise(&tick, sizeof(tick));
+	// TVPPushEnvironNoise(&key, sizeof(key));
+	// TVPPushEnvironNoise(&shift, sizeof(shift));
+
+	if( TJSNativeInstance ) {
+		// if(UseMouseKey /*&& PaintBox*/ ) {
+		// 	if(key == VK_RETURN || key == VK_SPACE || key == VK_ESCAPE || key == VK_PAD1 || key == VK_PAD2) {
+		// 		POINT p;
+		// 		::GetCursorPos(&p);
+		// 		::ScreenToClient( GetHandle(), &p );
+		// 		if( p.x >= 0 && p.y >= 0 && p.x < GetInnerWidth() && p.y < GetInnerHeight() ) {
+		// 			if( key == VK_RETURN || key == VK_SPACE || key == VK_PAD1 ) {
+		// 				MouseLeftButtonEmulatedPushed = true;
+		// 				OnMouseDown( mbLeft, 0, p.x, p.y );
+		// 			}
+
+		// 			if(key == VK_ESCAPE || key == VK_PAD2) {
+		// 				MouseRightButtonEmulatedPushed = true;
+		// 				OnMouseDown( mbLeft, 0, p.x, p.y );
+		// 			}
+		// 		}
+		// 		return;
+		// 	}
+
+		// 	switch(key) {
+		// 	case VK_LEFT:
+		// 	case VK_PADLEFT:
+		// 		if( MouseKeyXAccel == 0 && MouseKeyYAccel == 0 ) {
+		// 			GenerateMouseEvent(true, false, false, false);
+		// 			LastMouseKeyTick = GetTickCount() + 100;
+		// 		}
+		// 		return;
+		// 	case VK_RIGHT:
+		// 	case VK_PADRIGHT:
+		// 		if(MouseKeyXAccel == 0 && MouseKeyYAccel == 0)
+		// 		{
+		// 			GenerateMouseEvent(false, true, false, false);
+		// 			LastMouseKeyTick = GetTickCount() + 100;
+		// 		}
+		// 		return;
+		// 	case VK_UP:
+		// 	case VK_PADUP:
+		// 		if(MouseKeyXAccel == 0 && MouseKeyYAccel == 0)
+		// 		{
+		// 			GenerateMouseEvent(false, false, true, false);
+		// 			LastMouseKeyTick = GetTickCount() + 100;
+		// 		}
+		// 		return;
+		// 	case VK_DOWN:
+		// 	case VK_PADDOWN:
+		// 		if(MouseKeyXAccel == 0 && MouseKeyYAccel == 0)
+		// 		{
+		// 			GenerateMouseEvent(false, false, false, true);
+		// 			LastMouseKeyTick = GetTickCount() + 100;
+		// 		}
+		// 		return;
+		// 	}
+		// }
+		TVPPostInputEvent(new tTVPOnKeyDownInputEvent(TJSNativeInstance, key, shift));
 	}
 }
 

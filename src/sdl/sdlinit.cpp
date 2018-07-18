@@ -4,6 +4,7 @@
 #ifndef SDL_TEST
 #include "tjsCommHead.h"
 #include "WindowImpl.h"
+#include <set>
 
 extern tTJSNI_Window * TVPMainWindow;
 
@@ -238,7 +239,6 @@ SDL_Window* create_sdl_window(const char* title,int w,int h)
 }
 
 //simula right click in ios.
-
 static long long finger1 = 0;
 static long long finger2 = 0;
 static int finger_cnt = 0;
@@ -292,10 +292,53 @@ bool handle_finger(SDL_TouchFingerEvent& e)
 }
 
 
+//keyboard event
+void process_keyboard_event(SDL_KeyboardEvent& e,SDLWindow* win=NULL)
+{
+    auto k = e.keysym.sym;
+    if(k == SDLK_LSHIFT || k==SDLK_RSHIFT)
+    {
+        k = VK_SHIFT;
+    }
+    else if(k == SDLK_LALT||k==SDLK_RALT)
+    {
+        k = VK_MENU;
+    }
+    else if(k == SDLK_LCTRL || k==SDLK_RCTRL)
+    {
+        k = VK_CONTROL;
+    }
+    
+    if(e.type == SDL_KEYDOWN)
+    {
+        win->OnKeyDown(k, e.keysym.mod, 0, false);
+        printf("key down:state:%d,scancode:0x%0x,sym:0x%0x::mod:0x%0x\n",
+            e.state,e.keysym.scancode,k,e.keysym.mod);
+    }
+    else if(e.type == SDL_KEYUP)
+    {
+        win->OnKeyUp(k, e.keysym.mod);
+        printf("key up:state:%d,scancode:0x%0x,sym:0x%0x::mod:0x%0x\n",
+               e.state,e.keysym.scancode,k,e.keysym.mod);
+    }
+}
+
+
 
 #ifndef SDL_TEST
 extern void process_use_envet(SDL_UserEvent& e);
 // extern void process_input_event(SDL_Event& e);
+static std::set<uint32_t> input_events = {
+    SDL_MOUSEBUTTONUP,
+    SDL_MOUSEBUTTONDOWN,
+    SDL_MOUSEMOTION,
+    SDL_FINGERUP,
+    SDL_FINGERDOWN,
+    SDL_KEYDOWN,
+    SDL_KEYUP,
+	SDL_FINGERMOTION,
+};
+
 void process_input_event(SDL_Event& e)
 {
     SDLWindow* win = NULL;
@@ -356,8 +399,20 @@ void process_input_event(SDL_Event& e)
             }
         }             
     }
+    else if(e.type == SDL_MOUSEMOTION)
+    {
+        int x = 0, y = 0;
+        SDL_GetMouseState( &x, &y );
+        win->trans_point_frome_win(x, y);
+        if(win)
+        {
+            win->OnMouseMove(0, x, y);
+        }
+    }
     else if(e.type == SDL_FINGERDOWN)
     {
+//        printf("SDL_FINGERDOWN::touchId:%d,fingerId:%d,pressure:%d\n",e.tfinger.touchId,
+//               e.tfinger.fingerId,e.tfinger.pressure);
         bool r = handle_finger(e.tfinger);
         if(r)
         {
@@ -371,6 +426,8 @@ void process_input_event(SDL_Event& e)
     }
     else if(e.type == SDL_FINGERUP)
     {
+//        printf("SDL_FINGERUP::touchId:%d,fingerId:%d,pressure:%d\n",e.tfinger.touchId,
+//               e.tfinger.fingerId,e.tfinger.pressure);
         bool r = handle_finger(e.tfinger);
         if(r)
         {
@@ -384,10 +441,18 @@ void process_input_event(SDL_Event& e)
         }
         
     }
-//    else if(e.type == SDL_FINGERMOTION)
-//    {
-//        printf("touch event SDL_FINGERMOTION!!!%f,%f\n",e.tfinger.x,e.tfinger.y);
-//    }
+    else if(e.type == SDL_FINGERMOTION)
+    {
+        int x,y;
+        x = win->GetWidth() * e.tfinger.x;
+        y = win->GetHeight() * e.tfinger.y;
+        win->trans_point_frome_win(x, y);
+        win->OnMouseMove(0, x, y);
+    }
+    else if(e.type == SDL_KEYDOWN || e.type == SDL_KEYUP)
+    {
+        process_keyboard_event(e.key,win);
+    }
 }
 #endif
 
@@ -403,12 +468,14 @@ void sdl_event_update(bool &quit)
             return;
         }
 #ifndef SDL_TEST
-        else if( e.type == SDL_MOUSEBUTTONUP ||
-                 e.type == SDL_MOUSEBUTTONDOWN||
-                e.type == SDL_FINGERUP||
-                e.type == SDL_FINGERDOWN
-//                e.type == SDL_FINGERMOTION
-                )
+//         else if( e.type == SDL_MOUSEBUTTONUP ||
+//                  e.type == SDL_MOUSEBUTTONDOWN||
+//                 e.type == SDL_FINGERUP||
+//                 e.type == SDL_FINGERDOWN||
+//                 e.type == SDL_KEYDOWN||e.type == SDL_KEYUP
+// //                e.type == SDL_FINGERMOTION
+//                 )
+        else if(input_events.find(e.type) != input_events.end())
         {
             //Handle keypress with current mouse position
             process_input_event(e);
