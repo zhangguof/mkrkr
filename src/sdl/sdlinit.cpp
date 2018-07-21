@@ -240,11 +240,15 @@ SDL_Window* create_sdl_window(const char* title,int w,int h)
 
 
 extern void process_use_envet(SDL_UserEvent& e);
+extern void simula_ctrl_check(uint32_t now,SDLWindow* win);
 
-void sdl_event_update(bool &quit)
+void sdl_event_update(bool &quit,uint32_t now)
 {
     SDL_Event e;
     SDLWindow* win = NULL;
+    if(TVPMainWindow)
+        win = TVPMainWindow->GetForm();
+    simula_ctrl_check(now,win);
     while( SDL_PollEvent( &e ) != 0 )
     {
         //User requests quit
@@ -256,8 +260,7 @@ void sdl_event_update(bool &quit)
 #ifndef SDL_TEST
         else if(input_events.find(e.type) != input_events.end())
         {
-            if(TVPMainWindow)
-                win = TVPMainWindow->GetForm();
+
             //Handle keypress with current mouse position
             process_input_event(e,win);
         }
@@ -267,6 +270,7 @@ void sdl_event_update(bool &quit)
         }
 #endif
     }
+    
 }
 
 const double g_fps = 60.0f;
@@ -291,7 +295,7 @@ extern "C" void sdl_loop()
         //Handle events on queue
         if(now - last_event_time > event_pre_time)
         {
-            sdl_event_update(quit);
+            sdl_event_update(quit,now);
             last_event_time = now;
         }
 

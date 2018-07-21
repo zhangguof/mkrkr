@@ -110,6 +110,60 @@ void process_keyboard_event(SDL_KeyboardEvent& e,SDLWindow* win=NULL)
     }
 }
 
+static uint32_t last_mouse_button_down_time = 0;
+static bool is_mouse_button_down = false;
+
+const uint32_t ctrl_key_time = 3000; //5000ms
+static bool is_ctrl_key_down = false;
+
+static void ctrl_down(SDLWindow* win)
+{
+//    auto mod = SDL_GetModState();
+    SDL_Keymod mod = KMOD_LCTRL;
+    SDL_SetModState(mod);
+    
+    win->OnKeyDown(VK_CONTROL, mod, 0, false);
+    printf("on ctrl key down!\n");
+}
+
+static void ctrl_up(SDLWindow* win)
+{
+//    auto mod = SDL_GetModState();
+    SDL_Keymod mod = KMOD_NONE;
+    SDL_SetModState(mod);
+    
+    win->OnKeyUp(VK_CONTROL, mod);
+    printf("on ctrl key up!\n");
+}
+
+static void mouse_down_cb(uint32_t now, SDLWindow* win)
+{
+    is_mouse_button_down = true;
+    last_mouse_button_down_time = now;
+}
+
+static void mosue_up_cb(uint32_t now, SDLWindow* win)
+{
+    is_mouse_button_down = false;
+    if(is_ctrl_key_down)
+    {
+        ctrl_up(win);
+        is_ctrl_key_down = false;
+    }
+}
+
+void simula_ctrl_check(uint32_t now,SDLWindow* win)
+{
+    if(!is_mouse_button_down) return;
+    if(now - last_mouse_button_down_time > ctrl_key_time &&
+       !is_ctrl_key_down)
+    {
+        printf("check!now:%d,last:%d\n",now,last_mouse_button_down_time);
+        is_ctrl_key_down = true;
+        ctrl_down(win);
+    }
+}
+
 #ifndef SDL_TEST
 
 // extern void process_input_event(SDL_Event& e);
@@ -141,6 +195,7 @@ void process_input_event(SDL_Event& e,SDLWindow* win)
                 win->OnMouseClick(mbLeft,0,x,y);
                 win->OnMouseUp(mbLeft,0,x,y);
             }
+            mosue_up_cb(SDL_GetTicks(),win);
         }
         else if(e.button.button == SDL_BUTTON_RIGHT)
         {
@@ -150,6 +205,7 @@ void process_input_event(SDL_Event& e,SDLWindow* win)
                 win->OnMouseClick(mbRight,0,x,y);
                 win->OnMouseUp(mbRight,0,x,y);
             }
+            
         }
         
         // handleKeys( e.text.text[ 0 ], x, y );
@@ -169,6 +225,7 @@ void process_input_event(SDL_Event& e,SDLWindow* win)
                 // win->OnMouseClick(mbLeft,0,x,y);
                 win->OnMouseDown(mbLeft,0,x,y);
             }
+            mouse_down_cb(SDL_GetTicks(),win);
 #endif
         }
         else if(e.button.button == SDL_BUTTON_RIGHT)

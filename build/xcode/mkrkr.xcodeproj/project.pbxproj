@@ -12,7 +12,6 @@
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */; };
-		EA01B75520FA369700DA6D10 /* dtcn.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA01B75420FA369700DA6D10 /* dtcn.xp3 */; };
 		EA05774120FE1C1300C63DB0 /* savetlg5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19325620E8B18F002621DB /* savetlg5.cpp */; };
 		EA05774520FFA46400C63DB0 /* inputEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA05774320FFA46400C63DB0 /* inputEvent.cpp */; };
 		EA1930AE20E8AED0002621DB /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1930AD20E8AED0002621DB /* libpng.a */; };
@@ -157,15 +156,6 @@
 		EA2F80F120E66F49003378DF /* simple_es_fs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CB20E66F49003378DF /* simple_es_fs.glsl */; };
 		EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CC20E66F49003378DF /* gen_shaders.py */; };
 		EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EA2F80CD20E66F49003378DF /* simple_vs.glsl */; };
-		EA5291BA20F87771006AD89C /* patchcn.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291B620F8775E006AD89C /* patchcn.xp3 */; };
-		EA5291C320F87799006AD89C /* bg.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291BC20F87798006AD89C /* bg.xp3 */; };
-		EA5291C420F87799006AD89C /* rule.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291BD20F87798006AD89C /* rule.xp3 */; };
-		EA5291C520F87799006AD89C /* bgm.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291BE20F87798006AD89C /* bgm.xp3 */; };
-		EA5291C620F87799006AD89C /* fg.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291BF20F87798006AD89C /* fg.xp3 */; };
-		EA5291C720F87799006AD89C /* sound.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291C020F87799006AD89C /* sound.xp3 */; };
-		EA5291C820F87799006AD89C /* data.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291C120F87799006AD89C /* data.xp3 */; };
-		EA5291C920F87799006AD89C /* image.xp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5291C220F87799006AD89C /* image.xp3 */; };
-		EA5291CB20F877B8006AD89C /* data in Resources */ = {isa = PBXBuildFile; fileRef = EA5291CA20F877B8006AD89C /* data */; };
 		EA5291D420F8787D006AD89C /* ease.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5291D120F8787C006AD89C /* ease.cpp */; };
 		EA5291D520F8787D006AD89C /* Tween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5291D220F8787C006AD89C /* Tween.cpp */; };
 		EA5291D620F8787D006AD89C /* TweenImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5291D320F8787D006AD89C /* TweenImpl.cpp */; };
@@ -229,7 +219,6 @@
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		EA01B75420FA369700DA6D10 /* dtcn.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = dtcn.xp3; path = ../../bin/dtcn.xp3; sourceTree = "<group>"; };
 		EA05774220FE1D6F00C63DB0 /* SaveTLG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveTLG.h; sourceTree = "<group>"; };
 		EA05774320FFA46400C63DB0 /* inputEvent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = inputEvent.cpp; sourceTree = "<group>"; };
 		EA05774420FFA46400C63DB0 /* inputEvent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = inputEvent.hpp; sourceTree = "<group>"; };
@@ -557,15 +546,6 @@
 		EA2F80D220E66F49003378DF /* alDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alDevice.cpp; sourceTree = "<group>"; };
 		EA2F80D320E66F49003378DF /* ffStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ffStream.hpp; sourceTree = "<group>"; };
 		EA2F80D820E66F49003378DF /* GLDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLDevice.hpp; sourceTree = "<group>"; };
-		EA5291B620F8775E006AD89C /* patchcn.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = patchcn.xp3; path = ../../bin/patchcn.xp3; sourceTree = "<group>"; };
-		EA5291BC20F87798006AD89C /* bg.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = bg.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/bg.xp3; sourceTree = "<group>"; };
-		EA5291BD20F87798006AD89C /* rule.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = rule.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/rule.xp3; sourceTree = "<group>"; };
-		EA5291BE20F87798006AD89C /* bgm.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = bgm.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/bgm.xp3; sourceTree = "<group>"; };
-		EA5291BF20F87798006AD89C /* fg.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = fg.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/fg.xp3; sourceTree = "<group>"; };
-		EA5291C020F87799006AD89C /* sound.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sound.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/sound.xp3; sourceTree = "<group>"; };
-		EA5291C120F87799006AD89C /* data.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/data.xp3; sourceTree = "<group>"; };
-		EA5291C220F87799006AD89C /* image.xp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = image.xp3; path = ../../../../../../../Volumes/Samsung_T3/game/xp3/image.xp3; sourceTree = "<group>"; };
-		EA5291CA20F877B8006AD89C /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../data; sourceTree = "<group>"; };
 		EA5291D020F8787C006AD89C /* TweenImpl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TweenImpl.hpp; sourceTree = "<group>"; };
 		EA5291D120F8787C006AD89C /* ease.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ease.cpp; sourceTree = "<group>"; };
 		EA5291D220F8787C006AD89C /* Tween.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tween.cpp; sourceTree = "<group>"; };
@@ -702,16 +682,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EA5291CA20F877B8006AD89C /* data */,
-				EA5291BC20F87798006AD89C /* bg.xp3 */,
-				EA01B75420FA369700DA6D10 /* dtcn.xp3 */,
-				EA5291BE20F87798006AD89C /* bgm.xp3 */,
-				EA5291C120F87799006AD89C /* data.xp3 */,
-				EA5291BF20F87798006AD89C /* fg.xp3 */,
-				EA5291C220F87799006AD89C /* image.xp3 */,
-				EA5291BD20F87798006AD89C /* rule.xp3 */,
-				EA5291C020F87799006AD89C /* sound.xp3 */,
-				EA5291B620F8775E006AD89C /* patchcn.xp3 */,
 				EA98923620EB5CA7001F7BE6 /* UTF-8 */,
 				EA98923420EA8AA5001F7BE6 /* font */,
 				EAFCB15520E6A026003A1736 /* test0.png */,
@@ -1398,24 +1368,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA5291C520F87799006AD89C /* bgm.xp3 in Resources */,
-				EA5291C320F87799006AD89C /* bg.xp3 in Resources */,
 				EAFCB15620E6A027003A1736 /* test0.png in Resources */,
-				EA01B75520FA369700DA6D10 /* dtcn.xp3 in Resources */,
-				EA5291BA20F87771006AD89C /* patchcn.xp3 in Resources */,
 				EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */,
 				EA98923720EB5CA8001F7BE6 /* UTF-8 in Resources */,
 				EA2F80F120E66F49003378DF /* simple_es_fs.glsl in Resources */,
 				EA2F80EF20E66F49003378DF /* simple_es_vs.glsl in Resources */,
 				EA2F80F020E66F49003378DF /* simple_fs.glsl in Resources */,
-				EA5291C820F87799006AD89C /* data.xp3 in Resources */,
 				FD77A07D0E26BD8C00F39101 /* Icon.png in Resources */,
-				EA5291C420F87799006AD89C /* rule.xp3 in Resources */,
 				FD77A07F0E26BDA900F39101 /* Default.png in Resources */,
-				EA5291C920F87799006AD89C /* image.xp3 in Resources */,
-				EA5291CB20F877B8006AD89C /* data in Resources */,
-				EA5291C620F87799006AD89C /* fg.xp3 in Resources */,
-				EA5291C720F87799006AD89C /* sound.xp3 in Resources */,
 				EA98923520EA8AA5001F7BE6 /* font in Resources */,
 				EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */,
 				945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */,
