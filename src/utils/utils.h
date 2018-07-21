@@ -29,6 +29,8 @@ extern void TVPExecThreadTask(TVP_THREAD_TASK_FUNC func, TVP_THREAD_PARAM param)
 void Sleep(uint32_t ms);
 
 ttstr GetAppPath();
+ttstr GetAppDocumentsPath();
+ttstr GetBundlePath();
 extern int MultiByteToWideChar(uint32_t CodePage,int dwFlags,const char* lpMultiByteStr,
 						int cbMultiByte,wchar_t* lpWideCharStr,int cchWideChar);
 

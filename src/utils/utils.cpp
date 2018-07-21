@@ -3,6 +3,7 @@
 #include <time.h>
 #include "SDL.h"
 #include "CharacterSet.h"
+#include <boost/filesystem.hpp>
 
 FILE* wfopen(const wchar_t* filename, const wchar_t* mode)  
 {  
@@ -65,20 +66,7 @@ void TVPStartTickCount()
 	//assert(false);//TODO
 
 }
-// void TVPBeginThreadTask(tjs_int taskNum)
-// {
-// 	// printf("start thread task!\n");
-// 	// assert(false);//TODO
-// }
-// void TVPGetFontRasterizer()
-// {
-// 	assert(false);//TODO
-// }
 
-// void TVPSetFontRasterizer( tjs_int index )
-// {
-// 	assert(false);//TODO
-// }
 
 void TVPMainWindowClosed()
 {
@@ -95,7 +83,7 @@ ttstr TVPGetDefaultFontName() {
 	// ttstr name(TJS_W("font/NotoSansCJKsc-Thin.otf"));
 	// const tjs_char* font_name = "font/AdobeHeitiStd-Regular.otf";
 	ttstr name = default_font_name;
-	name = ttstr(TJS_W("file://./")) + ExePath() + name;
+    name = ttstr(TJS_W("file://./")) + GetBundlePath() + name;
 	// wprintf(TJS_W("%ls\n"),name.c_str());
 	return name;
 }
@@ -208,6 +196,20 @@ ttstr GetAppPath()
     SDL_Log("GetAppPath:%s",path.AsNarrowStdString().c_str());
     
     return path;
+}
+
+ttstr GetAppDocumentsPath()
+{
+    return GetAppPath();
+}
+//like exepath
+ttstr GetBundlePath()
+{
+    auto cur_path = boost::filesystem::current_path();
+    ttstr p(cur_path.c_str());
+    if(p.GetLastChar()!=TJS_W('/'))
+        p = p + TJS_W('/');
+    return p;
 }
 
 // int MultiByteToWideChar(

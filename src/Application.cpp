@@ -11,13 +11,18 @@
 #include "sdlinit.h"
 
 //absolute path,"/" at last.
+//use Documents path in ios!
 ttstr ExePath() {
+    
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+    return GetAppDocumentsPath();
+#else
 	auto cur_path = boost::filesystem::current_path();
 	ttstr p(cur_path.c_str());
 	if(p.GetLastChar()!=TJS_W('/'))
 		p = p + TJS_W('/');
-
 	return p;
+#endif
 }
 
 tTVPApplication* Application;
