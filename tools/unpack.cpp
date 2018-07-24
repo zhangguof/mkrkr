@@ -38,6 +38,32 @@ void  xp3_filter(tTVPXP3ExtractionFilterInfo* info)
 	}
 }
 
+void xp3_filter2(tTVPXP3ExtractionFilterInfo* info)
+{
+	// assert(info->SizeOfSelf == 0x18);
+	tjs_uint8 * buff = (tjs_uint8*) (info->Buffer);
+	tjs_uint32 h = info->FileHash;
+	tjs_uint32 length = info->BufferSize;
+	tjs_uint64 offest = info->Offset;
+	tjs_uint32 k = (h ^ 0x2A09A745) & 0x7FFFFFFF;
+	k |= k << 31;
+	k &= 0xFFFFFFFF;
+
+    tjs_uint32 t[32];
+	t[31] = 0;
+
+	for(int i = 0; i < 32; ++i) {
+		t[i] = k;
+		k = (k << 23) | (k >> 8);
+		k &= 0xFFFFFFFF;
+	}
+
+	for(int i = 0; i < length; ++i) {
+		buff[i] ^= t[(offest + i) & 31];
+	}
+
+}
+
 
 
 void get_file_list(ttstr data_file,int start_idx=1)
@@ -280,7 +306,7 @@ int main(int argc,char* argv[])
 {
 	setlocale(LC_CTYPE, "UTF-8");
 	TVPLoadMessage();
-	// TVPSetXP3ArchiveExtractionFilter(xp3_filter);
+	TVPSetXP3ArchiveExtractionFilter(xp3_filter2);
 	// get_file_list(TJS_W("../repos/data.xp3"));
 	// return 0;
 	try

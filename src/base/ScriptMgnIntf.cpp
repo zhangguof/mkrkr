@@ -369,7 +369,7 @@ psexcl		:%[type:ltPsExclusion		],\
 //---------------------------------------------------------------------------
 
 
-
+extern bool TVPCheckExistentLocalFile(const ttstr &name);
 //---------------------------------------------------------------------------
 // global variables
 //---------------------------------------------------------------------------
@@ -878,8 +878,36 @@ void TVPDumpScriptEngine()
 //---------------------------------------------------------------------------
 // TVPExecuteStartupScript
 //---------------------------------------------------------------------------
+//try run xp3filter.tjs
+void TryRunXP3filter()
+{
+    ttstr filepath = TJS_W("file://./");
+    ttstr filename = ExePath() + TJS_W("xp3filter.tjs");
+    try
+    {
+        try
+        {
+            TVPAddLog(TJS_W("try run xp3filter.tjs"));
+            printf("filename:%ls\n",filename.c_str());
+            if(TVPCheckExistentLocalFile(filename))
+            {
+                printf("exist xp3filter file!\n");
+                TVPExecuteStorage(filepath+filename);
+            }
+            else
+            {
+                TVPAddLog(TJS_W("can't file xp3filter.tjs!"));
+                return;
+            }
+           
+        }
+        TJS_CONVERT_TO_TJS_EXCEPTION
+    }
+    TVP_CATCH_AND_SHOW_SCRIPT_EXCEPTION(TJS_W("xp3filter.tjs"))
+}
 void TVPExecuteStartupScript()
 {
+//    TryRunXP3filter();
 	// execute "startup.tjs"
 	try
 	{
