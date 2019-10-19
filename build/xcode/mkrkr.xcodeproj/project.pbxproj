@@ -582,6 +582,7 @@
 		EAA534EF20ECD84A005F0CB4 /* updateMgr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = updateMgr.cpp; sourceTree = "<group>"; };
 		EAA534F020ECD84A005F0CB4 /* updateMgr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = updateMgr.hpp; sourceTree = "<group>"; };
 		EABF979F20F24C33001D12EE /* stringutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stringutils.cpp; sourceTree = "<group>"; };
+		EAE2F9C6223FB93300D02DF5 /* mkrkr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mkrkr.entitlements; sourceTree = "<group>"; };
 		EAFCB15520E6A026003A1736 /* test0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test0.png; path = ../../data1/bmp/test0.png; sourceTree = "<group>"; };
 		EAFCB15920E6A32F003A1736 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../libs/ios/libSDL2.a; sourceTree = "<group>"; };
 		EAFCB15B20E6A3B2003A1736 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -649,6 +650,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				EAE2F9C6223FB93300D02DF5 /* mkrkr.entitlements */,
 				945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */,
 				29B97315FDCFA39411CA2CEA /* Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -1337,22 +1339,35 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1010;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = QZCGQLBGFN;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "mkrkr" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
-				Japanese,
-				French,
-				German,
+				fr,
+				en,
+				ja,
+				de,
+				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -1563,6 +1578,8 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = QZCGQLBGFN;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1587,6 +1604,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tony.mkrkr;
 				PRODUCT_NAME = mkrkr;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SYSTEM_HEADER_SEARCH_PATHS = "/Users/tony/workspace/github/mkrkr/src/ext_libs_src/freetype-2.9/include /Users/tony/workspace/github/boost_1_67_0\n/Users/tony/workspace/github/boost_1_67_0\n";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/ ../../src/objects";
@@ -1602,6 +1620,8 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = QZCGQLBGFN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1618,6 +1638,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tony.mkrkr;
 				PRODUCT_NAME = mkrkr;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SYSTEM_HEADER_SEARCH_PATHS = "/Users/tony/workspace/github/mkrkr/src/ext_libs_src/freetype-2.9/include /Users/tony/workspace/github/boost_1_67_0\n/Users/tony/workspace/github/boost_1_67_0\n";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/ ../../src/objects";
@@ -1629,6 +1650,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_SECURITY_KEYCHAIN_API = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -1646,7 +1668,10 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
+				DEVELOPMENT_TEAM = QZCGQLBGFN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1660,7 +1685,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = arm64;
@@ -1688,7 +1712,10 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
+				DEVELOPMENT_TEAM = QZCGQLBGFN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1699,7 +1726,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "";
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = arm64;
