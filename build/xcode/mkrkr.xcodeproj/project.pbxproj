@@ -171,7 +171,6 @@
 		EA52924F20F87C7A006AD89C /* shift_jis_decode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA52924D20F87C7A006AD89C /* shift_jis_decode.cpp */; };
 		EA52925020F87C7A006AD89C /* shift_jis_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA52924E20F87C7A006AD89C /* shift_jis_tables.cpp */; };
 		EA52925120F87CB8006AD89C /* ncbind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19320120E8B18F002621DB /* ncbind.cpp */; };
-		EA98923520EA8AA5001F7BE6 /* font in Resources */ = {isa = PBXBuildFile; fileRef = EA98923420EA8AA5001F7BE6 /* font */; };
 		EA98923720EB5CA8001F7BE6 /* UTF-8 in Resources */ = {isa = PBXBuildFile; fileRef = EA98923620EB5CA7001F7BE6 /* UTF-8 */; };
 		EAA3548B20E93D5000B8AD31 /* path.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAA3548A20E93D5000B8AD31 /* path.mm */; };
 		EAA36D0C20E7BF5100A4BD78 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA36D0720E7BF5100A4BD78 /* libswresample.a */; };
@@ -197,7 +196,8 @@
 		EAAE679220ECE1540056DFFB /* GLDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F80B120E66F49003378DF /* GLDevice.cpp */; };
 		EAAE679320ECE2DF0056DFFB /* baseAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA19319B20E8B18F002621DB /* baseAudio.cpp */; };
 		EABF97A020F24C33001D12EE /* stringutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EABF979F20F24C33001D12EE /* stringutils.cpp */; };
-		EAFCB15620E6A027003A1736 /* test0.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFCB15520E6A026003A1736 /* test0.png */; };
+		EACF9AF8258F735000D219D5 /* font in Resources */ = {isa = PBXBuildFile; fileRef = EACF9AF7258F734F00D219D5 /* font */; };
+		EACF9AFC258F93C700D219D5 /* test-data in Resources */ = {isa = PBXBuildFile; fileRef = EACF9AFB258F93C700D219D5 /* test-data */; };
 		EAFCB15A20E6A32F003A1736 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15920E6A32F003A1736 /* libSDL2.a */; };
 		EAFCB15C20E6A3B3003A1736 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15B20E6A3B2003A1736 /* Metal.framework */; };
 		EAFCB15F20E6B47C003A1736 /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCB15D20E6B47B003A1736 /* libboost_filesystem.a */; };
@@ -561,7 +561,6 @@
 		EA52924920F87C5F006AD89C /* SaveTLG6.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SaveTLG6.cpp; sourceTree = "<group>"; };
 		EA52924D20F87C7A006AD89C /* shift_jis_decode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shift_jis_decode.cpp; sourceTree = "<group>"; };
 		EA52924E20F87C7A006AD89C /* shift_jis_tables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shift_jis_tables.cpp; sourceTree = "<group>"; };
-		EA98923420EA8AA5001F7BE6 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
 		EA98923620EB5CA7001F7BE6 /* UTF-8 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "UTF-8"; sourceTree = "<group>"; };
 		EAA3548A20E93D5000B8AD31 /* path.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = path.mm; sourceTree = "<group>"; };
 		EAA3548C20EA5C5D00B8AD31 /* sdlinit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sdlinit.h; sourceTree = "<group>"; };
@@ -582,8 +581,9 @@
 		EAA534EF20ECD84A005F0CB4 /* updateMgr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = updateMgr.cpp; sourceTree = "<group>"; };
 		EAA534F020ECD84A005F0CB4 /* updateMgr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = updateMgr.hpp; sourceTree = "<group>"; };
 		EABF979F20F24C33001D12EE /* stringutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stringutils.cpp; sourceTree = "<group>"; };
+		EACF9AF7258F734F00D219D5 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
+		EACF9AFB258F93C700D219D5 /* test-data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "test-data"; path = "../../test-data"; sourceTree = "<group>"; };
 		EAE2F9C6223FB93300D02DF5 /* mkrkr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mkrkr.entitlements; sourceTree = "<group>"; };
-		EAFCB15520E6A026003A1736 /* test0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test0.png; path = ../../data1/bmp/test0.png; sourceTree = "<group>"; };
 		EAFCB15920E6A32F003A1736 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../libs/ios/libSDL2.a; sourceTree = "<group>"; };
 		EAFCB15B20E6A3B2003A1736 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		EAFCB15D20E6B47B003A1736 /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../../libs/ios/libboost_filesystem.a; sourceTree = "<group>"; };
@@ -684,9 +684,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EACF9AFB258F93C700D219D5 /* test-data */,
+				EACF9AF7258F734F00D219D5 /* font */,
 				EA98923620EB5CA7001F7BE6 /* UTF-8 */,
-				EA98923420EA8AA5001F7BE6 /* font */,
-				EAFCB15520E6A026003A1736 /* test0.png */,
 				FD77A07E0E26BDA900F39101 /* Default.png */,
 				FD77A07C0E26BD8C00F39101 /* Icon.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -1383,7 +1383,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAFCB15620E6A027003A1736 /* test0.png in Resources */,
 				EA2F80F220E66F49003378DF /* gen_shaders.py in Resources */,
 				EA98923720EB5CA8001F7BE6 /* UTF-8 in Resources */,
 				EA2F80F120E66F49003378DF /* simple_es_fs.glsl in Resources */,
@@ -1391,7 +1390,8 @@
 				EA2F80F020E66F49003378DF /* simple_fs.glsl in Resources */,
 				FD77A07D0E26BD8C00F39101 /* Icon.png in Resources */,
 				FD77A07F0E26BDA900F39101 /* Default.png in Resources */,
-				EA98923520EA8AA5001F7BE6 /* font in Resources */,
+				EACF9AF8258F735000D219D5 /* font in Resources */,
+				EACF9AFC258F93C700D219D5 /* test-data in Resources */,
 				EA2F80F320E66F49003378DF /* simple_vs.glsl in Resources */,
 				945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */,
 			);
@@ -1596,7 +1596,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/tony/workspace/github/mkrkr/libs/ios,
+					../../libs/ios,
 				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -1605,9 +1605,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tony.mkrkr;
 				PRODUCT_NAME = mkrkr;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SYSTEM_HEADER_SEARCH_PATHS = "/Users/tony/workspace/github/mkrkr/src/ext_libs_src/freetype-2.9/include /Users/tony/workspace/github/boost_1_67_0\n/Users/tony/workspace/github/boost_1_67_0\n";
+				SYSTEM_HEADER_SEARCH_PATHS = "../../thirdparty/freetype-2.9/include ../../thirdparty/boost_1_67_0";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/ ../../src/objects";
+				USER_HEADER_SEARCH_PATHS = "../../thirdparty/SDL2-2.0.8/include ../../src/sdl ../../thirdparty/FFmpeg-iOS/include ../../src ../../thirdparty/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/ ../../src/utils ../../src/objects";
 				WARNING_CFLAGS = "-Wno-comma";
 			};
 			name = Debug;
@@ -1630,7 +1630,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/tony/workspace/github/mkrkr/libs/ios,
+					../../libs/ios,
 				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -1639,9 +1639,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tony.mkrkr;
 				PRODUCT_NAME = mkrkr;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SYSTEM_HEADER_SEARCH_PATHS = "/Users/tony/workspace/github/mkrkr/src/ext_libs_src/freetype-2.9/include /Users/tony/workspace/github/boost_1_67_0\n/Users/tony/workspace/github/boost_1_67_0\n";
+				SYSTEM_HEADER_SEARCH_PATHS = "../../thirdparty/freetype-2.9/include ../../thirdparty/boost_1_67_0";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "../../../include /Users/tony/workspace/github/sdl/SDL2-2.0.8/include ../../src/sdl /Users/tony/workspace/github/FFmpeg-iOS/include ../../src ../../src/ext_libs_src/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/ ../../src/objects";
+				USER_HEADER_SEARCH_PATHS = "../../thirdparty/SDL2-2.0.8/include ../../src/sdl ../../thirdparty/FFmpeg-iOS/include ../../src ../../thirdparty/libpng-1.6.34 ../../src/external/oniguruma/src ../../src/plugins/ ../../src/utils ../../src/objects";
 				WARNING_CFLAGS = "-Wno-comma";
 			};
 			name = Release;

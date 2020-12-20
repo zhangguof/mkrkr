@@ -14,11 +14,11 @@ src_path  = "src"
 #         -framework Cocoa -framework Carbon \
 #         -framework IOKit -framework Metal
 #using in mac
-frameworks = ['CoreAudio','OpenGL',
+frameworks = ['CoreAudio','OpenGL','OpenAL',
 			  'AudioToolbox','ForceFeedback','Carbon',
 			  'CoreFoundation','Cocoa','IOKit','CoreVideo',
 			  'Metal','AVFoundation','CoreMedia','Security',
-			  'VideoToolbox',
+			  'VideoToolbox'
 			  ]
 
 
@@ -50,14 +50,13 @@ include_path = list(cpp_path)
 include_path.extend([
 	'src/tjs2',
 	'src/tjs2/base','src/tjs2/msg','src/tjs2/utils',
-	'../boost_1_67_0/',
-	'src/ext_libs_src/',
-	'../sdl/SDL2-2.0.8/include',
-	'../ffmpeg-4.0/',
-	'src/ext_libs_src/freetype-2.9/include',
-	'src/ext_libs_src/libpng-1.6.34',
-	'src/ext_libs_src/openal-soft-1.18.2/include',
-	'src/ext_libs_src/freealut-1.1.0/include',
+	'thirdparty/boost_1_67_0/',
+	'thirdparty/SDL2-2.0.8/include',
+	'thirdparty/FFmpeg-iOS/',
+	'thirdparty/freetype-2.9/include',
+	'thirdparty/libpng-1.6.34',
+	# 'src/ext_libs_src/openal-soft-1.18.2/include',
+	# 'src/ext_libs_src/freealut-1.1.0/include',
 	"src/plugins/KAGParser",
 	'src/objects/tween/',
 
@@ -154,7 +153,7 @@ def build_static_lib():
 	cc_flags = "-std=c++0x -g"
 	ld_flags = ""
 	libs = ['onig',]
-	lib_path = ['libs/']
+	lib_path = ['libs/macos/']
 	e = Environment(TARGET_ARCH=arch_target,CPPDEFINES=[])
 	tjs_cpp_path = ["tjs2","tjs2/base",'tjs2/utils','tjs2/msg']
 	tjs_cpp_path = [os.path.join(src_path,i) for i in tjs_cpp_path]
@@ -168,7 +167,7 @@ def build_static_lib():
 	CC='c++',CXX='clang++',CCFLAGS=cc_flags,LINKFLAGS=ld_flags,
 	LIBS = libs, LIBPATH = lib_path,
 	)
-	e.Install('libs/', source = ['libtjs2.a',])
+	e.Install('libs/macos/', source = ['libtjs2.a',])
 
 def build_main_in_darwin():
 	link_flags = " ".join(["-framework %s"%s for s in frameworks])
@@ -183,9 +182,9 @@ def build_main_in_darwin():
 	'freetype','bz2',
 	'png16','iconv','lzma',
 	'avformat','avcodec','avutil','swscale','swresample',
-	'openal',
+	# 'openal',
 	]
-	lib_path = ['./libs',]
+	lib_path = ['./libs/macos',]
 	env.Program(target=target, source=cpp_src,
 		CC='c++', 
 		CXX='clang++',
@@ -204,7 +203,7 @@ def build_in_win32():
 
 def build_main():
 	if platform == "darwin":
-		build_static_lib()
+		# build_static_lib()
 		build_main_in_darwin()
 	elif platform == "win32":
 		build_in_win32()
