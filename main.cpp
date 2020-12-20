@@ -117,7 +117,7 @@ extern "C" int app_main(int argc, char* argv[])
 	TVPInitImportFuncs();
 	TVPLoadMessage();
 
-	TVPSetXP3ArchiveExtractionFilter(xp3_filter2);
+//	TVPSetXP3ArchiveExtractionFilter(xp3_filter2);
 	try
 	{
 		wprintf(L"start!!\n");
