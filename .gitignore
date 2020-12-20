@@ -50,3 +50,4 @@ src/objects/tween
 src/plugins/layerExMovie
 *.xcuserstate
 *.xcuserdatad
+thirdparty/boost_1_67_0/
