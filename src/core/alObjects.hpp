@@ -4,10 +4,9 @@
 #include "ffStream.hpp"
 #include "baseAudio.hpp"
 
-#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR || TARGET_OS_MAC
 #include <OpenAL/OpenAL.h>
 #else
-
 #include "AL/alc.h"
 #include "AL/al.h"
 #include "AL/alext.h"

@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <algorithm>
 #include "ffStream.hpp"
-#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR || TARGET_OS_MAC
 #include <OpenAL/OpenAL.h>
 #else
 #include "AL/al.h"
