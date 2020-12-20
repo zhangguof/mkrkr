@@ -12,14 +12,32 @@ https://github.com/krkrz/krkrz
 * openal system default
 * opengles system default
 
+## down depend:  
+you  can down 3rd part library include files and static lib here:  
+
+* baidu pan:   
+https://pan.baidu.com/s/1EAnHR64if3C1pXUtXxNXGQ   p5dm  
+
+* google drive:  
+https://drive.google.com/drive/folders/1SgNTvspty6F09dlLW-hyh9_z7yYdcJBr?usp=sharing 
+
+
+down in mkrkr folder:  
+
+* tar xvzf libs_ios.tar.gz  
+* tar xvzf thirdparty_boost_1_67_0.tar  
+  
+if you want build in macos:  
+
+* tar xvzf libs_macos.tar.gz  
+
+
 # build for ios
 * just run  xcode
 * config third-party include path
 * config static lib path
   
 # build for macos
-**Old method to build in macos blew**  
-**Use xcode for newest.**
 ## build onig
 cd src/external/oniguruma  
 mkdir build  
