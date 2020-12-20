@@ -18,7 +18,7 @@ https://github.com/krkrz/krkrz
 * config static lib path
   
 # build for macos
-**Old method to build in macos blew**
+**Old method to build in macos blew**  
 **Use xcode for newest.**
 ## build onig
 cd src/external/oniguruma
