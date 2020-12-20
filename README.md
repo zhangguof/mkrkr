@@ -4,13 +4,13 @@ https://github.com/krkrz/krkrz
 
 
 # depends
-build success with macos 10.14.6, xcode 11.3:
-freetype 2.9
-SDL2 2.0.8
-boost 1.69
-ffmpeg 4.0
-openal system default
-opengles system default
+* build success with macos 10.14.6, xcode 11.3:
+* freetype 2.9
+* SDL2 2.0.8
+* boost 1.69
+* ffmpeg 4.0
+* openal system default
+* opengles system default
 
 # build for ios
 * just run  xcode
