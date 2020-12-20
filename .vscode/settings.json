@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.tjs": "cpp",
+        "bitset": "cpp"
+    }
+}
