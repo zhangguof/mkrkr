@@ -78,6 +78,7 @@ void TVPMainWindowClosed()
 
 extern ttstr ExePath();
 const tjs_char* default_font_name = TJS_W("font/AdobeHeitiStd-Regular.otf");
+const tjs_char* default_test_data_path = TJS_W("test-data/");
 
 ttstr TVPGetDefaultFontName() {
 	// ttstr name(TJS_W("font/NotoSansCJKsc-Thin.otf"));
@@ -86,6 +87,13 @@ ttstr TVPGetDefaultFontName() {
     name = ttstr(TJS_W("file://./")) + GetBundlePath() + name;
 	// wprintf(TJS_W("%ls\n"),name.c_str());
 	return name;
+}
+
+ttstr TVPGetDefaultTestDataPath()
+{
+    ttstr path = default_test_data_path;
+    path = GetBundlePath() + path;
+    return path;
 }
 
 ttstr TVPGetVersionString()

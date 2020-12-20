@@ -31,6 +31,8 @@ void Sleep(uint32_t ms);
 ttstr GetAppPath();
 ttstr GetAppDocumentsPath();
 ttstr GetBundlePath();
+ttstr TVPGetDefaultTestDataPath();
+
 extern int MultiByteToWideChar(uint32_t CodePage,int dwFlags,const char* lpMultiByteStr,
 						int cbMultiByte,wchar_t* lpWideCharStr,int cchWideChar);
 

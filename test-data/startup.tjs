@@ -1,0 +1,32 @@
+// startup.tjs - スタートアップスクリプト
+// Copyright (C) 2001, W.Dee  改変・配布は自由です
+// このスクリプトは一番最初に実行されるスクリプトです
+
+
+
+var dm = Debug.message;
+
+Scripts.execStorage("startup1.tjs");
+
+
+//test bgm
+
+class BGM
+{
+	var filename;
+	function BGM(name)
+	{
+		filename = name;
+	}	
+}
+
+
+var bgm = new BGM("");
+var wav = new WaveSoundBuffer(bgm);
+wav.open("bgm/m57.ogg");
+
+// wav.open("file://.//users/tony/workspace/github/mkrkr/voice.xp3>a0002.ogg");
+
+wav.looping = true;
+
+wav.play();

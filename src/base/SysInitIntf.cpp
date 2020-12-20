@@ -22,6 +22,8 @@
 #include "MsgImpl.h"
 #include "MsgImpl.h"
 #include <boost/filesystem.hpp>
+#include "utils.h"
+#include "SDL.h"
 
 
 //---------------------------------------------------------------------------
@@ -86,7 +88,7 @@ void sel_project_dir()
             nosel = true;
         }
     }
-
+    
 	// check "data.xp3" archive
  	if(!nosel)
 	{
@@ -101,6 +103,28 @@ void sel_project_dir()
 			nosel = true;
 		}
 	}
+    
+    //check test-data, use test data when no upload other data.
+    if(!nosel)
+    {
+        wchar_t tmp[MAX_PATH];
+        TJS_strcpy(tmp,TVPGetDefaultTestDataPath().c_str());
+//        TJS_strcat(tmp, TJS_W("data.xp3"));
+        ttstr p = ttstr(tmp);
+        if(TVPCheckExistentLocalFile(p))
+        {
+            TJS_strcpy(buf, tmp);
+            TVPProjectDirSelected = true;
+            bufset = true;
+            nosel = true;
+            SDL_Log("load data path:%s\n",p.AsNarrowStdString().c_str());
+        }
+        else
+        {
+            SDL_Log("path :%s does't exist!\n",p.AsNarrowStdString().c_str());
+        }
+        
+    }
 
 	// check "data.exe" archive
  // 	if(!nosel)

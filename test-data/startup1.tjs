@@ -1,0 +1,318 @@
+/*
+image0.png ～ image9.png を10回非同期で読み込む
+*/
+
+//var dm = Debug.message;
+
+System.setArgument("-contfreq", 60);
+System.graphicCacheLimit = -1;
+// キャッシュが有効だと無意味なので画像キャッシュ切る
+Storages.addAutoPath("image/");
+Storages.addAutoPath("bg/");
+Storages.addAutoPath("fg/");
+Storages.addAutoPath("rule/");
+Storages.addAutoPath("bmp/");
+
+class Bitmap2Layer extends Bitmap {
+	var target;
+	var tag;
+	function Bitmap2Layer(layer,filename) {
+		super.Bitmap();
+		this.target = layer;
+		this.tag = filename;
+	}
+	function onadd()
+	{
+		// setSize(target.width,target.height,true);
+		// target.copyFromBitmapToMainImage(this);
+		target.stretchCopy(0,0,target.width,target.height,
+		this,0,0,width,height);
+		dm(target.width,target.height,width,height);
+
+		// target.setSizeToImageSize();
+	}
+	function onLoaded(meta,async,error,message) {
+		Debug.message("Exit load async:"+async+", error:"+error+", message:"+message);
+		if( !error && isvalid(target) ) { // 非同期なので、既に無効化されいないことを確認する
+			target.copyFromBitmapToMainImage(this);
+			target.setSizeToImageSize();
+		}
+	}
+};
+
+var last_tick = 0;
+
+class MainWindow extends Window {
+	var base;
+	var block_layer;
+	var layermove;
+	var addval;
+	var bmps;
+	var fps_lay;
+	var img_layer;
+
+	function MainWindow( width, height ) {
+		super.Window();
+		setSize( width, height );
+		setInnerSize( width, height );
+		dm(width,height);
+
+		base = new Layer(this, null);
+		base.setSize(width,height);
+		// base.colorRect(0,0,width,height,0xffff0000,0xff);
+		
+		base.setSizeToImageSize();
+		base.name = "base";
+		base.visible = true;
+		add( base );
+		// base.loadImages("bgimage/背景／terop_b.png");
+		// base.loadImages("bgimage/背景／バーガーショップ.bmp");
+		// base.loadImages("bgimage/背景／ホテル室内.png");
+		// base.loadImages("bgimage/red.bmp");
+		// base.loadImages("save_saveボタン");
+		// base.loadImages("save_background");
+		// base.loadImages("lena");
+		
+
+ 
+		img_layer = new Layer(this,base);
+		// img_layer.setSize(640,480);
+		// img_layer.setSizeToImageSize();
+		img_layer.setPos(0,0);
+		img_layer.name = "img";
+		// img_layer.colorRect(0,0,640,480,0xff0000,0xff);
+		// img_layer.loadImages("bgimage/背景／terop_a.png");
+		img_layer.visible = true;
+		// add(img_layer);
+		// dm("test stretchCopyAA:::",base.stretchCopyAA);
+
+
+		fps_lay = new Layer(this,base);
+		fps_lay.setSize(300,100);
+		fps_lay.setSizeToImageSize();
+		fps_lay.setPos(0,0);
+		fps_lay.name="fps";
+		// fps_lay.colorRect(0,0,100,100,0x0000ff,0xff);
+		fps_lay.visible = true;
+		add(fps_lay);
+		// var font2 = new Font(fps_lay);
+		// font2.height = 30;
+
+		var base_font = new Font(fps_lay);
+		// base_font.face = "font/NotoSansCJKsc-Black.otf";
+		base_font.faceIsFileName = true;
+		base_font.height = 50;
+
+
+		// block_layer = new Layer(this,base);
+		// block_layer.setSize(640,480);
+		// block_layer.setSizeToImageSize();
+		// block_layer.colorRect(0,0,block_layer.width,block_layer.height,0x00ff00,0xff);
+		// block_layer.visible = true;
+		// block_layer.loadImages("bgimage/背景／ホテル室内.png");
+		// add( block_layer );
+
+
+
+
+		// layermove = new Layer(this,base);
+		// layermove.setSize(400,60);
+		// layermove.setPos(0,height- layermove.height);
+		// layermove.setSizeToImageSize();
+		// layermove.colorRect(0,0,layermove.width,
+		// 					layermove.height,0xff0000,128);
+
+
+
+		// var font = new Font(layermove);
+		// font.face = "font/NotoSansCJKsc-Black.otf";
+		// font.faceIsFileName = true;
+		
+		// dm("font hegiht",font.height);
+
+		// layermove.drawText( 0, 0, "テスト文字列描画"+" size:"+font.height, 0xfffffff );
+		
+		// font.height = 30;
+		// layermove.drawText( 0, 20, "测试文字abcd"+" size:"+font.height, 0x0000ff);
+		// layermove.visible = true;
+		// add( layermove );
+		// dm("font:",layermove.font.face);
+
+		// var i = 0;
+		
+		// var filename = "bmp/test"+i+".bmp";
+		// var filename =  "bgimage/red.bmp";
+		// var bmp = new Bitmap2Layer(img_layer,filename);
+		// bmp.load(filename);
+		// bmp.onadd();
+		// add(bmp);
+		// bmps = new Array();
+		// for( var i = 0; i < 2; i++ ) {
+		// 	var filename = "bmp/test"+i+".bmp";
+		// 	var bmp = new Bitmap2Layer(img_layer,filename);
+		// 	bmp.load(filename);
+		// 	bmp.onadd();
+		// 	dm(bmp);
+		// 	bmps.add(bmp);
+		// }
+		// add( bmps );
+
+		addval = 1;
+		// System.addContinuousHandler(onMoveImage);
+	}
+	function finalize() {
+		System.removeContinuousHandler(onMoveImage);
+		super.finalize();
+	}
+	function onMoveImage() {
+		layermove.left += addval;
+		if( addval > 0 ) {
+			if( layermove.left >= (this.width-layermove.width) ) {
+				addval = -1;
+			}
+		} else {
+			if( layermove.left <= 0 ) {
+				addval = 1;
+			}
+		}
+		// var cur_tick = System.getTickCount();
+		
+		// dm(base);
+		// base.colorRect(0,0,width,height,0x0000ff,0xff);
+		// fps_lay.colorRect(0,0,)
+
+		// fps_lay.fillRect(0,0,fps_lay.width,fps_lay.height,
+		// 0x00000000);
+		// fps_lay.drawText(0,0,"fps:"+int(1000/(cur_tick - last_tick)),0xfffffff);
+		// last_tick = cur_tick;
+
+	}
+};
+
+var win = new MainWindow(1024,568);
+win.visible = true;
+
+var b = win.base;
+var l = win.img_layer;
+
+b.loadImages("cg/cg1.png");
+b.setSizeToImageSize();
+
+
+// b.loadImages("bg1/bg01l久遠寺邸07青子の部屋(カーテン閉め)-(朝)");
+
+//l.setSize(1024/2,568/2);
+//l.colorRect(0,0,l.width,l.height,0x00ff0000,127);
+
+//l.loadImages("lena.png");
+//l.setSizeToImageSize();
+
+// l2.loadImages("lena.png");
+// l2.setSizeToImageSize();
+// l2.setPos(50,400);
+// l.loadImages("bg01l久遠寺邸07青子の部屋(カーテン閉め)-(朝)");
+// l.loadImages("bg01l久遠寺邸01外観(草刈)-(雨)");
+// l.loadImages("bg01l久遠寺邸02ロビー-(曇)");
+// l.loadImages("im02l空(小雨)");
+// l.setSizeToImageSize();
+// l.zoom(160);
+// l.setPos(100,100);
+// dm("size:",l.width,l.height);
+// l.doContrast(80);
+// l.doContrast(-100);
+// var l2 = new Layer(win,win.base);
+// l2.loadImages("lena");
+// l2.setSize(l.width,l.height);
+// l2.setSizeToImageSize();
+// l2.setPos(l.width+10,0);
+// // l2.setPos(0,0);
+// // l2.colorRect(0,0,l2.width,l2.height,0x00ff0000,127);
+// l2.visible = true;
+
+// l2.doContrast(127);
+// (m, d, p, seed, 0, 0, width, height, holdalpha);
+// l2.drawNoise(true,0,255,System.getTickCount(),0,0,l.width,l.height,true);
+
+// var tw = new Tween();
+// for(var i =0;i<43;++i)
+// {
+// 	dm("="+i,tw.calc(i,250,0,100,400));
+// }
+// dm("===",tw.calc(1,3790,0,1,69250));
+
+// dm("=====",System.dataPath);
+
+
+// Debug.message(MainWindow.BasicDrawDevice.recreate);
+// var movie = new VideoOverlay(win);
+// movie.mode = vomLayer;
+// dm("=======",movie.mode);
+// movie.layer1 = win.img_layer;
+// movie.loop = true;
+// // movie.setSegmentLoop(10,20);
+// dm("=======",movie.segmentLoopStartFrame,movie.segmentLoopEndFrame);
+// movie.open("../1.mp4");
+// // movie.open("video/01_03.wmv");
+// // // movie.open('video/06_04.mpg');
+// movie.play();
+
+
+
+
+// var has_set= false;
+// function onTimer() {
+// 	dm(System.getTickCount());
+// 	if(!has_set)
+// 	{
+// 		// movie.cancelSegmentLoop();
+// 		movie.open("video/01_01.wmv");
+// 		movie.play();
+// 		has_set = true;
+// 	}
+// }
+// var timer = new Timer(onTimer, "");
+// timer.interval = 2000;
+// timer.enabled = false;
+// timer.capacity = 1;
+// timer.enabled = true;
+
+// class Test extends Timer
+// {
+// 	var timer;
+// 	function Test()
+// 	{
+// 		// timer = new Timer(this,"onTimer");
+// 		super.Timer(this,"onTimer");
+// 		super.interval = 2000;
+// 		super.capacity = 1;
+// 		super.enable  = false;
+// 	}
+// 	function onTimer()
+// 	{
+// 		dm("timer......",System.getTickCount());
+// 	}
+// 	function doenable()
+// 	{
+// 		super.enable = true;
+// 	}
+// }
+
+// var a = new Test();
+// a.doenable();
+// dm("test in startup.tjs");
+// Scripts.execStorage("test.tjs");
+
+// var x = "alphagradation%03d".sprintf(512);
+// dm("======",x);
+
+// function isNumber(val)
+// {
+	
+// }
+// StringUtils.test("dddddxxx");
+// StringUtils.val = 123;
+// dm("stringutils:",StringUtils,StringUtils.val);
+// dm("==========");
+// dm("---",isNumber("123"),isNumber("123.2321"),isNumber(123));
+
+
