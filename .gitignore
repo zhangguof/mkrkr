@@ -51,3 +51,4 @@ src/plugins/layerExMovie
 *.xcuserdatad
 thirdparty/boost_1_67_0/
 UserInterfaceState.xcuserstate
+src/plugins/menu/build
