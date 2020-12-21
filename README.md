@@ -38,6 +38,8 @@ if you want build in macos:
 * config static lib path
   
 # build for macos
+
+just for reference, you can down thrid part library above link.  
 ## build onig
 cd src/external/oniguruma  
 mkdir build  
@@ -77,3 +79,8 @@ like before
 
 ## build krkr  
 scons  
+
+# Run mkrkr
+## Macos 
+* scons
+* bin/krkr -data test-data
