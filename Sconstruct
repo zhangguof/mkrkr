@@ -55,6 +55,7 @@ include_path.extend([
 	'thirdparty/FFmpeg-iOS/',
 	'thirdparty/freetype-2.9/include',
 	'thirdparty/libpng-1.6.34',
+	'thirdparty/python2.7/include',
 	# 'src/ext_libs_src/openal-soft-1.18.2/include',
 	# 'src/ext_libs_src/freealut-1.1.0/include',
 	"src/plugins/KAGParser",
@@ -182,6 +183,8 @@ def build_main_in_darwin():
 	'freetype','bz2',
 	'png16','iconv','lzma',
 	'avformat','avcodec','avutil','swscale','swresample',
+	#add python2.7 support
+	'python2.7',
 	# 'openal',
 	]
 	lib_path = ['./libs/macos',]

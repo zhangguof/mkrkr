@@ -1,7 +1,7 @@
-# moblie krkrz
-port krkrz to ios.
-https://github.com/krkrz/krkrz
-
+moblie krkrz
+=============
+port krkrz to ios. 
+krkrz:https://github.com/krkrz/krkrz
 
 # depends
 * build success with macos 10.14.6, xcode 11.3:
@@ -9,6 +9,7 @@ https://github.com/krkrz/krkrz
 * SDL2 2.0.8
 * boost 1.69
 * ffmpeg 4.0
+* python 2.7.18
 * openal system default
 * opengles system default
 
