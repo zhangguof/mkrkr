@@ -219,6 +219,10 @@ ttstr GetBundlePath()
         p = p + TJS_W('/');
     return p;
 }
+const char* GetCurPath()
+{
+	return GetBundlePath().AsNarrowStdString().c_str();
+}
 
 // int MultiByteToWideChar(
 //   UINT                              CodePage,

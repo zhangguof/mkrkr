@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "*.tjs": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "optional": "cpp",
+        "variant": "cpp",
+        "random": "cpp",
+        "*.ipp": "cpp",
+        "string": "cpp"
     }
 }

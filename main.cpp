@@ -17,7 +17,7 @@
 #include <locale.h>
 #include "SDL.h"
 #include <boost/filesystem.hpp>
-#include "Python.h"
+#include "bind_py.hpp"
 
 
 
@@ -102,25 +102,31 @@ void init_locale()
 }
 #endif
 
-void init_python(char* name)
+void handler_sigint(int signo)
 {
-	Py_SetProgramName(name);  /* optional but recommended */
-	Py_NoSiteFlag = 1;
-  	Py_Initialize();
+	printf("recv SIGINT\n");
+	exit(0);
 }
-void exit_python()
+
+void init_signal()
 {
-	Py_Finalize();
+	signal(SIGINT,handler_sigint);
 }
+
 
 extern "C" int app_main(int argc, char* argv[])
 {
 //    setlocale(LC_ALL, "");
 //    setlocale(LC_CTYPE,"UTF-8");
     init_locale();
-	init_python(argv[0]);
-	PyRun_SimpleString("from time import time,ctime\n"
-                     "print 'Today is',ctime(time())\n");
+	py_init(argv[0]);
+	init_signal();
+	
+
+	
+
+	// PyRun_SimpleString("from time import time,ctime\n"
+    //                  "print 'Today is',ctime(time())\n");
 	// TVPSetCurrentDirectory(ExePath());
 	// char buf[1024];
 	// tTJSBinaryStream *st = TVPCreateStream(ttstr("README"),TJS_BS_READ);
@@ -162,7 +168,7 @@ extern "C" int app_main(int argc, char* argv[])
 	{
 		Application->PrintConsole(e.GetMessage(),e.GetMessage().GetLen());
 	}
-	exit_python();
+	py_exit();
 
 
 	return 0;

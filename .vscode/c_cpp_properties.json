@@ -6,7 +6,8 @@
                 "${default}",
                 "${workspaceFolder}/thirdparty/python2.7/include",
                 "${workspaceFolder}/thirdparty/boost_1_67_0",
-                "${workspaceFolder}/thirdparty/SDL2-2.0.8/include"
+                "${workspaceFolder}/thirdparty/SDL2-2.0.8/include",
+                "${workspaceFolder}/src",
             ],
             "defines": [],
             "macFrameworkPath": [],
