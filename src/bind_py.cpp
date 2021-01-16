@@ -39,10 +39,14 @@ BOOST_PYTHON_MODULE(engine)
     def("py_version",py_version,"python version");
     def("regist_update",regist_update,"python update func.");
 }
-
-static void inti_modules()
+void py_init_ext_moudles();
+static void py_init_modules()
 {
+    //extension as build in.
+    py_init_ext_moudles();
+    //others
     initengine();
+
 }
 
 static void run_init_script()
@@ -73,7 +77,7 @@ void py_init(char *program_name)
 
 	Py_NoSiteFlag = 1;
   	Py_Initialize();
-    inti_modules();
+    py_init_modules();
     run_init_script();
     //test
 

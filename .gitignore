@@ -52,3 +52,5 @@ src/plugins/layerExMovie
 thirdparty/boost_1_67_0/
 UserInterfaceState.xcuserstate
 src/plugins/menu/build
+python/lib
+cp_libpy27.sh

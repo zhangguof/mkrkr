@@ -184,7 +184,7 @@ def build_main_in_darwin():
 	'png16','iconv','lzma',
 	'avformat','avcodec','avutil','swscale','swresample',
 	#add python2.7 support
-	'python2.7','boost_python27',
+	'python2.7','boost_python27','sqlite3',
 	# 'openal',
 	]
 	lib_path = ['./libs/macos',]
